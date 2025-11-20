@@ -1,0 +1,786 @@
+import { useState, useEffect, useRef } from 'react'
+import './App.css'
+import section2Image from './assets/section2.jpg'
+import rakLogo from './assets/rak.jpg'
+import jafzaLogo from './assets/Jebel Ali Free Zone.jpg'
+import legrandLogo from './assets/legrand.jpg'
+import ajmanLogo from './assets/ajman.jpg'
+import dmccLogo from './assets/dmcc.jpg'
+import carlStahlLogo from './assets/carlstahl.jpg'
+import creativeCityLogo from './assets/creativecity.jpg'
+import saLogo from './assets/sa_logo.jpg'
+
+// Data constants
+const services = [
+  'Auditing',
+  'Tax Advisory',
+  'Company Formation',
+  'Accounting & Bookkeeping',
+  'VAT',
+  'Corporate Tax',
+]
+
+const stats = [
+  { value: '4000+', label: 'Projects Successfully Completed' },
+  { value: '99%', label: 'Client Stay With Us' },
+  { value: '500+', label: 'Registered UAE Businesses Served' },
+]
+
+const serviceFeatures = [
+  'Monthly bookkeeping and financial reporting with professional accounting services Dubai businesses rely on.',
+  'Tax reduction strategy and planning with certified tax consultants UAE.',
+  'VAT and corporate tax compliance managed by leading Dubai corporate tax consultants',
+  'Year-end tax planning sessions aligned with the latest FTA regulations.',
+]
+
+const partners = [
+  { name: 'RAK Free Trade Zone', logo: rakLogo },
+  { name: 'Jebel Ali Free Zone', logo: jafzaLogo },
+  { name: 'Legrand', logo: legrandLogo },
+  { name: 'Ajman free zone', logo: ajmanLogo },
+  { name: 'Dubai Multi commodities centre', logo: dmccLogo },
+  { name: 'Carl Stahl', logo: carlStahlLogo },
+  { name: 'Creative City', logo: creativeCityLogo },
+]
+
+const valuesSliderContent = [
+  { text: 'Real Businesses,\nReal Results' },
+  { text: '25+ years = We have\nseen (almost) every\nscenario' },
+  { text: '4,000+ projects =\nPattern recognition\nat scale' },
+  { text: '98% retention =\nClients stay with us' },
+  { text: 'Government\nregistered =\nCredible & can\nhandle complex\ncases' },
+  { text: 'Full service suite =\nNo need to hire\nmultiple vendors' },
+]
+
+const serviceCards = [
+  {
+    title: 'AUDITING',
+    icon: 'document-magnifying-glass',
+    description: 'Satisfy regulatory requirements and give stakeholders confidence in your financial reports with help from a trusted audit firm near me offering professional auditing services near me across Dubai and the UAE.',
+  },
+  {
+    title: 'VAT',
+    icon: 'percentage',
+    description: 'Submit accurate returns on time and reclaim every dirham you\'re entitled to with our specialized VAT return filing services UAE.',
+  },
+  {
+    title: 'TAX ADVISORY',
+    icon: 'line-chart',
+    description: 'Pay only what you legally owe—find deductions, optimize structure, and reduce liabilities with the guidance of experienced tax consultants in Dubai',
+  },
+  {
+    title: 'COMPANY FORMATION',
+    icon: 'building',
+    description: 'Choose the right jurisdiction, complete all paperwork, and launch operations faster—our tax consultancy services in Dubai ensure smooth registration and compliance.',
+  },
+  {
+    title: 'ACCOUNTING & BOOKKEEPING',
+    icon: 'calculator',
+    description: 'Know exactly where your money goes with organized books and clear monthly reports handled by professional accounting services Dubai providers.',
+  },
+  {
+    title: 'CORPORATE TAX',
+    icon: 'dollar',
+    description: 'Navigate UAE\'s new tax laws with expert UAE corporate tax filing services. We help you maximize deductions and stay compliant with the latest corporate tax regulations.',
+  },
+]
+
+const trustBenefits = [
+  { title: 'Becoming Trusted', icon: '🤝' },
+  { title: 'Professionalism', icon: '💼' },
+  { title: 'Service Leader', icon: '⭐' },
+  { title: 'Real-World Client Experience', icon: '🌍' },
+  { title: 'Seamless to Approved Firms', icon: '🔗' },
+  { title: 'Fast & Reliable Support', icon: '⚡' },
+]
+
+const pricingPlans = [
+  {
+    title: 'Corporate Tax (Filing Only)',
+    price: 'AED 750',
+    priceNote: '+VAT/month',
+    description: 'Ideal for businesses under AED 3 million annual revenue, qualifying for Small Business Relief.',
+    features: [
+      'Corporate Tax Return Filing',
+      'Eligibility Assessment for Small Business Relief',
+      'Basic Compliance Check',
+      'FTA Portal Review & Submission',
+    ],
+  },
+  {
+    title: 'Corporate Tax (Filing + Tax Payable)',
+    price: 'AED 1500',
+    priceNote: '+VAT/month',
+    description: 'Suitable for companies obligated to compute and pay Corporate Tax under current FTA rules, typically those with revenues above AED 3 million.',
+    features: [
+      'Full Corporate Tax Return Filing handled by professional Corporate tax filing services Dubai',
+      'Tax Computation & Payment Summary',
+      'Review of Financials & Adjustments',
+      'Compliance Review & Documentation',
+      'FTA Portal Submission & Confirmation',
+      'Basic Advisory on Deductions & Adjustments',
+      'WhatsApp/Email Support',
+    ],
+  },
+]
+
+const videoTestimonials = [
+  { title: 'How We Helped an F&B Startup Save 30% In Annual Taxes' },
+  { title: 'Client Success Story: Manufacturing Company' },
+  { title: 'Tax Strategy That Saved Our Business' },
+  { title: 'Why We Chose Standard Auditors' },
+]
+
+const faqQuestions = [
+  {
+    question: 'What services do you offer?',
+    answer: 'Our comprehensive services include tax advisory, corporate tax filing, VAT services, auditing, accounting & bookkeeping, and company formation. We provide end-to-end financial solutions tailored to your business needs.'
+  },
+  {
+    question: 'Can you help me with VAT registration?',
+    answer: 'Yes, we assist businesses with VAT registration, filing, and compliance. Our team ensures you meet all UAE VAT requirements and deadlines.'
+  },
+  {
+    question: 'Will you improve my bookkeeping?',
+    answer: 'Absolutely. We provide professional bookkeeping services that maintain accurate, organized records and help streamline your accounting processes.'
+  },
+  {
+    question: 'How soon can I see business results?',
+    answer: 'Results vary by service, but most clients see improvements within the first month. Our team works efficiently to deliver measurable outcomes quickly.'
+  },
+  {
+    question: 'Are your services suitable for startups and SMEs?',
+    answer: 'Yes, we specialize in supporting startups and SMEs with scalable financial solutions designed to grow with your business.'
+  },
+  {
+    question: 'Do you handle company formation in the UAE?',
+    answer: 'Yes, we offer complete company formation services in the UAE, including free zone and mainland setup, licensing, and all required documentation.'
+  },
+  {
+    question: 'How do you ensure confidentiality and trust?',
+    answer: 'We maintain strict confidentiality protocols, are government-registered, and follow international best practices to protect your sensitive financial information.'
+  },
+  {
+    question: 'How can I get started?',
+    answer: 'Getting started is easy. Simply contact us through our form or speak to one of our experts, and we\'ll guide you through the initial consultation process.'
+  },
+]
+
+// Header Component
+function Header() {
+  return (
+    <header className="site-header">
+      <div className="site-header__container">
+        <div className="site-header__logo">
+          <div className="site-header__logo-icon">S</div>
+          <span className="site-header__logo-text">STANDARD</span>
+        </div>
+        <nav className="site-header__nav">
+          <a href="#home" className="site-header__nav-link">Home</a>
+          <a href="#about" className="site-header__nav-link">About</a>
+          <a href="#services" className="site-header__nav-link">Services</a>
+          <a href="#insights" className="site-header__nav-link">Insights</a>
+          <a href="#careers" className="site-header__nav-link">Careers</a>
+        </nav>
+        <button type="button" className="site-header__cta">Contact Us</button>
+      </div>
+    </header>
+  )
+}
+
+// Services Section
+function ServicesSection() {
+  return (
+    <section className="services-section">
+      <div className="services-section__container">
+        <div className="services-section__left">
+          <button type="button" className="services-section__tag small-body-opensans">
+            About Standard Auditing
+          </button>
+          <h2 className="services-section__left-title h2-montserrat">
+            <span className="services-section__title-line-1">Service That's As Personal As</span>
+            <span className="services-section__title-line-2">It Is Professional</span>
+          </h2>
+          <div className="services-section__image-wrapper">
+            <img
+              src={section2Image}
+              alt="Professional team meeting"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div className="services-section__right">
+          <h3 className="services-section__right-title h4-montserrat">
+            <span className="services-section__right-line-1">Full-Service Accounting & Tax Advisory</span>
+            <span className="services-section__right-line-2">For Your Business</span>
+          </h3>
+          <p className="services-section__description body-opensans">
+            At Standard Auditing, we handle everything from daily bookkeeping to year-end tax planning—so you can focus on running your business. Our expert tax consultants in Dubai and UAE corporate tax filing services team ensure your books are accurate, your tax burden is minimized, and your compliance is bulletproof. We specialize in:
+          </p>
+          <ul className="services-section__features">
+            {serviceFeatures.map((feature, index) => (
+                  <li key={index} className="services-section__feature">
+                    <svg className="services-section__checkmark" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="10" cy="10" r="9" stroke="white" strokeWidth="1.5" fill="none"/>
+                      <path d="M6 10 L9 13 L14 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                    </svg>
+                <span className="body-opensans">{feature}</span>
+                  </li>
+            ))}
+          </ul>
+          <p className="services-section__additional body-opensans">
+            One point of contact, We handle everything, Upload docs once, we do the rest.
+          </p>
+          <button type="button" className="services-section__cta h3-opensans-semibold">
+            <span className="services-section__cta-text">Learn More</span>
+            <span className="services-section__arrow">→</span>
+          </button>
+          <div className="services-section__badge">
+            <svg className="services-section__badge-svg" viewBox="0 0 200 200">
+              <defs>
+                <path id="circle-path" d="M 100,30 A 70,70 0 1,1 30,100 A 70,70 0 1,1 100,30" />
+              </defs>
+              <text className="services-section__badge-text">
+                <textPath href="#circle-path" startOffset="5%">
+                  GUARANTEED TRANSPARENCY
+                </textPath>
+              </text>
+            </svg>
+            <div className="services-section__badge-arrow">↑</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Partners Section
+function PartnersSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isCardVisible, setIsCardVisible] = useState(false)
+  const cardRef = useRef(null)
+
+  // Viewport animation - triggers once when card enters viewport
+  useEffect(() => {
+    // Set card as visible immediately, then animate if needed
+    setIsCardVisible(true)
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsCardVisible(true)
+            observer.disconnect()
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px',
+      }
+    )
+
+    const currentRef = cardRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.disconnect()
+      }
+    }
+  }, [])
+
+  // Slideshow animation - cycles through content continuously
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % valuesSliderContent.length)
+    }, 2500) // Auto-advance every 2.5 seconds - continuous looping
+
+    return () => clearInterval(interval)
+  }, [])
+  return (
+    <section className="partners-section">
+      <h2 className="partners-section__title h2-montserrat">
+        <span className="partners-section__title-line-1">Trusted by Businesses Across</span>
+        <span className="partners-section__title-line-2">UAE's Leading Free Zones</span>
+      </h2>
+      <div className="partners-section__container">
+        <div className="partners-section__grid">
+          {partners.map((partner, index) => (
+            <div key={index} className="partners-section__card">
+              <div className="partners-section__logo">
+                <img src={partner.logo} alt={partner.name} className="partners-section__logo-img" />
+              </div>
+              <p className="partners-section__name body-opensans">{partner.name}</p>
+              {/* Connecting lines from Legrand and Carl Stahl to SA */}
+              {(index === 2 || index === 5) && (
+                <div className={`partners-section__card-connector partners-section__card-connector--${index === 2 ? 'legrand' : 'carlstahl'}`}></div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="partners-section__divider"></div>
+        <div className="partners-section__middle">
+          <div className="partners-section__center-card">
+            <img src={saLogo} alt="Standard Auditors" className="partners-section__center-logo-img" />
+          </div>
+          <div className="partners-section__connector"></div>
+        </div>
+        <div className="partners-section__right">
+          <div 
+            ref={cardRef}
+            className={`partners-section__result-card ${isCardVisible ? 'partners-section__result-card--visible' : ''}`}
+          >
+            <div className="partners-section__result-slider">
+              <div className="partners-section__result-track">
+                {valuesSliderContent.map((item, index) => (
+                  <div 
+                    key={index} 
+                    className={`partners-section__result-slide ${index === currentSlide ? 'active' : ''}`}
+                  >
+                    <p className="partners-section__result-text h3-montserrat">
+                      {item.text.split('\n').map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          {i < item.text.split('\n').length - 1 && <br />}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Services Grid Section - Updated to match design
+function ServicesGridSection() {
+  return (
+    <section className="services-grid-section">
+      <div className="services-grid-section__container">
+        <div className="services-grid-section__header">
+          <span className="services-grid-section__tag h3-opensans-semibold">Services We Offer</span>
+          <h2 className="services-grid-section__title h1-montserrat">
+            Everything Your Business Needs to Stay Compliant and Profitable
+          </h2>
+        </div>
+        <div className="services-grid-section__grid">
+          {serviceCards.map((service, index) => (
+            <div key={index} className="services-grid-section__card">
+                <div className="services-grid-section__icon-container">
+                {service.icon === 'document-magnifying-glass' && (
+                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M14 2V8H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="11" cy="13" r="3" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M13 11L11 13L9 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+                {service.icon === 'percentage' && (
+                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M8 8L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M16 8L8 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+                    <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/>
+                  </svg>
+                )}
+                {service.icon === 'line-chart' && (
+                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3V21H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M7 16L12 11L16 15L21 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M21 10H16V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+                {service.icon === 'building' && (
+                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 21H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M5 21V7L13 2V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M19 21V11H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 9V9.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 12V12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 15V15.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 18V18.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+                {service.icon === 'calculator' && (
+                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="2" width="16" height="20" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <rect x="7" y="6" width="10" height="4" rx="1" fill="currentColor"/>
+                    <rect x="7" y="12" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="11" y="12" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="15" y="12" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="7" y="16" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="11" y="16" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="15" y="16" width="2" height="2" rx="0.5" fill="currentColor"/>
+                  </svg>
+                )}
+                {service.icon === 'dollar' && (
+                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M12 6V18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M8 10H12C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14H10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M16 14H12C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+              </div>
+              <h3 className="services-grid-section__card-title h5-montserrat">{service.title}</h3>
+              <p className="services-grid-section__card-description body-opensans">{service.description}</p>
+              <button type="button" className="services-grid-section__expand-btn small-body-opensans">
+                Expand &gt;&gt;
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Why Trust Section
+function WhyTrustSection() {
+  return (
+    <section className="why-trust-section">
+      <div className="why-trust-section__container">
+        <h2 className="why-trust-section__title h1-montserrat">
+          Why Businesses Trust Standard Auditors
+        </h2>
+        <div className="why-trust-section__content">
+          <div className="why-trust-section__image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+              alt="Consultation meeting"
+              loading="lazy"
+            />
+          </div>
+          <div className="why-trust-section__benefits">
+            {trustBenefits.map((benefit, index) => (
+              <div key={index} className="why-trust-section__benefit-card">
+                <span className="why-trust-section__benefit-icon">{benefit.icon}</span>
+                <p className="why-trust-section__benefit-title body-opensans">{benefit.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Pricing Section
+function PricingSection() {
+  return (
+    <section className="pricing-section">
+      <div className="pricing-section__container">
+        <span className="pricing-section__badge small-body-opensans">Service Packages</span>
+        <h2 className="pricing-section__title h1-montserrat">
+          Choose the Support Level That Fits Your Business
+        </h2>
+        <div className="pricing-section__grid">
+          {pricingPlans.map((plan, index) => (
+            <div key={index} className="pricing-section__card">
+              <h3 className="pricing-section__card-title h3-montserrat">{plan.title}</h3>
+              <div className="pricing-section__price">
+                <span className="pricing-section__price-amount h1-montserrat">{plan.price}</span>
+                <span className="pricing-section__price-note body-opensans">{plan.priceNote}</span>
+              </div>
+              <p className="pricing-section__card-description body-opensans">{plan.description}</p>
+              <button type="button" className="pricing-section__cta h3-opensans-semibold">
+                Get in Touch
+              </button>
+              <ul className="pricing-section__features">
+                {plan.features.map((feature, idx) => (
+                  <li key={idx} className="pricing-section__feature">
+                    <svg className="pricing-section__checkmark" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.667 5L7.5 14.167 3.333 10" stroke="#0A3D62" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span className="body-opensans">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Video Testimonials Section
+function VideoTestimonialsSection() {
+  return (
+    <section className="video-testimonials-section">
+      <div className="video-testimonials-section__container">
+        <h2 className="video-testimonials-section__title h1-montserrat">
+          How We've Helped Businesses Like Yours
+        </h2>
+        <div className="video-testimonials-section__grid">
+          {videoTestimonials.map((video, index) => (
+            <div key={index} className="video-testimonials-section__card">
+              <div className="video-testimonials-section__thumbnail">
+                <div className="video-testimonials-section__play-icon">▶</div>
+              </div>
+              <p className="video-testimonials-section__title body-opensans">{video.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Client Testimonials Section
+function ClientTestimonialsSection() {
+  return (
+    <section className="client-testimonials-section">
+      <div className="client-testimonials-section__container">
+        <div className="client-testimonials-section__left">
+          <h2 className="client-testimonials-section__title h1-montserrat">
+            What Our Clients Say About Working With Us
+          </h2>
+        </div>
+        <div className="client-testimonials-section__right">
+          <blockquote className="client-testimonials-section__quote">
+            <p className="client-testimonials-section__quote-text h2-opensans-regular">
+              "We have been working with Standard Auditors for several years now, and they have been an invaluable partner to our business. Their team's expertise and attention to detail have helped us navigate complex tax regulations and optimize our financial operations. The quality of their services is exceptional, and they truly understand the unique challenges of doing business in the UAE."
+            </p>
+            <footer className="client-testimonials-section__author">
+              <p className="client-testimonials-section__author-name h4-montserrat">
+                Senthil Kumar, Managing Director, T-Group, Dubai, UAE
+              </p>
+            </footer>
+          </blockquote>
+          <div className="client-testimonials-section__nav">
+            <button type="button" className="client-testimonials-section__nav-btn" aria-label="Previous testimonial">←</button>
+            <button type="button" className="client-testimonials-section__nav-btn" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// FAQ Section
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index)
+  }
+
+  return (
+    <section className="faq-section">
+      <div className="faq-section__container">
+        <div className="faq-section__left">
+          <span className="faq-section__badge small-body-opensans">FAQ</span>
+          <h2 className="faq-section__title h1-montserrat">
+            <span className="faq-section__title-line-1">Questions Our Clients</span>
+            <span className="faq-section__title-line-2">Usually Ask Us</span>
+          </h2>
+          <p className="faq-section__intro body-opensans">
+            If you've made it this far, you're ready to take control of your finances. Here's what most businesses ask before getting started with our tax consultancy services in Dubai and audit firm near me support.
+          </p>
+          <div className="faq-section__cta-section">
+            <h3 className="faq-section__cta-heading h4-montserrat">Still looking for answer?</h3>
+            <button type="button" className="faq-section__cta h3-opensans-semibold">
+              <span className="faq-section__cta-text">Speak to our expert</span>
+              <svg className="faq-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className="faq-section__right">
+          <div className="faq-section__list">
+            {faqQuestions.map((faq, index) => (
+              <div key={index} className="faq-section__item">
+                <div className="faq-section__divider"></div>
+                <button
+                  type="button"
+                  className={`faq-section__question ${openIndex === index ? 'faq-section__question--open' : ''}`}
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <span className="faq-section__question-text body-opensans">{faq.question}</span>
+                  <span className="faq-section__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="11" fill="white" stroke="#0A3D62" strokeWidth="1"/>
+                      <path d="M7 10L12 15L17 10" stroke="#0A3D62" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                    </svg>
+                  </span>
+                </button>
+                {openIndex === index && (
+                  <div className="faq-section__answer-wrapper">
+                  <div className="faq-section__answer">
+                      <p className="body-opensans">{faq.answer}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Newsletter Section
+function NewsletterSection() {
+  return (
+    <section className="newsletter-section">
+      <div className="newsletter-section__container">
+        <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
+        <p className="newsletter-section__description body-opensans">
+          Get weekly insights, checklists, and tips to manage cash flow, save time, and keep profits. 
+          Expert guidance from certified tax consultants delivered straight to your inbox.
+        </p>
+        <button type="button" className="newsletter-section__cta h3-opensans-semibold">
+          Sign up for free updates
+        </button>
+      </div>
+    </section>
+  )
+}
+
+// Footer Component
+function Footer() {
+  return (
+    <footer className="site-footer">
+      <div className="site-footer__container">
+        <div className="site-footer__column">
+          <div className="site-footer__logo">
+            <div className="site-footer__logo-icon">S</div>
+            <span className="site-footer__logo-text">STANDARD</span>
+          </div>
+          <address className="site-footer__address body-opensans">
+            Office No 112, SBG Building, Bank Street, Dubai, United Arab Emirates.
+          </address>
+          <a href="mailto:info@standardauditors.com" className="site-footer__email body-opensans">
+            info@standardauditors.com
+          </a>
+          <div className="site-footer__social">
+            <a href="#" className="site-footer__social-link" aria-label="Facebook">f</a>
+            <a href="#" className="site-footer__social-link" aria-label="Twitter">t</a>
+            <a href="#" className="site-footer__social-link" aria-label="LinkedIn">in</a>
+            <a href="#" className="site-footer__social-link" aria-label="Instagram">ig</a>
+          </div>
+        </div>
+        <div className="site-footer__column">
+          <h3 className="site-footer__column-title h5-montserrat">Services</h3>
+          <ul className="site-footer__links">
+            <li><a href="#" className="body-opensans">Tax Advisory</a></li>
+            <li><a href="#" className="body-opensans">Corporate Tax</a></li>
+            <li><a href="#" className="body-opensans">Auditing</a></li>
+            <li><a href="#" className="body-opensans">Accounting & Bookkeeping</a></li>
+            <li><a href="#" className="body-opensans">VAT</a></li>
+          </ul>
+        </div>
+        <div className="site-footer__column">
+          <h3 className="site-footer__column-title h5-montserrat">Support</h3>
+          <ul className="site-footer__links">
+            <li><a href="#" className="body-opensans">Help Center</a></li>
+            <li><a href="#" className="body-opensans">Email Support</a></li>
+            <li><a href="#" className="body-opensans">FAQ</a></li>
+            <li><a href="#" className="body-opensans">Contact</a></li>
+          </ul>
+        </div>
+        <div className="site-footer__column">
+          <h3 className="site-footer__column-title h5-montserrat">Company</h3>
+          <ul className="site-footer__links">
+            <li><a href="#" className="body-opensans">About Us</a></li>
+            <li><a href="#" className="body-opensans">Leadership</a></li>
+            <li><a href="#" className="body-opensans">Careers</a></li>
+            <li><a href="#" className="body-opensans">News & Articles</a></li>
+            <li><a href="#" className="body-opensans">Legal Notices</a></li>
+          </ul>
+        </div>
+      </div>
+      <div className="site-footer__bottom">
+        <p className="site-footer__copyright small-body-opensans">
+          © 2023 Standard Auditors. All rights reserved.
+        </p>
+        <div className="site-footer__legal">
+          <a href="#" className="small-body-opensans">Terms of use</a>
+          <a href="#" className="small-body-opensans">Cookie policy</a>
+          <a href="#" className="small-body-opensans">Privacy policy</a>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+// Main App Component
+function App() {
+  return (
+    <>
+      <Header />
+      <main className="hero">
+        <section className="hero__title-section">
+          <div className="hero__eyebrow-wrapper">
+            <span className="hero__eyebrow-line" aria-hidden="true" />
+            <p className="hero__eyebrow-text h6-montserrat">Keep more of your profits</p>
+          </div>
+          <h1 className="hero__main-title h1-montserrat">
+            <span className="hero__title-line-1">Trusted Financial Partner</span>
+            <span className="hero__title-line-2">for Dubai Businesses</span>
+          </h1>
+        </section>
+        <header className="hero__header">
+          <div className="hero__services">
+            {services.map((service) => (
+              <button key={service} type="button" className="hero__service-pill body-opensans">
+                {service}
+              </button>
+            ))}
+          </div>
+          <span className="hero__header-divider" aria-hidden="true" />
+          <div className="hero__copy">
+            <p className="hero__copy-text h2-opensans-regular">
+              <strong>Protect your profits with proactive financial partnership.</strong>{' '}
+              As one of the most trusted tax consultancy services in Dubai, we find
+              tax efficiencies others miss, handle every compliance deadline, and
+              deliver clear monthly reports—so you can make confident financial
+              decisions without second-guessing your numbers.
+            </p>
+          </div>
+        </header>
+
+        <section className="hero__media" aria-label="Client collaboration">
+          <div className="hero__image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+              alt="Consultant presenting a financial plan to a team"
+              loading="lazy"
+            />
+          </div>
+          <div className="hero__stats-card">
+            {stats.map((stat) => (
+              <div className="hero__stat" key={stat.label}>
+                <p className="hero__stat-value h6-montserrat">{stat.value}</p>
+                <p className="hero__stat-label h2-opensans-regular">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+      <ServicesSection />
+      <PartnersSection />
+      <ServicesGridSection />
+      <WhyTrustSection />
+      <PricingSection />
+      <VideoTestimonialsSection />
+      <ClientTestimonialsSection />
+      <FAQSection />
+      <NewsletterSection />
+      <Footer />
+    </>
+  )
+}
+
+export default App

@@ -1,0 +1,79 @@
+/**
+ * AnimatedCard Styles
+ * 
+ * Styles for the animated card component with soft shadow, white background,
+ * and rounded corners. Includes smooth fade-in and slide-up animation that
+ * triggers when the card enters the viewport.
+ */
+
+/* Card container - matches reference image styling */
+.animated-card {
+  background: white;
+  border-radius: clamp(0.75rem, 2vw, 1rem);
+  padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1rem, 2.5vw, 1.5rem);
+  box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1.25rem) rgba(0, 0, 0, 0.1);
+  /* Soft shadow matching reference image */
+  min-width: clamp(12rem, 25vw, 18rem);
+  min-height: clamp(4rem, 8vw, 6rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  /* Initial state - text hidden and positioned below */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Smooth, performance-friendly animation using CSS transforms */
+  will-change: opacity, transform;
+  /* Optimizes animation performance by hinting browser about upcoming changes */
+}
+
+/* Visible state - text fades in and slides up */
+.animated-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+  /* Animation completes - remove will-change for better performance */
+  will-change: auto;
+}
+
+/* Text styling - matches reference image */
+.animated-card__text {
+  color: #0A3D62;
+  margin: 0;
+  line-height: 1.3;
+  font-size: clamp(0.875rem, 2vw, 1.25rem);
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  /* Dark blue text matching design */
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  .animated-card {
+    min-width: clamp(10rem, 20vw, 15rem);
+    min-height: clamp(3.5rem, 7vw, 5rem);
+    padding: clamp(0.875rem, 2vw, 1.25rem) clamp(0.875rem, 2vw, 1.25rem);
+  }
+
+  .animated-card__text {
+    font-size: clamp(0.75rem, 1.75vw, 1rem);
+  }
+}
+
+/* Performance optimization - reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animated-card {
+    transition: opacity 0.3s ease;
+    transform: none;
+    /* Respect user preference for reduced motion */
+  }
+
+  .animated-card--visible {
+    transform: none;
+  }
+}
+
+
