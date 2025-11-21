@@ -11,15 +11,16 @@
   gap: clamp(1.5rem, 4vw, 2.5rem);
   /* Preserves original spacing ratio while scaling */
   padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
-  background: #f4f8fc;
-  color: #0A3D62;
+  background: white;
+  color: #0A3A58;
 }
 
 .hero__title-section {
   display: flex;
   flex-direction: column;
   gap: clamp(0.375rem, 1vw, 0.5rem);
-  /* Maintains tight spacing between eyebrow and title */
+  margin-left: clamp(2rem, 5vw, 4rem);
+  /* Increased left margin spacing to match Figma design */
 }
 
 .hero__eyebrow-wrapper {
@@ -32,14 +33,15 @@
 .hero__eyebrow-line {
   width: clamp(2rem, 5vw, 2.5rem);
   height: 0.125rem;
-  background: #4A6B82;
+  background: #0A3A58;
   flex-shrink: 0;
-  /* Fixed height line maintains visual weight */
+  /* Dark blue horizontal line matching Figma */
 }
 
 .hero__eyebrow-text {
   margin: 0;
-  color: #4A6B82;
+  color: #2E2E2E;
+  /* Dark grey text */
 }
 
 .hero__main-title {
@@ -47,100 +49,131 @@
   display: flex;
   flex-direction: column;
   gap: clamp(0.125rem, 0.5vw, 0.25rem);
-  /* Preserves two-line title structure */
+  font-weight: 700;
+  line-height: 1.3;
+  /* Heavier font weight and increased line-height */
 }
 
 .hero__title-line-1,
 .hero__title-line-2 {
   display: block;
-  color: #0A3D62;
+  color: #0A3A58;
+  /* Exact color from Figma */
 }
 
 /* ============================================
    HERO HEADER - Exact two-column layout with divider
-   Matches design: Service tags (left) | Divider | Text (right)
+   Matches Figma design: Service tags (left) | Divider | Text (right)
    ============================================ */
 .hero__header {
   display: flex;
-  gap: clamp(1rem, 3vw, 3rem);
+  gap: clamp(2.5rem, 5vw, 4rem);
+  /* Increased gap between left boxes and right paragraph */
   align-items: flex-start;
-  /* align-items: flex-start ensures top alignment matching design */
-  justify-content: flex-start;
-  /* flex-start maintains left-to-right flow: services → divider → text */
+  justify-content: space-between;
+  /* Space between left and right sections */
   flex-wrap: nowrap;
-  /* nowrap preserves horizontal layout on desktop */
+  margin-left: clamp(2rem, 5vw, 4rem);
+  margin-right: clamp(2rem, 5vw, 4rem);
+  /* Increased left margin to match title section, added right margin */
+  margin-top: 0;
+  /* Ensure proper vertical alignment */
 }
 
 .hero__services {
-  flex: 0 0 auto;
-  /* flex: 0 0 auto prevents services from growing, maintains fixed width */
-  display: flex;
-  flex-wrap: wrap;
-  /* flex-wrap: wrap allows natural wrapping after 3 items */
-  gap: clamp(0.5rem, 1.5vw, 0.65rem);
-  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  /* 3 columns with auto width for natural sizing */
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  /* Even spacing horizontal and vertical */
+  row-gap: clamp(0.75rem, 1.5vw, 1rem);
+  column-gap: clamp(0.75rem, 1.5vw, 1rem);
   width: fit-content;
-  max-width: clamp(32rem, 52vw, 42rem);
-  /* max-width calculated to fit exactly 3 tags per row with natural widths */
-  /* Preserves EXACT 2-row service pill layout from design (3 tags per row) */
-  /* Tags maintain their natural content-based widths, not equal widths */
+  max-width: clamp(24rem, 40vw, 32rem);
+  /* Reduced max-width to minimize boxes */
+  justify-items: start;
+  align-items: start;
+  justify-content: start;
+  align-self: flex-start;
+  flex: 0 0 auto;
+  /* Ensure services align properly with title, fixed width */
+  /* Grid ensures exact 3-3 alignment with natural sizes and even spacing */
 }
 
 .hero__service-pill {
-  padding: clamp(0.3125rem, 1vw, 0.5rem) clamp(0.625rem, 1.5vw, 0.875rem);
-  border: 0.0625rem solid #0A3D62;
-  border-radius: clamp(0.375rem, 1vw, 0.5rem);
-  background: white;
-  /* background: white matches design - tags have white/light background */
-  color: #0A3D62;
+  padding: clamp(8px, 1vw, 10px) clamp(16px, 2vw, 20px);
+  /* Minimized padding - smaller than before */
+  border: 2px solid #0A3A58;
+  /* 2px border */
+  border-radius: 8px;
+  /* 8px border radius */
+  background: transparent;
+  color: #0A3A58;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
-  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-  flex: 0 0 auto;
-  /* flex: 0 0 auto ensures tags maintain natural width based on content */
-  width: auto;
-  /* width: auto allows each tag to size based on its text content */
-  /* Tags wrap naturally after 3 items, maintaining 3-3 layout with varying widths */
-  /* Pill proportions maintained, text never breaks, arranged in 2 rows of 3 */
+  font-size: clamp(14px, 1.5vw, 16px);
+  /* Reduced font size - minimized */
+  font-weight: 500;
+  text-align: center;
+  /* Center text within each pill */
+  width: fit-content;
+  /* Natural width based on content */
+  justify-self: start;
+  align-self: start;
+  /* Minimized boxes with natural widths */
 }
 
 .hero__service-pill:hover {
-  background: rgba(10, 61, 98, 0.05);
-  border-color: #0A3D62;
+  border-color: #0A3A58;
+  color: #0A3A58;
+  background: transparent;
+  /* No background color fill on hover */
 }
 
 /* Vertical divider maintains exact visual separation between columns */
 .hero__header-divider {
-  width: 0.125rem;
-  height: auto;
-  /* height: auto allows divider to match text block height */
-  min-height: clamp(3rem, 8vw, 4.5rem);
-  background: rgba(13, 74, 122, 0.6);
+  width: 2px;
+  /* 2px width as specified */
+  height: 100px;
+  /* Exact 100px height from Figma */
+  background: rgba(10, 58, 88, 0.2);
+  /* rgba(10, 58, 88, 0.2) with 20% opacity */
   flex-shrink: 0;
-  align-self: stretch;
-  /* align-self: stretch makes divider extend full height of container */
-  /* Fixed width divider preserves column separation from design */
+  align-self: flex-start;
+  margin-top: 0;
+  margin-left: clamp(1.5rem, 3vw, 2rem);
+  margin-right: clamp(1.5rem, 3vw, 2rem);
+  /* Add space on both sides of divider */
+  /* Align with top of service boxes and paragraph */
+  /* Positioned with spacing between left and right sections */
 }
 
 .hero__copy {
-  flex: 1 1 auto;
-  /* flex: 1 allows text to take remaining space on right */
-  min-width: 0;
-  /* min-width: 0 allows text to shrink if needed */
-  /* Text block positioned on right side matching design */
+  flex: 0 1 auto;
+  /* Fixed width container for paragraph */
+  min-width: clamp(280px, 30vw, 520px);
+  max-width: 520px;
+  /* Exact max-width 520px from Figma */
+  align-self: flex-start;
+  /* Align paragraph with top of service boxes */
+  margin-left: auto;
+  /* Push paragraph to the right */
+  /* Text block positioned on right side with space from left boxes */
 }
 
 .hero__copy-text {
   margin: 0;
-  color: #2c2c2c;
+  color: #2E2E2E;
+  /* Exact color #2E2E2E from Figma */
   font-size: clamp(0.875rem, 2vw, 1rem);
   line-height: 1.6;
-  /* Line height preserves readability while scaling */
+  /* Proper line-height for readability */
 }
 
 .hero__copy-text strong {
-  color: #0A3D62;
+  color: #0A3A58;
+  /* Bold text color matching Figma */
   font-weight: 600;
 }
 
@@ -149,8 +182,8 @@
    ============================================ */
 .hero__media {
   display: grid;
-  grid-template-columns: 1fr auto;
-  /* 1fr auto preserves image taking main space, stats card auto-sizing */
+  grid-template-columns: 7fr 3fr;
+  /* 70-30 split: image 70%, stats card 30% */
   gap: clamp(0.625rem, 2vw, 1.25rem);
   align-items: stretch;
   /* align-items: stretch maintains equal height alignment */
@@ -162,7 +195,7 @@
   aspect-ratio: 912 / 365;
   /* Exact aspect ratio from design maintains image proportions */
   position: relative;
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
   box-shadow: 0 clamp(0.625rem, 2vw, 1.25rem) clamp(1.25rem, 3vw, 2.5rem) rgba(15, 40, 80, 0.2);
   overflow: visible;
   /* overflow: visible allows CTA button to extend below image as per design */
@@ -173,44 +206,166 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
   /* object-fit: cover preserves image composition */
+}
+
+.hero__cta {
+  position: absolute;
+  bottom: clamp(-1rem, -2.5vw, -1.25rem);
+  left: clamp(1rem, 2.5vw, 1.5rem);
+  background: #E8E8E8;
+  color: #0A3D62;
+  border: none;
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
+  padding: clamp(0.625rem, 1.25vw, 0.75rem) clamp(1.5rem, 3vw, 2.25rem);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  justify-content: center;
+  gap: clamp(0.125rem, 0.25vw, 0.1875rem);
+  width: auto;
+  min-width: clamp(20rem, 38vw, 28rem);
+  max-width: clamp(24rem, 45vw, 32rem);
+  box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.25rem, 1vw, 0.5rem) rgba(0, 0, 0, 0.05);
+  transform: translateY(0);
+  overflow: hidden;
+  z-index: 2;
+  /* Wider, shorter button positioned at left bottom corner of image */
+}
+
+.hero__cta::after {
+  content: '';
+  position: absolute;
+  width: clamp(1.5rem, 3vw, 2rem);
+  height: clamp(1.5rem, 3vw, 2rem);
+  bottom: -0.0625rem;
+  right: -0.0625rem;
+  background: #0A3D62;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-bottom-right-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  pointer-events: none;
+  /* Dark blue triangle corner accent - matching FAQ button */
+}
+
+.hero__cta:hover {
+  background: #E8E8E8;
+  transform: translateY(-0.25rem);
+  box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(31, 41, 51, 0.18);
+  /* Hover lift effect with enhanced shadow */
+}
+
+.hero__cta:hover::after {
+  background: #0A3D62;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  clip-path: none;
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
+  /* Dark blue background expands to fill button on hover */
+}
+
+.hero__cta:hover .hero__cta-primary,
+.hero__cta:hover .hero__cta-secondary {
+  color: white;
+  /* Text turns white on hover when background expands */
+}
+
+.hero__cta:active {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 clamp(0.375rem, 1.25vw, 0.5625rem) clamp(1.25rem, 3.5vw, 2.8125rem) rgba(31, 41, 51, 0.15);
+  /* Active state */
+}
+
+.hero__cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: clamp(0.125rem, 0.25vw, 0.1875rem);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero__cta-primary {
+  margin: 0;
+  color: #0A3D62;
+  font-size: clamp(0.8125rem, 1.75vw, 1rem);
+  font-weight: 600;
+  line-height: 1.25;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  /* Primary text - properly sized for wider button */
+}
+
+.hero__cta-secondary {
+  margin: 0;
+  color: #0A3D62;
+  font-size: clamp(0.6875rem, 1.5vw, 0.8125rem);
+  font-weight: 400;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  /* Secondary text - properly sized for wider button */
 }
 
 /* Stats card maintains fixed proportions while scaling */
 .hero__stats-card {
   width: 100%;
-  max-width: clamp(18rem, 25vw, 22.375rem);
-  /* max-width preserves original card width ratio */
-  min-width: min-content;
   background: #0A3D62;
   color: white;
   border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
-  padding: clamp(1.25rem, 3vw, 1.875rem);
+  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.5rem, 3.5vw, 2.25rem);
   box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.25rem, 1vw, 0.5rem) rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  gap: clamp(0.5rem, 1.5vw, 0.75rem);
-  /* Vertical stat spacing maintained */
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+  /* Equal spacing between all stats */
 }
 
 .hero__stat {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.125rem, 0.5vw, 0.25rem);
+  align-items: flex-start;
+  gap: clamp(0.25rem, 0.75vw, 0.5rem);
+  width: 100%;
 }
 
 .hero__stat-value {
   margin: 0;
-  color: white;
-  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: #fbfbfb;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: left;
+  /* Numbers with #fbfbfb color, fixed at 18px */
+}
+
+.hero__stat-label-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
 }
 
 .hero__stat-label {
   margin: 0;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(0.75rem, 1.75vw, 0.875rem);
-  line-height: 1.4;
+  color: #c0c0c0;
+  font-size: clamp(0.9375rem, 2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  /* Labels with #c0c0c0 color */
 }
 
 /* ============================================
@@ -234,6 +389,33 @@
   .hero__image-wrapper {
     overflow: visible;
   }
+
+  .hero__cta {
+    bottom: clamp(-0.875rem, -2vw, -1rem);
+    left: clamp(0.75rem, 2vw, 1rem);
+    transform: translateY(0);
+    min-width: clamp(18rem, 35vw, 26rem);
+    max-width: clamp(22rem, 42vw, 30rem);
+    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1.25rem, 2.5vw, 2rem);
+  }
+
+  .hero__cta-primary {
+    font-size: clamp(0.75rem, 1.5vw, 0.9375rem);
+    white-space: normal;
+  }
+
+  .hero__cta-secondary {
+    font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+    white-space: normal;
+  }
+
+  .hero__cta:hover {
+    transform: translateY(-0.25rem);
+  }
+
+  .hero__cta:active {
+    transform: translateY(-0.125rem);
+  }
 }
 
 /* ============================================
@@ -245,13 +427,40 @@
     /* Allow wrapping on tablet while maintaining order */
   }
   
-  .hero__services {
+  .hero__title-section {
+    margin-left: clamp(1rem, 3vw, 2rem);
+  }
+
+  .hero__header {
+    margin-left: clamp(1rem, 3vw, 2rem);
     flex-wrap: wrap;
-    /* Maintains flex-wrap for natural 3-3 layout on tablet */
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+  }
+
+  .hero__services {
+    grid-template-columns: repeat(3, max-content);
+    /* Maintains 3-3 layout on tablet with proper column alignment */
+    gap: clamp(0.75rem, 1.5vw, 1rem);
+    row-gap: clamp(0.75rem, 1.5vw, 1rem);
+    column-gap: clamp(0.75rem, 1.5vw, 1rem);
     max-width: 100%;
-    width: 100%;
-    justify-content: flex-start;
-    /* justify-content: flex-start maintains left alignment */
+    width: fit-content;
+    justify-items: start;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .hero__service-pill {
+    padding: clamp(8px, 1vw, 10px) clamp(18px, 2vw, 24px);
+    font-size: clamp(16px, 1.75vw, 18px);
+  }
+
+  .hero__header-divider {
+    height: clamp(60px, 10vw, 100px);
+  }
+
+  .hero__copy {
+    max-width: 100%;
   }
   
   /* Ensure image wrapper is visible on tablet */
@@ -282,23 +491,51 @@
     /* Horizontal divider preserves section separation */
   }
 
-  .hero__services {
+  .hero__title-section {
+    margin-left: clamp(0.75rem, 2vw, 1.5rem);
+  }
+
+  .hero__header {
+    margin-left: clamp(0.75rem, 2vw, 1.5rem);
+    flex-direction: column;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .hero__header-divider {
     width: 100%;
-    flex-wrap: wrap;
-    /* Maintains flex-wrap for natural 3-3 layout on mobile */
+    height: 2px;
+    /* Horizontal divider on mobile */
+  }
+
+  .hero__services {
+    grid-template-columns: repeat(3, max-content);
+    /* Maintains 3-3 layout on mobile with proper column alignment */
     max-width: 100%;
-    gap: clamp(0.375rem, 1.25vw, 0.5rem);
-    /* Slightly reduced gap on mobile for better fit */
-    justify-content: flex-start;
+    width: fit-content;
+    gap: clamp(0.5rem, 1.25vw, 0.875rem);
+    row-gap: clamp(0.5rem, 1.25vw, 0.875rem);
+    column-gap: clamp(0.5rem, 1.25vw, 0.875rem);
+    justify-items: start;
+    align-items: start;
+    justify-content: start;
+    /* Even spacing on mobile */
   }
   
   .hero__service-pill {
-    width: auto;
-    /* width: auto maintains natural content-based width on mobile */
-    font-size: clamp(0.6875rem, 1.25vw, 0.8125rem);
-    padding: clamp(0.25rem, 0.875vw, 0.4375rem) clamp(0.5rem, 1.25vw, 0.75rem);
-    flex: 0 0 auto;
-    /* Responsive padding and font size for mobile while maintaining natural widths */
+    width: fit-content;
+    justify-self: start;
+    align-self: start;
+    text-align: left;
+    /* Natural width with left alignment */
+    padding: clamp(8px, 1vw, 10px) clamp(16px, 1.75vw, 24px);
+    font-size: clamp(14px, 1.5vw, 18px);
+    border-width: 2px;
+    border-radius: 8px;
+    /* Maintain Figma design specs on mobile */
+  }
+
+  .hero__copy {
+    max-width: 100%;
   }
 
   .hero__copy {
@@ -316,19 +553,27 @@
   }
 
   .hero__services {
-    flex-wrap: wrap;
-    /* Still maintains 3-3 layout even on very small screens with natural widths */
-    gap: clamp(0.25rem, 1vw, 0.375rem);
-    width: 100%;
-    justify-content: flex-start;
+    grid-template-columns: repeat(3, max-content);
+    /* Maintains 3-3 layout on very small screens with proper column alignment */
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    row-gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    column-gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    width: fit-content;
+    justify-items: start;
+    align-items: start;
+    justify-content: start;
+    /* Even spacing on very small screens */
   }
 
   .hero__service-pill {
-    width: auto;
-    flex: 0 0 auto;
+    width: fit-content;
+    justify-self: start;
+    align-self: start;
+    text-align: left;
+    /* Natural width with left alignment */
     font-size: clamp(0.625rem, 1.1vw, 0.75rem);
     padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.375rem, 1vw, 0.625rem);
-    /* Smaller padding and font for very small screens, maintains natural widths */
+    /* Smaller padding and font for very small screens */
   }
 
   .hero__header {
@@ -337,6 +582,34 @@
 
   .hero__copy-text {
     font-size: clamp(0.8125rem, 1.75vw, 0.9375rem);
+  }
+
+  .hero__cta {
+    bottom: clamp(-0.75rem, -1.5vw, -0.875rem);
+    left: clamp(0.5rem, 1.5vw, 0.75rem);
+    transform: translateY(0);
+    min-width: clamp(16rem, 30vw, 22rem);
+    max-width: clamp(20rem, 38vw, 26rem);
+    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.5rem);
+    gap: clamp(0.125rem, 0.25vw, 0.1875rem);
+  }
+
+  .hero__cta-primary {
+    font-size: clamp(0.6875rem, 1.25vw, 0.875rem);
+    white-space: normal;
+  }
+
+  .hero__cta-secondary {
+    font-size: clamp(0.5625rem, 1vw, 0.6875rem);
+    white-space: normal;
+  }
+
+  .hero__cta:hover {
+    transform: translateY(-0.25rem);
+  }
+
+  .hero__cta:active {
+    transform: translateY(-0.125rem);
   }
 }
 
@@ -400,7 +673,7 @@
 
 .services-section__image-wrapper {
   width: 100%;
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
   overflow: hidden;
   margin-top: 0;
 }
@@ -1561,6 +1834,12 @@
   gap: clamp(1rem, 3vw, 2rem);
 }
 
+.site-header__logo-section {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
 .site-header__logo {
   display: flex;
   align-items: center;
@@ -1569,26 +1848,19 @@
   color: #0A3D62;
 }
 
-.site-header__logo-icon {
-  width: clamp(2rem, 4vw, 2.5rem);
-  height: clamp(2rem, 4vw, 2.5rem);
-  background: #0A3D62;
-  color: white;
-  border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+.site-header__logo-image {
+  height: clamp(2.5rem, 5vw, 3.5rem);
+  width: auto;
+  object-fit: contain;
+  display: block;
   flex-shrink: 0;
 }
 
-.site-header__logo-text {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(0.875rem, 2vw, 1rem);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+.site-header__separator {
+  width: 0.0625rem;
+  height: clamp(2rem, 4vw, 2.5rem);
+  background: rgba(50, 50, 50, 0.3);
+  flex-shrink: 0;
 }
 
 .site-header__nav {
@@ -1596,52 +1868,63 @@
   gap: clamp(1rem, 3vw, 2rem);
   align-items: center;
   flex: 1;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .site-header__nav-link {
-  color: #0A3D62;
+  color: #2c2c2c;
   text-decoration: none;
   font-size: clamp(0.875rem, 1.75vw, 1rem);
   font-weight: 500;
   transition: color 0.2s ease;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.25rem, 0.5vw, 0.375rem);
 }
 
 .site-header__nav-link:hover {
-  color: rgba(10, 61, 98, 0.7);
+  color: rgba(10, 61, 98, 0.8);
+}
+
+.site-header__nav-link--dropdown {
+  position: relative;
+}
+
+.site-header__dropdown-icon {
+  width: clamp(0.375rem, 0.75vw, 0.5rem);
+  height: clamp(0.375rem, 0.75vw, 0.5rem);
+  color: inherit;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.site-header__nav-link--dropdown:hover .site-header__dropdown-icon {
+  transform: rotate(180deg);
 }
 
 .site-header__cta {
-  background: #0A3D62;
-  color: white;
-  border: none;
+  background: white;
+  color: #0A3D62;
+  border: 0.0625rem solid #0A3D62;
   border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  padding: clamp(0.5rem, 1.25vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem);
+  padding: clamp(0.625rem, 1.5vw, 0.875rem) clamp(1.25rem, 3vw, 1.75rem);
   font-size: clamp(0.875rem, 1.75vw, 1rem);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(1.25rem, 3vw, 2.5rem) rgba(31, 41, 51, 0.15);
-  transform: translateY(0);
   position: relative;
+  box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.25rem, 1vw, 0.5rem) rgba(0, 0, 0, 0.05);
+  transform: translateY(0);
   overflow: hidden;
   z-index: 1;
-  /* Matching hero button animation style */
-}
-
-.site-header__cta:hover {
-  background: #0A3D62;
-  transform: translateY(-0.25rem);
-  box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(31, 41, 51, 0.18);
-  /* Matching hero button hover animation */
-}
-
-.site-header__cta:active {
-  transform: translateY(-0.125rem);
-  box-shadow: 0 clamp(0.375rem, 1.25vw, 0.5625rem) clamp(1.25rem, 3.5vw, 2.8125rem) rgba(31, 41, 51, 0.15);
-  /* Matching hero button active state */
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  width: fit-content;
+  /* White button with dark blue border and text - matches FAQ button style */
 }
 
 .site-header__cta::after {
@@ -1651,29 +1934,83 @@
   height: clamp(1.5rem, 3vw, 2rem);
   bottom: -0.0625rem;
   right: -0.0625rem;
-  background: rgba(251, 251, 251, 0.2);
+  background: #0A3D62;
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   border-bottom-right-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
+  pointer-events: none;
+  /* Dark blue triangle corner accent - matching FAQ button */
+}
+
+.site-header__cta:hover {
+  background: white;
+  border-color: #0A3D62;
+  transform: translateY(-0.25rem);
+  box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(31, 41, 51, 0.18);
+  /* Hover lift effect with enhanced shadow */
 }
 
 .site-header__cta:hover::after {
-  background: rgba(251, 251, 251, 0.3);
+  background: #0A3D62;
   width: 100%;
   height: 100%;
   bottom: 0;
   right: 0;
   clip-path: none;
   border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  /* Matching hero button hover effect */
+  /* Dark blue background expands to fill button on hover */
+}
+
+.site-header__cta:hover .site-header__cta-text {
+  color: white;
+  position: relative;
+  z-index: 1;
+  /* Text turns white on hover when background expands */
+}
+
+.site-header__cta:hover .site-header__cta-arrow {
+  color: white;
+  /* Icon turns white on hover */
+}
+
+.site-header__cta:active {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 clamp(0.375rem, 1.25vw, 0.5625rem) clamp(1.25rem, 3.5vw, 2.8125rem) rgba(31, 41, 51, 0.15);
+  /* Active state */
+}
+
+.site-header__cta-text {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+  /* Text element */
+}
+
+.site-header__cta-arrow {
+  width: clamp(0.875rem, 1.5vw, 1rem);
+  height: clamp(0.875rem, 1.5vw, 1rem);
+  color: #0A3D62;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Dark blue external link icon - matches FAQ button */
+}
+
+.site-header__cta:hover .site-header__cta-arrow {
+  transform: translate(0.125rem, -0.125rem);
+  /* Icon moves slightly on hover */
 }
 
 /* ============================================
-   WHY TRUST SECTION - Benefits around central image
+   WHY TRUST SECTION - 1-2-1-2-1 layout around central image
    ============================================ */
 .why-trust-section {
-  background: #1A3650;
+  background: #0A3D62;
   padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 4rem);
   color: white;
 }
@@ -1690,18 +2027,57 @@
   font-size: clamp(1.75rem, 4vw, 2.5rem);
 }
 
-.why-trust-section__content {
+.why-trust-section__grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
+  grid-template-columns: 1fr 1fr 1.5fr 1fr 1fr;
+  grid-template-rows: repeat(2, auto);
+  gap: clamp(0.875rem, 2vw, 1.25rem);
+  align-items: start;
+  justify-items: stretch;
+  max-width: 85rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Column 1 - 1 card (centered horizontally with column) */
+.why-trust-section__grid > .why-trust-section__card:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+}
+
+/* Column 2 - 2 cards stacked (row 1) */
+.why-trust-section__grid > .why-trust-section__card:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
+/* Column 4 - 2 cards stacked (row 1, to the right of image) */
+.why-trust-section__grid > .why-trust-section__card:nth-child(3) {
+  grid-column: 4;
+  grid-row: 1;
+  align-self: start;
+}
+
+/* Central Image Card - spans column 3 and rows 1-2 */
+.why-trust-section__image-card {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: clamp(9rem, 20vw, 13rem);
+  align-self: start;
 }
 
 .why-trust-section__image-wrapper {
   width: 100%;
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
+  height: 100%;
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
   overflow: hidden;
-  aspect-ratio: 1;
+  position: relative;
+  /* Less curved image card */
 }
 
 .why-trust-section__image-wrapper img {
@@ -1711,38 +2087,213 @@
   display: block;
 }
 
-.why-trust-section__benefits {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1rem, 2.5vw, 1.5rem);
+/* Image Labels */
+.why-trust-section__label {
+  position: absolute;
+  background: rgba(50, 50, 50, 0.85);
+  color: white;
+  padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.625rem, 1.5vw, 0.875rem);
+  border-radius: clamp(0.25rem, 0.75vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 500;
+  z-index: 10;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.25rem, 0.5vw, 0.375rem);
 }
 
-.why-trust-section__benefit-card {
-  background: rgba(173, 206, 230, 0.2);
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
-  padding: clamp(1.25rem, 3vw, 1.75rem);
+.why-trust-section__label::before {
+  content: '';
+  width: clamp(0.375rem, 0.75vw, 0.5rem);
+  height: clamp(0.375rem, 0.75vw, 0.5rem);
+  border-radius: 50%;
+  background: #ADD6E0;
+  flex-shrink: 0;
+  display: block;
+}
+
+.why-trust-section__label--top-left {
+  top: clamp(0.75rem, 2vw, 1rem);
+  left: clamp(0.75rem, 2vw, 1rem);
+}
+
+.why-trust-section__label--bottom-right {
+  bottom: clamp(0.75rem, 2vw, 1rem);
+  right: clamp(0.75rem, 2vw, 1rem);
+}
+
+/* Column 2 - 2 cards stacked (row 2) */
+.why-trust-section__grid > .why-trust-section__card:nth-child(5) {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+}
+
+/* Column 4 - 2 cards stacked (row 2, to the right of image) */
+.why-trust-section__grid > .why-trust-section__card:nth-child(6) {
+  grid-column: 4;
+  grid-row: 2;
+  align-self: start;
+}
+
+/* Column 5 - 1 card (centered horizontally with column) */
+.why-trust-section__grid > .why-trust-section__card:nth-child(7) {
+  grid-column: 5;
+  grid-row: 1 / 3;
+  align-self: center;
+}
+
+/* Trust Benefit Cards */
+.why-trust-section__card {
+  background: #E8E8E8;
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 2.5vw, 1.5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: clamp(0.75rem, 2vw, 1rem);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
+  width: 100%;
+  min-height: clamp(14rem, 25vw, 17rem);
+  position: relative;
+  /* Less curved cards - light gray/off-white */
+  border: none;
+  box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.5rem, 1.5vw, 1rem) rgba(0, 0, 0, 0.15);
+  justify-content: center;
 }
 
-.why-trust-section__benefit-card:hover {
+.why-trust-section__card:hover {
   transform: translateY(-0.25rem);
-  background: rgba(173, 206, 230, 0.3);
+  background: #F0F0F0;
+  box-shadow: 0 clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.75rem, 2vw, 1.25rem) rgba(0, 0, 0, 0.2);
 }
 
-.why-trust-section__benefit-icon {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  line-height: 1;
+/* Icon Circle with Star - positioned in top-left corner */
+.why-trust-section__icon-circle {
+  position: absolute;
+  top: clamp(0.75rem, 1.5vw, 1rem);
+  left: clamp(0.75rem, 1.5vw, 1rem);
+  width: clamp(2rem, 4.5vw, 2.5rem);
+  height: clamp(2rem, 4.5vw, 2.5rem);
+  border-radius: 50%;
+  background: transparent;
+  border: 0.125rem solid #0A3D62;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
 }
 
-.why-trust-section__benefit-title {
-  color: white;
+.why-trust-section__diamond-icon {
+  width: 60%;
+  height: 60%;
+  color: #0A3D62;
+  fill: #0A3D62;
+}
+
+.why-trust-section__card-title {
+  color: #0A3D62;
   margin: 0;
-  font-size: clamp(0.875rem, 1.75vw, 1rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  line-height: 1.4;
+  font-weight: 400;
+  padding-top: clamp(0.5rem, 1vw, 0.75rem);
+  /* Add padding to account for absolute positioned icon */
+}
+
+/* ============================================
+   RESPONSIVE: Why Trust Section
+   ============================================ */
+@media (max-width: 1024px) {
+  .why-trust-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+  }
+
+  .why-trust-section__image-card {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    min-height: clamp(18rem, 35vw, 24rem);
+  }
+
+  /* Column 1 - 1 card */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* Column 2 - 2 cards stacked */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .why-trust-section__grid > .why-trust-section__card:nth-child(5) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  /* Column 4 - 2 cards stacked */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .why-trust-section__grid > .why-trust-section__card:nth-child(6) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  /* Column 5 - 1 card */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
+    grid-column: 3;
+    grid-row: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-trust-section__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  .why-trust-section__image-card {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: clamp(15rem, 40vw, 22rem);
+    order: 4;
+  }
+
+  .why-trust-section__grid > .why-trust-section__card {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-trust-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  .why-trust-section__image-card {
+    grid-column: 1 / 3;
+    grid-row: 4;
+    min-height: clamp(15rem, 40vw, 22rem);
+  }
+
+  .why-trust-section__grid > .why-trust-section__card {
+    grid-column: span 1 !important;
+    grid-row: auto !important;
+  }
+
+  .why-trust-section__grid > .why-trust-section__card:nth-child(3),
+  .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
+    display: flex;
+  }
 }
 
 /* ============================================
@@ -1817,7 +2368,7 @@
 .pricing-section__card {
   background: white;
   border: 0.0625rem solid rgba(173, 206, 230, 0.8);
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
   padding: clamp(1.5rem, 3.5vw, 2.5rem);
   display: flex;
   flex-direction: column;
@@ -1839,7 +2390,7 @@
   right: 0;
   background: #0A3D62;
   opacity: 0;
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
   pointer-events: none;
@@ -1860,7 +2411,7 @@
   bottom: 0;
   right: 0;
   opacity: 1;
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
   /* Dark blue background expands to fill card on hover */
 }
 
@@ -2125,7 +2676,7 @@
   width: 100%;
   aspect-ratio: 1;
   background: #0A3D62;
-  border-radius: clamp(0.5rem, 1.5vw, 0.625rem);
+  border-radius: clamp(0.375rem, 1vw, 0.5rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2682,7 +3233,8 @@
 .site-footer {
   background: #1A3650;
   color: white;
-  padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+  padding: 5rem clamp(1rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+  /* Top padding fixed at 80px (5rem) */
 }
 
 .site-footer__container {
@@ -2856,13 +3408,6 @@
     margin-top: clamp(0.5rem, 1.5vw, 0.75rem);
   }
 
-  .why-trust-section__content {
-    grid-template-columns: 1fr;
-  }
-
-  .why-trust-section__benefits {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   .client-testimonials-section__container {
     grid-template-columns: 1fr;
@@ -2883,8 +3428,13 @@
 }
 
 @media (max-width: 480px) {
-  .why-trust-section__benefits {
+  .why-trust-section__grid {
     grid-template-columns: 1fr;
+  }
+
+  .why-trust-section__image-card {
+    grid-column: 1;
+    grid-row: 7;
   }
 
   .pricing-section__grid {
