@@ -89,12 +89,36 @@ const serviceCards = [
 ]
 
 const trustBenefits = [
-  { title: 'Seamless Client Experience', icon: 'star' },
-  { title: 'Government - Approved Firm', icon: 'star' },
-  { title: 'Industry-Trusted Professionals', icon: 'star' },
-  { title: 'Fast & Reliable Support', icon: 'star' },
-  { title: 'Comprehensive Service Suite', icon: 'star' },
-  { title: 'Proven Track Record', icon: 'star' },
+  { 
+    title: 'Seamless Client Experience', 
+    hoverText: 'Work with one dedicated team that understands your business and provides end-to-end tax consultancy services in Dubai.',
+    icon: 'star' 
+  },
+  { 
+    title: 'Industry-Trusted Professionals', 
+    hoverText: 'Work with CPAs and chartered accountants who have handled hundreds of cases across auditing, VAT, and corporate tax in Dubai.',
+    icon: 'star' 
+  },
+  { 
+    title: 'Government - Approved Firm', 
+    hoverText: 'Fully licensed and compliant—our audit firm in Dubai stands up to any regulatory scrutiny.',
+    icon: 'star' 
+  },
+  { 
+    title: 'Fast & Reliable Support', 
+    hoverText: 'Questions answered the same day. Documents delivered on schedule.',
+    icon: 'star' 
+  },
+  { 
+    title: 'Comprehensive Service Suite', 
+    hoverText: 'One firm handles audits, tax, bookkeeping, and advisory—no coordination headaches across multiple providers.',
+    icon: 'star' 
+  },
+  { 
+    title: 'Proven Track Record', 
+    hoverText: '98% of clients renew year after year—they stay because we consistently protect their profits and deliver trusted accounting and auditing services in Dubai.',
+    icon: 'star' 
+  },
 ]
 
 const pricingPlans = [
@@ -128,10 +152,22 @@ const pricingPlans = [
 ]
 
 const videoTestimonials = [
-  { title: 'How We Helped an F&B Startup Save 30% In Annual Taxes' },
-  { title: 'Client Success Story: Manufacturing Company' },
-  { title: 'Tax Strategy That Saved Our Business' },
-  { title: 'Why We Chose Standard Auditors' },
+  { 
+    title: 'How We Helped an F&B Startup Save 30% in Annual Taxes',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop'
+  },
+  { 
+    title: 'Client Success Story: Manufacturing Company',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop'
+  },
+  { 
+    title: 'Tax Strategy That Saved Our Business',
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop'
+  },
+  { 
+    title: 'Why We Chose Standard Auditors',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop'
+  },
 ]
 
 const faqQuestions = [
@@ -336,8 +372,8 @@ function PartnersSection() {
   return (
     <section className="partners-section">
       <h2 className="partners-section__title h2-montserrat">
-        <span className="partners-section__title-line-1">Trusted by Businesses Across</span>
-        <span className="partners-section__title-line-2">UAE's Leading Free Zones</span>
+        <span className="partners-section__title-line-1">Trusted by Businesses Across UAE</span>
+        <span className="partners-section__title-line-2">Leading Free Zones</span>
       </h2>
       <div className="partners-section__container">
         <div className="partners-section__grid">
@@ -409,49 +445,51 @@ function ServicesGridSection() {
                 <div className="services-grid-section__icon-container">
                 {service.icon === 'document-magnifying-glass' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M14 2V8H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="11" cy="13" r="3" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M13 11L11 13L9 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6 3H14V7H18V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V5C4 4.46957 4.21071 3.96086 4.58579 3.58579C4.96086 3.21071 5.46957 3 6 3Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M14 3V7H18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M18 3L16 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="11" cy="14" r="3.5" stroke="currentColor" strokeWidth="2.5"/>
+                    <path d="M13.5 11.5L11 14L8.5 11.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )}
                 {service.icon === 'percentage' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M8 8L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M16 8L8 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
-                    <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/>
+                    <circle cx="7" cy="7" r="2.5" fill="currentColor"/>
+                    <circle cx="17" cy="17" r="2.5" fill="currentColor"/>
+                    <path d="M5 5L19 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
                   </svg>
                 )}
                 {service.icon === 'line-chart' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 3V21H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M7 16L12 11L16 15L21 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M21 10H16V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 18L8 12L12 16L16 10L20 14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M20 14V18H16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M20 14L17 11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )}
                 {service.icon === 'building' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 21H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M5 21V7L13 2V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M19 21V11H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 9V9.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 12V12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 15V15.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 18V18.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6 20V8L12 3V20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M18 20V10H12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M3 20H21" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <ellipse cx="8.5" cy="11" rx="1" ry="0.8" fill="currentColor"/>
+                    <ellipse cx="11.5" cy="11" rx="1" ry="0.8" fill="currentColor"/>
+                    <ellipse cx="8.5" cy="14" rx="1" ry="0.8" fill="currentColor"/>
+                    <ellipse cx="11.5" cy="14" rx="1" ry="0.8" fill="currentColor"/>
+                    <rect x="10" y="16" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <path d="M18 8V10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                    <path d="M18 13V15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
                   </svg>
                 )}
                 {service.icon === 'calculator' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4" y="2" width="16" height="20" rx="2" stroke="currentColor" strokeWidth="2"/>
-                    <rect x="7" y="6" width="10" height="4" rx="1" fill="currentColor"/>
-                    <rect x="7" y="12" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="11" y="12" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="15" y="12" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="7" y="16" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="11" y="16" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="15" y="16" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="2.5"/>
+                    <rect x="7" y="6" width="10" height="3.5" rx="1" fill="currentColor"/>
+                    <circle cx="8.5" cy="13" r="1.5" fill="currentColor"/>
+                    <circle cx="12" cy="13" r="1.5" fill="currentColor"/>
+                    <circle cx="15.5" cy="13" r="1.5" fill="currentColor"/>
+                    <circle cx="8.5" cy="16.5" r="1.5" fill="currentColor"/>
+                    <circle cx="12" cy="16.5" r="1.5" fill="currentColor"/>
+                    <circle cx="15.5" cy="16.5" r="1.5" fill="currentColor"/>
                   </svg>
                 )}
                 {service.icon === 'dollar' && (
@@ -482,17 +520,30 @@ function WhyTrustSection() {
     <section className="why-trust-section">
       <div className="why-trust-section__container">
         <h2 className="why-trust-section__title h1-montserrat">
-          Why Businesses Trust Standard Auditors
+          Why Businesses Trust<br>
+          </br> Standard Auditors
         </h2>
         <div className="why-trust-section__grid">
           {/* Column 1 - 1 card (row 1) */}
-          <div className="why-trust-section__card">
+          <div className="why-trust-section__card why-trust-section__card--first">
             <div className="why-trust-section__icon-circle">
               <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
             <p className="why-trust-section__card-title body-opensans">{trustBenefits[0].title}</p>
+            <div className="why-trust-section__card-hover-text">
+              <div className="why-trust-section__hover-icon-wrapper">
+                <div className="why-trust-section__hover-icon-circle">
+                  <svg className="why-trust-section__hover-diamond-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <p className="why-trust-section__hover-text-content">
+                {trustBenefits[0].hoverText}
+              </p>
+            </div>
           </div>
           
           {/* Column 2 - 2 cards stacked (row 1) */}
@@ -503,6 +554,18 @@ function WhyTrustSection() {
               </svg>
             </div>
             <p className="why-trust-section__card-title body-opensans">{trustBenefits[2].title}</p>
+            <div className="why-trust-section__card-hover-text">
+              <div className="why-trust-section__hover-icon-wrapper">
+                <div className="why-trust-section__hover-icon-circle">
+                  <svg className="why-trust-section__hover-diamond-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <p className="why-trust-section__hover-text-content">
+                {trustBenefits[2].hoverText}
+              </p>
+            </div>
           </div>
           
           {/* Column 4 - 2 cards stacked (row 1, to the right of image) */}
@@ -513,14 +576,26 @@ function WhyTrustSection() {
               </svg>
             </div>
             <p className="why-trust-section__card-title body-opensans">{trustBenefits[3].title}</p>
+            <div className="why-trust-section__card-hover-text">
+              <div className="why-trust-section__hover-icon-wrapper">
+                <div className="why-trust-section__hover-icon-circle">
+                  <svg className="why-trust-section__hover-diamond-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <p className="why-trust-section__hover-text-content">
+                {trustBenefits[3].hoverText}
+              </p>
+            </div>
           </div>
           
           {/* Column 3 - Central Image (spans rows 1-2) */}
           <div className="why-trust-section__image-card">
             <div className="why-trust-section__image-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
-                alt="Consultation meeting"
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
+                alt="Professional auditor reviewing financial documents"
                 loading="lazy"
               />
             </div>
@@ -540,6 +615,18 @@ function WhyTrustSection() {
               </svg>
             </div>
             <p className="why-trust-section__card-title body-opensans">{trustBenefits[1].title}</p>
+            <div className="why-trust-section__card-hover-text">
+              <div className="why-trust-section__hover-icon-wrapper">
+                <div className="why-trust-section__hover-icon-circle">
+                  <svg className="why-trust-section__hover-diamond-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <p className="why-trust-section__hover-text-content">
+                {trustBenefits[1].hoverText}
+              </p>
+            </div>
           </div>
           
           {/* Column 4 - 2 cards stacked (row 2, to the right of image) */}
@@ -550,6 +637,18 @@ function WhyTrustSection() {
               </svg>
             </div>
             <p className="why-trust-section__card-title body-opensans">{trustBenefits[4].title}</p>
+            <div className="why-trust-section__card-hover-text">
+              <div className="why-trust-section__hover-icon-wrapper">
+                <div className="why-trust-section__hover-icon-circle">
+                  <svg className="why-trust-section__hover-diamond-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <p className="why-trust-section__hover-text-content">
+                {trustBenefits[4].hoverText}
+              </p>
+            </div>
           </div>
           
           {/* Column 5 - 1 card (row 1) */}
@@ -560,6 +659,18 @@ function WhyTrustSection() {
               </svg>
             </div>
             <p className="why-trust-section__card-title body-opensans">{trustBenefits[5].title}</p>
+            <div className="why-trust-section__card-hover-text">
+              <div className="why-trust-section__hover-icon-wrapper">
+                <div className="why-trust-section__hover-icon-circle">
+                  <svg className="why-trust-section__hover-diamond-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <p className="why-trust-section__hover-text-content">
+                {trustBenefits[5].hoverText}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -592,7 +703,8 @@ function PricingSection() {
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="pricing-section__feature">
                     <svg className="pricing-section__checkmark" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M16.667 5L7.5 14.167 3.333 10" stroke="#0A3D62" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                      <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
                     </svg>
                     <span className="body-opensans">{feature}</span>
                   </li>
@@ -608,21 +720,48 @@ function PricingSection() {
 
 // Video Testimonials Section
 function VideoTestimonialsSection() {
+  const [hoveredIndex, setHoveredIndex] = useState(0)
+  // Start with first card expanded (index 0)
+
   return (
-    <section className="video-testimonials-section">
+    <section className="video-testimonials-section" id="insights">
       <div className="video-testimonials-section__container">
-        <h2 className="video-testimonials-section__title h1-montserrat">
-          How We've Helped Businesses Like Yours
-        </h2>
+        <div className="video-testimonials-section__header">
+          <span className="video-testimonials-section__tag h3-opensans-semibold">Insights</span>
+          <h2 className="video-testimonials-section__title h1-montserrat">
+            <span className="video-testimonials-section__title-line-1">How We've Helped</span>
+            <span className="video-testimonials-section__title-line-2">Businesses Like Yours</span>
+          </h2>
+        </div>
         <div className="video-testimonials-section__grid">
-          {videoTestimonials.map((video, index) => (
-            <div key={index} className="video-testimonials-section__card">
-              <div className="video-testimonials-section__thumbnail">
-                <div className="video-testimonials-section__play-icon">▶</div>
+          {videoTestimonials.map((video, index) => {
+            const isHovered = hoveredIndex === index
+            const isShrunk = hoveredIndex !== index
+            
+            return (
+              <div 
+                key={index} 
+                className={`video-testimonials-section__card ${isHovered ? 'video-testimonials-section__card--hovered' : ''} ${isShrunk ? 'video-testimonials-section__card--shrunk' : ''}`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                // Keep hovered state, don't reset on mouse leave
+              >
+                <div className="video-testimonials-section__thumbnail">
+                  <img 
+                    src={video.image} 
+                    alt={video.title}
+                    className="video-testimonials-section__thumbnail-image"
+                  />
+                <div className="video-testimonials-section__play-icon">
+                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="32" fill="rgba(0, 0, 0, 0.6)"/>
+                    <path d="M26 22L26 42L42 32L26 22Z" fill="white"/>
+                  </svg>
+                </div>
+                  <p className="video-testimonials-section__card-title body-opensans">{video.title}</p>
+                </div>
               </div>
-              <p className="video-testimonials-section__title body-opensans">{video.title}</p>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
@@ -631,28 +770,98 @@ function VideoTestimonialsSection() {
 
 // Client Testimonials Section
 function ClientTestimonialsSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const testimonials = [
+    {
+      quote: "We have maintained a longstanding partnership with the esteemed team at Standard Auditing, which has greatly contributed to our successful journey. It gives us great pleasure to provide this reference, attesting to the exceptional quality of their services and the value they have brought to our business.",
+      author: "Senthil Kumar",
+      title: "Managing Director, Triway Technologies LLC"
+    },
+    {
+      quote: "Standard Auditing played a crucial role in guiding us through the internal preparation, registration, and compliance process of VAT. Their invaluable advice and assistance have been instrumental in our successful journey. We extend our sincere gratitude for their support and expertise.",
+      author: "Alex Smith",
+      title: "CEO, Financial Report Limited"
+    },
+    {
+      quote: "We have received an exemplary level of diligent and professional service from the team at Standard Auditing. Their proactive approach has been instrumental in our satisfaction. We are delighted to extend our referral of their services to our extensive personal and professional network.",
+      author: "Mohammed A Omar",
+      title: "CEO, Fortune Consulting FZE"
+    },
+    {
+      quote: "We have been working with Standard Auditing since 2016 for our auditing, accounts, and taxation needs. They have streamlined our financial processes and proven to be both proficient and trustworthy. They are key allies to our success, and I wholeheartedly recommend them to anyone looking for dependable financial experts.",
+      author: "Ravichandran",
+      title: "Financial Manager, Silver Bright"
+    }
+  ]
+
+  const handlePrevious = () => {
+    setCurrentSlide((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
+  }
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))
+  }
+
   return (
     <section className="client-testimonials-section">
       <div className="client-testimonials-section__container">
         <div className="client-testimonials-section__left">
+          <span className="client-testimonials-section__tag h3-opensans-semibold">Testimonials</span>
           <h2 className="client-testimonials-section__title h1-montserrat">
             What Our Clients Say About Working With Us
           </h2>
+          <p className="client-testimonials-section__description body-opensans">
+            Hear directly from business owners who've reduced costs, avoided penalties, and gained financial clarity with our expert accounting services Dubai and tax consultancy services in UAE.
+          </p>
         </div>
         <div className="client-testimonials-section__right">
-          <blockquote className="client-testimonials-section__quote">
-            <p className="client-testimonials-section__quote-text h2-opensans-regular">
-              "We have been working with Standard Auditors for several years now, and they have been an invaluable partner to our business. Their team's expertise and attention to detail have helped us navigate complex tax regulations and optimize our financial operations. The quality of their services is exceptional, and they truly understand the unique challenges of doing business in the UAE."
-            </p>
-            <footer className="client-testimonials-section__author">
-              <p className="client-testimonials-section__author-name h4-montserrat">
-                Senthil Kumar, Managing Director, T-Group, Dubai, UAE
-              </p>
-            </footer>
-          </blockquote>
+          <div className="client-testimonials-section__slider">
+            <div 
+              className="client-testimonials-section__track"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <blockquote key={index} className="client-testimonials-section__quote">
+                  <p className="client-testimonials-section__quote-text h2-opensans-regular">
+                    "{testimonial.quote}"
+                  </p>
+                  <div className="client-testimonials-section__divider"></div>
+                  <footer className="client-testimonials-section__author">
+                    <p className="client-testimonials-section__author-name h4-montserrat">
+                      {testimonial.author}
+                    </p>
+                    <p className="client-testimonials-section__author-title body-opensans">
+                      {testimonial.title}
+                    </p>
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          </div>
           <div className="client-testimonials-section__nav">
-            <button type="button" className="client-testimonials-section__nav-btn" aria-label="Previous testimonial">←</button>
-            <button type="button" className="client-testimonials-section__nav-btn" aria-label="Next testimonial">→</button>
+            <button 
+              type="button" 
+              className="client-testimonials-section__nav-btn" 
+              aria-label="Previous testimonial"
+              onClick={handlePrevious}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.75" y="0.75" width="18.5" height="18.5" rx="3.25" stroke="white" strokeOpacity="0.8" strokeWidth="1.5"/>
+                <path d="M11.5 6.5L8 10L11.5 13.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <button 
+              type="button" 
+              className="client-testimonials-section__nav-btn" 
+              aria-label="Next testimonial"
+              onClick={handleNext}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.75" y="0.75" width="18.5" height="18.5" rx="3.25" stroke="white" strokeOpacity="0.8" strokeWidth="1.5"/>
+                <path d="M8.5 13.5L12 10L8.5 6.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -735,7 +944,7 @@ function NewsletterSection() {
           Expert guidance from certified tax consultants delivered straight to your inbox.
         </p>
         <button type="button" className="newsletter-section__cta h3-opensans-semibold">
-          Sign up for free updates
+          <span className="newsletter-section__cta-text">Sign up for free updates</span>
         </button>
       </div>
     </section>
@@ -845,11 +1054,27 @@ function App() {
         </section>
         <header className="hero__header">
           <div className="hero__services">
-            {services.map((service) => (
-              <button key={service} type="button" className="hero__service-pill body-opensans">
-                {service}
-              </button>
-            ))}
+            {/* Left column: Auditing, Tax Advisory, Accounting & Bookkeeping (2 rows, 1 column) */}
+            <button type="button" className="hero__service-pill body-opensans">
+              {services[0]}
+            </button>
+            <button type="button" className="hero__service-pill body-opensans">
+              {services[1]}
+            </button>
+            <button type="button" className="hero__service-pill body-opensans">
+              {services[3]}
+            </button>
+            
+            {/* Right side: Company Formation, VAT, Corporate Tax */}
+            <button type="button" className="hero__service-pill body-opensans">
+              {services[2]}
+            </button>
+            <button type="button" className="hero__service-pill body-opensans">
+              {services[4]}
+            </button>
+            <button type="button" className="hero__service-pill body-opensans">
+              {services[5]}
+            </button>
           </div>
           <span className="hero__header-divider" aria-hidden="true" />
           <div className="hero__copy">
