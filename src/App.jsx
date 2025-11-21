@@ -307,7 +307,7 @@ function ServicesSection() {
           <div className="services-section__badge">
             <svg className="services-section__badge-svg" viewBox="0 0 200 200">
               <defs>
-                <path id="circle-path" d="M 100,30 A 70,70 0 1,1 30,100 A 70,70 0 1,1 100,30" />
+                <path id="circle-path" d="M 100,30 A 70,70 0 1,1 100,170 A 70,70 0 1,1 100,30" />
               </defs>
               <text className="services-section__badge-text">
                 <textPath href="#circle-path" startOffset="5%">
@@ -315,7 +315,11 @@ function ServicesSection() {
                 </textPath>
               </text>
             </svg>
-            <div className="services-section__badge-arrow">↑</div>
+            <div className="services-section__badge-arrow">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 8L7 11L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -594,8 +598,8 @@ function WhyTrustSection() {
           <div className="why-trust-section__image-card">
             <div className="why-trust-section__image-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
-                alt="Professional auditor reviewing financial documents"
+                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80"
+                alt="Professional accountant person working with financial documents"
                 loading="lazy"
               />
             </div>
@@ -685,7 +689,8 @@ function PricingSection() {
       <div className="pricing-section__container">
         <span className="pricing-section__badge small-body-opensans">Service Packages</span>
         <h2 className="pricing-section__title h1-montserrat">
-          Choose the Support Level That Fits Your Business
+          <span className="pricing-section__title-line-1">Choose the Support Level that</span>
+          <span className="pricing-section__title-line-2"> Fits Your Business</span>
         </h2>
         <div className="pricing-section__grid">
           {pricingPlans.map((plan, index) => (
@@ -809,7 +814,7 @@ function ClientTestimonialsSection() {
         <div className="client-testimonials-section__left">
           <span className="client-testimonials-section__tag h3-opensans-semibold">Testimonials</span>
           <h2 className="client-testimonials-section__title h1-montserrat">
-            What Our Clients Say About Working With Us
+            What Our Clients Say About <br></br>Working With Us
           </h2>
           <p className="client-testimonials-section__description body-opensans">
             Hear directly from business owners who've reduced costs, avoided penalties, and gained financial clarity with our expert accounting services Dubai and tax consultancy services in UAE.
@@ -840,17 +845,19 @@ function ClientTestimonialsSection() {
             </div>
           </div>
           <div className="client-testimonials-section__nav">
-            <button 
-              type="button" 
-              className="client-testimonials-section__nav-btn" 
-              aria-label="Previous testimonial"
-              onClick={handlePrevious}
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.75" y="0.75" width="18.5" height="18.5" rx="3.25" stroke="white" strokeOpacity="0.8" strokeWidth="1.5"/>
-                <path d="M11.5 6.5L8 10L11.5 13.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
+            {currentSlide > 0 && (
+              <button 
+                type="button" 
+                className="client-testimonials-section__nav-btn" 
+                aria-label="Previous testimonial"
+                onClick={handlePrevious}
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.75" y="0.75" width="18.5" height="18.5" rx="3.25" stroke="white" strokeOpacity="0.8" strokeWidth="1.5"/>
+                  <path d="M11.5 6.5L8 10L11.5 13.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            )}
             <button 
               type="button" 
               className="client-testimonials-section__nav-btn" 
@@ -917,13 +924,11 @@ function FAQSection() {
                     </svg>
                   </span>
                 </button>
-                {openIndex === index && (
-                  <div className="faq-section__answer-wrapper">
+                <div className={`faq-section__answer-wrapper ${openIndex === index ? 'faq-section__answer-wrapper--open' : ''}`}>
                   <div className="faq-section__answer">
-                      <p className="body-opensans">{faq.answer}</p>
-                    </div>
+                    <p className="body-opensans">{faq.answer}</p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -940,11 +945,13 @@ function NewsletterSection() {
       <div className="newsletter-section__container">
         <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
         <p className="newsletter-section__description body-opensans">
-          Get weekly insights, checklists, and tips to manage cash flow, save time, and keep profits. 
-          Expert guidance from certified tax consultants delivered straight to your inbox.
+        Get weekly insights, checklists, and SME-friendly tips to manage cash flow, avoid fines, and keep more of your profits.Stay updated with guidance from certified tax consultants UAE and experienced Dubai corporate tax consultants.
         </p>
-        <button type="button" className="newsletter-section__cta h3-opensans-semibold">
+        <button type="button" className="newsletter-section__cta">
           <span className="newsletter-section__cta-text">Sign up for free updates</span>
+          <svg className="newsletter-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       </div>
     </section>
