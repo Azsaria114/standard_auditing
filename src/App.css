@@ -3,7 +3,7 @@
 }
 
 /* ============================================
-   HERO SECTION - Preserves exact two-column layout
+   HERO SECTION - Desktop: Content left, Media right (70-30 split)
    ============================================ */
 .hero {
   display: flex;
@@ -17,6 +17,60 @@
   width: 100%;
   box-sizing: border-box;
   /* Full width with consistent 80px padding */
+}
+
+/* Desktop: Content on top, Media (image+stats) below in 70-30 split */
+@media (min-width: 1025px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3rem);
+    /* Vertical stack: Content first, then Media below */
+  }
+
+  .hero__media {
+    display: grid !important;
+    grid-template-columns: 7fr 3fr !important;
+    /* 70-30 split: Image left (70%), Stats card right (30%) - Full width */
+    gap: clamp(0.25rem, 0.75vw, 0.5rem);
+    /* Small gap between image and stats card */
+    column-gap: clamp(0.25rem, 0.75vw, 0.5rem);
+    align-items: stretch;
+    /* Stretch both to same height */
+    width: 100%;
+    /* Full width with 80px padding from hero container */
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    /* Position below text content with spacing */
+  }
+
+  .hero__image-wrapper {
+    width: 100%;
+    min-width: 0;
+    /* Image takes 70% width - Left side */
+    aspect-ratio: 3 / 1;
+    /* Reduced height - wider aspect ratio for shorter image */
+    height: auto;
+    grid-column: 1;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Ensure it's in first column (left) */
+  }
+
+  .hero__stats-card {
+    width: 100%;
+    min-width: 0;
+    /* Stats card takes 30% width - Right side */
+    height: 100%;
+    /* Match height with image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    grid-column: 2;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    /* Ensure it's in second column (right) */
+  }
 }
 
 .hero__title-section {
@@ -220,15 +274,13 @@
 }
 
 /* ============================================
-   HERO MEDIA - Image + Stats card side-by-side layout
+   HERO MEDIA - Image + Stats card side-by-side layout (desktop only)
    ============================================ */
 .hero__media {
-  display: grid;
-  grid-template-columns: 7fr 3fr;
-  /* 70-30 split: image 70%, stats card 30% */
-  gap: clamp(0.625rem, 2vw, 1.25rem);
-  align-items: stretch;
-  /* align-items: stretch maintains equal height alignment */
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  /* Default: Stack vertically for tablet/mobile */
 }
 
 .hero__image-wrapper {
@@ -418,9 +470,10 @@
   .hero__media {
     grid-template-columns: 1fr;
     /* Single column preserves image full width, stats below */
-    gap: clamp(1rem, 3vw, 1.5rem);
+    gap: clamp(2rem, 5vw, 3rem);
+    /* Increased spacing between image and stats card for tablet */
   }
-
+  
   .hero__stats-card {
     max-width: 100%;
     width: 100%;
@@ -507,15 +560,21 @@
   }
   
   .hero__services {
-    grid-template-columns: repeat(3, auto);
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* Same as desktop: 3 columns layout */
+    grid-template-rows: auto auto;
+    /* Same as desktop: 2 rows layout */
     row-gap: 0.75rem;
+    /* Same as desktop */
     column-gap: 0.75rem;
-    /* Even spacing on tablet */
-    max-width: 100%;
+    /* Same as desktop */
     width: fit-content;
     justify-items: start;
     align-items: start;
+    align-self: flex-start;
+    flex: 0 0 auto;
+    /* Same grid structure as desktop */
   }
 
   .hero__service-pill {
@@ -528,17 +587,44 @@
     /* Improved styling for tablet */
   }
 
-  /* Apply negative margins on tablet for close alignment - reduced to prevent overlap */
+  /* Apply same desktop negative margins (scaled for tablet) */
   .hero__service-pill:nth-child(1) {
-    margin-right: -1.5rem;
+    grid-column: 1;
+    grid-row: 1;
+    margin-right: clamp(-3rem, -4vw, -2.5rem);
+    /* Scaled negative margin like desktop */
   }
 
   .hero__service-pill:nth-child(2) {
-    margin-left: -1.5rem;
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: clamp(-7rem, -10vw, -6.5rem);
+    /* Increased negative margin to move Tax Advisory further left and prevent overlap */
+  }
+
+  .hero__service-pill:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+    /* Accounting & Bookkeeping - bottom left, row 2 column 1 */
   }
 
   .hero__service-pill:nth-child(4) {
-    margin-left: -1rem;
+    grid-column: 3;
+    grid-row: 1;
+    margin-left: clamp(-3.5rem, -5vw, -3rem);
+    /* Increased negative margin to move Company Formation slightly to the left */
+  }
+
+  .hero__service-pill:nth-child(5) {
+    grid-column: 2;
+    grid-row: 2;
+    /* VAT - middle right, row 2 column 2 */
+  }
+
+  .hero__service-pill:nth-child(6) {
+    grid-column: 3;
+    grid-row: 2;
+    /* Corporate Tax - bottom right, row 2 column 3 */
   }
 
   .hero__header-divider {
@@ -580,37 +666,45 @@
   }
 
   .hero__header {
-    flex-direction: row;
-    /* Keep horizontal layout like desktop */
+    flex-direction: column;
+    /* Stack vertically for mobile with horizontal divider */
     align-items: flex-start;
-    gap: clamp(1.5rem, 3vw, 2rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
     /* Neat mobile spacing */
   }
 
   .hero__header-divider {
-    width: 2px;
-    /* Same width as desktop */
-    height: 110px;
-    /* Same height as desktop */
+    width: 100%;
+    /* Full width horizontal divider for mobile */
+    height: 2px;
+    /* Horizontal divider thickness */
     background: rgba(26, 54, 80, 0.6);
     /* Same color as desktop */
-    align-self: center;
-    /* Centered vertically */
-    margin-left: clamp(4rem, 8vw, 8rem);
-    /* Proportional margin for mobile to maintain desktop alignment */
+    align-self: stretch;
+    /* Stretch horizontally */
+    margin-left: 0;
+    /* No left margin for horizontal divider */
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    /* Vertical spacing above and below the divider */
   }
 
   .hero__services {
-    grid-template-columns: repeat(3, auto);
-    /* Maintains 3-3 layout on mobile */
-    max-width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* Same as desktop: 3 columns layout */
+    grid-template-rows: auto auto;
+    /* Same as desktop: 2 rows layout */
+    row-gap: 0.75rem;
+    /* Same as desktop */
+    column-gap: 0.75rem;
+    /* Same as desktop */
     width: fit-content;
-    gap: 0.625rem;
-    row-gap: 0.625rem;
-    column-gap: 0.625rem;
-    /* Even spacing on mobile */
     justify-items: start;
     align-items: start;
+    align-self: flex-start;
+    flex: 0 0 auto;
+    /* Same grid structure as desktop */
   }
   
   .hero__service-pill {
@@ -627,25 +721,57 @@
     /* Improved sizing and spacing for mobile */
   }
 
-  /* Apply negative margins on mobile for close alignment - reduced to prevent overlap */
+  /* Apply same desktop negative margins (scaled for mobile to match desktop proportions) */
   .hero__service-pill:nth-child(1) {
-    margin-right: -0.75rem;
+    grid-column: 1;
+    grid-row: 1;
+    margin-right: clamp(-6.5rem, -11vw, -5.5rem);
+    /* Increased negative margin to pull Tax Advisory even closer */
   }
 
   .hero__service-pill:nth-child(2) {
-    margin-left: -0.75rem;
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: clamp(-7rem, -10vw, -6.5rem);
+    /* Reduced negative margin to move Tax Advisory to the right and prevent overlap with Auditing */
+  }
+
+  .hero__service-pill:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+    /* Accounting & Bookkeeping - bottom left, row 2 column 1 */
   }
 
   .hero__service-pill:nth-child(4) {
-    margin-left: -0.5rem;
+    grid-column: 3;
+    grid-row: 1;
+    margin-left: clamp(-4rem, -6vw, -3.5rem);
+    /* Increased negative margin to move Company Formation further to the left */
+  }
+
+  .hero__service-pill:nth-child(5) {
+    grid-column: 2;
+    grid-row: 2;
+    /* VAT - middle right, row 2 column 2 */
+  }
+
+  .hero__service-pill:nth-child(6) {
+    grid-column: 3;
+    grid-row: 2;
+    /* Corporate Tax - bottom right, row 2 column 3 */
   }
 
   .hero__copy {
     max-width: 100%;
   }
-
+  
   .hero__copy {
     width: 100%;
+  }
+
+  .hero__media {
+    gap: clamp(2rem, 5vw, 3rem);
+    /* Increased spacing between image and stats card for mobile */
   }
 }
 
@@ -1571,7 +1697,7 @@
     align-self: center;
     /* Result card visible on tablet */
   }
-
+  
   .partners-section__result-card {
     max-width: 100%;
     width: clamp(16rem, 30vw, 22rem);
@@ -1618,7 +1744,7 @@
     grid-row: auto;
     /* 7th card spans full width on tablet */
   }
-
+  
   .partners-section__card {
     min-width: 100%;
     min-height: clamp(5rem, 10vw, 6.25rem);
@@ -1631,7 +1757,7 @@
     height: clamp(6rem, 11vw, 7.5rem);
     /* Increased size on mobile to match desktop proportions */
   }
-
+  
   .partners-section__result-card {
     width: 100%;
     max-width: 100%;

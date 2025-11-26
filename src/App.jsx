@@ -1142,28 +1142,30 @@ function App() {
           </div>
         </header>
 
-        <div className="hero__image-wrapper">
-          <img
-            src={heroImage}
-            alt="Consultant presenting a financial plan to a team"
-            loading="lazy"
-          />
-          <button type="button" className="hero__cta">
-            <div className="hero__cta-content">
-              <p className="hero__cta-primary">Schedule Your Complimentary Consultation</p>
-              <p className="hero__cta-secondary">"Start Building a Stronger Financial Future"</p>
-            </div>
-          </button>
-        </div>
-        <div className="hero__stats-card">
-          {stats.map((stat, index) => (
-            <div className="hero__stat" key={`${stat.value}-${index}`}>
-              <p className="hero__stat-value h6-montserrat">{stat.value}</p>
-              <div className="hero__stat-label-wrapper">
-                <p className="hero__stat-label h2-opensans-regular">{stat.label}</p>
+        <div className="hero__media">
+          <div className="hero__image-wrapper">
+            <img
+              src={heroImage}
+              alt="Consultant presenting a financial plan to a team"
+              loading="lazy"
+            />
+            <button type="button" className="hero__cta">
+              <div className="hero__cta-content">
+                <p className="hero__cta-primary">Schedule Your Complimentary Consultation</p>
+                <p className="hero__cta-secondary">"Start Building a Stronger Financial Future"</p>
               </div>
-            </div>
-          ))}
+            </button>
+          </div>
+          <div className="hero__stats-card">
+            {stats.map((stat, index) => (
+              <div className="hero__stat" key={`${stat.value}-${index}`}>
+                <p className="hero__stat-value h6-montserrat">{stat.value}</p>
+                <div className="hero__stat-label-wrapper">
+                  <p className="hero__stat-label h2-opensans-regular">{stat.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
       <ServicesSection />
