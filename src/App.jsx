@@ -24,7 +24,7 @@ const services = [
 
 const stats = [
   { value: '4000 +', label: 'Projects Successfully Completed' },
-  { value: '25+', label: 'Years Partnering with UAE', label2: 'Businesses' },
+  { value: '25+', label: 'Years Partnering with UAE Businesses' },
   { value: '98%', label: 'Clients Stay With Us' },
   { value: '500+', label: 'Reputed UAE Businesses Served' },
 ]
@@ -207,6 +207,37 @@ const faqQuestions = [
 
 // Header Component
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+    // Prevent body scroll when menu is open
+    if (!isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  }
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.site-header')) {
+        setIsMenuOpen(false)
+        document.body.style.overflow = ''
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
+
   return (
     <header className="site-header">
       <div className="site-header__container">
@@ -220,29 +251,39 @@ function Header() {
           </div>
           <div className="site-header__separator"></div>
         </div>
-        <nav className="site-header__nav">
-          <a href="#home" className="site-header__nav-link">
+        <button 
+          type="button" 
+          className="site-header__hamburger"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+          <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+          <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+        </button>
+        <nav className={`site-header__nav ${isMenuOpen ? 'site-header__nav--open' : ''}`}>
+          <a href="#home" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
             Home
           </a>
-          <a href="#about" className="site-header__nav-link site-header__nav-link--dropdown">
+          <a href="#about" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
             About
             <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
             </svg>
           </a>
-          <a href="#services" className="site-header__nav-link site-header__nav-link--dropdown">
+          <a href="#services" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
             Services
             <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
             </svg>
           </a>
-          <a href="#insights" className="site-header__nav-link site-header__nav-link--dropdown">
+          <a href="#insights" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
             Insights
             <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
             </svg>
           </a>
-          <a href="#careers" className="site-header__nav-link">
+          <a href="#careers" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
             Careers
           </a>
         </nav>
@@ -387,10 +428,6 @@ function PartnersSection() {
                 <img src={partner.logo} alt={partner.name} className="partners-section__logo-img" />
               </div>
               <p className="partners-section__name body-opensans">{partner.name}</p>
-              {/* Connecting lines from Legrand and Carl Stahl to SA */}
-              {(index === 2 || index === 5) && (
-                <div className={`partners-section__card-connector partners-section__card-connector--${index === 2 ? 'legrand' : 'carlstahl'}`}></div>
-              )}
             </div>
           ))}
         </div>
@@ -399,7 +436,6 @@ function PartnersSection() {
           <div className="partners-section__center-card">
             <img src={saLogo} alt="Standard Auditors" className="partners-section__center-logo-img" />
           </div>
-          <div className="partners-section__connector"></div>
         </div>
         <div className="partners-section__right">
           <div 
@@ -968,7 +1004,13 @@ function Footer() {
     <footer className="site-footer">
       <div className="site-footer__container">
         <div className="site-footer__column">
-          <h3 className="site-footer__column-title h5-montserrat">LOGO</h3>
+          <div className="site-footer__logo-wrapper">
+            <img 
+              src={standardAuditingLogo} 
+              alt="Standard Auditing Logo" 
+              className="site-footer__logo-image"
+            />
+          </div>
           <address className="site-footer__address body-opensans">
             Office No 112, NBQ Building, Bank Street, Dubai, United Arab Emirates
           </address>
@@ -1063,6 +1105,7 @@ function App() {
             <span className="hero__title-line-2">for Dubai Businesses</span>
           </h1>
         </section>
+        
         <header className="hero__header">
           <div className="hero__services">
             {/* Left column: Auditing, Tax Advisory, Accounting & Bookkeeping (2 rows, 1 column) */}
@@ -1099,32 +1142,29 @@ function App() {
           </div>
         </header>
 
-        <section className="hero__media" aria-label="Client collaboration">
-          <div className="hero__image-wrapper">
-            <img
-              src={heroImage}
-              alt="Consultant presenting a financial plan to a team"
-              loading="lazy"
-            />
-            <button type="button" className="hero__cta">
-              <div className="hero__cta-content">
-                <p className="hero__cta-primary">Schedule Your Complimentary Consultation</p>
-                <p className="hero__cta-secondary">"Start Building a Stronger Financial Future"</p>
+        <div className="hero__image-wrapper">
+          <img
+            src={heroImage}
+            alt="Consultant presenting a financial plan to a team"
+            loading="lazy"
+          />
+          <button type="button" className="hero__cta">
+            <div className="hero__cta-content">
+              <p className="hero__cta-primary">Schedule Your Complimentary Consultation</p>
+              <p className="hero__cta-secondary">"Start Building a Stronger Financial Future"</p>
+            </div>
+          </button>
+        </div>
+        <div className="hero__stats-card">
+          {stats.map((stat, index) => (
+            <div className="hero__stat" key={`${stat.value}-${index}`}>
+              <p className="hero__stat-value h6-montserrat">{stat.value}</p>
+              <div className="hero__stat-label-wrapper">
+                <p className="hero__stat-label h2-opensans-regular">{stat.label}</p>
               </div>
-            </button>
-          </div>
-          <div className="hero__stats-card">
-            {stats.map((stat, index) => (
-              <div className="hero__stat" key={`${stat.value}-${index}`}>
-                <p className="hero__stat-value h6-montserrat">{stat.value}</p>
-                <div className="hero__stat-label-wrapper">
-                  <p className="hero__stat-label h2-opensans-regular">{stat.label}</p>
-                  {stat.label2 && <p className="hero__stat-label h2-opensans-regular">{stat.label2}</p>}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          ))}
+        </div>
       </main>
       <ServicesSection />
       <PartnersSection />
