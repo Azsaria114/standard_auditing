@@ -239,62 +239,77 @@ function Header() {
   }, [isMenuOpen])
 
   return (
-    <header className="site-header">
-      <div className="site-header__container">
-        <div className="site-header__logo-section">
-          <div className="site-header__logo">
-            <img 
-              src={standardAuditingLogo} 
-              alt="Standard Auditing Logo" 
-              className="site-header__logo-image"
-            />
+    <>
+      <header className="site-header">
+        <div className="site-header__container">
+          <div className="site-header__logo-section">
+            <div className="site-header__logo">
+              <img 
+                src={standardAuditingLogo} 
+                alt="Standard Auditing Logo" 
+                className="site-header__logo-image"
+              />
+            </div>
+            <div className="site-header__separator"></div>
           </div>
-          <div className="site-header__separator"></div>
+          <button 
+            type="button" 
+            className="site-header__hamburger"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+            <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+            <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+          </button>
+          <nav className={`site-header__nav ${isMenuOpen ? 'site-header__nav--open' : ''}`}>
+            <a href="#home" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </a>
+            <a href="#about" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
+              About
+              <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#services" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
+              Services
+              <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#insights" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
+              Insights
+              <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#careers" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
+              Careers
+            </a>
+            <button type="button" className="site-header__cta site-header__cta--sidebar" onClick={() => setIsMenuOpen(false)}>
+              <span className="site-header__cta-text">Contact Us</span>
+              <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </nav>
+          <button type="button" className="site-header__cta">
+            <span className="site-header__cta-text">Contact Us</span>
+            <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </div>
-        <button 
-          type="button" 
-          className="site-header__hamburger"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
-          <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
-          <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
-        </button>
-        <nav className={`site-header__nav ${isMenuOpen ? 'site-header__nav--open' : ''}`}>
-          <a href="#home" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
-            Home
-          </a>
-          <a href="#about" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
-            About
-            <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
-            </svg>
-          </a>
-          <a href="#services" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
-            Services
-            <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
-            </svg>
-          </a>
-          <a href="#insights" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
-            Insights
-            <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
-            </svg>
-          </a>
-          <a href="#careers" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
-            Careers
-          </a>
-        </nav>
-        <button type="button" className="site-header__cta">
-          <span className="site-header__cta-text">Contact Us</span>
-          <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </header>
+      </header>
+      <div 
+        className={`site-header__overlay ${isMenuOpen ? 'site-header__overlay--open' : ''}`}
+        onClick={() => {
+          setIsMenuOpen(false)
+          document.body.style.overflow = ''
+        }}
+      />
+    </>
   )
 }
 
@@ -929,14 +944,7 @@ function FAQSection() {
       <div className="faq-section__container">
         <div className="faq-section__left">
           <span className="faq-section__badge small-body-opensans">FAQ</span>
-          <h2 className="faq-section__title h1-montserrat">
-            <span className="faq-section__title-line-1">Questions Our Clients</span>
-            <span className="faq-section__title-line-2">Usually Ask Us</span>
-          </h2>
-          <p className="faq-section__intro body-opensans">
-            If you've made it this far, you're ready to take control of your finances. Here's what most businesses ask before getting started with our tax consultancy services in Dubai and audit firm near me support.
-          </p>
-          <div className="faq-section__cta-section">
+          <div className="faq-section__cta-section faq-section__cta-section--top">
             <h3 className="faq-section__cta-heading h4-montserrat">Still looking for answer?</h3>
             <button type="button" className="faq-section__cta h3-opensans-semibold">
               <span className="faq-section__cta-text">Speak to our expert</span>
@@ -945,6 +953,13 @@ function FAQSection() {
               </svg>
             </button>
           </div>
+          <h2 className="faq-section__title h1-montserrat">
+            <span className="faq-section__title-line-1">Questions Our Clients</span>
+            <span className="faq-section__title-line-2">Usually Ask Us</span>
+          </h2>
+          <p className="faq-section__intro body-opensans">
+            If you've made it this far, you're ready to take control of your finances. Here's what most businesses ask before getting started with our tax consultancy services in Dubai and audit firm near me support.
+          </p>
         </div>
         <div className="faq-section__right">
           <div className="faq-section__list">
