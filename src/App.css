@@ -1197,39 +1197,99 @@
    RESPONSIVE: Services Section - Maintains column structure
    ============================================ */
 @media (max-width: 1024px) {
+  .services-section {
+    padding: clamp(3rem, 6vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
+    /* Reduced padding for tablet */
+  }
+
   /* Stack columns vertically while preserving content order */
   .services-section__container {
     grid-template-columns: 1fr;
     /* Single column maintains left-to-right reading flow */
-    gap: clamp(2rem, 5vw, 3rem);
+    gap: clamp(2.5rem, 6vw, 3.5rem);
+    /* Increased gap for better separation */
   }
   
   .services-section__left,
   .services-section__right {
-    gap: clamp(1.25rem, 3vw, 1.5rem);
-    /* Reduced gap on tablet for better mobile spacing while maintaining design proportions */
+    gap: clamp(1.5rem, 3.5vw, 2rem);
+    /* Better spacing on tablet */
   }
-  
+
+  .services-section__left-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    /* Adjusted title size for tablet */
+  }
+
   .services-section__image-wrapper {
-    margin-top: clamp(1rem, 2.5vw, 1.25rem);
+    margin-top: clamp(1rem, 2.5vw, 1.5rem);
     /* Adjusted image margin for tablet view */
   }
 
   .services-section__right {
     padding-top: 0;
+    margin-top: 0;
+    /* Remove top margin on tablet for better alignment */
   }
 
-  /* Badge moves to center below content, preserving visibility */
+  .services-section__right-title {
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    /* Adjusted right title size for tablet */
+  }
+
+  .services-section__description {
+    font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+    /* Adjusted description size for tablet */
+  }
+
+  .services-section__features {
+    display: flex;
+    flex-direction: column;
+    /* Single column layout */
+    gap: clamp(0.875rem, 2vw, 1rem);
+    /* Standard gap between feature items */
+  }
+
+  .services-section__feature {
+    flex-direction: row;
+    align-items: flex-start;
+    /* Keep checkmark and text horizontal */
+  }
+
+  .services-section__feature span {
+    max-width: calc(100% - clamp(8.5rem, 17vw, 10.5rem));
+    /* Limit width to leave space for larger badge on right */
+    padding-right: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  /* Badge positioned on right side like desktop */
+  .services-section__right {
+    position: relative;
+    /* Ensure relative positioning for absolute badge */
+  }
+
   .services-section__badge {
-    position: static;
-    transform: none;
-    margin: clamp(1.5rem, 4vw, 2rem) auto 0;
-    right: auto;
-    top: auto;
-    width: clamp(6.5rem, 14vw, 8rem);
-    height: clamp(6.5rem, 14vw, 8rem);
-    /* Increased badge size on tablet for better text spacing */
-    /* Static positioning maintains badge visibility on smaller screens */
+    position: absolute;
+    right: clamp(1.5rem, 4vw, 2.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    width: clamp(7rem, 14vw, 8.5rem);
+    height: clamp(7rem, 14vw, 8.5rem);
+    /* Increased badge size for tablet, positioned on right like desktop */
+    z-index: 2;
+  }
+  
+  .services-section__badge-text {
+    font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+    letter-spacing: 0.4em;
+    /* Increased font size for tablet badge */
+  }
+  
+  .services-section__badge-arrow {
+    width: clamp(0.875rem, 1.75vw, 1rem);
+    height: clamp(0.875rem, 1.75vw, 1rem);
+    /* Increased arrow size for tablet badge */
   }
 }
 
@@ -1237,20 +1297,118 @@
    RESPONSIVE: Mobile - Preserves content hierarchy
    ============================================ */
 @media (max-width: 768px) {
+  .services-section {
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 2.5rem);
+    /* Reduced padding for mobile */
+  }
+
+  .services-section__container {
+    gap: clamp(2rem, 5vw, 2.5rem);
+    /* Tighter gap on mobile */
+  }
+
+  .services-section__left {
+    gap: clamp(1rem, 3vw, 1.5rem);
+    /* Tighter spacing on mobile */
+  }
+
+  .services-section__left-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    /* Significantly increased title font size on mobile for better visibility */
+  }
+  
+  .services-section__tag {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    /* Increased tag font size on mobile */
+  }
+
+  .services-section__image-wrapper {
+    margin-top: clamp(0.75rem, 2vw, 1rem);
+    /* Reduced margin on mobile */
+  }
+
+  .services-section__right {
+    margin-top: 0;
+    gap: clamp(1.5rem, 3.5vw, 2rem);
+    position: relative;
+    /* Better spacing between right side elements and relative positioning for badge */
+  }
+
+  .services-section__right-title {
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    /* Significantly increased right title font size on mobile for better visibility */
+  }
+
+  .services-section__description {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    line-height: 1.7;
+    /* Significantly increased font size for better readability on mobile */
+  }
+
+  .services-section__features {
+    display: flex;
+    flex-direction: column;
+    /* Single column layout */
+    gap: clamp(1rem, 2.5vw, 1.25rem);
+    /* Increased gap between feature items for better readability */
+  }
+
+  .services-section__feature {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: clamp(0.5rem, 1.5vw, 0.625rem);
+    /* Standard gap between checkmark and text */
+  }
+
+  .services-section__feature span {
+    max-width: calc(100% - clamp(7rem, 14vw, 9rem));
+    /* Limit width to leave space for larger badge on right */
+    padding-right: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.6;
+    /* Significantly increased font size on mobile for better visibility */
+  }
+  
+  .services-section__checkmark {
+    width: clamp(1.25rem, 3vw, 1.5rem);
+    height: clamp(1.25rem, 3vw, 1.5rem);
+    /* Larger checkmark icon on mobile for better visibility */
+  }
+
+  .services-section__additional {
+    font-size: clamp(1rem, 2.25vw, 1.125rem);
+    /* Significantly increased additional text size on mobile for better visibility */
+  }
+
+  .services-section__cta {
+    min-height: clamp(2.5rem, 6vw, 3rem);
+    padding: clamp(0.625rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    /* Significantly increased CTA button size and font on mobile for better visibility */
+  }
+
   .services-section__badge {
-    width: clamp(6rem, 13vw, 7.5rem);
-    height: clamp(6rem, 13vw, 7.5rem);
-    /* Increased badge size on mobile for better text spacing */
+    position: absolute;
+    right: clamp(1rem, 3vw, 2rem);
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    width: clamp(6rem, 12vw, 7.5rem);
+    height: clamp(6rem, 12vw, 7.5rem);
+    /* Increased badge size for mobile, positioned on right like desktop */
+    z-index: 2;
   }
   
   .services-section__badge-text {
-    font-size: clamp(0.625rem, 1.25vw, 0.75rem);
-    /* Smaller font on mobile to fit text */
+    font-size: clamp(0.625rem, 1vw, 0.75rem);
+    letter-spacing: 0.4em;
+    /* Increased font size for mobile badge */
   }
   
   .services-section__badge-arrow {
-    font-size: clamp(0.875rem, 2vw, 1rem);
-    /* Responsive arrow size on mobile */
+    width: clamp(0.75rem, 1.5vw, 0.875rem);
+    height: clamp(0.75rem, 1.5vw, 0.875rem);
+    /* Increased arrow size for mobile badge */
   }
 }
 
@@ -2096,7 +2254,8 @@
   border-bottom: 0.0625rem solid rgba(26, 54, 80, 0.1);
   padding: clamp(0.75rem, 2vw, 1rem) 5rem;
   /* 80px (5rem) left and right padding */
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0;
+  /* No margin between header and hero section */
   /* Spacing between header and content below */
   position: sticky;
   top: 0;
