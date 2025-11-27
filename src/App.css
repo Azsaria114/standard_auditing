@@ -1746,8 +1746,8 @@
   align-self: flex-start;
   width: auto;
   flex-shrink: 0;
-  margin-top: clamp(0rem, 2vw, 1.5rem);
-  /* Right text box aligned with center logo - moved up further */
+  margin-top: clamp(-0.5rem, 1vw, 1rem);
+  /* Right text box aligned with center logo - moved up slightly more */
 }
 
 .partners-section__result-card {
