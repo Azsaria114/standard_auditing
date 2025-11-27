@@ -1666,35 +1666,35 @@
   /* Center logo positioned between rows 1 and 2 - moved up slightly */
 }
 
-/* Desktop: Separate lines for left and right sides - original design */
+/* Desktop: Separate lines for left and right sides - properly aligned to touch cards */
 .partners-section__middle::before {
   content: '';
   position: absolute;
   right: 100%;
   top: 50%;
-  width: clamp(4rem, 8vw, 6rem);
+  width: clamp(2.5rem, 6vw, 4.5rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
   border-radius: 4px 0 0 4px;
-  /* Horizontal line extending to the left side of SA logo card */
+  /* Horizontal line extending from left edge of SA logo card to touch the grid - uses gap distance */
 }
 
 .partners-section__middle::after {
   content: '';
   position: absolute;
-  left: 0;
+  left: 100%;
   top: 50%;
-  width: calc(clamp(6.5rem, 12vw, 8rem) + clamp(2.5rem, 6vw, 4.5rem) + clamp(7.5rem, 12vw, 10rem));
+  width: clamp(2.5rem, 6vw, 4.5rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line extending from left edge of SA logo card, extending more on the right side */
+  /* Horizontal line extending from right edge of SA logo card through gap to touch right card - uses gap distance */
 }
 
 .partners-section__center-card {
@@ -1913,19 +1913,17 @@
     display: none;
   }
   
-  /* Unified horizontal line component - responsive for tablet */
+  /* Separate lines for tablet - properly aligned to touch cards */
   .partners-section__middle::before {
-    right: auto;
-    left: 50%;
-    width: calc(clamp(2.5rem, 5vw, 4rem) + clamp(5.5rem, 10vw, 7rem) + clamp(1.5rem, 3vw, 2.5rem) + clamp(3rem, 6vw, 4.5rem));
-    transform: translate(-50%, -50%);
-    border-radius: 4px;
-    /* Single unified line - responsive width for tablet */
+    right: 100%;
+    width: clamp(2rem, 4vw, 3rem);
+    /* Left line - responsive width for tablet */
   }
   
   .partners-section__middle::after {
-    display: none;
-    /* Hide separate right line on tablet - using unified component */
+    left: 100%;
+    width: clamp(2rem, 4vw, 3rem);
+    /* Right line - responsive width for tablet, properly positioned from right edge */
   }
 
   .partners-section__middle {
@@ -2078,19 +2076,17 @@
     display: none;
   }
   
-  /* Unified horizontal line component - responsive for mobile */
+  /* Separate lines for mobile - properly aligned to touch cards */
   .partners-section__middle::before {
-    right: auto;
-    left: 50%;
-    width: calc(clamp(2rem, 4vw, 3.5rem) + clamp(5.5rem, 10vw, 7rem) + clamp(1rem, 2.5vw, 2rem) + clamp(2.5rem, 5vw, 4rem));
-    transform: translate(-50%, -50%);
-    border-radius: 4px;
-    /* Single unified line - responsive width for mobile */
+    right: 100%;
+    width: clamp(1.5rem, 3vw, 2.5rem);
+    /* Left line - responsive width for mobile */
   }
   
   .partners-section__middle::after {
-    display: none;
-    /* Hide separate right line on mobile - using unified component */
+    left: 100%;
+    width: clamp(1.5rem, 3vw, 2.5rem);
+    /* Right line - responsive width for mobile, properly positioned from right edge */
   }
 
   .partners-section__right {
