@@ -1101,8 +1101,8 @@
 /* Badge positioned absolutely to maintain overlay effect from design */
 .services-section__badge {
   position: absolute;
-  right: clamp(3rem, 6vw, 4.5rem);
-  /* Moved right slightly */
+  right: clamp(2rem, 4.5vw, 3rem);
+  /* Moved right more */
   top: 50%;
   transform: translateY(-50%);
   width: clamp(7rem, 14vw, 9rem);
@@ -1124,8 +1124,8 @@
 /* Desktop-specific positioning and size */
 @media (min-width: 1025px) {
   .services-section__badge {
-    right: clamp(3.5rem, 7vw, 5rem);
-    /* Moved right on desktop */
+    right: clamp(2.5rem, 5.5vw, 3.5rem);
+    /* Moved right more on desktop */
     width: clamp(8rem, 15vw, 10rem);
     height: clamp(8rem, 15vw, 10rem);
     /* Larger size on desktop for better text spacing */
@@ -1270,7 +1270,7 @@
 
   .services-section__badge {
     position: absolute;
-    right: clamp(1.5rem, 4vw, 2.5rem);
+    right: clamp(0.5rem, 2vw, 1rem);
     top: 50%;
     transform: translateY(-50%);
     margin: 0;
@@ -1389,7 +1389,7 @@
 
   .services-section__badge {
     position: absolute;
-    right: clamp(1rem, 3vw, 2rem);
+    right: clamp(0rem, 1.5vw, 0.5rem);
     top: 50%;
     transform: translateY(-50%);
     margin: 0;
@@ -2627,6 +2627,13 @@
   text-decoration: none;
   transition: color 0.2s ease;
   flex: 0 0 auto;
+  text-align: left;
+  width: 100%;
+}
+
+.site-header__nav--open > .site-header__nav-link .site-header__dropdown-icon {
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .site-header__nav--open > .site-header__nav-link:hover {
@@ -2646,7 +2653,8 @@
   margin-bottom: 0;
   padding-top: clamp(1.5rem, 3vw, 2rem);
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   flex: 0 0 auto;
   border-top: 0.0625rem solid rgba(26, 54, 80, 0.1);
   /* Add separator line above button */
