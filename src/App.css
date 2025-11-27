@@ -1604,7 +1604,6 @@
   gap: clamp(0.625rem, 1.5vw, 0.875rem);
   box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(1rem, 2.5vw, 1.5rem) rgba(0, 0, 0, 0.12);
   border: 0.0625rem solid rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: clamp(7rem, 13vw, 9rem);
   min-height: clamp(5rem, 10vw, 7rem);
   width: 100%;
@@ -1809,8 +1808,6 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.5s ease-out, 
-              transform 0.5s ease-out;
   pointer-events: none;
   text-align: center;
   visibility: hidden;
