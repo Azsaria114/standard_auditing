@@ -3182,94 +3182,123 @@
 }
 
 /* ============================================
-   RESPONSIVE: Why Trust Section
+   RESPONSIVE: Why Trust Section - Vertical Stack 1-2-1-2-1 Pattern
    ============================================ */
 @media (max-width: 1024px) {
   .why-trust-section__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(0.75rem, 2vw, 1.25rem);
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns for 1-2-1-2-1 pattern */
+    grid-template-rows: auto auto auto auto auto;
+    /* 5 rows for the pattern */
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+    row-gap: clamp(1rem, 2.5vw, 1.5rem);
   }
 
-  .why-trust-section__image-card {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    min-height: clamp(18rem, 35vw, 24rem);
-  }
-
-  /* Column 1 - 1 card */
+  /* Row 1: 1 card (centered) - Seamless Client Experience */
   .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
-    grid-column: 1;
+    grid-column: 1 / 3;
+    /* Spans both columns for centered single card */
     grid-row: 1;
+    justify-self: center;
+    max-width: clamp(18rem, 40vw, 24rem);
+    /* Limit width for centered appearance */
   }
 
-  /* Column 2 - 2 cards stacked */
+  /* Row 2: 2 cards - Government Approved & Fast & Reliable */
   .why-trust-section__grid > .why-trust-section__card:nth-child(2) {
     grid-column: 1;
     grid-row: 2;
   }
 
-  .why-trust-section__grid > .why-trust-section__card:nth-child(5) {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  /* Column 4 - 2 cards stacked */
   .why-trust-section__grid > .why-trust-section__card:nth-child(3) {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
-  .why-trust-section__grid > .why-trust-section__card:nth-child(6) {
-    grid-column: 3;
+    grid-column: 2;
     grid-row: 2;
   }
 
-  /* Column 5 - 1 card */
-  .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
-    grid-column: 3;
-    grid-row: 3;
-  }
-}
-
-@media (max-width: 768px) {
-  .why-trust-section__grid {
-    grid-template-columns: 1fr;
-    gap: clamp(0.75rem, 2vw, 1rem);
-  }
-
+  /* Row 3: 1 card (image) - full width */
   .why-trust-section__image-card {
-    grid-column: 1;
-    grid-row: auto;
-    min-height: clamp(15rem, 40vw, 22rem);
-    order: 4;
+    grid-column: 1 / 3;
+    /* Spans both columns for full width */
+    grid-row: 3;
+    min-height: clamp(15rem, 35vw, 22rem);
+    max-height: clamp(15rem, 35vw, 22rem);
+    width: 100%;
   }
 
-  .why-trust-section__grid > .why-trust-section__card {
-    grid-column: 1 !important;
-    grid-row: auto !important;
+  /* Row 4: 2 cards - Industry-Trusted & Comprehensive Service */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(5) {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .why-trust-section__grid > .why-trust-section__card:nth-child(6) {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  /* Row 5: 1 card (centered) - Proven Track Record */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
+    grid-column: 1 / 3;
+    /* Spans both columns for centered single card */
+    grid-row: 5;
+    justify-self: center;
+    max-width: clamp(18rem, 40vw, 24rem);
+    /* Limit width for centered appearance */
   }
 }
 
 @media (max-width: 768px) {
   .why-trust-section__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(0.75rem, 2vw, 1rem);
+    /* Maintain 2 columns for mobile */
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    row-gap: clamp(0.75rem, 2vw, 1.25rem);
   }
 
+  /* Row 1: 1 card (centered) */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    max-width: 100%;
+    /* Full width on mobile */
+  }
+
+  /* Row 2: 2 cards */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .why-trust-section__grid > .why-trust-section__card:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* Row 3: 1 card (image) */
   .why-trust-section__image-card {
     grid-column: 1 / 3;
+    grid-row: 3;
+    min-height: clamp(12rem, 30vw, 18rem);
+    max-height: clamp(12rem, 30vw, 18rem);
+  }
+
+  /* Row 4: 2 cards */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(5) {
+    grid-column: 1;
     grid-row: 4;
-    min-height: clamp(15rem, 40vw, 22rem);
   }
 
-  .why-trust-section__grid > .why-trust-section__card {
-    grid-column: span 1 !important;
-    grid-row: auto !important;
+  .why-trust-section__grid > .why-trust-section__card:nth-child(6) {
+    grid-column: 2;
+    grid-row: 4;
   }
 
-  .why-trust-section__grid > .why-trust-section__card:nth-child(3),
+  /* Row 5: 1 card (centered) */
   .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
-    display: flex;
+    grid-column: 1 / 3;
+    grid-row: 5;
+    max-width: 100%;
+    /* Full width on mobile */
   }
 }
 
