@@ -1666,34 +1666,25 @@
   /* Center logo positioned between rows 1 and 2 - moved up slightly */
 }
 
+/* Unified horizontal line component - single responsive design */
 .partners-section__middle::before {
   content: '';
   position: absolute;
-  right: 100%;
+  left: 50%;
   top: 50%;
-  width: clamp(8rem, 12vw, 9.7rem);
+  width: calc(clamp(4rem, 8vw, 6rem) + clamp(6.5rem, 12vw, 8rem) + clamp(2.5rem, 6vw, 4.5rem) + clamp(7.5rem, 12vw, 10rem));
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 4px 0 0 4px;
-  /* Horizontal line extending to the left side of SA logo card */
+  border-radius: 4px;
+  /* Single unified horizontal line extending on both sides of SA logo card - responsive design */
 }
 
 .partners-section__middle::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: calc(clamp(6.5rem, 12vw, 8rem) + clamp(2.5rem, 6vw, 4.5rem) + clamp(7.5rem, 12vw, 10rem));
-  height: 3px;
-  background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
-  z-index: 1;
-  pointer-events: none;
-  border-radius: 0 4px 4px 0;
-  /* Horizontal line extending from left edge of SA logo card, extending more on the right side */
+  display: none;
+  /* Removed - using single unified component in ::before */
 }
 
 .partners-section__center-card {
@@ -1912,15 +1903,10 @@
     display: none;
   }
   
-  /* Keep simple horizontal lines from both sides of SA logo, make responsive */
+  /* Unified horizontal line component - responsive for tablet */
   .partners-section__middle::before {
-    width: clamp(2.5rem, 5vw, 4rem);
-    /* Responsive width for left side line */
-  }
-  
-  .partners-section__middle::after {
-    width: calc(clamp(5.5rem, 10vw, 7rem) + clamp(1.5rem, 3vw, 2.5rem) + clamp(3rem, 6vw, 4.5rem));
-    /* Responsive width for right side line - adjusted for smaller SA logo card */
+    width: calc(clamp(2.5rem, 5vw, 4rem) + clamp(5.5rem, 10vw, 7rem) + clamp(1.5rem, 3vw, 2.5rem) + clamp(3rem, 6vw, 4.5rem));
+    /* Single unified line - responsive width for tablet */
   }
 
   .partners-section__middle {
@@ -2073,15 +2059,10 @@
     display: none;
   }
   
-  /* Keep simple horizontal lines from both sides of SA logo, make responsive */
+  /* Unified horizontal line component - responsive for mobile */
   .partners-section__middle::before {
-    width: clamp(2rem, 4vw, 3.5rem);
-    /* Responsive width for left side line on mobile */
-  }
-  
-  .partners-section__middle::after {
-    width: calc(clamp(5.5rem, 10vw, 7rem) + clamp(1rem, 2.5vw, 2rem) + clamp(2.5rem, 5vw, 4rem));
-    /* Responsive width for right side line on mobile - adjusted for smaller SA logo card */
+    width: calc(clamp(2rem, 4vw, 3.5rem) + clamp(5.5rem, 10vw, 7rem) + clamp(1rem, 2.5vw, 2rem) + clamp(2.5rem, 5vw, 4rem));
+    /* Single unified line - responsive width for mobile */
   }
 
   .partners-section__right {
