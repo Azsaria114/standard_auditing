@@ -1613,7 +1613,7 @@
   content: '';
   position: absolute;
   left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
-  top: calc(50% - clamp(4rem, 7vw, 5.5rem));
+  top: calc(50% - clamp(5rem, 8vw, 6.5rem));
   width: 2px;
   height: calc(clamp(4rem, 7vw, 5.5rem) * 2 + clamp(1.5rem, 3.5vw, 2.5rem));
   background: rgba(128, 128, 128, 0.4);
