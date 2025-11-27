@@ -1579,48 +1579,90 @@
   display: none;
 }
 
-/* Connecting lines from column 3 cards to center blue card - flowchart style */
+/* Flowchart-style connecting lines: SA center card -> vertical line -> branched curved lines -> Legrand and Carl Stahl cards */
+.partners-section__center-card {
+  position: relative;
+}
+
+/* Vertical line from center SA card going down, then branching */
+.partners-section__container::before {
+  content: '';
+  position: absolute;
+  left: calc(clamp(25rem, 50vw, 35rem) + clamp(2.5rem, 6vw, 4.5rem) + clamp(6.5rem, 12vw, 8rem) / 2);
+  top: calc(50% + clamp(3.25rem, 6vw, 4rem));
+  width: 2px;
+  height: clamp(4rem, 8vw, 6rem);
+  background: rgba(128, 128, 128, 0.4);
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+  /* Vertical line extending down from center SA card, positioned between grid and center card */
+}
+
+/* Curved branch line to Legrand card (card 3, row 1, column 3) - top branch */
+.partners-section__grid > .partners-section__card:nth-child(3)::before {
+  content: '';
+  position: absolute;
+  right: calc(100% + clamp(1rem, 2vw, 1.5rem));
+  top: 50%;
+  width: clamp(2.5rem, 5vw, 3.5rem);
+  height: clamp(2.5rem, 5vw, 3.5rem);
+  border: 2px solid rgba(128, 128, 128, 0.4);
+  border-top: none;
+  border-right: none;
+  border-radius: 0 0 0 clamp(2.5rem, 5vw, 3.5rem);
+  transform: translateY(-50%) translateY(clamp(-2rem, -4vw, -2.5rem));
+  z-index: 0;
+  pointer-events: none;
+  /* Curved line connecting to Legrand card from the left - top branch */
+}
+
+/* Horizontal connector from curved line to Legrand card */
 .partners-section__grid > .partners-section__card:nth-child(3)::after {
   content: '';
   position: absolute;
-  left: 100%;
+  right: 100%;
   top: 50%;
-  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  width: clamp(1rem, 2vw, 1.5rem);
   height: 2px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
-  /* Horizontal line from Legrand card (column 3, row 1) to center card - starts from right edge */
+  /* Horizontal connector to Legrand card */
 }
 
+/* Curved branch line to Carl Stahl card (card 6, row 2, column 3) - bottom branch */
+.partners-section__grid > .partners-section__card:nth-child(6)::before {
+  content: '';
+  position: absolute;
+  right: calc(100% + clamp(1rem, 2vw, 1.5rem));
+  top: 50%;
+  width: clamp(2.5rem, 5vw, 3.5rem);
+  height: clamp(2.5rem, 5vw, 3.5rem);
+  border: 2px solid rgba(128, 128, 128, 0.4);
+  border-bottom: none;
+  border-right: none;
+  border-radius: clamp(2.5rem, 5vw, 3.5rem) 0 0 0;
+  transform: translateY(-50%) translateY(clamp(2rem, 4vw, 2.5rem));
+  z-index: 0;
+  pointer-events: none;
+  /* Curved line connecting to Carl Stahl card from the left - bottom branch */
+}
+
+/* Horizontal connector from curved line to Carl Stahl card */
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
   content: '';
   position: absolute;
-  left: 100%;
+  right: 100%;
   top: 50%;
-  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  width: clamp(1rem, 2vw, 1.5rem);
   height: 2px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
-  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - starts from right edge */
-}
-
-/* Vertical connecting line from horizontal lines to center blue card - creates right half rectangle */
-.partners-section__grid::after {
-  content: '';
-  position: absolute;
-  left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
-  top: 50%;
-  width: 2px;
-  height: calc(clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem));
-  background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
-  z-index: 1;
-  pointer-events: none;
-  /* Vertical line connecting the two horizontal lines - creates right half rectangle shape */
+  /* Horizontal connector to Carl Stahl card */
 }
 
 .partners-section__card:hover {
