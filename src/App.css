@@ -1608,18 +1608,19 @@
   /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - starts from right edge */
 }
 
-/* Vertical connecting line from horizontal lines to center blue card */
-.partners-section__container::before {
+/* Vertical connecting line from horizontal lines to center blue card - creates right half rectangle */
+.partners-section__grid::after {
   content: '';
   position: absolute;
-  left: calc(clamp(25rem, 50vw, 35rem) * 0.333 + (clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem)));
-  top: calc(50% - clamp(1.5rem, 3.5vw, 2.5rem) / 2);
+  left: calc(33.333% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  top: 50%;
   width: 2px;
-  height: clamp(1.5rem, 3.5vw, 2.5rem);
+  height: calc(clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem));
   background: rgba(128, 128, 128, 0.4);
+  transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  /* Vertical line connecting horizontal lines to center card - positioned between the two horizontal lines */
+  /* Vertical line connecting the two horizontal lines - creates right half rectangle shape */
 }
 
 .partners-section__card:hover {
