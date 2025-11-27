@@ -1579,90 +1579,48 @@
   display: none;
 }
 
-/* Flowchart-style connecting lines: SA center card -> vertical line -> branched curved lines -> Legrand and Carl Stahl cards */
-.partners-section__center-card {
-  position: relative;
-}
-
-/* Vertical line from center SA card going down, then branching */
-.partners-section__center-card::after {
-  content: '';
-  position: absolute;
-  bottom: -clamp(2rem, 4vw, 3rem);
-  left: 50%;
-  width: 2px;
-  height: clamp(3rem, 6vw, 4.5rem);
-  background: rgba(128, 128, 128, 0.4);
-  transform: translateX(-50%);
-  z-index: 1;
-  pointer-events: none;
-  /* Vertical line extending down from bottom-center of center SA card */
-}
-
-/* Curved branch line to Legrand card (card 3, row 1, column 3) - top branch */
-.partners-section__grid > .partners-section__card:nth-child(3)::before {
-  content: '';
-  position: absolute;
-  right: calc(100% + clamp(2rem, 4vw, 3rem));
-  top: 50%;
-  width: clamp(3rem, 6vw, 4.5rem);
-  height: clamp(3rem, 6vw, 4.5rem);
-  border: 2px solid rgba(128, 128, 128, 0.4);
-  border-top: none;
-  border-right: none;
-  border-radius: 0 0 0 clamp(3rem, 6vw, 4.5rem);
-  transform: translateY(-50%) translateY(clamp(-2.5rem, -5vw, -3.5rem));
-  z-index: 0;
-  pointer-events: none;
-  /* Curved line connecting to Legrand card from the left - top branch, curves upward */
-}
-
-/* Horizontal connector from curved line to Legrand card */
+/* Connecting lines from column 3 cards to center blue card - flowchart style */
 .partners-section__grid > .partners-section__card:nth-child(3)::after {
   content: '';
   position: absolute;
-  right: 100%;
+  left: 100%;
   top: 50%;
-  width: clamp(2rem, 4vw, 3rem);
+  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
   height: 2px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
-  /* Horizontal connector to Legrand card */
+  /* Horizontal line from Legrand card (column 3, row 1) to center card - starts from right edge */
 }
 
-/* Curved branch line to Carl Stahl card (card 6, row 2, column 3) - bottom branch */
-.partners-section__grid > .partners-section__card:nth-child(6)::before {
-  content: '';
-  position: absolute;
-  right: calc(100% + clamp(2rem, 4vw, 3rem));
-  top: 50%;
-  width: clamp(3rem, 6vw, 4.5rem);
-  height: clamp(3rem, 6vw, 4.5rem);
-  border: 2px solid rgba(128, 128, 128, 0.4);
-  border-bottom: none;
-  border-right: none;
-  border-radius: clamp(3rem, 6vw, 4.5rem) 0 0 0;
-  transform: translateY(-50%) translateY(clamp(2.5rem, 5vw, 3.5rem));
-  z-index: 0;
-  pointer-events: none;
-  /* Curved line connecting to Carl Stahl card from the left - bottom branch, curves downward */
-}
-
-/* Horizontal connector from curved line to Carl Stahl card */
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
   content: '';
   position: absolute;
-  right: 100%;
+  left: 100%;
   top: 50%;
-  width: clamp(2rem, 4vw, 3rem);
+  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
   height: 2px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
-  /* Horizontal connector to Carl Stahl card */
+  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - starts from right edge */
+}
+
+/* Vertical connecting line from horizontal lines to center blue card - creates right half rectangle */
+.partners-section__grid::after {
+  content: '';
+  position: absolute;
+  left: calc(100% - (clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem)));
+  top: 50%;
+  width: 2px;
+  height: calc(clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem));
+  background: rgba(128, 128, 128, 0.4);
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  /* Vertical line connecting the two horizontal lines - positioned at the end of horizontal lines */
 }
 
 .partners-section__card:hover {
