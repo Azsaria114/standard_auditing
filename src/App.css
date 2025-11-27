@@ -1675,14 +1675,14 @@
   position: absolute;
   right: 100%;
   top: 50%;
-  width: clamp(5rem, 10vw, 9.7rem);
+  width: clamp(2rem, 5vw, 4rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
   border-radius: 4px 0 0 4px;
-  /* Horizontal line extending from left edge of SA logo card - behind cards to prevent overlap */
+  /* Horizontal line extending from left edge of SA logo card - reduced width to avoid overlapping with vertical line */
 }
 
 .partners-section__middle::after {
@@ -1883,8 +1883,8 @@
 @media (max-width: 1400px) and (min-width: 1025px) {
   /* Scale down lines for medium-sized screens like 14-inch laptops */
   .partners-section__middle::before {
-    width: clamp(5rem, 10vw, 7rem);
-    /* Left line - scaled down for medium screens */
+    width: clamp(1.5rem, 4vw, 3rem);
+    /* Left line - reduced width to avoid overlapping with vertical line */
   }
   
   .partners-section__middle::after {
@@ -1934,8 +1934,8 @@
   /* Separate lines for tablet - scaled down from desktop, properly aligned to touch cards */
   .partners-section__middle::before {
     right: 100%;
-    width: clamp(3rem, 6vw, 5rem);
-    /* Left line - responsive width for tablet, scales down from desktop */
+    width: clamp(1.5rem, 3.5vw, 3rem);
+    /* Left line - reduced width for tablet to avoid overlapping */
   }
   
   .partners-section__middle::after {
@@ -2097,8 +2097,8 @@
   /* Separate lines for mobile - scaled down from desktop, properly aligned to touch cards */
   .partners-section__middle::before {
     right: 100%;
-    width: clamp(2rem, 4vw, 3.5rem);
-    /* Left line - responsive width for mobile, scales down from desktop */
+    width: clamp(1rem, 2.5vw, 2rem);
+    /* Left line - reduced width for mobile to avoid overlapping */
   }
   
   .partners-section__middle::after {
