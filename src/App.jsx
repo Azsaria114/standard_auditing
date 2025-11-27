@@ -24,7 +24,7 @@ const services = [
 
 const stats = [
   { value: '4000 +', label: 'Projects Successfully Completed' },
-  { value: '25+', label: 'Years Partnering with UAE', label2: 'Businesses' },
+  { value: '25+', label: 'Years Partnering with UAE Businesses' },
   { value: '98%', label: 'Clients Stay With Us' },
   { value: '500+', label: 'Reputed UAE Businesses Served' },
 ]
@@ -207,53 +207,109 @@ const faqQuestions = [
 
 // Header Component
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+    // Prevent body scroll when menu is open
+    if (!isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  }
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.site-header')) {
+        setIsMenuOpen(false)
+        document.body.style.overflow = ''
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
+
   return (
-    <header className="site-header">
-      <div className="site-header__container">
-        <div className="site-header__logo-section">
-          <div className="site-header__logo">
-            <img 
-              src={standardAuditingLogo} 
-              alt="Standard Auditing Logo" 
-              className="site-header__logo-image"
-            />
+    <>
+      <header className="site-header">
+        <div className="site-header__container">
+          <div className="site-header__logo-section">
+            <div className="site-header__logo">
+              <img 
+                src={standardAuditingLogo} 
+                alt="Standard Auditing Logo" 
+                className="site-header__logo-image"
+              />
+            </div>
+            <div className="site-header__separator"></div>
           </div>
-          <div className="site-header__separator"></div>
+          <button 
+            type="button" 
+            className="site-header__hamburger"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+            <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+            <span className={`site-header__hamburger-line ${isMenuOpen ? 'site-header__hamburger-line--open' : ''}`}></span>
+          </button>
+          <nav className={`site-header__nav ${isMenuOpen ? 'site-header__nav--open' : ''}`}>
+            <a href="#home" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </a>
+            <a href="#about" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
+              About
+              <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#services" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
+              Services
+              <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#insights" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
+              Insights
+              <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#careers" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
+              Careers
+            </a>
+            <button type="button" className="site-header__cta site-header__cta--sidebar" onClick={() => setIsMenuOpen(false)}>
+              <span className="site-header__cta-text">Contact Us</span>
+              <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </nav>
+          <button type="button" className="site-header__cta">
+            <span className="site-header__cta-text">Contact Us</span>
+            <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </div>
-        <nav className="site-header__nav">
-          <a href="#home" className="site-header__nav-link">
-            Home
-          </a>
-          <a href="#about" className="site-header__nav-link site-header__nav-link--dropdown">
-            About
-            <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
-            </svg>
-          </a>
-          <a href="#services" className="site-header__nav-link site-header__nav-link--dropdown">
-            Services
-            <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
-            </svg>
-          </a>
-          <a href="#insights" className="site-header__nav-link site-header__nav-link--dropdown">
-            Insights
-            <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
-            </svg>
-          </a>
-          <a href="#careers" className="site-header__nav-link">
-            Careers
-          </a>
-        </nav>
-        <button type="button" className="site-header__cta">
-          <span className="site-header__cta-text">Contact Us</span>
-          <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </header>
+      </header>
+      <div 
+        className={`site-header__overlay ${isMenuOpen ? 'site-header__overlay--open' : ''}`}
+        onClick={() => {
+          setIsMenuOpen(false)
+          document.body.style.overflow = ''
+        }}
+      />
+    </>
   )
 }
 
@@ -307,7 +363,7 @@ function ServicesSection() {
           <div className="services-section__badge">
             <svg className="services-section__badge-svg" viewBox="0 0 200 200">
               <defs>
-                <path id="circle-path" d="M 100,30 A 70,70 0 1,1 30,100 A 70,70 0 1,1 100,30" />
+                <path id="circle-path" d="M 100,30 A 70,70 0 1,1 100,170 A 70,70 0 1,1 100,30" />
               </defs>
               <text className="services-section__badge-text">
                 <textPath href="#circle-path" startOffset="5%">
@@ -315,7 +371,11 @@ function ServicesSection() {
                 </textPath>
               </text>
             </svg>
-            <div className="services-section__badge-arrow">↑</div>
+            <div className="services-section__badge-arrow">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 8L7 11L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -383,10 +443,6 @@ function PartnersSection() {
                 <img src={partner.logo} alt={partner.name} className="partners-section__logo-img" />
               </div>
               <p className="partners-section__name body-opensans">{partner.name}</p>
-              {/* Connecting lines from Legrand and Carl Stahl to SA */}
-              {(index === 2 || index === 5) && (
-                <div className={`partners-section__card-connector partners-section__card-connector--${index === 2 ? 'legrand' : 'carlstahl'}`}></div>
-              )}
             </div>
           ))}
         </div>
@@ -395,7 +451,6 @@ function PartnersSection() {
           <div className="partners-section__center-card">
             <img src={saLogo} alt="Standard Auditors" className="partners-section__center-logo-img" />
           </div>
-          <div className="partners-section__connector"></div>
         </div>
         <div className="partners-section__right">
           <div 
@@ -445,59 +500,63 @@ function ServicesGridSection() {
                 <div className="services-grid-section__icon-container">
                 {service.icon === 'document-magnifying-glass' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 3H14V7H18V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V5C4 4.46957 4.21071 3.96086 4.58579 3.58579C4.96086 3.21071 5.46957 3 6 3Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M14 3V7H18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M18 3L16 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="11" cy="14" r="3.5" stroke="currentColor" strokeWidth="2.5"/>
-                    <path d="M13.5 11.5L11 14L8.5 11.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 2H5C4.46957 2 3.96086 2.21071 3.58579 2.58579C3.21071 2.96086 3 3.46957 3 4V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H15C15.5304 22 16.0391 21.7893 16.4142 21.4142C16.7893 21.0391 17 20.5304 17 20V8L13 2H9Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M13 2V8H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 12H11M9 15H15M9 18H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    <circle cx="18" cy="18" r="3" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M20.5 20.5L22 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
                 )}
                 {service.icon === 'percentage' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="7" cy="7" r="2.5" fill="currentColor"/>
-                    <circle cx="17" cy="17" r="2.5" fill="currentColor"/>
-                    <path d="M5 5L19 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M8 7L16 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="16" cy="16" r="1.5" fill="currentColor"/>
+                    <path d="M9 12H15M9 15H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
                 )}
                 {service.icon === 'line-chart' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 18L8 12L12 16L16 10L20 14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M20 14V18H16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M20 14L17 11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M7 16L10 12L13 15L17 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="7" cy="16" r="1.5" fill="currentColor"/>
+                    <circle cx="10" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="13" cy="15" r="1.5" fill="currentColor"/>
+                    <circle cx="17" cy="9" r="1.5" fill="currentColor"/>
                   </svg>
                 )}
                 {service.icon === 'building' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 20V8L12 3V20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M18 20V10H12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M3 20H21" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <ellipse cx="8.5" cy="11" rx="1" ry="0.8" fill="currentColor"/>
-                    <ellipse cx="11.5" cy="11" rx="1" ry="0.8" fill="currentColor"/>
-                    <ellipse cx="8.5" cy="14" rx="1" ry="0.8" fill="currentColor"/>
-                    <ellipse cx="11.5" cy="14" rx="1" ry="0.8" fill="currentColor"/>
-                    <rect x="10" y="16" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <path d="M18 8V10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-                    <path d="M18 13V15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                    <path d="M4 21V7L12 3L20 7V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 21H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 21V13H15V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <rect x="6" y="9" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="16" y="9" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="6" y="15" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="16" y="15" width="2" height="2" rx="0.5" fill="currentColor"/>
+                    <path d="M12 7V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
                 )}
                 {service.icon === 'calculator' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="2.5"/>
-                    <rect x="7" y="6" width="10" height="3.5" rx="1" fill="currentColor"/>
-                    <circle cx="8.5" cy="13" r="1.5" fill="currentColor"/>
-                    <circle cx="12" cy="13" r="1.5" fill="currentColor"/>
-                    <circle cx="15.5" cy="13" r="1.5" fill="currentColor"/>
-                    <circle cx="8.5" cy="16.5" r="1.5" fill="currentColor"/>
-                    <circle cx="12" cy="16.5" r="1.5" fill="currentColor"/>
-                    <circle cx="15.5" cy="16.5" r="1.5" fill="currentColor"/>
+                    <rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <rect x="7" y="6" width="10" height="4" rx="1" fill="currentColor"/>
+                    <rect x="7.5" y="12" width="3" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="13.5" y="12" width="3" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="7.5" y="15.5" width="3" height="2" rx="0.5" fill="currentColor"/>
+                    <rect x="13.5" y="15.5" width="3" height="2" rx="0.5" fill="currentColor"/>
+                    <path d="M10.5 12H13.5M10.5 15.5H13.5" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
                   </svg>
                 )}
                 {service.icon === 'dollar' && (
                   <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M9 2H15C16.1046 2 17 2.89543 17 4V20C17 21.1046 16.1046 22 15 22H9C7.89543 22 7 21.1046 7 20V4C7 2.89543 7.89543 2 9 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M12 6V18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M8 10H12C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14H10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M16 14H12C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 10H12C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14H10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M15 14H12C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="12" cy="4" r="1" fill="currentColor"/>
+                    <circle cx="12" cy="20" r="1" fill="currentColor"/>
                   </svg>
                 )}
               </div>
@@ -594,8 +653,8 @@ function WhyTrustSection() {
           <div className="why-trust-section__image-card">
             <div className="why-trust-section__image-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
-                alt="Professional auditor reviewing financial documents"
+                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80"
+                alt="Professional accountant person working with financial documents"
                 loading="lazy"
               />
             </div>
@@ -685,7 +744,8 @@ function PricingSection() {
       <div className="pricing-section__container">
         <span className="pricing-section__badge small-body-opensans">Service Packages</span>
         <h2 className="pricing-section__title h1-montserrat">
-          Choose the Support Level That Fits Your Business
+          <span className="pricing-section__title-line-1">Choose the Support Level that</span>
+          <span className="pricing-section__title-line-2"> Fits Your Business</span>
         </h2>
         <div className="pricing-section__grid">
           {pricingPlans.map((plan, index) => (
@@ -809,7 +869,7 @@ function ClientTestimonialsSection() {
         <div className="client-testimonials-section__left">
           <span className="client-testimonials-section__tag h3-opensans-semibold">Testimonials</span>
           <h2 className="client-testimonials-section__title h1-montserrat">
-            What Our Clients Say About Working With Us
+            What Our Clients Say About <br></br>Working With Us
           </h2>
           <p className="client-testimonials-section__description body-opensans">
             Hear directly from business owners who've reduced costs, avoided penalties, and gained financial clarity with our expert accounting services Dubai and tax consultancy services in UAE.
@@ -840,17 +900,19 @@ function ClientTestimonialsSection() {
             </div>
           </div>
           <div className="client-testimonials-section__nav">
-            <button 
-              type="button" 
-              className="client-testimonials-section__nav-btn" 
-              aria-label="Previous testimonial"
-              onClick={handlePrevious}
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.75" y="0.75" width="18.5" height="18.5" rx="3.25" stroke="white" strokeOpacity="0.8" strokeWidth="1.5"/>
-                <path d="M11.5 6.5L8 10L11.5 13.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
+            {currentSlide > 0 && (
+              <button 
+                type="button" 
+                className="client-testimonials-section__nav-btn" 
+                aria-label="Previous testimonial"
+                onClick={handlePrevious}
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.75" y="0.75" width="18.5" height="18.5" rx="3.25" stroke="white" strokeOpacity="0.8" strokeWidth="1.5"/>
+                  <path d="M11.5 6.5L8 10L11.5 13.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            )}
             <button 
               type="button" 
               className="client-testimonials-section__nav-btn" 
@@ -889,7 +951,7 @@ function FAQSection() {
           <p className="faq-section__intro body-opensans">
             If you've made it this far, you're ready to take control of your finances. Here's what most businesses ask before getting started with our tax consultancy services in Dubai and audit firm near me support.
           </p>
-          <div className="faq-section__cta-section">
+          <div className="faq-section__cta-section faq-section__cta-section--top">
             <h3 className="faq-section__cta-heading h4-montserrat">Still looking for answer?</h3>
             <button type="button" className="faq-section__cta h3-opensans-semibold">
               <span className="faq-section__cta-text">Speak to our expert</span>
@@ -917,13 +979,11 @@ function FAQSection() {
                     </svg>
                   </span>
                 </button>
-                {openIndex === index && (
-                  <div className="faq-section__answer-wrapper">
+                <div className={`faq-section__answer-wrapper ${openIndex === index ? 'faq-section__answer-wrapper--open' : ''}`}>
                   <div className="faq-section__answer">
-                      <p className="body-opensans">{faq.answer}</p>
-                    </div>
+                    <p className="body-opensans">{faq.answer}</p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -940,11 +1000,13 @@ function NewsletterSection() {
       <div className="newsletter-section__container">
         <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
         <p className="newsletter-section__description body-opensans">
-          Get weekly insights, checklists, and tips to manage cash flow, save time, and keep profits. 
-          Expert guidance from certified tax consultants delivered straight to your inbox.
+        Get weekly insights, checklists, and SME-friendly tips to manage cash flow, avoid fines, and keep more of your profits.Stay updated with guidance from certified tax consultants UAE and experienced Dubai corporate tax consultants.
         </p>
-        <button type="button" className="newsletter-section__cta h3-opensans-semibold">
+        <button type="button" className="newsletter-section__cta">
           <span className="newsletter-section__cta-text">Sign up for free updates</span>
+          <svg className="newsletter-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       </div>
     </section>
@@ -957,7 +1019,13 @@ function Footer() {
     <footer className="site-footer">
       <div className="site-footer__container">
         <div className="site-footer__column">
-          <h3 className="site-footer__column-title h5-montserrat">LOGO</h3>
+          <div className="site-footer__logo-wrapper">
+            <img 
+              src={standardAuditingLogo} 
+              alt="Standard Auditing Logo" 
+              className="site-footer__logo-image"
+            />
+          </div>
           <address className="site-footer__address body-opensans">
             Office No 112, NBQ Building, Bank Street, Dubai, United Arab Emirates
           </address>
@@ -1052,6 +1120,7 @@ function App() {
             <span className="hero__title-line-2">for Dubai Businesses</span>
           </h1>
         </section>
+        
         <header className="hero__header">
           <div className="hero__services">
             {/* Left column: Auditing, Tax Advisory, Accounting & Bookkeeping (2 rows, 1 column) */}
@@ -1088,7 +1157,7 @@ function App() {
           </div>
         </header>
 
-        <section className="hero__media" aria-label="Client collaboration">
+        <div className="hero__media">
           <div className="hero__image-wrapper">
             <img
               src={heroImage}
@@ -1108,12 +1177,11 @@ function App() {
                 <p className="hero__stat-value h6-montserrat">{stat.value}</p>
                 <div className="hero__stat-label-wrapper">
                   <p className="hero__stat-label h2-opensans-regular">{stat.label}</p>
-                  {stat.label2 && <p className="hero__stat-label h2-opensans-regular">{stat.label2}</p>}
                 </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
       </main>
       <ServicesSection />
       <PartnersSection />
