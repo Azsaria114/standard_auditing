@@ -3201,7 +3201,7 @@
     grid-row: 1;
     justify-self: center;
     max-width: clamp(14rem, 32vw, 18rem);
-    /* Smaller width than two-card rows - creates triangle/pyramid effect */
+    /* Same size as row 5 card - creates symmetrical pyramid effect */
     width: 100%;
   }
 
@@ -3244,7 +3244,7 @@
     grid-row: 5;
     justify-self: center;
     max-width: clamp(14rem, 32vw, 18rem);
-    /* Smaller width than two-card rows - creates triangle/pyramid effect */
+    /* Same size as row 1 card - creates symmetrical pyramid effect */
     width: 100%;
   }
 }
@@ -3263,7 +3263,7 @@
     grid-row: 1;
     justify-self: center;
     max-width: clamp(12rem, 30vw, 16rem);
-    /* Smaller width than two-card rows on mobile - creates triangle effect */
+    /* Same size as row 5 card on mobile - creates symmetrical pyramid effect */
     width: 100%;
   }
 
@@ -3303,7 +3303,7 @@
     grid-row: 5;
     justify-self: center;
     max-width: clamp(12rem, 30vw, 16rem);
-    /* Smaller width than two-card rows on mobile - creates triangle effect */
+    /* Same size as row 1 card on mobile - creates symmetrical pyramid effect */
     width: 100%;
   }
 }
