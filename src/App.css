@@ -1681,7 +1681,7 @@
   position: absolute;
   left: 0;
   top: 50%;
-  width: calc(clamp(6.5rem, 12vw, 8rem) + clamp(2.5rem, 6vw, 4.5rem) + clamp(6rem, 10vw, 8rem));
+  width: calc(clamp(6.5rem, 12vw, 8rem) + clamp(2.5rem, 6vw, 4.5rem) + clamp(7.5rem, 12vw, 10rem));
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
