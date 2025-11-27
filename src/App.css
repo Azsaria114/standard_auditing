@@ -1583,29 +1583,29 @@
 .partners-section__grid > .partners-section__card:nth-child(3)::after {
   content: '';
   position: absolute;
-  left: -50%;
+  left: 100%;
   top: 50%;
-  width: calc(50% + clamp(1.5rem, 3vw, 2.5rem));
+  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
   height: 2px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
-  /* Horizontal line from Legrand card (column 3, row 1) to center card */
+  /* Horizontal line from Legrand card (column 3, row 1) to center card - starts from right edge */
 }
 
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
   content: '';
   position: absolute;
-  left: -50%;
+  left: 100%;
   top: 50%;
-  width: calc(50% + clamp(1.5rem, 3vw, 2.5rem));
+  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
   height: 2px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
-  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card */
+  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - starts from right edge */
 }
 
 .partners-section__card:hover {
