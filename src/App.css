@@ -1625,17 +1625,7 @@
   /* Vertical line connecting the two horizontal lines - spans from top horizontal line to bottom horizontal line, forms single smooth curved rectangle */
 }
 
-.partners-section__card:hover {
-  transform: translateY(clamp(-0.25rem, -0.75vw, -0.5rem));
-  box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 3.5vw, 2rem) rgba(0, 0, 0, 0.18);
-  border-color: rgba(26, 54, 80, 0.2);
-  /* Enhanced hover effect for better visual appeal */
-}
-
-.partners-section__card:hover .partners-section__name {
-  font-size: calc(1em - 1px);
-  /* Reduce font size by 1px on hover */
-}
+/* Hover animations removed */
 
 .partners-section__logo {
   display: flex;
@@ -1681,7 +1671,7 @@
   position: absolute;
   right: 100%;
   top: 50%;
-  width: clamp(4rem, 8vw, 6rem);
+  width: clamp(8rem, 12vw, 9.7rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
@@ -2786,19 +2776,7 @@
   position: relative;
 }
 
-/* Connecting line for why-trust section */
-.why-trust-section__grid::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transform: translateY(-50%);
-  z-index: 0;
-  /* Decorative connecting line across the grid */
-}
+/* Connecting line removed */
 
 /* Column 1 - 1 card (centered horizontally with column) */
 .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
