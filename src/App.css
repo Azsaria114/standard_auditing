@@ -1563,7 +1563,8 @@
   max-width: 100%;
   height: 100%;
   position: relative;
-  /* Enhanced cards with better shadows and transitions for visual appeal - reduced sizes for responsiveness */
+  z-index: 1;
+  /* Enhanced cards with better shadows and transitions for visual appeal - above lines to prevent overlap */
 }
 
 /* Connector lines removed */
@@ -1589,10 +1590,10 @@
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line from Legrand card (column 3, row 1) to center card - starts from right edge, curved connection */
+  /* Horizontal line from Legrand card (column 3, row 1) to center card - behind cards to prevent overlap */
 }
 
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
@@ -1604,10 +1605,10 @@
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - starts from right edge, curved connection */
+  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - behind cards to prevent overlap */
 }
 
 /* Vertical connecting line from horizontal lines to center blue card - creates right half rectangle */
@@ -1619,10 +1620,10 @@
   width: 3px;
   height: calc(33.33% + clamp(1rem, 2vw, 1.5rem));
   background: rgba(128, 128, 128, 0.4);
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   border-radius: 4px;
-  /* Vertical line connecting the two horizontal lines - spans from top horizontal line to bottom horizontal line, forms single smooth curved rectangle */
+  /* Vertical line connecting the two horizontal lines - behind cards to prevent overlap */
 }
 
 /* Hover animations removed */
@@ -1676,10 +1677,10 @@
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   border-radius: 4px 0 0 4px;
-  /* Horizontal line extending from left edge of SA logo card - wider on desktop, reduces on smaller screens */
+  /* Horizontal line extending from left edge of SA logo card - behind cards to prevent overlap */
 }
 
 .partners-section__middle::after {
@@ -1691,10 +1692,10 @@
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line extending from right edge of SA logo card - wider on desktop, reduces on smaller screens */
+  /* Horizontal line extending from right edge of SA logo card - behind cards to prevent overlap */
 }
 
 .partners-section__center-card {
@@ -1776,7 +1777,8 @@
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  /* White box with soft shadow and rounded corners - square-like shape - reduced sizes for responsiveness */
+  z-index: 1;
+  /* White box with soft shadow and rounded corners - above lines to prevent overlap */
   opacity: 1;
   transform: translateY(0);
   box-sizing: border-box;
