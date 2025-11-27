@@ -1593,58 +1593,53 @@
   display: none;
 }
 
-/* Unified line system - all lines scale together proportionally */
-/* Connecting lines from column 3 cards to center blue card - grouped as one system */
+/* Perfect half rectangle - unified system with precise alignment */
+/* Horizontal line from first card (Legrand - row 1) */
 .partners-section__grid > .partners-section__card:nth-child(3)::after {
   content: '';
   position: absolute;
   left: 100%;
   top: 50%;
   width: var(--line-scale, clamp(2.5rem, 5vw, 5rem));
-  /* Uses unified scale factor - scales with grid container */
   height: clamp(2px, 0.3vw, 3px);
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  border-radius: 0;
-  /* Horizontal line from Legrand card - part of unified line system */
+  /* First horizontal line - perfectly aligned */
 }
 
+/* Horizontal line from second card (Carl Stahl - row 2) */
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
   content: '';
   position: absolute;
   left: 100%;
   top: 50%;
   width: var(--line-scale, clamp(2.5rem, 5vw, 5rem));
-  /* Uses unified scale factor - scales with grid container */
   height: clamp(2px, 0.3vw, 3px);
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  border-radius: 0;
-  /* Horizontal line from Carl Stahl card - part of unified line system */
+  /* Second horizontal line - perfectly aligned */
 }
 
-/* Vertical connecting line - forms half rectangle by connecting the two horizontal lines */
+/* Vertical line - positioned to connect both horizontal lines perfectly */
 .partners-section__grid::after {
   content: '';
   position: absolute;
   left: calc(100% + var(--line-scale, clamp(2.5rem, 5vw, 5rem)));
-  /* Positioned at the end of horizontal lines - forms right edge of half rectangle */
-  /* Position: starts at center of row 1 card, ends at center of row 2 card */
-  top: calc(16.666% - clamp(1px, 0.15vw, 1.5px));
-  /* Center of row 1 = 100% / 6 = 16.666%, adjusted for line height */
+  /* Positioned exactly at the end of horizontal lines */
   width: clamp(2px, 0.3vw, 3px);
-  /* Height spans from row 1 center to row 2 center */
-  height: calc(33.333% + clamp(1.25rem, 3vw, 2.5rem) + clamp(1px, 0.15vw, 1.5px));
-  /* Height = one row (33.33%) + gap between rows + line height adjustment */
   background: rgba(128, 128, 128, 0.4);
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  border-radius: 0;
-  /* Vertical line connects the two horizontal lines to form perfect half rectangle */
+  /* Calculate top and height based on actual card positions */
+  /* Top: center of first card (row 1) */
+  top: calc((100% / 6) - clamp(1px, 0.15vw, 1.5px));
+  /* Height: from row 1 center to row 2 center */
+  height: calc((100% / 3) + clamp(1.25rem, 3vw, 2.5rem) + clamp(2px, 0.3vw, 3px));
+  /* Perfect connection: starts at first horizontal line, ends at second horizontal line */
 }
 
 /* Hover animations removed */
@@ -1940,11 +1935,11 @@
     /* 3-column grid maintained for tablet */
   }
   
-  /* Adjust vertical line for tablet to maintain half rectangle structure */
+  /* Maintain half rectangle structure on tablet */
   .partners-section__grid::after {
-    top: calc(16.666% - clamp(1px, 0.15vw, 1.5px));
-    height: calc(33.333% + clamp(1rem, 2.5vw, 2rem) + clamp(1px, 0.15vw, 1.5px));
-    /* Maintains half rectangle structure on tablet */
+    top: calc((100% / 6) - clamp(1px, 0.15vw, 1.5px));
+    height: calc((100% / 3) + clamp(1rem, 2.5vw, 2rem) + clamp(2px, 0.3vw, 3px));
+    /* Perfect half rectangle maintained on tablet */
   }
 
   .partners-section__connector {
@@ -2042,11 +2037,11 @@
     /* Responsive gap for mobile that scales smoothly */
   }
   
-  /* Adjust vertical line for mobile to maintain half rectangle structure */
+  /* Maintain half rectangle structure on mobile */
   .partners-section__grid::after {
-    top: calc(16.666% - clamp(1px, 0.15vw, 1.5px));
-    height: calc(33.333% + clamp(0.5rem, 1.25vw, 1rem) + clamp(1px, 0.15vw, 1.5px));
-    /* Maintains half rectangle structure on mobile */
+    top: calc((100% / 6) - clamp(1px, 0.15vw, 1.5px));
+    height: calc((100% / 3) + clamp(0.5rem, 1.25vw, 1rem) + clamp(2px, 0.3vw, 3px));
+    /* Perfect half rectangle maintained on mobile */
   }
 
   /* Reset card transforms and positioning for mobile */
