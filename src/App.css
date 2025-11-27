@@ -1247,8 +1247,6 @@
   .services-section__description {
     font-size: clamp(0.75rem, 1.4vw, 0.875rem);
     /* Reduced description size for tablet */
-    margin-top: clamp(1.5rem, 4vw, 2.5rem);
-    /* Added spacing between badge icon and content below for tablet */
   }
 
   .services-section__features {
@@ -1354,8 +1352,6 @@
     font-size: clamp(0.8125rem, 2vw, 0.9375rem);
     line-height: 1.6;
     /* Reduced font size on mobile for better responsiveness */
-    margin-top: clamp(1.25rem, 3.5vw, 2rem);
-    /* Added spacing between badge icon and content below for mobile */
   }
 
   .services-section__features {
@@ -3414,6 +3410,8 @@
     line-height: 1.4;
     padding: clamp(0.25rem, 0.75vw, 0.5rem);
     /* Minimal padding on tablet */
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+    /* Added spacing between icon and content below for tablet */
   }
 
   .why-trust-section__card:hover .why-trust-section__hover-text-content {
@@ -3504,6 +3502,8 @@
     /* Tighter line height on mobile */
     padding: clamp(0.25rem, 0.75vw, 0.375rem);
     /* Minimal padding on mobile */
+    margin-top: clamp(1.25rem, 3.5vw, 2rem);
+    /* Added spacing between icon and content below for mobile */
   }
 
   .why-trust-section__card:hover .why-trust-section__hover-text-content {
