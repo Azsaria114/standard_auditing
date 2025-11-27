@@ -1585,14 +1585,14 @@
   position: absolute;
   left: 100%;
   top: 50%;
-  width: clamp(2rem, 4vw, 5rem);
-  height: clamp(2px, 0.3vw, 3px);
+  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 0 clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0;
-  /* Horizontal line from Legrand card (column 3, row 1) to center card - responsive width and height */
+  border-radius: 0 4px 4px 0;
+  /* Horizontal line from Legrand card (column 3, row 1) to center card - starts from right edge, curved connection */
 }
 
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
@@ -1600,29 +1600,29 @@
   position: absolute;
   left: 100%;
   top: 50%;
-  width: clamp(2rem, 4vw, 5rem);
-  height: clamp(2px, 0.3vw, 3px);
+  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 0 clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0;
-  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - responsive width and height */
+  border-radius: 0 4px 4px 0;
+  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - starts from right edge, curved connection */
 }
 
 /* Vertical connecting line from horizontal lines to center blue card - creates right half rectangle */
 .partners-section__grid::after {
   content: '';
   position: absolute;
-  left: calc(100% + clamp(1.5rem, 3vw, 2.5rem));
-  top: calc(15.5% - clamp(0.125rem, 0.25vw, 0.5rem));
-  width: clamp(2px, 0.3vw, 3px);
-  height: clamp(30%, 33.33%, 36%);
+  left: calc(99.5% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  top: calc(15.5% - clamp(0.25rem, 0.5vw, 0.5rem));
+  width: 3px;
+  height: calc(33.33% + clamp(1rem, 2vw, 1.5rem));
   background: rgba(128, 128, 128, 0.4);
   z-index: 1;
   pointer-events: none;
-  border-radius: clamp(2px, 0.5vw, 4px);
-  /* Vertical line connecting the two horizontal lines - responsive positioning and sizing */
+  border-radius: 4px;
+  /* Vertical line connecting the two horizontal lines - spans from top horizontal line to bottom horizontal line, forms single smooth curved rectangle */
 }
 
 /* Hover animations removed */
@@ -1671,14 +1671,14 @@
   position: absolute;
   right: 100%;
   top: 50%;
-  width: clamp(4rem, 8vw, 9.7rem);
-  height: clamp(2px, 0.3vw, 3px);
+  width: clamp(8rem, 12vw, 9.7rem);
+  height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: clamp(2px, 0.5vw, 4px) 0 0 clamp(2px, 0.5vw, 4px);
-  /* Horizontal line extending to the left side of SA logo card - responsive sizing */
+  border-radius: 4px 0 0 4px;
+  /* Horizontal line extending to the left side of SA logo card */
 }
 
 .partners-section__middle::after {
@@ -1686,14 +1686,14 @@
   position: absolute;
   left: 0;
   top: 50%;
-  width: clamp(12rem, 20vw, 22rem);
-  height: clamp(2px, 0.3vw, 3px);
+  width: calc(clamp(6.5rem, 12vw, 8rem) + clamp(2.5rem, 6vw, 4.5rem) + clamp(7.5rem, 12vw, 10rem));
+  height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 0 clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0;
-  /* Horizontal line extending from left edge of SA logo card, extending more on the right side - responsive sizing */
+  border-radius: 0 4px 4px 0;
+  /* Horizontal line extending from left edge of SA logo card, extending more on the right side */
 }
 
 .partners-section__center-card {
@@ -1899,18 +1899,28 @@
     /* Connector hidden on smaller screens, maintains clean layout */
   }
 
-  /* Hide connecting lines on tablet - layout changes to vertical stack */
-  .partners-section__grid > .partners-section__card:nth-child(3)::after,
-  .partners-section__grid > .partners-section__card:nth-child(6)::after,
+  /* Hide complex connecting lines on tablet */
+  .partners-section__grid > .partners-section__card:nth-child(3)::after {
+    display: none;
+  }
+  
+  .partners-section__grid > .partners-section__card:nth-child(6)::after {
+    display: none;
+  }
+  
   .partners-section__grid::after {
     display: none;
-    /* Connecting lines hidden on tablet for cleaner vertical layout */
   }
-
-  .partners-section__middle::before,
+  
+  /* Keep simple horizontal lines from both sides of SA logo, make responsive */
+  .partners-section__middle::before {
+    width: clamp(2.5rem, 5vw, 4rem);
+    /* Responsive width for left side line */
+  }
+  
   .partners-section__middle::after {
-    display: none;
-    /* Horizontal connectors hidden, vertical flow preserved */
+    width: calc(clamp(5.5rem, 10vw, 7rem) + clamp(1.5rem, 3vw, 2.5rem) + clamp(3rem, 6vw, 4.5rem));
+    /* Responsive width for right side line - adjusted for smaller SA logo card */
   }
 
   .partners-section__middle {
@@ -2037,20 +2047,6 @@
     /* Smaller font size on mobile for better visibility */
   }
 
-  /* Hide connecting lines on mobile - layout changes to vertical stack */
-  .partners-section__grid > .partners-section__card:nth-child(3)::after,
-  .partners-section__grid > .partners-section__card:nth-child(6)::after,
-  .partners-section__grid::after {
-    display: none;
-    /* Connecting lines hidden on mobile for cleaner vertical layout */
-  }
-
-  .partners-section__middle::before,
-  .partners-section__middle::after {
-    display: none;
-    /* Horizontal connectors hidden on mobile */
-  }
-
   .partners-section__middle {
     order: 2;
     margin-top: 0;
@@ -2062,6 +2058,30 @@
     width: clamp(5.5rem, 10vw, 7rem);
     height: clamp(5.5rem, 10vw, 7rem);
     /* Slightly smaller center card on mobile for better fit */
+  }
+  
+  /* Hide complex connecting lines on mobile */
+  .partners-section__grid > .partners-section__card:nth-child(3)::after {
+    display: none;
+  }
+  
+  .partners-section__grid > .partners-section__card:nth-child(6)::after {
+    display: none;
+  }
+  
+  .partners-section__grid::after {
+    display: none;
+  }
+  
+  /* Keep simple horizontal lines from both sides of SA logo, make responsive */
+  .partners-section__middle::before {
+    width: clamp(2rem, 4vw, 3.5rem);
+    /* Responsive width for left side line on mobile */
+  }
+  
+  .partners-section__middle::after {
+    width: calc(clamp(5.5rem, 10vw, 7rem) + clamp(1rem, 2.5vw, 2rem) + clamp(2.5rem, 5vw, 4rem));
+    /* Responsive width for right side line on mobile - adjusted for smaller SA logo card */
   }
 
   .partners-section__right {
