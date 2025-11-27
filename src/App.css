@@ -1591,8 +1591,8 @@
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 0 2px 2px 0;
-  /* Horizontal line from Legrand card (column 3, row 1) to center card - starts from right edge */
+  border-radius: 0 4px 4px 0;
+  /* Horizontal line from Legrand card (column 3, row 1) to center card - starts from right edge, curved connection */
 }
 
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
@@ -1606,8 +1606,8 @@
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 0 2px 2px 0;
-  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - starts from right edge */
+  border-radius: 0 4px 4px 0;
+  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - starts from right edge, curved connection */
 }
 
 /* Vertical connecting line from horizontal lines to center blue card - creates right half rectangle */
@@ -1617,12 +1617,12 @@
   left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
   top: calc(16.67% - 1.5px);
   width: 3px;
-  height: calc(33.33% + clamp(0.75rem, 1.5vw, 1rem));
+  height: calc(33.33% + clamp(1rem, 2vw, 1.5rem));
   background: rgba(128, 128, 128, 0.4);
   z-index: 1;
   pointer-events: none;
-  border-radius: 2px;
-  /* Vertical line connecting the two horizontal lines - spans from top horizontal line to bottom horizontal line, forms single smooth element */
+  border-radius: 4px;
+  /* Vertical line connecting the two horizontal lines - spans from top horizontal line to bottom horizontal line, forms single smooth curved rectangle */
 }
 
 .partners-section__card:hover {
