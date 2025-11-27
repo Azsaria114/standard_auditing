@@ -1612,7 +1612,7 @@
 .partners-section__grid::after {
   content: '';
   position: absolute;
-  left: calc(33.333% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
   top: 50%;
   width: 2px;
   height: calc(clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem));
