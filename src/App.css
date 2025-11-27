@@ -3112,14 +3112,19 @@
   margin: 0;
   color: white;
   text-align: left;
-  font-size: clamp(0.875rem, 1.75vw, 1rem);
-  line-height: 1.6;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  /* More responsive font size that scales better on smaller screens */
+  line-height: 1.5;
+  /* Slightly reduced line-height for better fit */
   transition: font-size 0.3s ease;
+  padding: clamp(0.5rem, 1.5vw, 1rem);
+  /* Add padding to ensure text doesn't touch edges */
+  box-sizing: border-box;
 }
 
 .why-trust-section__card:hover .why-trust-section__hover-text-content {
-  font-size: calc(1em - 1px);
-  /* Reduce font size by 1px on hover */
+  font-size: clamp(0.7rem, 1.4vw, 0.95rem);
+  /* Responsive font size on hover - scales down on smaller screens */
   font-weight: 400;
   width: 100%;
   /* White text content */
@@ -3247,6 +3252,19 @@
     /* Same size as row 1 card - creates symmetrical pyramid effect */
     width: 100%;
   }
+
+  /* Responsive hover text font size for tablet */
+  .why-trust-section__hover-text-content {
+    font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+    /* Smaller font size on tablet for better fit */
+    line-height: 1.45;
+    padding: clamp(0.5rem, 1.25vw, 0.875rem);
+  }
+
+  .why-trust-section__card:hover .why-trust-section__hover-text-content {
+    font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+    /* Responsive font size on hover for tablet */
+  }
 }
 
 @media (max-width: 768px) {
@@ -3305,6 +3323,19 @@
     max-width: clamp(12rem, 30vw, 16rem);
     /* Same size as row 1 card on mobile - creates symmetrical pyramid effect */
     width: 100%;
+  }
+
+  /* Responsive hover text font size for mobile */
+  .why-trust-section__hover-text-content {
+    font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+    /* Smaller font size on mobile for better fit */
+    line-height: 1.4;
+    padding: clamp(0.5rem, 1.25vw, 0.75rem);
+  }
+
+  .why-trust-section__card:hover .why-trust-section__hover-text-content {
+    font-size: clamp(0.6rem, 1.1vw, 0.8rem);
+    /* Even smaller on hover for mobile */
   }
 }
 
