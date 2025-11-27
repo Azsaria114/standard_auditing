@@ -1681,14 +1681,14 @@
   position: absolute;
   left: 0;
   top: 50%;
-  width: calc(clamp(6.5rem, 12vw, 8rem) + clamp(9rem, 12vw, 9.7rem) + clamp(4rem, 8vw, 6rem));
+  width: calc(clamp(6.5rem, 12vw, 8rem) + clamp(2.5rem, 6vw, 4.5rem) + clamp(4rem, 8vw, 6rem));
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 0 4px 4px 0;
-  /* Horizontal line extending from left edge of SA logo card, extending more on the right side */
+  border-radius: 4px;
+  /* Horizontal line extending more on the right side, minimal on left side */
 }
 
 .partners-section__center-card {
