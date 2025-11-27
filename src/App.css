@@ -1615,7 +1615,7 @@
   left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
   top: calc(16.67% - 1px);
   width: 3px;
-  height: calc(33.33% + 2px);
+  height: calc(33.33% + clamp(0.5rem, 1vw, 0.75rem));
   background: rgba(128, 128, 128, 0.4);
   z-index: 1;
   pointer-events: none;
