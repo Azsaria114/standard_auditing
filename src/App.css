@@ -1666,20 +1666,20 @@
   /* Center logo positioned between rows 1 and 2 - moved up slightly */
 }
 
-/* Desktop: Separate lines for left and right sides - properly aligned to touch cards */
+/* Desktop: Separate lines for left and right sides - extended width, scales down on smaller screens */
 .partners-section__middle::before {
   content: '';
   position: absolute;
   right: 100%;
   top: 50%;
-  width: clamp(2.5rem, 6vw, 4.5rem);
+  width: clamp(2.5rem, 8vw, 8rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
   border-radius: 4px 0 0 4px;
-  /* Horizontal line extending from left edge of SA logo card to touch the grid - uses gap distance */
+  /* Horizontal line extending from left edge of SA logo card - wider on desktop, reduces on smaller screens */
 }
 
 .partners-section__middle::after {
@@ -1687,14 +1687,14 @@
   position: absolute;
   left: 100%;
   top: 50%;
-  width: clamp(2.5rem, 6vw, 4.5rem);
+  width: clamp(2.5rem, 8vw, 10rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line extending from right edge of SA logo card through gap to touch right card - uses gap distance */
+  /* Horizontal line extending from right edge of SA logo card - wider on desktop, reduces on smaller screens */
 }
 
 .partners-section__center-card {
