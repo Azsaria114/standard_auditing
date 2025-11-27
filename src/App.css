@@ -1479,6 +1479,54 @@
   /* Three parts aligned horizontally - left grid, center logo, right text box */
 }
 
+/* Connecting lines from center blue box */
+.partners-section__middle {
+  position: relative;
+}
+
+/* Line from center card to 3rd column top card (Legrand) - using middle container */
+.partners-section__middle::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * clamp(2.5rem, 6vw, 4.5rem));
+  top: 30%;
+  width: clamp(2.5rem, 6vw, 4.5rem);
+  height: 2px;
+  background: rgba(26, 54, 80, 0.25);
+  z-index: 1;
+  pointer-events: none;
+  /* Line from center to 3rd column top card (Legrand) */
+}
+
+/* Line from center card to 3rd column bottom card (Carl Stahl) */
+.partners-section__center-card::after {
+  content: '';
+  position: absolute;
+  left: calc(-1 * clamp(2.5rem, 6vw, 4.5rem));
+  bottom: 30%;
+  width: clamp(2.5rem, 6vw, 4.5rem);
+  height: 2px;
+  background: rgba(26, 54, 80, 0.25);
+  z-index: 3;
+  pointer-events: none;
+  /* Line from center to 3rd column bottom card (Carl Stahl) */
+}
+
+/* Line from center card to right result card */
+.partners-section__middle::after {
+  content: '';
+  position: absolute;
+  right: calc(-1 * clamp(2.5rem, 6vw, 4.5rem));
+  top: 50%;
+  width: clamp(2.5rem, 6vw, 4.5rem);
+  height: 2px;
+  background: rgba(26, 54, 80, 0.25);
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  /* Line from center to right result card */
+}
+
 .partners-section__divider {
   display: none;
   /* Divider line removed - not in design */
@@ -1630,10 +1678,7 @@
   /* Center logo positioned between rows 1 and 2 - slightly lowered */
 }
 
-.partners-section__middle::after {
-  display: none;
-  /* Removed - using partners-section__connector instead */
-}
+/* .partners-section__middle::after is now used for connecting line to right card - see below */
 
 .partners-section__center-card {
   width: clamp(6.5rem, 12vw, 8rem);
@@ -1838,9 +1883,11 @@
     /* Connector hidden on smaller screens, maintains clean layout */
   }
 
-  .partners-section__middle::after {
+  .partners-section__middle::before,
+  .partners-section__middle::after,
+  .partners-section__center-card::after {
     display: none;
-    /* Horizontal connector hidden, vertical flow preserved */
+    /* Connecting lines hidden on tablet, vertical flow preserved */
   }
 
   .partners-section__middle {
@@ -1972,6 +2019,13 @@
     margin-top: 0;
     align-self: center;
     /* Center card appears between grid and result card - same as tablet */
+  }
+  
+  .partners-section__middle::before,
+  .partners-section__middle::after,
+  .partners-section__center-card::after {
+    display: none;
+    /* Connecting lines hidden on mobile, vertical flow preserved */
   }
 
   .partners-section__center-card {
