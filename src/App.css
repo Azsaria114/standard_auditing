@@ -1672,8 +1672,8 @@
   flex: 0 0 auto;
   position: relative;
   align-self: flex-start;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  /* Center logo positioned between rows 1 and 2 - moved up further */
+  margin-top: clamp(4.5rem, 9vw, 6.5rem);
+  /* Center logo positioned between rows 1 and 2 - moved up slightly */
 }
 
 .partners-section__middle::after {
@@ -1688,7 +1688,7 @@
   z-index: 1;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line connecting center card to result card */
+  /* Horizontal line connecting center card to right card */
 }
 
 .partners-section__center-card {
@@ -1746,9 +1746,8 @@
   align-self: flex-start;
   width: auto;
   flex-shrink: 0;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  position: relative;
-  /* Right text box aligned with center logo - moved up further to match center card */
+  margin-top: clamp(0.5rem, 3vw, 2rem);
+  /* Right text box aligned with center logo - moved up slightly */
 }
 
 .partners-section__result-card {
