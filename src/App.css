@@ -1613,14 +1613,13 @@
   content: '';
   position: absolute;
   left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
-  top: 50%;
+  top: calc(50% - clamp(4rem, 7vw, 5.5rem));
   width: 2px;
-  height: calc(clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem) + clamp(1.5rem, 3.5vw, 2.5rem));
+  height: calc(clamp(4rem, 7vw, 5.5rem) * 2 + clamp(1.5rem, 3.5vw, 2.5rem));
   background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  /* Vertical line connecting the two horizontal lines - positioned at the end of horizontal lines */
+  /* Vertical line connecting the two horizontal lines - spans from top horizontal line to bottom horizontal line */
 }
 
 .partners-section__card:hover {
