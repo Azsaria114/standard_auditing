@@ -3194,14 +3194,15 @@
     row-gap: clamp(1rem, 2.5vw, 1.5rem);
   }
 
-  /* Row 1: 1 card (centered) - Seamless Client Experience */
+  /* Row 1: 1 card (centered, smaller width) - Seamless Client Experience */
   .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
     grid-column: 1 / 3;
     /* Spans both columns for centered single card */
     grid-row: 1;
     justify-self: center;
-    max-width: clamp(18rem, 40vw, 24rem);
-    /* Limit width for centered appearance */
+    max-width: clamp(14rem, 32vw, 18rem);
+    /* Smaller width than two-card rows - creates triangle/pyramid effect */
+    width: 100%;
   }
 
   /* Row 2: 2 cards - Government Approved & Fast & Reliable */
@@ -3236,14 +3237,15 @@
     grid-row: 4;
   }
 
-  /* Row 5: 1 card (centered) - Proven Track Record */
+  /* Row 5: 1 card (centered, smaller width) - Proven Track Record */
   .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
     grid-column: 1 / 3;
     /* Spans both columns for centered single card */
     grid-row: 5;
     justify-self: center;
-    max-width: clamp(18rem, 40vw, 24rem);
-    /* Limit width for centered appearance */
+    max-width: clamp(14rem, 32vw, 18rem);
+    /* Smaller width than two-card rows - creates triangle/pyramid effect */
+    width: 100%;
   }
 }
 
@@ -3255,12 +3257,14 @@
     row-gap: clamp(0.75rem, 2vw, 1.25rem);
   }
 
-  /* Row 1: 1 card (centered) */
+  /* Row 1: 1 card (centered, smaller width) */
   .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
     grid-column: 1 / 3;
     grid-row: 1;
-    max-width: 100%;
-    /* Full width on mobile */
+    justify-self: center;
+    max-width: clamp(12rem, 30vw, 16rem);
+    /* Smaller width than two-card rows on mobile - creates triangle effect */
+    width: 100%;
   }
 
   /* Row 2: 2 cards */
@@ -3293,12 +3297,14 @@
     grid-row: 4;
   }
 
-  /* Row 5: 1 card (centered) */
+  /* Row 5: 1 card (centered, smaller width) */
   .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
     grid-column: 1 / 3;
     grid-row: 5;
-    max-width: 100%;
-    /* Full width on mobile */
+    justify-self: center;
+    max-width: clamp(12rem, 30vw, 16rem);
+    /* Smaller width than two-card rows on mobile - creates triangle effect */
+    width: 100%;
   }
 }
 
