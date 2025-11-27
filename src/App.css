@@ -1613,61 +1613,41 @@ html, body {
 
 /* Perfect half rectangle - unified drawing using single element */
 /* Remove individual card lines - we'll draw everything from grid */
-/* Lines from Legrand (card 3) and Carl Stahl (card 6) to center card */
+/* Lines from Legrand (card 3) and Carl Stahl (card 6) extending right to connect with vertical line */
 .partners-section__grid > .partners-section__card:nth-child(3)::after {
   content: '';
   position: absolute;
-  right: 100%;
+  left: 100%;
   top: 50%;
-  width: clamp(1.5rem, 4.5vw, 3.5rem);
+  width: var(--line-scale, clamp(2.5rem, 5vw, 5rem));
   height: clamp(2px, 0.3vw, 3px);
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  /* Horizontal line from Legrand card to center */
+  /* Horizontal line from Legrand card extending right to vertical line */
 }
 
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
   content: '';
   position: absolute;
-  right: 100%;
+  left: 100%;
   top: 50%;
-  width: clamp(1.5rem, 4.5vw, 3.5rem);
+  width: var(--line-scale, clamp(2.5rem, 5vw, 5rem));
   height: clamp(2px, 0.3vw, 3px);
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
-  z-index: 0;
-  pointer-events: none;
-  /* Horizontal line from Carl Stahl card to center */
-}
-
-/* Draw complete half rectangle from grid using ::before and ::after */
-/* ::before draws both horizontal lines using linear gradients */
-.partners-section__grid::before {
-  content: '';
-  position: absolute;
-  left: 100%;
-  top: 0;
-  width: var(--line-scale, clamp(2.5rem, 5vw, 5rem));
-  height: 100%;
   z-index: 1;
   pointer-events: none;
-  /* Draw two horizontal lines at card centers */
-  background-image: 
-    linear-gradient(to right, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),
-    linear-gradient(to right, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4));
-  background-size: 
-    100% clamp(2px, 0.3vw, 3px),
-    100% clamp(2px, 0.3vw, 3px);
-  background-position: 
-    0 calc((100% / 6) - clamp(1px, 0.15vw, 1.5px)),
-    0 calc(50% - clamp(1px, 0.15vw, 1.5px));
-  background-repeat: no-repeat;
-  /* Two horizontal lines at row 1 and row 2 centers */
+  /* Horizontal line from Carl Stahl card extending right to vertical line */
 }
 
-/* ::after draws the vertical connecting line */
+/* Remove grid::before - horizontal lines now come from individual cards */
+.partners-section__grid::before {
+  display: none;
+}
+
+/* ::after draws the vertical connecting line - positioned to connect with horizontal lines from cards */
 .partners-section__grid::after {
   content: '';
   position: absolute;
@@ -1678,7 +1658,7 @@ html, body {
   background: rgba(128, 128, 128, 0.4);
   z-index: 1;
   pointer-events: none;
-  /* Vertical line connects both horizontal lines perfectly */
+  /* Vertical line connects both horizontal lines from cards 3 and 6 perfectly */
 }
 
 /* Hover animations removed */
@@ -2003,13 +1983,13 @@ html, body {
   
   /* Lines from Legrand and Carl Stahl cards for tablet */
   .partners-section__grid > .partners-section__card:nth-child(3)::after {
-    width: clamp(1.25rem, 3.5vw, 2.75rem);
-    /* Responsive width for tablet */
+    width: var(--line-scale, clamp(2rem, 4vw, 4rem));
+    /* Match vertical line scale for perfect connection */
   }
   
   .partners-section__grid > .partners-section__card:nth-child(6)::after {
-    width: clamp(1.25rem, 3.5vw, 2.75rem);
-    /* Responsive width for tablet */
+    width: var(--line-scale, clamp(2rem, 4vw, 4rem));
+    /* Match vertical line scale for perfect connection */
   }
   
   /* Separate lines for tablet - scaled down from desktop, properly aligned to touch cards */
@@ -2173,15 +2153,15 @@ html, body {
     /* Slightly smaller center card on mobile for better fit */
   }
   
-  /* Lines from Legrand and Carl Stahl cards for mobile */
+  /* Lines from Legrand and Carl Stahl cards for mobile - use same scale as vertical line */
   .partners-section__grid > .partners-section__card:nth-child(3)::after {
-    width: clamp(1rem, 2.5vw, 2rem);
-    /* Responsive width for mobile */
+    width: var(--line-scale, clamp(1.5rem, 3vw, 3rem));
+    /* Match vertical line scale for perfect connection */
   }
   
   .partners-section__grid > .partners-section__card:nth-child(6)::after {
-    width: clamp(1rem, 2.5vw, 2rem);
-    /* Responsive width for mobile */
+    width: var(--line-scale, clamp(1.5rem, 3vw, 3rem));
+    /* Match vertical line scale for perfect connection */
   }
   
   .partners-section__grid::after {
