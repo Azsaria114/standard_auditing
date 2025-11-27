@@ -1679,16 +1679,16 @@
 .partners-section__middle::after {
   content: '';
   position: absolute;
-  left: 100%;
+  left: 50%;
   top: 50%;
-  width: clamp(2.5rem, 6vw, 4.5rem);
+  width: calc(clamp(6.5rem, 12vw, 8rem) + clamp(2.5rem, 6vw, 4.5rem) * 2);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 0 4px 4px 0;
-  /* Horizontal line connecting center card to right card */
+  border-radius: 4px;
+  /* Horizontal line extending to both sides of the SA logo card */
 }
 
 .partners-section__center-card {
