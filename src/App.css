@@ -1577,6 +1577,8 @@ html, body {
   background: white;
   border-radius: clamp(0.625rem, 1.5vw, 0.875rem);
   padding: clamp(1rem, 2.5vw, 1.5rem) clamp(0.875rem, 2vw, 1.25rem);
+  position: relative;
+  /* Required for absolute positioning of connecting lines */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1611,9 +1613,33 @@ html, body {
 
 /* Perfect half rectangle - unified drawing using single element */
 /* Remove individual card lines - we'll draw everything from grid */
-.partners-section__grid > .partners-section__card:nth-child(3)::after,
+/* Lines from Legrand (card 3) and Carl Stahl (card 6) to center card */
+.partners-section__grid > .partners-section__card:nth-child(3)::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: clamp(1.5rem, 4.5vw, 3.5rem);
+  height: clamp(2px, 0.3vw, 3px);
+  background: rgba(128, 128, 128, 0.4);
+  transform: translateY(-50%);
+  z-index: 0;
+  pointer-events: none;
+  /* Horizontal line from Legrand card to center */
+}
+
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
-  display: none;
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: clamp(1.5rem, 4.5vw, 3.5rem);
+  height: clamp(2px, 0.3vw, 3px);
+  background: rgba(128, 128, 128, 0.4);
+  transform: translateY(-50%);
+  z-index: 0;
+  pointer-events: none;
+  /* Horizontal line from Carl Stahl card to center */
 }
 
 /* Draw complete half rectangle from grid using ::before and ::after */
@@ -1960,17 +1986,30 @@ html, body {
     /* Connector hidden on smaller screens, maintains clean layout */
   }
 
-  /* Hide complex connecting lines on tablet */
+  /* Lines from Legrand and Carl Stahl cards for tablet */
   .partners-section__grid > .partners-section__card:nth-child(3)::after {
-    display: none;
+    width: clamp(1.25rem, 3.5vw, 2.75rem);
+    /* Responsive width for tablet */
   }
   
   .partners-section__grid > .partners-section__card:nth-child(6)::after {
-    display: none;
+    width: clamp(1.25rem, 3.5vw, 2.75rem);
+    /* Responsive width for tablet */
   }
   
   .partners-section__grid::after {
     display: none;
+  }
+  
+  /* Lines from Legrand and Carl Stahl cards for tablet */
+  .partners-section__grid > .partners-section__card:nth-child(3)::after {
+    width: clamp(1.25rem, 3.5vw, 2.75rem);
+    /* Responsive width for tablet */
+  }
+  
+  .partners-section__grid > .partners-section__card:nth-child(6)::after {
+    width: clamp(1.25rem, 3.5vw, 2.75rem);
+    /* Responsive width for tablet */
   }
   
   /* Separate lines for tablet - scaled down from desktop, properly aligned to touch cards */
@@ -2134,13 +2173,15 @@ html, body {
     /* Slightly smaller center card on mobile for better fit */
   }
   
-  /* Hide complex connecting lines on mobile */
+  /* Lines from Legrand and Carl Stahl cards for mobile */
   .partners-section__grid > .partners-section__card:nth-child(3)::after {
-    display: none;
+    width: clamp(1rem, 2.5vw, 2rem);
+    /* Responsive width for mobile */
   }
   
   .partners-section__grid > .partners-section__card:nth-child(6)::after {
-    display: none;
+    width: clamp(1rem, 2.5vw, 2rem);
+    /* Responsive width for mobile */
   }
   
   .partners-section__grid::after {
