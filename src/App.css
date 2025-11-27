@@ -1672,8 +1672,8 @@
   flex: 0 0 auto;
   position: relative;
   align-self: flex-start;
-  margin-top: clamp(4rem, 8vw, 6rem);
-  /* Center logo positioned between rows 1 and 2 - moved up slightly */
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  /* Center logo positioned between rows 1 and 2 - moved up further */
 }
 
 .partners-section__middle::after {
@@ -1746,9 +1746,9 @@
   align-self: flex-start;
   width: auto;
   flex-shrink: 0;
-  margin-top: clamp(4rem, 8vw, 6rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
   position: relative;
-  /* Right text box aligned with center logo - moved up to match center card */
+  /* Right text box aligned with center logo - moved up further to match center card */
 }
 
 .partners-section__result-card {
