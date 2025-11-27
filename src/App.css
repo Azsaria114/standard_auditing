@@ -1101,7 +1101,7 @@
 /* Badge positioned absolutely to maintain overlay effect from design */
 .services-section__badge {
   position: absolute;
-  right: clamp(2.5rem, 5vw, 3.5rem);
+  right: clamp(1.5rem, 4vw, 2.5rem);
   /* Moved right slightly */
   top: 50%;
   transform: translateY(-50%);
@@ -1124,7 +1124,7 @@
 /* Desktop-specific positioning and size */
 @media (min-width: 1025px) {
   .services-section__badge {
-    right: clamp(3rem, 6vw, 4.5rem);
+    right: clamp(2rem, 5vw, 3.5rem);
     /* Moved right on desktop */
     width: clamp(8rem, 15vw, 10rem);
     height: clamp(8rem, 15vw, 10rem);
@@ -1270,7 +1270,7 @@
 
   .services-section__badge {
     position: absolute;
-    right: clamp(1.5rem, 4vw, 2.5rem);
+    right: clamp(0.5rem, 3vw, 1.5rem);
     top: 50%;
     transform: translateY(-50%);
     margin: 0;
@@ -1389,7 +1389,7 @@
 
   .services-section__badge {
     position: absolute;
-    right: clamp(1rem, 3vw, 2rem);
+    right: clamp(0rem, 2vw, 1rem);
     top: 50%;
     transform: translateY(-50%);
     margin: 0;
@@ -1582,6 +1582,11 @@
   box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 3.5vw, 2rem) rgba(0, 0, 0, 0.18);
   border-color: rgba(26, 54, 80, 0.2);
   /* Enhanced hover effect for better visual appeal */
+}
+
+.partners-section__card:hover .partners-section__name {
+  font-size: calc(1em - 1px);
+  /* Reduce font size by 1px on hover */
 }
 
 .partners-section__logo {
@@ -1787,6 +1792,11 @@
   transform: translateY(clamp(-0.25rem, -0.75vw, -0.5rem));
   box-shadow: 0 clamp(0.75rem, 2vw, 1.25rem) clamp(2rem, 4.5vw, 3rem) rgba(0, 0, 0, 0.2);
   /* Hover effect for result card */
+}
+
+.partners-section__result-card:hover * {
+  font-size: calc(1em - 1px);
+  /* Reduce font size by 1px on hover for all text elements */
 }
 
 .partners-section__result-text {
@@ -2234,7 +2244,8 @@
 
 .services-grid-section__card:hover .services-grid-section__card-title {
   color: white;
-  /* Title turns white on hover when card is blue */
+  font-size: calc(1em - 1px);
+  /* Title turns white on hover when card is blue, font size reduced by 1px */
 }
 
 .services-grid-section__card-description {
@@ -2256,7 +2267,8 @@
 
 .services-grid-section__card:hover .services-grid-section__card-description {
   color: rgba(255, 255, 255, 0.95);
-  /* Description turns white on hover when card is blue */
+  font-size: calc(1em - 1px);
+  /* Description turns white on hover when card is blue, font size reduced by 1px */
 }
 
 .services-grid-section__expand-btn {
@@ -3229,7 +3241,8 @@
 
 .pricing-section__card:hover .pricing-section__card-title {
   color: white;
-  /* Title turns white on hover when card is blue */
+  font-size: calc(1em - 1px);
+  /* Title turns white on hover when card is blue, font size reduced by 1px */
 }
 
 .pricing-section__price {
@@ -3250,7 +3263,8 @@
 
 .pricing-section__card:hover .pricing-section__price-amount {
   color: white;
-  /* Price turns white on hover when card is blue */
+  font-size: calc(1em - 1px);
+  /* Price turns white on hover when card is blue, font size reduced by 1px */
 }
 
 .pricing-section__price-note {
@@ -3279,7 +3293,8 @@
 
 .pricing-section__card:hover .pricing-section__card-description {
   color: rgba(255, 255, 255, 0.95);
-  /* Description turns white on hover when card is blue */
+  font-size: calc(1em - 1px);
+  /* Description turns white on hover when card is blue, font size reduced by 1px */
 }
 
 .pricing-section__features {
@@ -3326,7 +3341,8 @@
 
 .pricing-section__card:hover .pricing-section__feature span {
   color: rgba(255, 255, 255, 0.95);
-  /* Feature text turns white on hover when card is blue */
+  font-size: calc(1em - 1px);
+  /* Feature text turns white on hover when card is blue, font size reduced by 1px */
 }
 
 .pricing-section__cta {
@@ -4684,6 +4700,12 @@
   margin: 0 0 clamp(0.5rem, 1vw, 0.75rem) 0;
   position: relative;
   padding-left: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.site-footer__column:hover .site-footer__address {
+  color: #1A3650;
+  /* Darker blue on hover for better visibility */
 }
 
 .site-footer__address::before {
@@ -4709,6 +4731,12 @@
   width: fit-content;
   padding-left: 1.5rem;
   margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+  transition: color 0.3s ease;
+}
+
+.site-footer__email:hover {
+  color: #1A3650;
+  /* Darker blue on hover for better visibility */
 }
 
 .site-footer__email::before {
@@ -4804,17 +4832,17 @@
   width: fit-content;
   padding-bottom: 0.5rem;
   align-self: flex-start;
+  transition: color 0.3s ease;
+}
+
+.site-footer__column:hover .site-footer__column-title {
+  color: #0d1f2e;
+  /* Darker shade on hover for better visual appeal */
 }
 
 .site-footer__column-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background: #1A3650;
-  border-radius: 1px;
+  display: none;
+  /* Remove underline from column titles */
 }
 
 
@@ -4843,6 +4871,30 @@
   width: fit-content;
   padding: 0.25rem 0;
   line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.site-footer__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0.125rem;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1A3650, rgba(26, 54, 80, 0.6));
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Animated underline that expands on hover */
+}
+
+.site-footer__links a:hover {
+  color: #1A3650;
+  /* Darker blue on hover for better visibility */
+}
+
+.site-footer__links a:hover::after {
+  width: 100%;
+  /* Expand underline to full width on hover */
 }
 
 .site-footer__divider {
