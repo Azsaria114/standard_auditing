@@ -3209,15 +3209,13 @@
     row-gap: clamp(1rem, 2.5vw, 1.5rem);
   }
 
-  /* Row 1: 1 card (centered, smaller width) - Seamless Client Experience */
+  /* Row 1: 1 card (same width as two-card rows) - Seamless Client Experience */
   .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
     grid-column: 1 / 3;
-    /* Spans both columns for centered single card */
+    /* Spans both columns - same width as combined two-card rows */
     grid-row: 1;
-    justify-self: center;
-    max-width: clamp(14rem, 32vw, 18rem);
-    /* Same size as row 5 card - creates symmetrical pyramid effect */
     width: 100%;
+    /* Full width to match two-card rows combined width */
   }
 
   /* Row 2: 2 cards - Government Approved & Fast & Reliable */
@@ -3252,15 +3250,13 @@
     grid-row: 4;
   }
 
-  /* Row 5: 1 card (centered, smaller width) - Proven Track Record */
+  /* Row 5: 1 card (same width as two-card rows) - Proven Track Record */
   .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
     grid-column: 1 / 3;
-    /* Spans both columns for centered single card */
+    /* Spans both columns - same width as combined two-card rows */
     grid-row: 5;
-    justify-self: center;
-    max-width: clamp(14rem, 32vw, 18rem);
-    /* Same size as row 1 card - creates symmetrical pyramid effect */
     width: 100%;
+    /* Full width to match two-card rows combined width */
   }
 
   /* Responsive hover text font size for tablet */
@@ -3294,14 +3290,12 @@
     row-gap: clamp(0.75rem, 2vw, 1.25rem);
   }
 
-  /* Row 1: 1 card (centered, slightly wider on mobile) */
+  /* Row 1: 1 card (same width as two-card rows on mobile) */
   .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
     grid-column: 1 / 3;
     grid-row: 1;
-    justify-self: center;
-    max-width: clamp(14rem, 35vw, 18rem);
-    /* Increased width on mobile for better visibility */
     width: 100%;
+    /* Full width to match two-card rows combined width */
   }
 
   /* Row 2: 2 cards */
@@ -3338,14 +3332,12 @@
     grid-row: 4;
   }
 
-  /* Row 5: 1 card (centered, slightly wider on mobile) */
+  /* Row 5: 1 card (same width as two-card rows on mobile) */
   .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
     grid-column: 1 / 3;
     grid-row: 5;
-    justify-self: center;
-    max-width: clamp(14rem, 35vw, 18rem);
-    /* Increased width on mobile for better visibility - same as row 1 */
     width: 100%;
+    /* Full width to match two-card rows combined width */
   }
 
   /* Responsive hover text font size for mobile */
