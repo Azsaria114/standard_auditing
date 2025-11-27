@@ -1484,7 +1484,11 @@
   position: relative;
 }
 
-/* Line from center card to 3rd column top card (Legrand) - using middle container */
+.partners-section__container {
+  position: relative;
+}
+
+/* Line from center card to 3rd column top card (Legrand) - tip touching the card */
 .partners-section__middle::before {
   content: '';
   position: absolute;
@@ -1498,7 +1502,7 @@
   /* Line from center to 3rd column top card (Legrand) */
 }
 
-/* Line from center card to 3rd column bottom card (Carl Stahl) */
+/* Line from center card to 3rd column bottom card (Carl Stahl) - tip touching the card */
 .partners-section__center-card::after {
   content: '';
   position: absolute;
@@ -1512,7 +1516,66 @@
   /* Line from center to 3rd column bottom card (Carl Stahl) */
 }
 
-/* Line from center card to right result card */
+/* Line extending left from top card (Legrand) to merge point */
+.partners-section__grid > .partners-section__card:nth-child(3)::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: clamp(2.5rem, 6vw, 4rem);
+  height: 2px;
+  background: rgba(26, 54, 80, 0.25);
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  /* Line extending left from top card to merge point */
+}
+
+/* Line extending left from bottom card (Carl Stahl) to merge point */
+.partners-section__grid > .partners-section__card:nth-child(6)::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: clamp(2.5rem, 6vw, 4rem);
+  height: 2px;
+  background: rgba(26, 54, 80, 0.25);
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  /* Line extending left from bottom card to merge point */
+}
+
+/* Vertical connecting line where the two horizontal lines merge */
+.partners-section__grid::after {
+  content: '';
+  position: absolute;
+  right: calc(-1 * clamp(2.5rem, 6vw, 4rem));
+  top: 25%;
+  bottom: 25%;
+  width: 2px;
+  background: rgba(26, 54, 80, 0.25);
+  z-index: 1;
+  pointer-events: none;
+  /* Vertical line connecting the two horizontal lines */
+}
+
+/* Line from merge point back to center blue box */
+.partners-section__grid::before {
+  content: '';
+  position: absolute;
+  right: calc(-1 * clamp(2.5rem, 6vw, 4rem));
+  top: 50%;
+  width: clamp(2.5rem, 6vw, 4.5rem);
+  height: 2px;
+  background: rgba(26, 54, 80, 0.25);
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  /* Horizontal line from merge point to center */
+}
+
+/* Line from center card extending right to connect with result card */
 .partners-section__middle::after {
   content: '';
   position: absolute;
@@ -1524,7 +1587,22 @@
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  /* Line from center to right result card */
+  /* Line from center extending right */
+}
+
+/* Line from right result card extending left to connect with center line */
+.partners-section__result-card::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * clamp(2.5rem, 6vw, 4.5rem));
+  top: 50%;
+  width: clamp(2.5rem, 6vw, 4.5rem);
+  height: 2px;
+  background: rgba(26, 54, 80, 0.25);
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  /* Line extending left from result card to connect with center */
 }
 
 .partners-section__divider {
@@ -1882,7 +1960,12 @@
 
   .partners-section__middle::before,
   .partners-section__middle::after,
-  .partners-section__center-card::after {
+  .partners-section__center-card::after,
+  .partners-section__grid::before,
+  .partners-section__grid::after,
+  .partners-section__grid > .partners-section__card:nth-child(3)::after,
+  .partners-section__grid > .partners-section__card:nth-child(6)::after,
+  .partners-section__result-card::before {
     display: none;
     /* Connecting lines hidden on tablet, vertical flow preserved */
   }
@@ -2020,7 +2103,12 @@
   
   .partners-section__middle::before,
   .partners-section__middle::after,
-  .partners-section__center-card::after {
+  .partners-section__center-card::after,
+  .partners-section__grid::before,
+  .partners-section__grid::after,
+  .partners-section__grid > .partners-section__card:nth-child(3)::after,
+  .partners-section__grid > .partners-section__card:nth-child(6)::after,
+  .partners-section__result-card::before {
     display: none;
     /* Connecting lines hidden on mobile, vertical flow preserved */
   }
