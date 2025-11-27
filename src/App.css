@@ -1672,7 +1672,7 @@
   position: absolute;
   right: 100%;
   top: 50%;
-  width: clamp(2.5rem, 8vw, 8rem);
+  width: clamp(8rem, 12vw, 9.7rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
@@ -1687,7 +1687,7 @@
   position: absolute;
   left: 100%;
   top: 50%;
-  width: clamp(2.5rem, 8vw, 10rem);
+  width: clamp(10rem, 12vw, 13.5rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
@@ -1913,17 +1913,17 @@
     display: none;
   }
   
-  /* Separate lines for tablet - properly aligned to touch cards */
+  /* Separate lines for tablet - scaled down from desktop, properly aligned to touch cards */
   .partners-section__middle::before {
     right: 100%;
-    width: clamp(2rem, 4vw, 3rem);
-    /* Left line - responsive width for tablet */
+    width: clamp(3rem, 6vw, 5rem);
+    /* Left line - responsive width for tablet, scales down from desktop */
   }
   
   .partners-section__middle::after {
     left: 100%;
-    width: clamp(2rem, 4vw, 3rem);
-    /* Right line - responsive width for tablet, properly positioned from right edge */
+    width: clamp(4rem, 7vw, 6.5rem);
+    /* Right line - responsive width for tablet, scales down from desktop, properly positioned from right edge */
   }
 
   .partners-section__middle {
@@ -2076,17 +2076,17 @@
     display: none;
   }
   
-  /* Separate lines for mobile - properly aligned to touch cards */
+  /* Separate lines for mobile - scaled down from desktop, properly aligned to touch cards */
   .partners-section__middle::before {
     right: 100%;
-    width: clamp(1.5rem, 3vw, 2.5rem);
-    /* Left line - responsive width for mobile */
+    width: clamp(2rem, 4vw, 3.5rem);
+    /* Left line - responsive width for mobile, scales down from desktop */
   }
   
   .partners-section__middle::after {
     left: 100%;
-    width: clamp(1.5rem, 3vw, 2.5rem);
-    /* Right line - responsive width for mobile, properly positioned from right edge */
+    width: clamp(2.5rem, 5vw, 4.5rem);
+    /* Right line - responsive width for mobile, scales down from desktop, properly positioned from right edge */
   }
 
   .partners-section__right {
