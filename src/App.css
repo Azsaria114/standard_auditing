@@ -1584,46 +1584,46 @@
 .partners-section__grid > .partners-section__card:nth-child(3)::after {
   content: '';
   position: absolute;
-  left: 100%;
+  left: calc(100% + 0.0625rem);
   top: 50%;
-  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem) - 0.0625rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line from Legrand card (column 3, row 1) to center card - behind cards to prevent overlap */
+  /* Horizontal line from Legrand card (column 3, row 1) - starts just outside card edge to prevent overlap */
 }
 
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
   content: '';
   position: absolute;
-  left: 100%;
+  left: calc(100% + 0.0625rem);
   top: 50%;
-  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  width: calc(clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem) - 0.0625rem);
   height: 3px;
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line from Carl Stahl card (column 3, row 2) to center card - behind cards to prevent overlap */
+  /* Horizontal line from Carl Stahl card (column 3, row 2) - starts just outside card edge to prevent overlap */
 }
 
 /* Vertical connecting line from horizontal lines to center blue card - creates right half rectangle */
 .partners-section__grid::after {
   content: '';
   position: absolute;
-  left: calc(99.5% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
-  top: calc(15.5% - clamp(0.25rem, 0.5vw, 0.5rem));
+  left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  top: calc(16.67% - 1.5px);
   width: 3px;
-  height: calc(33.33% + clamp(1rem, 2vw, 1.5rem));
+  height: calc(33.33% + 3px);
   background: rgba(128, 128, 128, 0.4);
   z-index: 0;
   pointer-events: none;
   border-radius: 4px;
-  /* Vertical line connecting the two horizontal lines - behind cards to prevent overlap */
+  /* Vertical line connecting the two horizontal lines - properly aligned to connect smoothly */
 }
 
 /* Hover animations removed */
@@ -1671,7 +1671,7 @@
 .partners-section__middle::before {
   content: '';
   position: absolute;
-  right: 100%;
+  right: calc(100% + 0.0625rem);
   top: 50%;
   width: clamp(5rem, 10vw, 9.7rem);
   height: 3px;
@@ -1680,13 +1680,13 @@
   z-index: 0;
   pointer-events: none;
   border-radius: 4px 0 0 4px;
-  /* Horizontal line extending from left edge of SA logo card - behind cards to prevent overlap */
+  /* Horizontal line extending from left edge of SA logo card - starts just outside card edge to prevent overlap */
 }
 
 .partners-section__middle::after {
   content: '';
   position: absolute;
-  left: 100%;
+  left: calc(100% + 0.0625rem);
   top: 50%;
   width: clamp(6rem, 11vw, 13.5rem);
   height: 3px;
@@ -1695,7 +1695,7 @@
   z-index: 0;
   pointer-events: none;
   border-radius: 0 4px 4px 0;
-  /* Horizontal line extending from right edge of SA logo card - behind cards to prevent overlap */
+  /* Horizontal line extending from right edge of SA logo card - starts just outside card edge to prevent overlap */
 }
 
 .partners-section__center-card {
