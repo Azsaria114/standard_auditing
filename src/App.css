@@ -1627,22 +1627,24 @@
   /* Horizontal line from Carl Stahl card - part of unified line system */
 }
 
-/* Vertical connecting line - uses same scale factor for unified scaling */
+/* Vertical connecting line - forms half rectangle by connecting the two horizontal lines */
 .partners-section__grid::after {
   content: '';
   position: absolute;
   left: calc(100% + var(--line-scale, clamp(2.5rem, 5vw, 5rem)));
-  /* Positioned based on unified horizontal line width */
-  top: clamp(12%, 15.5%, 18%);
+  /* Positioned at the end of horizontal lines - forms right edge of half rectangle */
+  /* Position: starts at center of row 1 card, ends at center of row 2 card */
+  top: calc(16.666% - clamp(1px, 0.15vw, 1.5px));
+  /* Center of row 1 = 100% / 6 = 16.666%, adjusted for line height */
   width: clamp(2px, 0.3vw, 3px);
-  /* Height uses proportional clamp values that scale with horizontal lines */
-  height: clamp(6rem, 15vw, 12rem);
-  /* Vertical line height scales proportionally - when horizontal lines shrink, this shrinks too */
+  /* Height spans from row 1 center to row 2 center */
+  height: calc(33.333% + clamp(1.25rem, 3vw, 2.5rem) + clamp(1px, 0.15vw, 1.5px));
+  /* Height = one row (33.33%) + gap between rows + line height adjustment */
   background: rgba(128, 128, 128, 0.4);
   z-index: 0;
   pointer-events: none;
   border-radius: 0;
-  /* Vertical line - part of unified line system, scales proportionally with horizontal lines */
+  /* Vertical line connects the two horizontal lines to form perfect half rectangle */
 }
 
 /* Hover animations removed */
@@ -1938,10 +1940,11 @@
     /* 3-column grid maintained for tablet */
   }
   
-  /* Adjust vertical line height for tablet to match horizontal line scaling */
+  /* Adjust vertical line for tablet to maintain half rectangle structure */
   .partners-section__grid::after {
-    height: clamp(5rem, 12vw, 10rem);
-    /* Proportional height for tablet */
+    top: calc(16.666% - clamp(1px, 0.15vw, 1.5px));
+    height: calc(33.333% + clamp(1rem, 2.5vw, 2rem) + clamp(1px, 0.15vw, 1.5px));
+    /* Maintains half rectangle structure on tablet */
   }
 
   .partners-section__connector {
@@ -2039,10 +2042,11 @@
     /* Responsive gap for mobile that scales smoothly */
   }
   
-  /* Adjust vertical line height for mobile to match horizontal line scaling */
+  /* Adjust vertical line for mobile to maintain half rectangle structure */
   .partners-section__grid::after {
-    height: clamp(4rem, 10vw, 8rem);
-    /* Proportional height for mobile */
+    top: calc(16.666% - clamp(1px, 0.15vw, 1.5px));
+    height: calc(33.333% + clamp(0.5rem, 1.25vw, 1rem) + clamp(1px, 0.15vw, 1.5px));
+    /* Maintains half rectangle structure on mobile */
   }
 
   /* Reset card transforms and positioning for mobile */
