@@ -3053,9 +3053,9 @@
   border: 0.125rem solid rgba(255, 255, 255, 0.2);
   /* Subtle white border */
   color: white;
-  padding: clamp(0.75rem, 2vw, 1.25rem) clamp(0.75rem, 2vw, 1.25rem);
-  /* Reduced responsive padding for more text space */
-  padding-top: clamp(3rem, 6vw, 4rem);
+  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.5rem, 1.5vw, 1rem);
+  /* Further reduced padding for maximum text space */
+  padding-top: clamp(2.75rem, 5.5vw, 3.75rem);
   /* Reduced top padding to account for icon */
   border-radius: clamp(0.375rem, 1vw, 0.5rem);
   font-size: clamp(0.7rem, 1.4vw, 0.875rem);
@@ -3065,9 +3065,8 @@
   font-weight: 400;
   text-align: left;
   opacity: 0;
-  overflow-y: auto;
-  /* Allow scrolling if content is too long */
-  overflow-x: hidden;
+  overflow: hidden;
+  /* Hide overflow instead of scrolling */
   box-sizing: border-box;
   visibility: hidden;
   transform: translateY(100%);
@@ -3121,16 +3120,16 @@
   text-align: left;
   font-size: clamp(0.7rem, 1.4vw, 0.875rem);
   /* Reduced base font size for better fit across all screen sizes */
-  line-height: 1.5;
-  /* Tighter line height for better space utilization */
+  line-height: 1.45;
+  /* Slightly tighter line height for better space utilization */
   transition: font-size 0.3s ease;
-  padding: clamp(0.5rem, 1.25vw, 0.875rem);
-  /* Responsive padding */
+  padding: clamp(0.25rem, 0.75vw, 0.5rem);
+  /* Minimal padding to maximize text space */
   box-sizing: border-box;
-  overflow: visible;
-  /* Ensure text is visible */
   word-wrap: break-word;
   /* Allow text to wrap properly */
+  hyphens: auto;
+  /* Enable automatic hyphenation for better text fitting */
 }
 
 .why-trust-section__card:hover .why-trust-section__hover-text-content {
@@ -3266,8 +3265,9 @@
 
   /* Responsive hover text font size for tablet */
   .why-trust-section__card-hover-text {
-    padding: clamp(0.625rem, 1.75vw, 1rem) clamp(0.625rem, 1.75vw, 1rem);
-    padding-top: clamp(2.5rem, 5.5vw, 3.5rem);
+    padding: clamp(0.5rem, 1.5vw, 0.875rem) clamp(0.5rem, 1.5vw, 0.875rem);
+    /* Further reduced padding on tablet */
+    padding-top: clamp(2.5rem, 5.5vw, 3.25rem);
     font-size: clamp(0.65rem, 1.3vw, 0.75rem);
     /* Smaller base font size on tablet */
   }
@@ -3276,7 +3276,8 @@
     font-size: clamp(0.65rem, 1.3vw, 0.75rem);
     /* Smaller font size on tablet for better fit */
     line-height: 1.4;
-    padding: clamp(0.375rem, 1vw, 0.625rem);
+    padding: clamp(0.25rem, 0.75vw, 0.5rem);
+    /* Minimal padding on tablet */
   }
 
   .why-trust-section__card:hover .why-trust-section__hover-text-content {
@@ -3345,8 +3346,9 @@
 
   /* Responsive hover text font size for mobile */
   .why-trust-section__card-hover-text {
-    padding: clamp(0.5rem, 1.5vw, 0.875rem) clamp(0.5rem, 1.5vw, 0.875rem);
-    padding-top: clamp(2.25rem, 5vw, 3rem);
+    padding: clamp(0.375rem, 1.25vw, 0.75rem) clamp(0.375rem, 1.25vw, 0.75rem);
+    /* Minimal padding on mobile for maximum text space */
+    padding-top: clamp(2rem, 4.5vw, 2.75rem);
     font-size: clamp(0.6rem, 1.2vw, 0.7rem);
     /* Even smaller base font size on mobile */
   }
@@ -3356,7 +3358,8 @@
     /* Smaller font size on mobile for better fit and to prevent text hiding */
     line-height: 1.35;
     /* Tighter line height on mobile */
-    padding: clamp(0.375rem, 1vw, 0.5rem);
+    padding: clamp(0.25rem, 0.75vw, 0.375rem);
+    /* Minimal padding on mobile */
   }
 
   .why-trust-section__card:hover .why-trust-section__hover-text-content {
