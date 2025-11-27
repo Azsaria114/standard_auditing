@@ -1614,8 +1614,8 @@
 .partners-section__grid::after {
   content: '';
   position: absolute;
-  left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
-  top: calc(15% - clamp(0.25rem, 0.5vw, 0.5rem));
+  left: calc(99.5% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
+  top: calc(15.5% - clamp(0.25rem, 0.5vw, 0.5rem));
   width: 3px;
   height: calc(33.33% + clamp(1rem, 2vw, 1.5rem));
   background: rgba(128, 128, 128, 0.4);
@@ -1672,13 +1672,23 @@
   flex: 0 0 auto;
   position: relative;
   align-self: flex-start;
-  margin-top: clamp(5.5rem, 10.5vw, 7.5rem);
-  /* Center logo positioned between rows 1 and 2 - slightly lowered */
+  margin-top: clamp(4rem, 8vw, 6rem);
+  /* Center logo positioned between rows 1 and 2 - moved up slightly */
 }
 
 .partners-section__middle::after {
-  display: none;
-  /* Removed - using partners-section__connector instead */
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: clamp(2.5rem, 6vw, 4.5rem);
+  height: 3px;
+  background: rgba(128, 128, 128, 0.4);
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 0 4px 4px 0;
+  /* Horizontal line connecting center card to result card */
 }
 
 .partners-section__center-card {
@@ -1736,8 +1746,9 @@
   align-self: flex-start;
   width: auto;
   flex-shrink: 0;
-  margin-top: clamp(1rem, 4vw, 2.5rem);
-  /* Right text box aligned with center logo - moved up slightly */
+  margin-top: clamp(4rem, 8vw, 6rem);
+  position: relative;
+  /* Right text box aligned with center logo - moved up to match center card */
 }
 
 .partners-section__result-card {
