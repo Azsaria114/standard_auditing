@@ -3294,13 +3294,13 @@
     row-gap: clamp(0.75rem, 2vw, 1.25rem);
   }
 
-  /* Row 1: 1 card (centered, smaller width) */
+  /* Row 1: 1 card (centered, slightly wider on mobile) */
   .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
     grid-column: 1 / 3;
     grid-row: 1;
     justify-self: center;
-    max-width: clamp(12rem, 30vw, 16rem);
-    /* Same size as row 5 card on mobile - creates symmetrical pyramid effect */
+    max-width: clamp(14rem, 35vw, 18rem);
+    /* Increased width on mobile for better visibility */
     width: 100%;
   }
 
@@ -3315,12 +3315,16 @@
     grid-row: 2;
   }
 
-  /* Row 3: 1 card (image) */
+  /* Row 3: 1 card (image) - slightly reduced width on mobile */
   .why-trust-section__image-card {
     grid-column: 1 / 3;
     grid-row: 3;
     min-height: clamp(12rem, 30vw, 18rem);
     max-height: clamp(12rem, 30vw, 18rem);
+    max-width: 95%;
+    /* Slightly reduced width on mobile */
+    justify-self: center;
+    /* Center the image card */
   }
 
   /* Row 4: 2 cards */
@@ -3334,13 +3338,13 @@
     grid-row: 4;
   }
 
-  /* Row 5: 1 card (centered, smaller width) */
+  /* Row 5: 1 card (centered, slightly wider on mobile) */
   .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
     grid-column: 1 / 3;
     grid-row: 5;
     justify-self: center;
-    max-width: clamp(12rem, 30vw, 16rem);
-    /* Same size as row 1 card on mobile - creates symmetrical pyramid effect */
+    max-width: clamp(14rem, 35vw, 18rem);
+    /* Increased width on mobile for better visibility - same as row 1 */
     width: 100%;
   }
 
