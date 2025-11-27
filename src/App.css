@@ -1105,13 +1105,14 @@
 /* Badge positioned absolutely to maintain overlay effect from design */
 .services-section__badge {
   position: absolute;
-  right: clamp(-1rem, -2vw, -0.5rem);
-  /* Moved slightly right to prevent overlap with bullet points */
-  top: 50%;
+  right: clamp(-2.5rem, -4vw, -1.5rem);
+  /* Moved further right to prevent overlap with bullet points */
+  top: 60%;
+  /* Moved down slightly to better position relative to bullet points */
   transform: translateY(-50%);
-  width: clamp(7rem, 14vw, 9rem);
-  height: clamp(7rem, 14vw, 9rem);
-  /* Increased badge size to accommodate all text properly */
+  width: clamp(6.5rem, 13vw, 8.5rem);
+  height: clamp(6.5rem, 13vw, 8.5rem);
+  /* Slightly reduced size for better spacing */
   border: none;
   border-radius: 50%;
   display: flex;
@@ -1128,11 +1129,13 @@
 /* Desktop-specific positioning and size */
 @media (min-width: 1025px) {
   .services-section__badge {
-    right: clamp(-1.5rem, -3vw, -0.75rem);
-    /* Moved slightly right on desktop to prevent overlap with bullet points */
-    width: clamp(8rem, 15vw, 10rem);
-    height: clamp(8rem, 15vw, 10rem);
-    /* Larger size on desktop for better text spacing */
+    right: clamp(-3rem, -5vw, -2rem);
+    /* Moved further right on desktop to prevent overlap with bullet points */
+    top: 62%;
+    /* Moved down slightly more on desktop */
+    width: clamp(7.5rem, 14vw, 9.5rem);
+    height: clamp(7.5rem, 14vw, 9.5rem);
+    /* Slightly reduced size on desktop for better spacing */
   }
 }
 
@@ -1158,12 +1161,12 @@
 
 .services-section__badge-text {
   font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-  font-size: clamp(10px, 1.1vw, 14px);
-  /* Font size for full circle */
+  font-size: clamp(9px, 1vw, 12px);
+  /* Slightly reduced font size for better spacing */
   font-weight: 600;
   fill: white;
-  letter-spacing: 0.4em;
-  /* Further increased letter-spacing for better even distribution around full circle */
+  letter-spacing: 0.35em;
+  /* Adjusted letter-spacing for better distribution around circle */
   text-transform: uppercase;
   z-index: 2;
   /* Ensures text is visible above SVG path */
@@ -1172,10 +1175,10 @@
 /* Desktop-specific font size */
 @media (min-width: 1025px) {
   .services-section__badge-text {
-    font-size: clamp(12px, 1.3vw, 16px);
-    /* Optimized font size on desktop for full circle */
-    letter-spacing: 0.45em;
-    /* Further increased letter-spacing on desktop for better even distribution around full circle */
+    font-size: clamp(11px, 1.2vw, 14px);
+    /* Slightly reduced font size on desktop for better spacing */
+    letter-spacing: 0.4em;
+    /* Adjusted letter-spacing on desktop for better distribution around full circle */
   }
 }
 
