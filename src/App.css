@@ -1613,9 +1613,9 @@
   content: '';
   position: absolute;
   left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
-  top: calc(50% - clamp(5.5rem, 8.5vw, 7rem));
+  top: calc(33.33% - 1px);
   width: 2px;
-  height: calc(clamp(4rem, 7vw, 5.5rem) * 2 + clamp(1.5rem, 3.5vw, 2.5rem));
+  height: calc(33.33% + 2px);
   background: rgba(128, 128, 128, 0.4);
   z-index: 1;
   pointer-events: none;
