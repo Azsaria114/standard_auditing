@@ -1615,7 +1615,7 @@
   content: '';
   position: absolute;
   left: calc(100% + clamp(1.5rem, 3vw, 2.5rem) + clamp(1.5rem, 3vw, 2.5rem));
-  top: calc(16.67% - clamp(0.5rem, 1vw, 0.75rem));
+  top: calc(15% - clamp(0.25rem, 0.5vw, 0.5rem));
   width: 3px;
   height: calc(33.33% + clamp(1rem, 2vw, 1.5rem));
   background: rgba(128, 128, 128, 0.4);
