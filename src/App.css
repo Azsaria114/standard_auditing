@@ -1687,8 +1687,8 @@
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
-  border-radius: 4px;
-  /* Horizontal line extending more on the right side, minimal on left side */
+  border-radius: 0 4px 4px 0;
+  /* Horizontal line extending from left edge of SA logo card, extending more on the right side */
 }
 
 .partners-section__center-card {
