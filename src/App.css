@@ -1593,53 +1593,50 @@
   display: none;
 }
 
-/* Perfect half rectangle - unified system with precise alignment */
-/* Horizontal line from first card (Legrand - row 1) */
-.partners-section__grid > .partners-section__card:nth-child(3)::after {
-  content: '';
-  position: absolute;
-  left: 100%;
-  top: 50%;
-  width: var(--line-scale, clamp(2.5rem, 5vw, 5rem));
-  height: clamp(2px, 0.3vw, 3px);
-  background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
-  z-index: 1;
-  pointer-events: none;
-  /* First horizontal line - perfectly aligned */
-}
-
-/* Horizontal line from second card (Carl Stahl - row 2) */
+/* Perfect half rectangle - unified drawing using single element */
+/* Remove individual card lines - we'll draw everything from grid */
+.partners-section__grid > .partners-section__card:nth-child(3)::after,
 .partners-section__grid > .partners-section__card:nth-child(6)::after {
+  display: none;
+}
+
+/* Draw complete half rectangle from grid using ::before and ::after */
+/* ::before draws both horizontal lines using linear gradients */
+.partners-section__grid::before {
   content: '';
   position: absolute;
   left: 100%;
-  top: 50%;
+  top: 0;
   width: var(--line-scale, clamp(2.5rem, 5vw, 5rem));
-  height: clamp(2px, 0.3vw, 3px);
-  background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
+  height: 100%;
   z-index: 1;
   pointer-events: none;
-  /* Second horizontal line - perfectly aligned */
+  /* Draw two horizontal lines at card centers */
+  background-image: 
+    linear-gradient(to right, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),
+    linear-gradient(to right, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4));
+  background-size: 
+    100% clamp(2px, 0.3vw, 3px),
+    100% clamp(2px, 0.3vw, 3px);
+  background-position: 
+    0 calc((100% / 6) - clamp(1px, 0.15vw, 1.5px)),
+    0 calc(50% - clamp(1px, 0.15vw, 1.5px));
+  background-repeat: no-repeat;
+  /* Two horizontal lines at row 1 and row 2 centers */
 }
 
-/* Vertical line - positioned to connect both horizontal lines perfectly */
+/* ::after draws the vertical connecting line */
 .partners-section__grid::after {
   content: '';
   position: absolute;
   left: calc(100% + var(--line-scale, clamp(2.5rem, 5vw, 5rem)));
-  /* Positioned exactly at the end of horizontal lines */
+  top: calc((100% / 6) - clamp(1px, 0.15vw, 1.5px));
   width: clamp(2px, 0.3vw, 3px);
+  height: calc((100% / 3) + clamp(1.25rem, 3vw, 2.5rem) + clamp(2px, 0.3vw, 3px));
   background: rgba(128, 128, 128, 0.4);
   z-index: 1;
   pointer-events: none;
-  /* Calculate top and height based on actual card positions */
-  /* Top: center of first card (row 1) */
-  top: calc((100% / 6) - clamp(1px, 0.15vw, 1.5px));
-  /* Height: from row 1 center to row 2 center */
-  height: calc((100% / 3) + clamp(1.25rem, 3vw, 2.5rem) + clamp(2px, 0.3vw, 3px));
-  /* Perfect connection: starts at first horizontal line, ends at second horizontal line */
+  /* Vertical line connects both horizontal lines perfectly */
 }
 
 /* Hover animations removed */
