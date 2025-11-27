@@ -944,6 +944,13 @@ function FAQSection() {
       <div className="faq-section__container">
         <div className="faq-section__left">
           <span className="faq-section__badge small-body-opensans">FAQ</span>
+          <h2 className="faq-section__title h1-montserrat">
+            <span className="faq-section__title-line-1">Questions Our Clients</span>
+            <span className="faq-section__title-line-2">Usually Ask Us</span>
+          </h2>
+          <p className="faq-section__intro body-opensans">
+            If you've made it this far, you're ready to take control of your finances. Here's what most businesses ask before getting started with our tax consultancy services in Dubai and audit firm near me support.
+          </p>
           <div className="faq-section__cta-section faq-section__cta-section--top">
             <h3 className="faq-section__cta-heading h4-montserrat">Still looking for answer?</h3>
             <button type="button" className="faq-section__cta h3-opensans-semibold">
@@ -953,13 +960,6 @@ function FAQSection() {
               </svg>
             </button>
           </div>
-          <h2 className="faq-section__title h1-montserrat">
-            <span className="faq-section__title-line-1">Questions Our Clients</span>
-            <span className="faq-section__title-line-2">Usually Ask Us</span>
-          </h2>
-          <p className="faq-section__intro body-opensans">
-            If you've made it this far, you're ready to take control of your finances. Here's what most businesses ask before getting started with our tax consultancy services in Dubai and audit firm near me support.
-          </p>
         </div>
         <div className="faq-section__right">
           <div className="faq-section__list">
