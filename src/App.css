@@ -1217,8 +1217,8 @@
   }
 
   .services-section__left-title {
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    /* Adjusted title size for tablet */
+    font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+    /* Reduced title size for tablet */
   }
 
   .services-section__image-wrapper {
@@ -1233,13 +1233,13 @@
   }
 
   .services-section__right-title {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-    /* Adjusted right title size for tablet */
+    font-size: clamp(1rem, 2.25vw, 1.25rem);
+    /* Reduced right title size for tablet */
   }
 
   .services-section__description {
-    font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
-    /* Adjusted description size for tablet */
+    font-size: clamp(0.75rem, 1.4vw, 0.875rem);
+    /* Reduced description size for tablet */
   }
 
   .services-section__features {
@@ -1260,6 +1260,8 @@
     max-width: calc(100% - clamp(8.5rem, 17vw, 10.5rem));
     /* Limit width to leave space for larger badge on right */
     padding-right: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(0.75rem, 1.4vw, 0.875rem);
+    /* Reduced feature text size for tablet */
   }
 
   /* Badge positioned on right side like desktop */
@@ -1313,8 +1315,8 @@
   }
 
   .services-section__left-title {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    /* Significantly increased title font size on mobile for better visibility */
+    font-size: clamp(1.125rem, 4vw, 1.5rem);
+    /* Reduced title font size on mobile for better responsiveness */
   }
   
   .services-section__tag {
@@ -1335,14 +1337,14 @@
   }
 
   .services-section__right-title {
-    font-size: clamp(1.5rem, 4vw, 1.75rem);
-    /* Significantly increased right title font size on mobile for better visibility */
+    font-size: clamp(1rem, 3.5vw, 1.375rem);
+    /* Reduced right title font size on mobile for better responsiveness */
   }
 
   .services-section__description {
-    font-size: clamp(1rem, 2.5vw, 1.125rem);
-    line-height: 1.7;
-    /* Significantly increased font size for better readability on mobile */
+    font-size: clamp(0.8125rem, 2vw, 0.9375rem);
+    line-height: 1.6;
+    /* Reduced font size on mobile for better responsiveness */
   }
 
   .services-section__features {
@@ -1364,9 +1366,9 @@
     max-width: calc(100% - clamp(7rem, 14vw, 9rem));
     /* Limit width to leave space for larger badge on right */
     padding-right: clamp(1rem, 2vw, 1.5rem);
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
     line-height: 1.6;
-    /* Significantly increased font size on mobile for better visibility */
+    /* Reduced font size on mobile for better responsiveness */
   }
   
   .services-section__checkmark {
@@ -1545,23 +1547,23 @@
 
 .partners-section__card {
   background: white;
-  border-radius: clamp(0.75rem, 2vw, 1rem);
-  padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 2.5vw, 1.5rem);
+  border-radius: clamp(0.625rem, 1.5vw, 0.875rem);
+  padding: clamp(1rem, 2.5vw, 1.5rem) clamp(0.875rem, 2vw, 1.25rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.75rem, 2vw, 1rem);
+  gap: clamp(0.625rem, 1.5vw, 0.875rem);
   box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(1rem, 2.5vw, 1.5rem) rgba(0, 0, 0, 0.12);
   border: 0.0625rem solid rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: clamp(8rem, 15vw, 10rem);
-  min-height: clamp(6rem, 12vw, 8rem);
+  min-width: clamp(7rem, 13vw, 9rem);
+  min-height: clamp(5rem, 10vw, 7rem);
   width: 100%;
   max-width: 100%;
   height: 100%;
   position: relative;
-  /* Enhanced cards with better shadows and transitions for visual appeal */
+  /* Enhanced cards with better shadows and transitions for visual appeal - reduced sizes for responsiveness */
 }
 
 /* Connector lines removed */
@@ -1611,8 +1613,9 @@
   color: #1A3650;
   margin: 0;
   text-align: center;
-  font-size: clamp(0.75rem, 1.75vw, 0.875rem);
+  font-size: clamp(0.6875rem, 1.5vw, 0.8125rem);
   line-height: 1.4;
+  /* Reduced font size for better responsiveness */
 }
 
 .partners-section__middle {
@@ -1693,15 +1696,15 @@
 
 .partners-section__result-card {
   background: white;
-  border-radius: 1.5rem;
-  padding: clamp(2rem, 4vw, 2.75rem) clamp(1.75rem, 3.5vw, 2.25rem);
+  border-radius: clamp(1rem, 2.5vw, 1.5rem);
+  padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.25rem, 3vw, 2rem);
   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.06);
   border: none;
-  width: clamp(18rem, 22rem, 22rem);
-  min-width: 18rem;
-  max-width: 22rem;
+  width: clamp(14rem, 20vw, 20rem);
+  min-width: 14rem;
+  max-width: 20rem;
   height: auto;
-  min-height: 18rem;
+  min-height: clamp(14rem, 20vw, 18rem);
   aspect-ratio: 1;
   text-align: center;
   display: flex;
@@ -1711,7 +1714,7 @@
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  /* White box with soft shadow and rounded corners - square-like shape */
+  /* White box with soft shadow and rounded corners - square-like shape - reduced sizes for responsiveness */
   opacity: 1;
   transform: translateY(0);
   box-sizing: border-box;
@@ -1793,12 +1796,13 @@
   color: #1A3650;
   margin: 0;
   line-height: 1.5;
-  font-size: clamp(0.9375rem, 2.25vw, 1.375rem);
+  font-size: clamp(0.8125rem, 2vw, 1.25rem);
   font-weight: 700;
   text-align: center;
   width: 100%;
   max-width: 100%;
   word-wrap: break-word;
+  /* Reduced font size for better responsiveness */
   overflow-wrap: break-word;
   white-space: normal;
   padding: 0;
@@ -2007,9 +2011,9 @@
   }
   
   .partners-section__result-text {
-    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-size: clamp(0.75rem, 1.75vw, 1rem);
     line-height: 1.5;
-    /* Adjusted font size for mobile visibility */
+    /* Reduced font size for mobile responsiveness */
   }
 }
 
@@ -2709,6 +2713,20 @@
   justify-items: stretch;
   width: 100%;
   position: relative;
+}
+
+/* Connecting line for why-trust section */
+.why-trust-section__grid::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateY(-50%);
+  z-index: 0;
+  /* Decorative connecting line across the grid */
 }
 
 /* Column 1 - 1 card (centered horizontally with column) */
