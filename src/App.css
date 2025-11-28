@@ -1611,58 +1611,117 @@ html, body {
   display: none;
 }
 
-/* Perfect half rectangle - unified drawing using single element */
-/* Remove individual card lines - we'll draw everything from grid */
-/* Lines from Legrand (card 3) and Carl Stahl (card 6) extending right to connect with vertical line */
-.partners-section__grid > .partners-section__card:nth-child(3)::after {
-  content: '';
-  position: absolute;
-  left: calc(100% + clamp(0.25rem, 0.5vw, 0.5rem));
-  /* Small gap between card and line for better visual separation */
-  top: 50%;
-  width: var(--line-scale, clamp(1.5rem, 3.5vw, 3.5rem));
-  height: clamp(2px, 0.3vw, 3px);
-  background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
-  z-index: 1;
-  pointer-events: none;
-  /* Horizontal line from Legrand card extending right to vertical line */
+/* Responsive Line Structure with Flexbox */
+
+/* Container Adjustments */
+.partners-section__container {
+  /* gap: 0;  Let lines control spacing */
+  gap: 0;
+  align-items: center; /* Align everything to center vertically */
 }
 
-.partners-section__grid > .partners-section__card:nth-child(6)::after {
-  content: '';
-  position: absolute;
-  left: calc(100% + clamp(0.25rem, 0.5vw, 0.5rem));
-  /* Small gap between card and line for better visual separation */
-  top: 50%;
-  width: var(--line-scale, clamp(1.5rem, 3.5vw, 3.5rem));
-  height: clamp(2px, 0.3vw, 3px);
-  background: rgba(128, 128, 128, 0.4);
-  transform: translateY(-50%);
-  z-index: 1;
-  pointer-events: none;
-  /* Horizontal line from Carl Stahl card extending right to vertical line */
+/* Line Spacer Base Styles */
+.partners-section__line-spacer {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #cbd5e1;
+  align-self: center;
+  position: relative;
+  z-index: 0;
+  min-width: 2rem; /* Minimum visible line length */
 }
 
-/* Remove grid::before - horizontal lines now come from individual cards */
+/* Left Line Spacer: Connects Grid Bracket to Logo */
+.partners-section__line-spacer--left {
+  /* This line acts as the horizontal connector from the bracket's vertical bar to the logo */
+  margin-left: 2.5rem; /* Push start point to align with bracket vertical bar */
+  /* Ensure it connects visually */
+}
+
+/* Right Line Spacer: Connects Logo to Result Card */
+.partners-section__line-spacer--right {
+  /* Simple straight line, styles inherited from base class */
+}
+
+/* Grid Bracket (The 'C' shape) */
+.partners-section__grid {
+  position: relative;
+}
+
 .partners-section__grid::before {
-  display: none;
-}
-
-/* ::after draws the vertical connecting line - positioned to connect perfectly with horizontal lines from cards */
-.partners-section__grid::after {
   content: '';
   position: absolute;
-  left: calc(100% + clamp(0.25rem, 0.5vw, 0.5rem) + var(--line-scale, clamp(1.5rem, 3.5vw, 3.5rem)));
-  /* Position exactly at the end of horizontal lines (gap + line width) */
-  top: calc((100% / 6) - clamp(1px, 0.15vw, 1.5px));
-  width: clamp(2px, 0.3vw, 3px);
-  height: calc((100% / 3) + clamp(1.25rem, 3vw, 2.5rem) + clamp(2px, 0.3vw, 3px));
-  background: rgba(128, 128, 128, 0.4);
-  z-index: 1;
+  /* Position relative to grid: Right edge */
+  right: -2.5rem; /* Negative margin-left of the line spacer */
+  /* Top and Height to span Legrand (Row 1) and Carl Stahl (Row 2) */
+  /* 3 Rows. Row 1 center is 1/6 (16.66%). Row 2 center is 3/6 (50%). */
+  top: calc(100% / 6);
+  height: calc(100% / 3);
+  width: 2.5rem;
+  
+  /* Bracket shape: Top, Right, Bottom borders */
+  border-top: 2px solid #cbd5e1;
+  border-bottom: 2px solid #cbd5e1;
+  border-right: 2px solid #cbd5e1;
+  
+  /* Rounded outer corners */
+  border-top-right-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  
   pointer-events: none;
-  /* Vertical line connects both horizontal lines from cards 3 and 6 perfectly */
+  z-index: 0;
 }
+
+/* Remove old pseudo-element connectors */
+.partners-section__grid::after { display: none; }
+.partners-section__middle::before { display: none; }
+.partners-section__middle::after { display: none; }
+
+/* Responsive: Hide bracket and lines on mobile/tablet */
+@media (max-width: 1024px) {
+  .partners-section__line-spacer,
+  .partners-section__grid::before,
+  .partners-section__grid::after,
+  .partners-section__middle::before,
+  .partners-section__middle::after {
+    display: none !important;
+  }
+  
+  .partners-section__container {
+    gap: 2.5rem; /* Restore gap for stacked layout */
+  }
+}
+
+/* Desktop-specific adjustments for visual alignment */
+@media (min-width: 1025px) {
+  /* Reset Grid to natural position */
+  .partners-section__grid {
+    transform: none;
+    align-self: center;
+  }
+  
+  /* Connecting Lines: Move UP to align perfectly with Bracket Spine */
+  .partners-section__line-spacer {
+    transform: translateY(-5.0rem);
+    align-self: center;
+  }
+
+  /* Logo Card: Move DOWN slightly independent of right card */
+  .partners-section__middle {
+    transform: translateY(-0.5rem);
+    align-self: center;
+  }
+
+  /* Result Card */
+  .partners-section__right {
+    transform: translateY(-1.5rem);
+    align-self: center;
+  }
+}
+
+
+
+
 
 /* Hover animations removed */
 
