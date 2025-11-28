@@ -673,8 +673,8 @@ html, body {
    ============================================ */
 @media (max-width: 768px) {
   .hero {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: 3rem 1.5rem;
+    /* Adjusted padding for mobile: 48px top/bottom, 24px sides */
   }
 
   .hero__title-section {
@@ -683,111 +683,45 @@ html, body {
 
   .hero__header {
     flex-direction: column;
-    /* Stack vertically for mobile with horizontal divider */
     align-items: flex-start;
-    gap: clamp(1rem, 2vw, 1.5rem);
-    /* Neat mobile spacing */
+    gap: 1.5rem;
   }
 
   .hero__header-divider {
-    width: 100%;
-    /* Full width horizontal divider for mobile */
-    height: 2px;
-    /* Horizontal divider thickness */
-    background: rgba(26, 54, 80, 0.6);
-    /* Same color as desktop */
-    align-self: stretch;
-    /* Stretch horizontally */
-    margin-left: 0;
-    /* No left margin for horizontal divider */
-    margin-top: clamp(1rem, 2vw, 1.5rem);
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    /* Vertical spacing above and below the divider */
+    display: none; /* Hide divider on mobile for cleaner layout */
   }
 
   .hero__services {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    /* Same as desktop: 3 columns layout */
-    grid-template-rows: auto auto;
-    /* Same as desktop: 2 rows layout */
-    row-gap: 0.75rem;
-    /* Same as desktop */
-    column-gap: 0.75rem;
-    /* Same as desktop */
-    width: fit-content;
-    justify-items: start;
-    align-items: start;
-    align-self: flex-start;
-    flex: 0 0 auto;
-    /* Same grid structure as desktop */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    width: 100%;
+    justify-content: flex-start;
+    /* Flex layout for pills on mobile */
+    grid-template-columns: unset;
+    grid-template-rows: unset;
   }
   
   .hero__service-pill {
-    width: fit-content;
-    justify-self: start;
-    align-self: start;
-    text-align: center;
-    padding: 0.4375rem 0.75rem;
-    font-size: 0.75rem;
-    border-width: 1.5px;
-    border-radius: 6px;
+    width: auto;
+    margin: 0 !important; /* Reset all margins */
+    grid-column: unset !important;
+    grid-row: unset !important;
+    /* Reset grid positioning */
+  }
+
+  /* Reset specific child styles since we use flex now */
+  .hero__service-pill:nth-child(n) {
     margin: 0;
-    color: #2E2E2E;
-    /* Improved sizing and spacing for mobile */
-  }
-
-  /* Apply same desktop negative margins (scaled for mobile to match desktop proportions) */
-  .hero__service-pill:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-    margin-right: clamp(-6.5rem, -11vw, -5.5rem);
-    /* Increased negative margin to pull Tax Advisory even closer */
-  }
-
-  .hero__service-pill:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-    margin-left: clamp(-7rem, -10vw, -6.5rem);
-    /* Reduced negative margin to move Tax Advisory to the right and prevent overlap with Auditing */
-  }
-
-  .hero__service-pill:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
-    /* Accounting & Bookkeeping - bottom left, row 2 column 1 */
-  }
-
-  .hero__service-pill:nth-child(4) {
-    grid-column: 3;
-    grid-row: 1;
-    margin-left: clamp(-4rem, -6vw, -3.5rem);
-    /* Increased negative margin to move Company Formation further to the left */
-  }
-
-  .hero__service-pill:nth-child(5) {
-    grid-column: 2;
-    grid-row: 2;
-    /* VAT - middle right, row 2 column 2 */
-  }
-
-  .hero__service-pill:nth-child(6) {
-    grid-column: 3;
-    grid-row: 2;
-    /* Corporate Tax - bottom right, row 2 column 3 */
   }
 
   .hero__copy {
     max-width: 100%;
-  }
-  
-  .hero__copy {
     width: 100%;
   }
 
   .hero__media {
-    gap: clamp(2rem, 5vw, 3rem);
-    /* Increased spacing between image and stats card for mobile */
+    gap: 2rem;
   }
 }
 
@@ -796,69 +730,64 @@ html, body {
    ============================================ */
 @media (max-width: 480px) {
   .hero {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on small screens */
-    gap: clamp(1rem, 3vw, 1.5rem);
+    padding: 2rem 1rem;
+    /* Adjusted padding for small mobile: 32px top/bottom, 16px sides */
+    gap: 1.25rem;
   }
 
   .hero__services {
-    grid-template-columns: repeat(3, max-content);
-    /* Maintains 3-3 layout on very small screens with proper column alignment */
-    gap: clamp(0.5rem, 1.5vw, 0.75rem);
-    row-gap: clamp(0.5rem, 1.5vw, 0.75rem);
-    column-gap: clamp(0.5rem, 1.5vw, 0.75rem);
-    width: fit-content;
-    justify-items: start;
-    align-items: start;
-    justify-content: start;
-    /* Even spacing on very small screens */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+    width: 100%;
+    justify-content: flex-start;
+    /* Ensure flex layout persists on very small screens */
+    grid-template-columns: unset;
   }
 
   .hero__service-pill {
-    width: fit-content;
+    width: auto;
     justify-self: start;
-    align-self: start;
-    text-align: left;
-    /* Natural width with left alignment */
-    font-size: clamp(0.625rem, 1.1vw, 0.75rem);
-    padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.375rem, 1vw, 0.625rem);
-    /* Smaller padding and font for very small screens */
+    align-self: center;
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 0.375rem 0.625rem;
+    margin: 0;
+    /* Compact sizing for small screens */
   }
 
   .hero__header {
-    gap: clamp(0.75rem, 2vw, 1rem);
+    gap: 1rem;
   }
 
   .hero__copy-text {
-    font-size: clamp(0.8125rem, 1.75vw, 0.9375rem);
+    font-size: 0.875rem;
   }
 
   .hero__cta {
-    bottom: clamp(-0.75rem, -1.5vw, -0.875rem);
-    left: clamp(0.5rem, 1.5vw, 0.75rem);
-    transform: translateY(0);
-    min-width: clamp(16rem, 30vw, 22rem);
-    max-width: clamp(20rem, 38vw, 26rem);
-    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.5rem);
-    gap: clamp(0.125rem, 0.25vw, 0.1875rem);
+    bottom: -1rem;
+    left: 0.5rem;
+    min-width: calc(100% - 1rem); /* almost full width */
+    max-width: none;
+    padding: 0.75rem 1rem;
+    position: relative; /* Make CTA relative on small screens to avoid overlap */
+    margin-top: 1rem;
+    transform: none;
+  }
+  
+  .hero__image-wrapper {
+    overflow: visible;
+    margin-bottom: 1rem;
   }
 
   .hero__cta-primary {
-    font-size: clamp(0.6875rem, 1.25vw, 0.875rem);
-    white-space: normal;
+    font-size: 0.875rem;
   }
 
   .hero__cta-secondary {
-    font-size: clamp(0.5625rem, 1vw, 0.6875rem);
-    white-space: normal;
-  }
-
-  .hero__cta:hover {
-    transform: translateY(-0.25rem);
-  }
-
-  .hero__cta:active {
-    transform: translateY(-0.125rem);
+    font-size: 0.75rem;
   }
 }
 
@@ -1679,7 +1608,7 @@ html, body {
 
 /* Responsive: Hide bracket and lines on mobile/tablet */
 @media (max-width: 1024px) {
-  .partners-section__line-spacer,
+  /* Hide desktop-specific bracket and side lines */
   .partners-section__grid::before,
   .partners-section__grid::after,
   .partners-section__middle::before,
@@ -1687,8 +1616,29 @@ html, body {
     display: none !important;
   }
   
+  /* Switch Container to Vertical Stack */
   .partners-section__container {
-    gap: 2.5rem; /* Restore gap for stacked layout */
+    flex-direction: column;
+    gap: 0; /* We use the line spacers for spacing now */
+    align-items: center;
+  }
+
+  /* Transform Horizontal Spacers into Vertical Connectors */
+  .partners-section__line-spacer {
+    display: block !important; /* Unhide */
+    width: 2px;
+    min-width: 2px; /* Override desktop min-width */
+    height: 3rem; /* Vertical Length */
+    background-color: #cbd5e1;
+    margin: 0 auto; /* Center horizontally */
+    flex-grow: 0;
+    align-self: center;
+    transform: none; /* Reset desktop transforms */
+  }
+
+  /* Specific reset for the left spacer which had margin-left on desktop */
+  .partners-section__line-spacer--left {
+    margin-left: auto;
   }
 }
 
@@ -2118,14 +2068,21 @@ html, body {
    ============================================ */
 @media (max-width: 768px) {
   .partners-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: 3rem 1.5rem;
+    /* Maintain 48px vertical, 24px horizontal padding on mobile */
   }
   
   .partners-section__container {
     flex-direction: column;
-    gap: clamp(2.5rem, 5vw, 3.5rem);
-    /* Increased gap for more spacing between logo cards and result card */
+    gap: 0;
+  }
+
+  /* Hide old connector elements that might reappear */
+  .partners-section__grid::after,
+  .partners-section__middle::before,
+  .partners-section__middle::after,
+  .partners-section__grid > .partners-section__card::after {
+     display: none !important;
   }
 
   .partners-section__grid {
@@ -2139,12 +2096,7 @@ html, body {
     /* Reduced width for more compact half rectangle on mobile */
   }
   
-  /* Maintain half rectangle structure on mobile */
-  .partners-section__grid::after {
-    top: calc((100% / 6) - clamp(1px, 0.15vw, 1.5px));
-    height: calc((100% / 3) + clamp(0.5rem, 1.25vw, 1rem) + clamp(2px, 0.3vw, 3px));
-    /* Perfect half rectangle maintained on mobile */
-  }
+  /* Grid bracket removed in favor of vertical layout */
 
   /* Reset card transforms and positioning for mobile */
   .partners-section__grid > .partners-section__card:nth-child(1) {
@@ -2593,8 +2545,8 @@ html, body {
    ============================================ */
 @media (max-width: 768px) {
   .services-grid-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: 3rem 1.5rem;
+    /* Maintain 48px vertical, 24px horizontal padding on mobile */
   }
 
   .services-grid-section__grid {
@@ -3332,6 +3284,10 @@ html, body {
 }
 
 @media (max-width: 768px) {
+  .why-trust-section {
+    padding: 3rem 1.5rem;
+  }
+
   .why-trust-section__grid {
     grid-template-columns: repeat(2, 1fr);
     /* Maintain 2 columns for mobile */
@@ -3772,8 +3728,8 @@ html, body {
 
 @media (max-width: 768px) {
   .pricing-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: 3rem 1.5rem;
+    /* Maintain 48px vertical, 24px horizontal padding on mobile */
   }
 
   .pricing-section__container {
@@ -5696,7 +5652,7 @@ html, body {
 
 
   .client-testimonials-section {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
+    padding: clamp(3rem, 6vw, 4rem) clamp(1.5rem, 4vw, 2rem);
     /* Responsive padding for mobile */
   }
 
@@ -5898,5 +5854,20 @@ html, body {
 
   .pricing-section__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .newsletter-section__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .newsletter-section__description {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    padding: 0 1rem;
   }
 }
