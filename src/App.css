@@ -1006,8 +1006,10 @@ html, body {
 }
 
 .services-section__feature span {
-  max-width: clamp(20rem, 35vw, 28rem);
-  /* Limits width to allow text to wrap to two lines matching design */
+  max-width: clamp(18rem, 32vw, 25rem);
+  /* Reduced max-width to ensure text doesn't reach badge area */
+  padding-right: clamp(2rem, 4vw, 3rem);
+  /* Increased padding to create clear separation from badge */
   line-height: 1.5;
   /* Slightly increased line-height for better readability when wrapped */
 }
@@ -1121,15 +1123,17 @@ html, body {
 /* Badge positioned absolutely to maintain overlay effect from design */
 .services-section__badge {
   position: absolute;
-  right: clamp(-2.5rem, -4vw, -1.5rem);
-  /* Moved further right to prevent overlap with bullet points */
-  top: 60%;
-  /* Moved down slightly to better position relative to bullet points */
+  right: clamp(0rem, 1vw, 0.5rem);
+  /* Positioned on right edge - maintains consistent gap from edge */
+  /* Positioned between 2nd and 3rd bullet point */
+  top: clamp(17.5rem, 39vw, 22.5rem);
+  /* Base position - will be overridden by desktop/tablet/mobile media queries */
   transform: translateY(-50%);
   width: clamp(6.5rem, 13vw, 8.5rem);
   height: clamp(6.5rem, 13vw, 8.5rem);
-  /* Slightly reduced size for better spacing */
+  /* Base size - will be overridden by desktop/tablet/mobile media queries */
   border: none;
+  /* No border - transparent badge */
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -1138,20 +1142,40 @@ html, body {
   gap: clamp(0.125rem, 0.5vw, 0.25rem);
   /* Reduced gap between text and arrow */
   background: transparent;
+  /* Transparent background */
   overflow: visible;
   /* Badge scales responsively with container */
+  z-index: 1;
+  /* Ensure badge stays above background but below text content */
 }
 
 /* Desktop-specific positioning and size */
 @media (min-width: 1025px) {
   .services-section__badge {
-    right: clamp(-3rem, -5vw, -2rem);
-    /* Moved further right on desktop to prevent overlap with bullet points */
-    top: 62%;
-    /* Moved down slightly more on desktop */
+    right: clamp(0rem, 1vw, 0.5rem);
+    /* Positioned on right edge - maintains consistent gap from edge */
+    /* Positioned between 2nd and 3rd bullet point on desktop */
+    /* Desktop: precisely centered between items 2 and 3 */
+    top: clamp(21.5rem, 43vw, 25.5rem);
+    /* Position between items 2 and 3 - recalculated to center badge exactly between 2nd and 3rd bullet */
+    transform: translateY(-50%);
     width: clamp(7.5rem, 14vw, 9.5rem);
     height: clamp(7.5rem, 14vw, 9.5rem);
-    /* Slightly reduced size on desktop for better spacing */
+    /* Desktop badge size */
+    background: transparent;
+    /* Transparent background on desktop */
+    border: none;
+    /* No border on desktop */
+  }
+
+  .services-section__badge-text {
+    fill: white;
+    /* White text on desktop */
+  }
+
+  .services-section__badge-arrow {
+    color: white;
+    /* White checkmark on desktop */
   }
 }
 
@@ -1280,9 +1304,10 @@ html, body {
   }
 
   .services-section__feature span {
-    max-width: calc(100% - clamp(8.5rem, 17vw, 10.5rem));
-    /* Limit width to leave space for larger badge on right */
-    padding-right: clamp(1rem, 2vw, 1.5rem);
+    max-width: calc(100% - clamp(10rem, 20vw, 12.5rem));
+    /* Significantly increased space reservation for badge to prevent overlap */
+    padding-right: clamp(2rem, 4vw, 2.5rem);
+    /* Increased padding significantly to create clear separation from badge */
     font-size: clamp(0.75rem, 1.4vw, 0.875rem);
     /* Reduced feature text size for tablet */
   }
@@ -1295,26 +1320,41 @@ html, body {
 
   .services-section__badge {
     position: absolute;
-    right: clamp(0.5rem, 2vw, 1rem);
-    top: 50%;
+    right: clamp(0rem, 1vw, 0.5rem);
+    /* Positioned on right edge - same gap from edge as desktop */
+    /* Positioned between 2nd and 3rd bullet point on tablet */
+    /* Tablet: maintains same proportional gap as desktop, scaled down proportionally */
+    top: clamp(16.5rem, 33vw, 20.5rem);
+    /* Position scaled proportionally from desktop (21.5-25.5rem) to maintain same gap relationship */
     transform: translateY(-50%);
     margin: 0;
-    width: clamp(7rem, 14vw, 8.5rem);
-    height: clamp(7rem, 14vw, 8.5rem);
-    /* Increased badge size for tablet, positioned on right like desktop */
+    width: clamp(6rem, 11vw, 7.5rem);
+    /* Badge size scaled down proportionally from desktop (7.5-9.5rem) to maintain same gap */
+    height: clamp(6rem, 11vw, 7.5rem);
+    background: transparent;
+    /* Transparent background on tablet - same as desktop */
+    border: none;
+    /* No border on tablet */
     z-index: 2;
   }
   
   .services-section__badge-text {
-    font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+    font-size: clamp(9px, 1vw, 11px);
+    /* Font size scaled proportionally from desktop (11-14px) to maintain same text-to-circle ratio */
+    font-weight: 600;
+    /* Same font-weight as desktop for consistent text appearance */
     letter-spacing: 0.4em;
-    /* Increased font size for tablet badge */
+    /* Same letter-spacing as desktop for consistent text distribution */
+    fill: white;
+    /* White text on tablet - same as desktop */
   }
   
   .services-section__badge-arrow {
     width: clamp(0.875rem, 1.75vw, 1rem);
+    /* Arrow size scaled proportionally from desktop to maintain same ratio */
     height: clamp(0.875rem, 1.75vw, 1rem);
-    /* Increased arrow size for tablet badge */
+    color: white;
+    /* White checkmark on tablet - same as desktop */
   }
 }
 
@@ -1386,9 +1426,10 @@ html, body {
   }
 
   .services-section__feature span {
-    max-width: calc(100% - clamp(7rem, 14vw, 9rem));
-    /* Limit width to leave space for larger badge on right */
-    padding-right: clamp(1rem, 2vw, 1.5rem);
+    max-width: calc(100% - clamp(8.5rem, 17vw, 10.5rem));
+    /* Significantly increased space reservation for badge to prevent overlap */
+    padding-right: clamp(2rem, 4vw, 2.5rem);
+    /* Increased padding significantly to create clear separation from badge */
     font-size: clamp(0.75rem, 2vw, 0.875rem);
     line-height: 1.6;
     /* Reduced font size on mobile for better responsiveness */
@@ -1414,26 +1455,41 @@ html, body {
 
   .services-section__badge {
     position: absolute;
-    right: clamp(0rem, 1.5vw, 0.5rem);
-    top: 50%;
+    right: clamp(0rem, 1vw, 0.5rem);
+    /* Positioned on right edge - same gap from edge as desktop */
+    /* Positioned between 2nd and 3rd bullet point on mobile */
+    /* Mobile: maintains same proportional gap as desktop, scaled down proportionally */
+    top: clamp(14rem, 29vw, 18rem);
+    /* Position scaled proportionally from desktop (21.5-25.5rem) to maintain same gap relationship */
     transform: translateY(-50%);
     margin: 0;
-    width: clamp(6rem, 12vw, 7.5rem);
-    height: clamp(6rem, 12vw, 7.5rem);
-    /* Increased badge size for mobile, positioned on right like desktop */
+    width: clamp(5rem, 9vw, 6.5rem);
+    /* Badge size scaled down proportionally from desktop (7.5-9.5rem) to maintain same gap */
+    height: clamp(5rem, 9vw, 6.5rem);
+    background: transparent;
+    /* Transparent background on mobile - same as desktop */
+    border: none;
+    /* No border on mobile */
     z-index: 2;
   }
   
   .services-section__badge-text {
-    font-size: clamp(0.625rem, 1vw, 0.75rem);
+    font-size: clamp(8px, 0.9vw, 10px);
+    /* Font size scaled proportionally from desktop (11-14px) to maintain same text-to-circle ratio */
+    font-weight: 600;
+    /* Same font-weight as desktop for consistent text appearance */
     letter-spacing: 0.4em;
-    /* Increased font size for mobile badge */
+    /* Same letter-spacing as desktop for consistent text distribution */
+    fill: white;
+    /* White text on mobile - same as desktop */
   }
   
   .services-section__badge-arrow {
     width: clamp(0.75rem, 1.5vw, 0.875rem);
+    /* Arrow size scaled proportionally from desktop to maintain same ratio */
     height: clamp(0.75rem, 1.5vw, 0.875rem);
-    /* Increased arrow size for mobile badge */
+    color: white;
+    /* White checkmark on mobile - same as desktop */
   }
 }
 
@@ -5900,3 +5956,194 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+/* ============================================ ABOUT PAGE STYLES ============================================ */ 
+.about-page { width: 100%; max-width: 100%; overflow-x: hidden; } 
+/* About Hero Section */ 
+.about-hero { padding: 0; background: white; color: #1A3650; padding-top: calc(clamp(2.5rem, 5vw, 3.5rem) + clamp(3rem, 6vw, 4rem)); 
+  /* Add padding to account for fixed header */ } .about-hero__container { width: 100%; max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: clamp(1.25rem, 2.5vw, 2rem); padding: 0 5rem clamp(0.75rem, 2vw, 1.25rem); position: relative; } .about-hero__content { display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.75rem); width: 100%; align-items: flex-start; } .about-hero__title { margin: 0; display: flex; flex-direction: column; gap: clamp(0.15rem, 0.4vw, 0.3rem); font-weight: 600; line-height: 1.2; text-align: left; font-family: 'Montserrat', sans-serif; color: #1A3650; } .about-hero__title-line-1, .about-hero__title-line-2, .about-hero__title-line-3 { display: block; color: inherit; font-size: clamp(2.1rem, 4.5vw, 3.05rem); } .about-hero__image-wrapper { width: 100%; aspect-ratio: 16 / 9; overflow: visible; border-radius: 0; box-shadow: none; position: relative; } .about-hero__image-wrapper img { width: 100%; height: 100%; object-fit: cover; } .about-hero__band { background: #1A3650; color: white; padding: clamp(2.5rem, 5vw, 3.5rem) 5rem; text-align: left; width: 100%; margin-top: 0; /* Touch the image; no overlap */ position: relative; z-index: 1; font-family: 'Open Sans', sans-serif; } .about-hero__band-text { margin: 0; font-size: clamp(0.9375rem, 1.4vw, 1rem); line-height: 1.6; max-width: 87.5rem; margin: 0 auto; font-family: 'Open Sans', sans-serif; } @media (max-width: 1024px) { .about-hero__container { padding: 0 clamp(2rem, 4vw, 3rem) clamp(0.75rem, 2vw, 1.25rem); } .about-hero__band { padding: clamp(2rem, 4vw, 2.5rem) clamp(2rem, 4vw, 3rem); } } @media (max-width: 768px) { .about-hero__container { padding: 0 clamp(1rem, 3vw, 1.5rem) 0; } .about-hero__band { padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2rem); } } /* Intro Section */ .about-intro { padding: clamp(3rem, 6vw, 5rem) 5rem clamp(2rem, 4vw, 3rem); background: white; } .about-intro__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3rem); align-items: start; width: 100%; } @media (max-width: 768px) { .about-intro { padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 2rem); } .about-intro__grid { grid-template-columns: 1fr; } .about-intro__media { order: -1; } .about-intro__media img { max-width: 100%; } .about-intro__stats { position: static; max-width: 100%; margin-top: 1rem; left: auto; bottom: auto; } .about-intro__callout { position: static; transform: none; width: 100%; margin-top: 1rem; right: auto; top: auto; } } @media (max-width: 768px) { .about-intro__grid { grid-template-columns: 1fr; } .about-intro__media { order: -1; } } .about-intro__chip { display: inline-flex; align-items: center; padding: 0.35rem 0.75rem; border: none; border-radius: 1rem; background: #E3F2FD; color: #1A3650; margin-bottom: 0.75rem; } .about-intro__title { margin: 0 0 0.75rem 0; color: #1A3650; } .about-intro__description { margin: 0 0 1.5rem 0; color: #2E2E2E; line-height: 1.6; max-width: 100%; } .about-intro__text { max-width: 32rem; width: 100%; } .about-intro__stats { position: absolute; left: clamp(-6rem, -9vw, -7.5rem); bottom: clamp(0.35rem, 1vw, 0.75rem); display: flex; flex-direction: column; gap: 0.75rem; z-index: 2; max-width: calc(48% - 0.5rem); } .about-intro__stat-card { border: 0.0625rem solid #c7d7e5; border-radius: 0.5rem; padding: 0.85rem 1rem; background: #f9fbfd; box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.08); min-width: clamp(18rem, 42vw, 27rem); width: fit-content; } .about-intro__stat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; } .about-intro__stat-label { color: #1A3650; margin: 0; } .about-intro__stat-bar { position: relative; width: 100%; background: #e1e5ea; border-radius: 0.25rem; height: 0.25rem; overflow: hidden; } .about-intro__stat-bar > span:first-child { display: block; height: 100%; background: #1A3650; border-radius: 0.25rem; } .about-intro__stat-value { color: #1A3650; font-weight: 600; } .about-intro__media { position: relative; display: flex; justify-content: flex-start; align-items: center; width: 100%; } .about-intro__media img { width: 100%; max-width: 80%; height: auto; max-height: 520px; border-radius: 0; box-shadow: none; display: block; object-fit: cover; margin: 0; margin-left: clamp(-5.5rem, -8vw, -7rem); } .about-intro__callout { position: absolute; right: clamp(0.5rem, 2vw, 1rem); top: 50%; transform: translateY(-50%); width: min(320px, 75%); background: white; border-radius: 0.5rem; border: 0.0625rem solid #c7d7e5; box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.16); padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.5rem); z-index: 2; } .about-intro__callout-title { margin: 0 0 0.35rem 0; color: #1A3650; } .about-intro__callout-text { margin: 0 0 0.75rem 0; color: #2E2E2E; line-height: 1.5; } .about-intro__callout-list { margin: 0; padding-left: 0; list-style: none; color: #1A3650; line-height: 1.45; } .about-intro__callout-list li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; } .about-intro__callout-list li:before { content: '→'; position: absolute; left: 0; color: #1A3650; } /* Responsive styles for About Intro Section */ @media (max-width: 1024px) { .about-intro__media img { max-width: 90%; } .about-intro__stats { max-width: calc(55% - 1rem); } .about-intro__callout { width: min(280px, 80%); padding: clamp(0.875rem, 2vw, 1rem) clamp(0.875rem, 2vw, 1.25rem); } } @media (max-width: 768px) { .about-intro__grid { grid-template-columns: 1fr; } .about-intro__media { order: -1; margin-bottom: 2rem; } .about-intro__media img { max-width: 100%; } .about-intro__stats { position: static; max-width: 100%; margin-top: 1rem; left: auto; bottom: auto; } .about-intro__callout { position: static; transform: none; width: 100%; margin-top: 1rem; right: auto; top: auto; } } 
+/* Core Values Section */
+.core-values {
+  padding: 5rem;
+  background: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.core-values__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.core-values__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: #0b3a63;
+  margin-bottom: 0.75rem;
+}
+
+.core-values__subtitle {
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+
+/* GRID LAYOUT */
+.core-values__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(220px, auto);
+  gap: 1.5rem;
+  grid-auto-flow: dense;
+  align-items: stretch;
+}
+
+/* CARD BASE */
+.core-card {
+  position: relative;
+  border: 1.5px solid #0b3a63;
+  border-radius: 12px;
+  padding: 1.75rem 2.25rem 1.75rem 1.75rem;
+  background: #fff;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.core-card::after {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  bottom: -5%;
+  right: -5%;
+  background: #0b3a63;
+  border-radius: 12px;
+  transform-origin: bottom right;
+  transform: scale(0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.core-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  margin-bottom: 0.35rem;
+  color: #0b3a63;
+  position: relative;
+  z-index: 1;
+  line-height: 1.25;
+}
+
+.core-card p {
+  color: #0b3a63;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.core-card:not(.core-card--wide) p {
+  max-width: 40ch;
+}
+
+.core-card--wide p {
+  max-width: none;
+}
+
+/* ICON */
+.core-card__icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid #0b3a63;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b3a63;
+  transition: all 0.35s ease;
+  z-index: 1;
+}
+
+.core-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* SPECIAL SHAPES */
+.core-card--wide {
+  grid-column: span 2;
+}
+
+.core-card--tall {
+  grid-row: span 2;
+}
+
+.core-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+/* Hover fill from bottom-right (matches button animation) */
+.core-card:hover::after {
+  transform: scale(1);
+}
+
+.core-card:hover h3,
+.core-card:hover p {
+  color: #ffffff;
+}
+
+.core-card:hover .core-card__icon {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+@media (min-width: 1025px) {
+  .core-card--tall {
+    grid-row: 1 / span 2;
+    grid-column: 3;
+  }
+
+  .core-card--wide {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .core-values__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .core-card--tall {
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .core-values {
+    padding: 3rem 1.5rem;
+  }
+
+  .core-values__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .core-card--wide {
+    grid-column: span 1;
+  }
+}
+
+
+/* Team Section */ .about-team { background: #1A3650; color: white; padding: clamp(3rem, 6vw, 4.5rem) clamp(3rem, 6vw, 5rem); } .about-team__container { max-width: min(90vw, 75rem); margin: 0 auto; display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); } .about-team__header { text-align: left; max-width: 100%; } .about-team__title { margin: 0 0 0.75rem 0; color: white; } .about-team__subtitle { margin: 0; color: rgba(255, 255, 255, 0.9); line-height: 1.6; } .about-team__people { display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 3vw, 2rem); justify-content: flex-start; } .about-team__person { flex: 0 0 auto; min-width: 160px; max-width: 200px; text-align: center; } .about-team__avatar { width: 100%; padding-top: 100%; border-radius: 0.5rem; background-size: cover; background-position: center; margin-bottom: 0.75rem; box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2); } .about-team__avatar--1 { background-image: url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80'); } .about-team__avatar--2 { background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'); } .about-team__avatar--3 { background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80'); } .about-team__name { margin: 0.25rem 0 0 0; } .about-team__role { margin: 0; color: rgba(255, 255, 255, 0.85); } /* Explore Our Insights Section */ .about-insights { padding: clamp(3rem, 6vw, 4.5rem) clamp(3rem, 6vw, 5rem); background: white; } .about-insights__container { max-width: min(90vw, 75rem); margin: 0 auto; } .about-insights__header { margin-bottom: clamp(2rem, 4vw, 3rem); } .about-insights__tag { display: inline-block; padding: 0.35rem 0.75rem; border-radius: 1rem; background: #E3F2FD; color: #1A3650; margin-bottom: 0.75rem; } .about-insights__title { margin: 0; color: #1A3650; } .about-insights__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(1.5rem, 3vw, 2rem); } .about-insights__card { border: 0.0625rem solid #d9e5f1; border-radius: 0.5rem; padding: clamp(1.5rem, 3vw, 2rem); background: white; display: flex; flex-direction: column; gap: 1rem; transition: box-shadow 0.3s ease; } .about-insights__card:hover { box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1); } .about-insights__card-title { margin: 0; color: #1A3650; } .about-insights__card-text { margin: 0; color: #2E2E2E; line-height: 1.6; flex-grow: 1; } .about-insights__card-button { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: #1A3650; color: white; border: none; border-radius: 0.35rem; cursor: pointer; font-size: inherit; font-family: inherit; transition: background 0.3s ease; width: fit-content; } .about-insights__card-button:hover { background: #0c3b63; } 
+/* Stay Ahead Newsletter Section */ .about-newsletter { padding: clamp(4rem, 8vw, 6rem) clamp(3rem, 6vw, 5rem); background: #1A3650; background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="50" cy="50" r="20" fill="rgba(255,255,255,0.05)"/><circle cx="150" cy="100" r="15" fill="rgba(255,255,255,0.05)"/><circle cx="100" cy="150" r="25" fill="rgba(255,255,255,0.05)"/><rect x="30" y="120" width="40" height="20" rx="5" fill="rgba(255,255,255,0.05)"/><rect x="130" y="40" width="50" height="30" rx="5" fill="rgba(255,255,255,0.05)"/></svg>'); background-size: 400px 400px; background-position: center; background-repeat: repeat; position: relative; color: white; } .about-newsletter__container { max-width: min(90vw, 75rem); margin: 0 auto; text-align: center; position: relative; z-index: 1; } .about-newsletter__title { margin: 0 0 clamp(2rem, 4vw, 3rem) 0; color: white; } .about-newsletter__form { display: flex; gap: 1rem; max-width: 600px; margin: 0 auto; flex-wrap: wrap; justify-content: center; } .about-newsletter__input { flex: 1; min-width: 250px; padding: 0.875rem 1.25rem; border: 0.0625rem solid rgba(255, 255, 255, 0.3); border-radius: 0.35rem; background: rgba(255, 255, 255, 0.1); color: white; font-size: inherit; font-family: inherit; outline: none; transition: border-color 0.3s ease, background 0.3s ease; } .about-newsletter__input::placeholder { color: rgba(255, 255, 255, 0.6); } .about-newsletter__input:focus { border-color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.15); } .about-newsletter__button { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; background: white; color: #1A3650; border: none; border-radius: 0.35rem; cursor: pointer; font-size: inherit; font-family: inherit; font-weight: 600; transition: background 0.3s ease, transform 0.2s ease; } .about-newsletter__button:hover { background: #f0f0f0; transform: translateY(-1px); } @media (max-width: 768px) { .about-insights__grid { grid-template-columns: 1fr; } .about-newsletter__form { flex-direction: column; } .about-newsletter__input { min-width: 100%; } .about-team__people { justify-content: center; } } /* Mission & Vision Section */ .about-mission { padding: 5rem 5rem; background: #f4f8fc; position: relative; } .about-mission::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem), linear-gradient(90deg, rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem); background-size: clamp(3rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem); background-position: 0 0; pointer-events: none; z-index: 0; } .about-mission__container { max-width: 87.5rem; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3rem); position: relative; z-index: 1; } .about-mission__card { background: white; padding: clamp(2rem, 4vw, 3rem); border-radius: 0.5rem; border: 0.0625rem solid rgba(173, 206, 230, 0.5); display: flex; flex-direction: column; gap: clamp(1rem, 2vw, 1.5rem); } .about-mission__card-title { margin: 0; color: #1A3650; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; } .about-mission__card-text { color: #2E2E2E; line-height: 1.6; margin: 0; } /* Values Section */ .about-values { padding: 5rem 5rem; background: white; } .about-values__container { max-width: 87.5rem; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); } .about-values__tag { display: inline-block; padding: clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem); background: rgba(173, 206, 230, 0.5); color: #1A3650; border: 0.0625rem solid #1A3650; border-radius: 0.25rem; width: fit-content; } .about-values__title { margin: 0; color: #1A3650; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; line-height: 1.2; } .about-values__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 3vw, 2rem); margin-top: clamp(1rem, 2vw, 1.5rem); } .about-values__item { display: flex; flex-direction: column; gap: clamp(0.75rem, 1.5vw, 1rem); padding: clamp(1.5rem, 3vw, 2rem); background: #f4f8fc; border-radius: 0.5rem; border: 0.0625rem solid rgba(173, 206, 230, 0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; } .about-values__item:hover { transform: translateY(-0.25rem); box-shadow: 0 0.5rem 1.5rem rgba(26, 54, 80, 0.1); } .about-values__icon { width: clamp(2.5rem, 4vw, 3rem); height: clamp(2.5rem, 4vw, 3rem); color: #1A3650; display: flex; align-items: center; justify-content: center; } .about-values__item-title { margin: 0; color: #1A3650; font-size: clamp(1.125rem, 2vw, 1.25rem); font-weight: 600; } .about-values__item-text { color: #2E2E2E; line-height: 1.6; margin: 0; } /* Stats Section */ .about-stats { padding: 5rem 5rem; background: #1A3650; color: white; } .about-stats__container { max-width: 87.5rem; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(2rem, 4vw, 3rem); } .about-stats__item { display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.75rem); text-align: center; } .about-stats__value { margin: 0; color: white; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.2; } .about-stats__label { margin: 0; color: rgba(255, 255, 255, 0.9); font-size: clamp(0.875rem, 1.5vw, 1rem); } /* Why Choose Us Section */ .about-why { padding: 5rem 5rem; background: white; } .about-why__container { max-width: 87.5rem; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); } .about-why__tag { display: inline-block; padding: clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem); background: rgba(173, 206, 230, 0.5); color: #1A3650; border: 0.0625rem solid #1A3650; border-radius: 0.25rem; width: fit-content; } .about-why__title { margin: 0; color: #1A3650; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; line-height: 1.2; } .about-why__content { margin-top: clamp(1rem, 2vw, 1.5rem); } .about-why__text { display: flex; flex-direction: column; gap: clamp(1rem, 2vw, 1.5rem); } .about-why__paragraph { color: #2E2E2E; line-height: 1.6; font-size: clamp(1rem, 1.5vw, 1.125rem); margin: 0; } /* Responsive Styles for About Page */ @media (max-width: 1024px) { .about-hero__container { grid-template-columns: 1fr; gap: clamp(2rem, 4vw, 3rem); } .about-hero__image-wrapper { order: -1; } .about-mission__container { grid-template-columns: 1fr; } .about-values__grid { grid-template-columns: 1fr; } .about-stats__container { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 768px) { .about-hero { padding-top: calc(clamp(2rem, 4vw, 2.5rem) + clamp(2.5rem, 5vw, 3rem)); } .about-hero__container { padding: 0 clamp(1rem, 3vw, 1.5rem) 0; gap: clamp(0.75rem, 1.5vw, 1rem); } .about-hero__band { padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1rem, 3vw, 1.5rem); margin-top: -16%; /* Less overlap on mobile for better readability */ } .about-mission, .about-values, .about-stats, .about-why { padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem); } .about-stats__container { grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2rem); } .about-mission__card { padding: clamp(1.5rem, 3vw, 2rem); } .about-values__item { padding: clamp(1.25rem, 2.5vw, 1.5rem); } }
