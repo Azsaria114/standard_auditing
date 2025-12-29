@@ -7492,6 +7492,13 @@ html, body {
   background: #0A3D62;
   transform: translateY(-0.25rem);
   box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(31, 41, 51, 0.18);
+  border: none;
+  outline: none;
+}
+
+.contact-form__submit:focus {
+  border: none;
+  outline: none;
 }
 
 .contact-form__submit:hover::after {
@@ -7680,8 +7687,12 @@ html, body {
     gap: clamp(2.5rem, 5vw, 3.5rem);
   }
 
-  .contact-main__right {
+  .contact-main__left {
     order: -1;
+  }
+
+  .contact-main__right {
+    order: 1;
   }
 }
 
@@ -7698,16 +7709,25 @@ html, body {
     padding: clamp(2.5rem, 5vw, 3.5rem) clamp(40px, 4vw, 5rem);
   }
 
+  .contact-main__container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-main__left {
+    order: -1;
+  }
+
+  .contact-main__right {
+    order: 1;
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+
   .contact-main__heading {
     font-size: clamp(1.5rem, 4vw, 2rem);
   }
 
   .contact-main__social-icons {
     flex-wrap: wrap;
-  }
-
-  .contact-main__right {
-    padding: clamp(1.5rem, 3vw, 2rem);
   }
 
   .contact-map {
