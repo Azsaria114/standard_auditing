@@ -2790,6 +2790,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: clamp(0.5rem, 1vw, 0.75rem);
+  text-decoration: none;
   width: fit-content;
   /* White button with dark blue border and text - minimized height */
 }
@@ -7162,3 +7163,340 @@ html, body {
 
 /* Explore Our Insights Section */ .about-insights { padding: 5rem 5rem; background: white; } .about-insights__container { max-width: min(90vw, 87.5rem); margin: 0 auto; } .about-insights__header { margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; } .about-insights__tag { display: inline-block; padding: 0.35rem 0.75rem; border-radius: 1rem; background: #E3F2FD; color: #1A3650; margin-bottom: 0.75rem; font-weight: 600; border: 0.0625rem solid #1A3650; } .about-insights__title { margin: 0 0 1rem 0; color: #1A3650; font-weight: 600; font-size: 40px; } .about-insights__intro { margin: 0 auto; color: #2E2E2E; line-height: 1.6; max-width: 55rem; font-size: 20px; } .about-insights__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 3rem); margin-top: clamp(2rem, 4vw, 3rem); } .about-insights__card { border: none; border-radius: 0; padding: clamp(1.5rem, 3vw, 2rem); background: white; display: flex; flex-direction: column; gap: 1rem; position: relative; text-align: center; align-items: center; } .about-insights__card::before, .about-insights__card::after { content: ''; position: absolute; pointer-events: none; z-index: 1; } .about-insights__card--left, .about-insights__card--middle, .about-insights__card--right { position: relative; } .about-insights__card--left::before, .about-insights__card--middle::before, .about-insights__card--right::before { top: 0; left: 0; width: 3rem; height: 0.125rem; background: linear-gradient(to right, #1A3650 0%, #1A3650 60%, transparent 100%); } .about-insights__card--left::after, .about-insights__card--middle::after, .about-insights__card--right::after { top: 0; right: 0; width: 3rem; height: 0.125rem; background: linear-gradient(to left, #1A3650 0%, #1A3650 60%, transparent 100%); } .about-insights__bracket { position: absolute; pointer-events: none; z-index: 1; } .about-insights__bracket--top-left-vertical { top: 0; left: 0; width: 0.125rem; height: 3rem; background: linear-gradient(to bottom, #1A3650 0%, #1A3650 60%, transparent 100%); } .about-insights__bracket--top-right-vertical { top: 0; right: 0; width: 0.125rem; height: 3rem; background: linear-gradient(to bottom, #1A3650 0%, #1A3650 60%, transparent 100%); } .about-insights__bracket--bottom-left { bottom: 0; left: 0; width: 0.125rem; height: 3rem; background: linear-gradient(to top, #1A3650 0%, #1A3650 60%, transparent 100%); } .about-insights__bracket--bottom-right { bottom: 0; right: 0; width: 0.125rem; height: 3rem; background: linear-gradient(to top, #1A3650 0%, #1A3650 60%, transparent 100%); } .about-insights__bracket--bottom-left-horizontal { bottom: 0; left: 0; width: 3rem; height: 0.125rem; background: linear-gradient(to right, #1A3650 0%, #1A3650 60%, transparent 100%); } .about-insights__bracket--bottom-right-horizontal { bottom: 0; right: 0; width: 3rem; height: 0.125rem; background: linear-gradient(to left, #1A3650 0%, #1A3650 60%, transparent 100%); } .about-insights__card-title { margin: 0; color: #1A3650; font-weight: 600; font-size: 25px; text-align: center; } .about-insights__card-text { margin: 0; color: #2E2E2E; line-height: 1.6; flex-grow: 1; font-size: 20px; text-align: center; } .about-insights__card-button { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.25rem; background: white; color: #1A3650; border: 0.125rem solid #1A3650; border-radius: 0.25rem; cursor: pointer; font-size: inherit; font-family: inherit; width: fit-content; position: relative; overflow: hidden; isolation: isolate; margin: 0 auto; transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .about-insights__card-button-text { position: relative; z-index: 1; display: inline-block; transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .about-insights__card-button::after { content: ''; position: absolute; width: clamp(1.25rem, 2.5vw, 1.5rem); height: clamp(1.25rem, 2.5vw, 1.5rem); bottom: -0.125rem; right: -0.125rem; background: #1A3650; clip-path: polygon(100% 0, 100% 100%, 0 100%); border-bottom-right-radius: 0.25rem; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); z-index: 0; pointer-events: none; } .about-insights__card-button:hover { color: white; } .about-insights__card-button:hover .about-insights__card-button-text { color: white; } .about-insights__card-button:hover::after { background: #1A3650; width: calc(100% + 0.25rem); height: calc(100% + 0.25rem); bottom: -0.125rem; right: -0.125rem; clip-path: none; border-radius: 0.25rem; } 
 /* Stay Ahead Newsletter Section */ .about-newsletter { padding: clamp(4rem, 8vw, 6rem) clamp(3rem, 6vw, 5rem); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; color: white; overflow: hidden; border-top: none; } .about-newsletter::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(1px); z-index: 0; } .about-newsletter__container { max-width: min(90vw, 75rem); margin: 0 auto; position: relative; z-index: 1; text-align: center; } .about-newsletter__title { margin: 0 0 clamp(1.5rem, 3vw, 2rem) 0; color: white; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; line-height: 1.2; text-align: center; max-width: clamp(30rem, 60vw, 45rem); margin-left: auto; margin-right: auto; } .about-newsletter__description { margin: 0 auto clamp(0.75rem, 1.5vw, 1rem) auto; color: white; font-size: 20px; line-height: 1.6; max-width: clamp(50rem, 85vw, 75rem); position: relative; padding-left: clamp(0.75rem, 1vw, 1rem); padding-right: clamp(0.75rem, 1vw, 1rem); text-align: center; display: block; } .about-newsletter__description::before { display: none; } .about-newsletter__description::after { display: none; } .about-newsletter__diamond-start, .about-newsletter__diamond-end { color: white; font-size: 1.125rem; opacity: 0.9; margin-left: 0.25rem; margin-right: 0.25rem; vertical-align: 0.2em; } .about-newsletter__social-proof { display: none; } .about-newsletter__form { display: flex; gap: 0; max-width: 600px; margin: 0 auto clamp(1.5rem, 3vw, 2rem) auto; flex-wrap: nowrap; justify-content: center; border: 0.1875rem solid rgba(255, 255, 255, 0.9); border-radius: 0.5rem; overflow: hidden; background: transparent; align-items: stretch; } @media (max-width: 1024px) { .about-team__content { grid-template-columns: 1fr; gap: clamp(2rem, 4vw, 3rem); } .about-team__title { text-align: left; } } @media (max-width: 768px) { .about-team { padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 3rem); } .about-team__person { width: 180px; } .about-team__avatar { width: 180px; height: 180px; } } .about-newsletter__input { flex: 1; min-width: 200px; padding: clamp(0.75rem, 1.5vw, 0.875rem) clamp(1rem, 2vw, 1.25rem); border: none; background: transparent; color: white; font-size: clamp(0.875rem, 1.5vw, 1rem); font-family: inherit; outline: none; border-radius: 0.5rem 0 0 0.5rem; margin: 0; } .about-newsletter__input::placeholder { color: rgba(255, 255, 255, 0.6); } .about-newsletter__button { padding: clamp(0.75rem, 1.5vw, 0.875rem) clamp(1.25rem, 2.5vw, 2rem); background: #1A3650; color: white; border: none; border-radius: 0; cursor: pointer; font-size: clamp(0.875rem, 1.5vw, 1rem); font-family: inherit; font-weight: 600; position: relative; overflow: hidden; isolation: isolate; transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; margin: 0; align-self: stretch; display: flex; align-items: center; justify-content: center; height: 100%; } .about-newsletter__button::after { content: ''; position: absolute; width: clamp(1.5rem, 3vw, 2rem); height: clamp(1.5rem, 3vw, 2rem); bottom: -0.1875rem; right: -0.1875rem; background: white; clip-path: polygon(100% 0, 100% 100%, 0 100%); border-bottom-right-radius: 0.5rem; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); z-index: 0; pointer-events: none; } .about-newsletter__button-text { position: relative; z-index: 1; display: inline-block; transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .about-newsletter__button:hover { color: #1A3650; } .about-newsletter__button:hover .about-newsletter__button-text { color: #1A3650; } .about-newsletter__button:hover::after { background: white; width: calc(100% + 0.375rem); height: calc(100% + 0.375rem); bottom: -0.1875rem; right: -0.1875rem; clip-path: none; border-radius: 0; } .about-newsletter__disclaimer { margin: 0 auto; color: white; font-size: 20px; line-height: 1.5; text-align: center; max-width: clamp(40rem, 75vw, 65rem); } @media (max-width: 1024px) { .about-insights { padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 3rem); } .about-insights__title { font-size: clamp(1.75rem, 4vw, 2.25rem); } .about-insights__intro { font-size: clamp(16px, 2.5vw, 18px); } } @media (max-width: 768px) { .about-insights { padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem); } .about-insights__grid { grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2rem); } .about-insights__title { font-size: clamp(1.5rem, 5vw, 1.75rem); } .about-insights__intro { font-size: clamp(14px, 2vw, 16px); } .about-insights__card-title { font-size: clamp(1.125rem, 3vw, 1.25rem); } .about-insights__card-text { font-size: clamp(14px, 2vw, 16px); } .about-newsletter { padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 3rem); } .about-newsletter__title { text-align: center; font-size: clamp(1.25rem, 3.5vw, 1.75rem); max-width: clamp(20rem, 80vw, 30rem); margin-left: auto; margin-right: auto; } .about-newsletter__description { font-size: clamp(14px, 2vw, 16px); padding-left: clamp(0.75rem, 1.5vw, 1rem); padding-right: clamp(0.75rem, 1.5vw, 1rem); text-align: center; white-space: normal; } .about-newsletter__diamond-start, .about-newsletter__diamond-end { font-size: clamp(0.875rem, 1.5vw, 1rem); } .about-newsletter__form { flex-direction: column; border-radius: 0.5rem; max-width: 100%; margin: 0 auto clamp(1.5rem, 3vw, 2rem) auto; } .about-newsletter__input { min-width: 100%; border-radius: 0.5rem 0.5rem 0 0; padding: clamp(0.625rem, 1.25vw, 0.75rem) clamp(0.875rem, 1.75vw, 1rem); font-size: clamp(0.75rem, 1.25vw, 0.875rem); } .about-newsletter__button { width: 100%; border-radius: 0 0 0.5rem 0.5rem; padding: clamp(0.625rem, 1.25vw, 0.75rem) clamp(1rem, 2vw, 1.25rem); font-size: clamp(0.75rem, 1.25vw, 0.875rem); } .about-newsletter__disclaimer { text-align: center; font-size: clamp(16px, 2vw, 20px); } } /* Mission & Vision Section */ .about-mission { padding: 5rem 5rem; background: #f4f8fc; position: relative; } .about-mission::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem), linear-gradient(90deg, rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem); background-size: clamp(3rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem); background-position: 0 0; pointer-events: none; z-index: 0; } .about-mission__container { max-width: 87.5rem; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3rem); position: relative; z-index: 1; } .about-mission__card { background: white; padding: clamp(2rem, 4vw, 3rem); border-radius: 0.5rem; border: 0.0625rem solid rgba(173, 206, 230, 0.5); display: flex; flex-direction: column; gap: clamp(1rem, 2vw, 1.5rem); } .about-mission__card-title { margin: 0; color: #1A3650; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; } .about-mission__card-text { color: #2E2E2E; line-height: 1.6; margin: 0; } /* Values Section */ .about-values { padding: 5rem 5rem; background: white; } .about-values__container { max-width: 87.5rem; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); } .about-values__tag { display: inline-block; padding: clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem); background: rgba(173, 206, 230, 0.5); color: #1A3650; border: 0.0625rem solid #1A3650; border-radius: 0.25rem; width: fit-content; } .about-values__title { margin: 0; color: #1A3650; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; line-height: 1.2; } .about-values__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 3vw, 2rem); margin-top: clamp(1rem, 2vw, 1.5rem); } .about-values__item { display: flex; flex-direction: column; gap: clamp(0.75rem, 1.5vw, 1rem); padding: clamp(1.5rem, 3vw, 2rem); background: #f4f8fc; border-radius: 0.5rem; border: 0.0625rem solid rgba(173, 206, 230, 0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; } .about-values__item:hover { transform: translateY(-0.25rem); box-shadow: 0 0.5rem 1.5rem rgba(26, 54, 80, 0.1); } .about-values__icon { width: clamp(2.5rem, 4vw, 3rem); height: clamp(2.5rem, 4vw, 3rem); color: #1A3650; display: flex; align-items: center; justify-content: center; } .about-values__item-title { margin: 0; color: #1A3650; font-size: clamp(1.125rem, 2vw, 1.25rem); font-weight: 600; } .about-values__item-text { color: #2E2E2E; line-height: 1.6; margin: 0; } /* Stats Section */ .about-stats { padding: 5rem 5rem; background: #1A3650; color: white; } .about-stats__container { max-width: 87.5rem; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(2rem, 4vw, 3rem); } .about-stats__item { display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.75rem); text-align: center; } .about-stats__value { margin: 0; color: white; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.2; } .about-stats__label { margin: 0; color: rgba(255, 255, 255, 0.9); font-size: clamp(0.875rem, 1.5vw, 1rem); } /* Why Choose Us Section */ .about-why { padding: 5rem 5rem; background: white; } .about-why__container { max-width: 87.5rem; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); } .about-why__tag { display: inline-block; padding: clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem); background: rgba(173, 206, 230, 0.5); color: #1A3650; border: 0.0625rem solid #1A3650; border-radius: 0.25rem; width: fit-content; } .about-why__title { margin: 0; color: #1A3650; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; line-height: 1.2; } .about-why__content { margin-top: clamp(1rem, 2vw, 1.5rem); } .about-why__text { display: flex; flex-direction: column; gap: clamp(1rem, 2vw, 1.5rem); } .about-why__paragraph { color: #2E2E2E; line-height: 1.6; font-size: clamp(1rem, 1.5vw, 1.125rem); margin: 0; } /* Responsive Styles for About Page */ @media (max-width: 1024px) { .about-hero__container { grid-template-columns: 1fr; gap: clamp(2rem, 4vw, 3rem); } .about-hero__image-wrapper { order: -1; } .about-mission__container { grid-template-columns: 1fr; } .about-values__grid { grid-template-columns: 1fr; } .about-stats__container { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 768px) { .about-hero { padding-top: calc(clamp(2rem, 4vw, 2.5rem) + clamp(2.5rem, 5vw, 3rem)); } .about-hero__container { padding: 0 clamp(1rem, 3vw, 1.5rem) 0; gap: clamp(0.75rem, 1.5vw, 1rem); } .about-hero__band { padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1rem, 3vw, 1.5rem); margin-top: -16%; /* Less overlap on mobile for better readability */ } .about-mission, .about-values, .about-stats, .about-why { padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem); } .about-stats__container { grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2rem); } .about-mission__card { padding: clamp(1.5rem, 3vw, 2rem); } .about-values__item { padding: clamp(1.25rem, 2.5vw, 1.5rem); } }
+
+/* ============================================
+   CONTACT PAGE STYLES
+   ============================================ */
+
+/* Contact Hero Section */
+.contact-hero {
+  position: relative;
+  width: 100%;
+  height: clamp(20rem, 35vw, 30rem);
+  background: linear-gradient(135deg, #1A3650 0%, #2c4d6e 100%);
+  background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.contact-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 54, 80, 0.75);
+  z-index: 1;
+}
+
+.contact-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: clamp(2rem, 4vw, 3rem) clamp(40px, 4vw, 5rem);
+}
+
+.contact-hero__title {
+  color: white;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  letter-spacing: clamp(0.125rem, 0.5vw, 0.25rem);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Contact Main Section */
+.contact-main {
+  padding: clamp(4rem, 8vw, 6rem) clamp(40px, 4vw, 5rem);
+  background: white;
+}
+
+.contact-main__container {
+  max-width: min(90vw, 120rem);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: start;
+}
+
+/* Left Side - Contact Information */
+.contact-main__left {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.contact-main__heading {
+  color: #1A3650;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.contact-main__description {
+  color: #2E2E2E;
+  font-size: clamp(1rem, 1.75vw, 1.125rem);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-main__info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.contact-main__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.contact-main__info-label {
+  color: #1A3650;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+.contact-main__info-link {
+  color: #1A3650;
+  text-decoration: none;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  transition: color 0.3s ease;
+}
+
+.contact-main__info-link:hover {
+  color: #2c4d6e;
+  text-decoration: underline;
+}
+
+.contact-main__info-text {
+  color: #2E2E2E;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-main__social {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.contact-main__social-label {
+  color: #1A3650;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  margin: 0;
+}
+
+.contact-main__social-icons {
+  display: flex;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  align-items: center;
+}
+
+.contact-main__social-icon {
+  width: clamp(2.5rem, 5vw, 3.5rem);
+  height: clamp(2.5rem, 5vw, 3.5rem);
+  background: #1A3650;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.contact-main__social-icon svg {
+  width: clamp(1.25rem, 2.5vw, 1.5rem);
+  height: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+.contact-main__social-icon:hover {
+  background: #2c4d6e;
+  transform: translateY(-0.25rem);
+  box-shadow: 0 clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 0.75rem) rgba(26, 54, 80, 0.3);
+}
+
+/* Right Side - Contact Form */
+.contact-main__right {
+  background: white;
+  border-radius: clamp(0.5rem, 1vw, 0.75rem);
+  box-shadow: 0 clamp(0.25rem, 0.5vw, 0.5rem) clamp(1rem, 2vw, 1.5rem) rgba(0, 0, 0, 0.1);
+  padding: clamp(2rem, 4vw, 3rem);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.contact-form__label {
+  color: #1A3650;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+.contact-form__input,
+.contact-form__textarea {
+  width: 100%;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.25rem);
+  border: 0.0625rem solid #ccc;
+  border-radius: clamp(0.25rem, 0.5vw, 0.375rem);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-family: 'Open Sans', sans-serif;
+  color: #2E2E2E;
+  background: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+  outline: none;
+  border-color: #1A3650;
+  box-shadow: 0 0 0 clamp(0.125rem, 0.25vw, 0.1875rem) rgba(26, 54, 80, 0.2);
+}
+
+.contact-form__textarea {
+  resize: vertical;
+  min-height: clamp(6rem, 12vw, 8rem);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.contact-form__checkbox {
+  display: flex;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  align-items: flex-start;
+}
+
+.contact-form__checkbox input[type='checkbox'] {
+  margin-top: clamp(0.25rem, 0.5vw, 0.375rem);
+  width: clamp(1rem, 2vw, 1.25rem);
+  height: clamp(1rem, 2vw, 1.25rem);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.contact-form__checkbox-label {
+  color: #2E2E2E;
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+  line-height: 1.5;
+  margin: 0;
+  cursor: pointer;
+}
+
+.contact-form__submit {
+  background: #1A3650;
+  color: white;
+  border: none;
+  border-radius: clamp(0.25rem, 0.5vw, 0.375rem);
+  padding: clamp(0.875rem, 1.75vw, 1.125rem) clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+  margin-top: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.contact-form__submit:hover {
+  background: #2c4d6e;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem) rgba(26, 54, 80, 0.3);
+}
+
+.contact-form__submit:active {
+  transform: translateY(0);
+}
+
+/* Map Section */
+.contact-map {
+  width: 100%;
+  height: clamp(25rem, 50vw, 35rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-map__iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Responsive Styles for Contact Page */
+@media (max-width: 1024px) {
+  .contact-main__container {
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .contact-main__right {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    height: clamp(15rem, 40vw, 20rem);
+  }
+
+  .contact-hero__title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .contact-main {
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(40px, 4vw, 5rem);
+  }
+
+  .contact-main__heading {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .contact-main__social-icons {
+    flex-wrap: wrap;
+  }
+
+  .contact-main__right {
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .contact-map {
+    height: clamp(20rem, 60vw, 25rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero {
+    height: clamp(12rem, 50vw, 15rem);
+  }
+
+  .contact-main {
+    padding: clamp(2rem, 4vw, 2.5rem) clamp(40px, 4vw, 5rem);
+  }
+
+  .contact-form {
+    gap: clamp(1rem, 2vw, 1.25rem);
+  }
+}
+

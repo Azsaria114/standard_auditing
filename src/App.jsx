@@ -4,6 +4,7 @@ import './App.css'
 import standardAuditingLogo from './assets/standard_auditing_logo.png'
 import Home from './Home'
 import About from './About'
+import Contact from './Contact'
 
 // Data constants
 const services = [
@@ -261,19 +262,19 @@ function Header() {
             <a href="/#careers" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
               Careers
             </a>
-            <button type="button" className="site-header__cta site-header__cta--sidebar" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/contact" className="site-header__cta site-header__cta--sidebar" onClick={() => setIsMenuOpen(false)}>
               <span className="site-header__cta-text">Contact Us</span>
               <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </button>
+            </Link>
           </nav>
-          <button type="button" className="site-header__cta">
+          <Link to="/contact" className="site-header__cta">
             <span className="site-header__cta-text">Contact Us</span>
             <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </button>
+          </Link>
         </div>
       </header>
       <div 
@@ -386,6 +387,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </>
