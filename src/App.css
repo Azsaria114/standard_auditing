@@ -7234,6 +7234,7 @@ html, body {
 .contact-main__heading {
   color: #0A3D62;
   font-size: clamp(2rem, 5vw, 3.5rem);
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   line-height: 1.2;
   margin: 0;
@@ -7242,6 +7243,8 @@ html, body {
 .contact-main__description {
   color: #0A3D62;
   font-size: clamp(1rem, 1.75vw, 1.125rem);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
   line-height: 1.6;
   margin: 0;
 }
@@ -7260,12 +7263,15 @@ html, body {
 
 .contact-main__info-label {
   color: #0A3D62;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 
 .contact-main__info-link {
   color: #0A3D62;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
   text-decoration: none;
   font-size: clamp(0.875rem, 1.5vw, 1rem);
   transition: color 0.3s ease;
@@ -7278,6 +7284,8 @@ html, body {
 
 .contact-main__info-text {
   color: #0A3D62;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
   font-size: clamp(0.875rem, 1.5vw, 1rem);
   line-height: 1.6;
   margin: 0;
@@ -7292,21 +7300,17 @@ html, body {
 
 .contact-main__social {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   gap: clamp(1rem, 2vw, 1.5rem);
   margin-top: 0;
 }
 
-.contact-main__social-inline {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.75rem, 1.5vw, 1rem);
-  flex-wrap: wrap;
-}
-
 .contact-main__social-label {
   color: #0A3D62;
-  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
   font-size: clamp(0.875rem, 1.5vw, 1rem);
   margin: 0;
 }
@@ -7315,6 +7319,7 @@ html, body {
   display: flex;
   gap: clamp(0.5rem, 1vw, 0.75rem);
   align-items: center;
+  margin-left: auto;
 }
 
 .contact-main__social-icon {
@@ -7395,6 +7400,7 @@ html, body {
   resize: vertical;
   min-height: clamp(6rem, 12vw, 8rem);
   font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
 }
 
 .contact-form__checkbox {
