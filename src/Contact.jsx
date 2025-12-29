@@ -205,7 +205,7 @@ function Contact() {
       <section className="contact-map">
         <div className="contact-map__container">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.1785095734!2d55.2703!3d25.2048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDEyJzE3LjMiTiA1NcKwMTYnMTMuMSJF!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.1785095734!2d55.2703!3d25.2048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDEyJzE3LjMiTiA1NcKwMTYnMTMuMSJF!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae&maptype=roadmap"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -230,13 +230,18 @@ function Contact() {
                 <span className="contact-map__review-star contact-map__review-star--half">★</span>
               </div>
               <span className="contact-map__review-rating-text">4.5</span>
-              <span className="contact-map__review-count">(8 reviews)</span>
+              <span className="contact-map__review-count">(8)</span>
+              <span className="contact-map__review-separator">·</span>
               <span className="contact-map__review-type">Auditor</span>
             </div>
             <div className="contact-map__review-info">
               <p className="contact-map__review-location">Dubai - United Arab Emirates</p>
               <p className="contact-map__review-phone">+971 54 211 9784, +971 4 379 5200</p>
-              <p className="contact-map__review-hours">Open - Closes 6:30 pm</p>
+              <p className="contact-map__review-hours">
+                <span className="contact-map__hours-status">Open</span>
+                <span className="contact-map__review-separator"> · </span>
+                <span className="contact-map__hours-text">Closes 6:30 pm</span>
+              </p>
             </div>
             <div className="contact-map__review-snippet">
               <svg className="contact-map__review-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
