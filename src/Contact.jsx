@@ -41,7 +41,7 @@ function Contact() {
           {/* Left Side - Contact Information */}
           <div className="contact-main__left">
             <h2 className="contact-main__heading h2-montserrat">
-              Get in — touch with us
+              Get in —<br />touch with us
             </h2>
             <p className="contact-main__description body-opensans">
               We'll help you find the right solutions and pricing for your business. Fill out the form & our team will get in touch with you shortly.
@@ -169,7 +169,7 @@ function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   className="contact-form__textarea body-opensans"
-                  placeholder="Enter your message..."
+                  placeholder="Example: I need help with financial auditing for my company..."
                   rows="5"
                   required
                 ></textarea>
