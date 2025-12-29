@@ -13,8 +13,6 @@ import dmccLogo from './assets/dmcc.jpeg'
 import dafzaLogo from './assets/dubai_free_zone.jpeg'
 import difcLogo from './assets/dubai_international.jpeg'
 import shamsLogo from './assets/media city.jpeg'
-import meydanLogo from './assets/meydan.jpeg'
-import moeLogo from './assets/ministry_of_education.jpeg'
 import whatWeStandForImage from './assets/what we stand for.jpeg'
 
 function About() {
@@ -32,26 +30,24 @@ function About() {
     <main className="about-page">
         {/* Hero Section */}
         <section className="about-hero">
-          <div className="about-hero__container">
-            <div className="about-hero__content">
-              <h1 className="about-hero__title h1-montserrat">
-                Your Trusted Partner in Achieving<br />
-                Financial Clarity & Protecting Your<br />
-                Profits.
-              </h1>
-            </div>
+          <div className="about-hero__content">
+            <h1 className="about-hero__title h1-montserrat">
+              We are dedicated to redefining the way businesses achieve financial clarity and compliance.
+            </h1>
             <div className="about-hero__image-wrapper">
-              <img
-                src={frame647}
-                alt="Team meeting and presentation"
-                loading="lazy"
+              <img 
+                src={frame647} 
+                alt="Standard Auditing Team Meeting" 
+                className="about-hero__image"
               />
             </div>
           </div>
-          <div className="about-hero__band">
-            <p className="about-hero__band-text body-opensans">
-              As a business owner you may already have accountants. What makes the difference is the people behind the work.Our team brings decades of hands-on experience in audits, tax and compliance. We have worked together for years. That continuity builds strong judgment and reliable systems. The result is faster execution and cleaner outcomes. You get financial control you can rely on.
-            </p>
+          <div className="about-hero__support-section">
+            <div className="about-hero__support-content">
+              <p className="about-hero__support-text body-opensans">
+                As a business owner you may already have accountants. What makes the difference is the people behind the work. Our team brings decades of hands-on experience in audits, tax and compliance. We have worked together for years. That continuity builds strong judgment and reliable systems. The result is faster execution and cleaner outcomes. You get financial control you can rely on.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -60,12 +56,9 @@ function About() {
           <div className="about-partners__container">
             <div className="about-partners__loop">
               <div className="about-partners__track">
-                {/* First set */}
+                {/* First set - Order: Jafza, DAFZA, DIFC, Shams, DMCC */}
                 <div className="about-partners__logo">
                   <img src={jafzaLogo} alt="Jafza - Jebel Ali Free Zone" />
-                </div>
-                <div className="about-partners__logo">
-                  <img src={dmccLogo} alt="DMCC - Dubai Multi Commodities Centre" />
                 </div>
                 <div className="about-partners__logo">
                   <img src={dafzaLogo} alt="Dubai Airport Freezone" />
@@ -77,19 +70,13 @@ function About() {
                   <img src={shamsLogo} alt="Sharjah Media City" />
                 </div>
                 <div className="about-partners__logo">
-                  <img src={meydanLogo} alt="Meydan FZ" />
-                </div>
-                <div className="about-partners__logo">
-                  <img src={moeLogo} alt="Ministry of Education" />
+                  <img src={dmccLogo} alt="DMCC - Dubai Multi Commodities Centre" />
                 </div>
                 {/* Duplicate set for seamless loop */}
                 <div className="about-partners__logo">
                   <img src={jafzaLogo} alt="Jafza - Jebel Ali Free Zone" />
                 </div>
                 <div className="about-partners__logo">
-                  <img src={dmccLogo} alt="DMCC - Dubai Multi Commodities Centre" />
-                </div>
-                <div className="about-partners__logo">
                   <img src={dafzaLogo} alt="Dubai Airport Freezone" />
                 </div>
                 <div className="about-partners__logo">
@@ -99,10 +86,7 @@ function About() {
                   <img src={shamsLogo} alt="Sharjah Media City" />
                 </div>
                 <div className="about-partners__logo">
-                  <img src={meydanLogo} alt="Meydan FZ" />
-                </div>
-                <div className="about-partners__logo">
-                  <img src={moeLogo} alt="Ministry of Education" />
+                  <img src={dmccLogo} alt="DMCC - Dubai Multi Commodities Centre" />
                 </div>
               </div>
             </div>

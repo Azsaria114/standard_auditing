@@ -216,6 +216,16 @@ function Contact() {
             className="contact-map__iframe"
           ></iframe>
           
+          {/* View Larger Map Link */}
+          <a 
+            href="https://www.google.com/maps/place/25.2048,55.2703" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="contact-map__view-larger"
+          >
+            View larger map
+          </a>
+          
           {/* Review Popup */}
           <div className="contact-map__review">
             <div className="contact-map__review-header">

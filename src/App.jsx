@@ -5,6 +5,7 @@ import standardAuditingLogo from './assets/standard_auditing_logo.png'
 import Home from './Home'
 import About from './About'
 import Contact from './Contact'
+import Career from './Career'
 
 // Data constants
 const services = [
@@ -259,9 +260,9 @@ function Header() {
                 <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
               </svg>
             </a>
-            <a href="/#careers" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/careers" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
               Careers
-            </a>
+            </Link>
             <Link to="/contact" className="site-header__cta site-header__cta--sidebar" onClick={() => setIsMenuOpen(false)}>
               <span className="site-header__cta-text">Contact Us</span>
               <svg className="site-header__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -358,7 +359,7 @@ function Footer() {
           <ul className="site-footer__links">
             <li><Link to="/about" className="body-opensans">About us</Link></li>
             <li><a href="#" className="body-opensans">Leadership</a></li>
-            <li><a href="#" className="body-opensans">Careers</a></li>
+            <li><Link to="/careers" className="body-opensans">Careers</Link></li>
             <li><a href="#" className="body-opensans">News & articles</a></li>
             <li><a href="#" className="body-opensans">Legal Notices</a></li>
           </ul>
@@ -388,6 +389,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/careers" element={<Career />} />
       </Routes>
       <Footer />
     </>
