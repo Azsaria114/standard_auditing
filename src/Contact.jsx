@@ -114,7 +114,7 @@ function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   className="contact-form__input body-opensans"
-                  placeholder="Enter your name"
+                  placeholder="Alexander Kimi"
                   required
                 />
               </div>
@@ -128,7 +128,7 @@ function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   className="contact-form__input body-opensans"
-                  placeholder="Enter your email"
+                  placeholder="AlexanderKimi07@gmail.com"
                   required
                 />
               </div>
@@ -142,7 +142,7 @@ function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="contact-form__input body-opensans"
-                  placeholder="Enter your phone number"
+                  placeholder="+91 9839482098"
                   required
                 />
               </div>
@@ -156,7 +156,7 @@ function Contact() {
                   value={formData.country}
                   onChange={handleChange}
                   className="contact-form__input body-opensans"
-                  placeholder="Enter your country"
+                  placeholder="India"
                   required
                 />
               </div>
@@ -188,8 +188,8 @@ function Contact() {
                 </label>
               </div>
 
-              <button type="submit" className="contact-form__submit btn-primary">
-                Get FREE 30 min Consultation
+              <button type="submit" className="contact-form__submit">
+                <span className="contact-form__submit-text">Get FREE 30 min Consultation</span>
               </button>
             </form>
           </div>
