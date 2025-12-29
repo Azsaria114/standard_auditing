@@ -64,9 +64,14 @@ function Contact() {
               
               <div className="contact-main__info-item">
                 <span className="contact-main__info-label body-opensans">Call Us:</span>
-                <a href="tel:+97143795200" className="contact-main__info-link body-opensans">
-                  +971 (0)4 379 5200
-                </a>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                  <a href="tel:+971542119784" className="contact-main__info-link body-opensans">
+                    +971 54 211 9784
+                  </a>
+                  <a href="tel:+97143795200" className="contact-main__info-link body-opensans">
+                    +971 4 379 5200
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -230,7 +235,7 @@ function Contact() {
             </div>
             <div className="contact-map__review-info">
               <p className="contact-map__review-location">Dubai - United Arab Emirates</p>
-              <p className="contact-map__review-phone">+971 4 379 5200</p>
+              <p className="contact-map__review-phone">+971 54 211 9784, +971 4 379 5200</p>
               <p className="contact-map__review-hours">Open - Closes 6:30 pm</p>
             </div>
             <div className="contact-map__review-snippet">
