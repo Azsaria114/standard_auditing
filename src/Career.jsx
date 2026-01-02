@@ -1,7 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 
+// Newsletter Section (from Home.jsx)
+function NewsletterSection() {
+  return (
+    <section className="newsletter-section">
+      <div className="newsletter-section__container">
+        <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
+        <p className="newsletter-section__description body-opensans">
+          Get weekly insights, checklists, and SME-friendly tips to manage cash flow, avoid fines, and keep more of your profits. Stay updated with guidance from certified tax consultants UAE and experienced Dubai corporate tax consultants.
+        </p>
+        <button type="button" className="newsletter-section__cta">
+          <span className="newsletter-section__cta-text">Sign up for free updates</span>
+          <svg className="newsletter-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+  )
+}
+
 function Career() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    role: '',
+    introduction: '',
+    resume: null
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleFileChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      resume: e.target.files[0]
+    }))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Handle form submission
+    console.log('Form submitted:', formData)
+  }
   const workHerePoints = [
     { number: '01', text: 'You work on real client problems, not simulated tasks' },
     { number: '02', text: "You're trusted to take responsibility from day one" },
@@ -11,8 +60,8 @@ function Career() {
 
   const roleForYou = [
     { icon: 'target', text: 'Care about accuracy and details' },
-    { icon: 'brain', text: 'Take ownership of your responsibilities' },
-    { icon: 'cloud-check', text: 'Prefer clear systems over chaos' },
+    { icon: 'handshake', text: 'Take ownership of your responsibilities' },
+    { icon: 'puzzle', text: 'Prefer clear systems over chaos' },
     { icon: 'trending-up', text: 'Want to learn and improve continuously' },
     { icon: 'message', text: 'Communicate clearly and honestly' },
     { icon: 'clock', text: 'Take deadlines seriously' },
@@ -99,17 +148,16 @@ function Career() {
                       <circle cx="12" cy="12" r="2" fill="currentColor"/>
                     </svg>
                   )}
-                  {item.icon === 'brain' && (
+                  {item.icon === 'handshake' && (
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2C8 2 5 5 5 9C5 11 6 13 7 14C7 16 6 18 8 18C9 18 10 17 11 16C12 17 13 18 14 18C16 18 15 16 15 14C16 13 17 11 17 9C17 5 14 2 12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M9 12C9 13 9.5 14 10.5 14C11.5 14 12 13 12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M12 12C12 13 12.5 14 13.5 14C14.5 14 15 13 15 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M11 12H4C3.46957 12 2.96086 12.2107 2.58579 12.5858C2.21071 12.9609 2 13.4696 2 14V19C2 19.5304 2.21071 20.0391 2.58579 20.4142C2.96086 20.7893 3.46957 21 4 21H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M16 6H13C12.4696 6 11.9609 6.21071 11.5858 6.58579C11.2107 6.96086 11 7.46957 11 8V12H16C16.5304 12 17.0391 12.2107 17.4142 12.5858C17.7893 12.9609 18 13.4696 18 14V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M8 7V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   )}
-                  {item.icon === 'cloud-check' && (
+                  {item.icon === 'puzzle' && (
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M18 10H16C16 7.8 14.2 6 12 6C9.8 6 8 7.8 8 10H6C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14H18C19.1 14 20 13.1 20 12C20 10.9 19.1 10 18 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M12 2C10.8954 2 10 2.89543 10 4V6H8C6.89543 6 6 6.89543 6 8V10H4C2.89543 10 2 10.8954 2 12C2 13.1046 2.89543 14 4 14H6V16C6 17.1046 6.89543 18 8 18H10V20C10 21.1046 10.8954 22 12 22C13.1046 22 14 21.1046 14 20V18H16C17.1046 18 18 17.1046 18 16V14H20C21.1046 14 22 13.1046 22 12C22 10.8954 21.1046 10 20 10H18V8C18 6.89543 17.1046 6 16 6H14V4C14 2.89543 13.1046 2 12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   )}
                   {item.icon === 'trending-up' && (
@@ -203,6 +251,115 @@ function Career() {
           </div>
         </div>
       </section>
+
+      {/* Didn't Find the Right Role Section */}
+      <section className="career-application">
+        <div className="career-application__container">
+          <div className="career-application__left">
+            <h2 className="career-application__title h2-montserrat">Didn't Find the Right Role?</h2>
+            <p className="career-application__text body-opensans">
+              Not all opportunities are listed. If you believe you can contribute to our team, share your profile with us.
+            </p>
+            <p className="career-application__text body-opensans">
+              We regularly review applications and reach out to potential candidates whose skills match our upcoming openings.
+            </p>
+          </div>
+          <div className="career-application__right">
+            <form className="career-application__form" onSubmit={handleSubmit}>
+              <div className="career-application__field">
+                <label htmlFor="name" className="career-application__label body-opensans">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="career-application__input body-opensans"
+                  required
+                />
+              </div>
+              <div className="career-application__field">
+                <label htmlFor="email" className="career-application__label body-opensans">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="career-application__input body-opensans"
+                  required
+                />
+              </div>
+              <div className="career-application__field">
+                <label htmlFor="phone" className="career-application__label body-opensans">Phone number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="career-application__input body-opensans"
+                  required
+                />
+              </div>
+              <div className="career-application__field">
+                <label htmlFor="role" className="career-application__label body-opensans">Role</label>
+                <input
+                  type="text"
+                  id="role"
+                  name="role"
+                  value={formData.role}
+                  onChange={handleInputChange}
+                  className="career-application__input body-opensans"
+                  required
+                />
+              </div>
+              <div className="career-application__field">
+                <label htmlFor="introduction" className="career-application__label body-opensans">Short Introduction</label>
+                <textarea
+                  id="introduction"
+                  name="introduction"
+                  value={formData.introduction}
+                  onChange={handleInputChange}
+                  className="career-application__textarea body-opensans"
+                  rows="4"
+                  placeholder="Enter your message"
+                  required
+                />
+              </div>
+              <div className="career-application__field">
+                <label htmlFor="resume" className="career-application__label body-opensans">Upload Resume</label>
+                <div className="career-application__file-wrapper">
+                  <input
+                    type="file"
+                    id="resume"
+                    name="resume"
+                    onChange={handleFileChange}
+                    className="career-application__file-input"
+                    accept=".doc,.docx,.pdf"
+                    required
+                  />
+                  <label htmlFor="resume" className="career-application__file-label">
+                    <div className="career-application__file-content">
+                      <p className="career-application__file-text body-opensans">Drop your resume here or browse</p>
+                      <p className="career-application__file-note small-body-opensans">Max.file size: 4MB(doc,pdf)</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <button type="submit" className="career-application__submit h3-opensans-semibold">
+                <span className="career-application__submit-text">Submit Application</span>
+                <svg className="career-application__submit-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
     </main>
   )
 }
