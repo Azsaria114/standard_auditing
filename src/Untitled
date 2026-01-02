@@ -1,0 +1,133 @@
+.about-page {
+  font-family: 'Open Sans', sans-serif;
+  color: #1A3650;
+}
+
+/* HERO */
+.about-hero__container {
+  padding: 4rem 5rem;
+}
+
+.about-hero__title {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.about-hero__image {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.about-hero__band {
+  background: #1A3650;
+  color: white;
+  padding: 2.5rem 5rem;
+}
+
+/* INTRO */
+.about-intro {
+  padding: 5rem;
+}
+
+.about-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.about-intro__media {
+  position: relative;
+}
+
+.about-intro__media img {
+  width: 100%;
+}
+
+.stats {
+  position: absolute;
+  left: -80px;
+  bottom: 20px;
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.callout {
+  position: absolute;
+  right: -20px;
+  top: 40%;
+  background: white;
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* CORE VALUES */
+.about-values {
+  padding: 5rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.value-card {
+  border: 1px solid #d9e5f1;
+  padding: 1.5rem;
+}
+
+.value-card.wide {
+  grid-column: span 2;
+}
+
+/* TEAM */
+.about-team {
+  background: #1A3650;
+  color: white;
+  padding: 5rem;
+}
+
+.team-grid {
+  display: flex;
+  gap: 2rem;
+}
+
+.member img {
+  width: 180px;
+  border-radius: 8px;
+}
+
+/* INSIGHTS */
+.about-insights {
+  padding: 5rem;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.insight-card {
+  border: 1px solid #d9e5f1;
+  padding: 2rem;
+}
+
+/* NEWSLETTER */
+.about-newsletter {
+  background: #1A3650;
+  color: white;
+  padding: 5rem;
+  text-align: center;
+}
+
+.about-newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.about-newsletter input {
+  padding: 0.75rem 1rem;
+}

@@ -1,0 +1,262 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap');
+
+/* CSS Variables for Typography */
+:root {
+  /* Font Families */
+  --font-heading: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-body: 'Open Sans', system-ui, -apple-system, sans-serif;
+
+  /* Font Sizes - Montserrat (Headings) */
+  --font-size-h1-montserrat: 48px;
+  --font-size-h2-montserrat: 40px;
+  --font-size-h3-montserrat: 32px;
+  --font-size-h4-montserrat: 24px;
+  --font-size-h5-montserrat: 20px;
+  --font-size-h6-montserrat: 18px;
+  --font-size-body-montserrat: 16px;
+  --font-size-body2-montserrat: 12px;
+
+  /* Font Sizes - Open Sans (Body + Small Text) */
+  --font-size-h1-opensans: 24px;
+  --font-size-h2-opensans: 18px;
+  --font-size-h3-opensans: 16px;
+  --font-size-body-opensans: 14px;
+  --font-size-small-body-opensans: 12px;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+}
+
+/* Montserrat Typography Classes (Headings) */
+
+/* H1 - Bold - 48px */
+.h1-montserrat {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1-montserrat);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* H2 - Semibold - 40px */
+.h2-montserrat {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2-montserrat);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* H3 - Semibold - 32px */
+.h3-montserrat {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3-montserrat);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* H4 - Semibold - 24px */
+.h4-montserrat {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4-montserrat);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H5 - Bold - 20px */
+.h5-montserrat {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5-montserrat);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H6 - Semibold - 18px */
+.h6-montserrat {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h6-montserrat);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H6(2) - Bold - 18px */
+.h6-montserrat-bold {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h6-montserrat);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H6(3) - Regular - 18px */
+.h6-montserrat-regular {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h6-montserrat);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Body - Semibold - 16px */
+.body-montserrat {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-body-montserrat);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Body(2) - Semibold - 12px */
+.body2-montserrat {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-body2-montserrat);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Open Sans Typography Classes (Body + Small Text) */
+
+/* H1 - Bold - 24px */
+.h1-opensans {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h1-opensans);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H1(2) - Semibold - 24px */
+.h1-opensans-semibold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h1-opensans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H1(3) - Regular - 24px */
+.h1-opensans-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h1-opensans);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H2 - Bold - 18px */
+.h2-opensans {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h2-opensans);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H2(2) - Semibold - 18px */
+.h2-opensans-semibold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h2-opensans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H2(3) - Regular - 18px */
+.h2-opensans-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h2-opensans);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H3 - Bold - 16px */
+.h3-opensans {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h3-opensans);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H3(2) - Semibold - 16px */
+.h3-opensans-semibold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h3-opensans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* H3(3) - Regular - 16px */
+.h3-opensans-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-h3-opensans);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Body - Regular - 14px */
+.body-opensans {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-opensans);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Small Body - Regular - 12px */
+.small-body-opensans {
+  font-family: var(--font-body);
+  font-size: var(--font-size-small-body-opensans);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Responsive Typography - Scale down on smaller screens */
+@media (max-width: 768px) {
+  :root {
+    --font-size-h1-montserrat: 36px;
+    --font-size-h2-montserrat: 32px;
+    --font-size-h3-montserrat: 28px;
+    --font-size-h4-montserrat: 20px;
+    --font-size-h5-montserrat: 18px;
+    --font-size-h1-opensans: 20px;
+    --font-size-h2-opensans: 16px;
+    --font-size-h3-opensans: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-h1-montserrat: 28px;
+    --font-size-h2-montserrat: 24px;
+    --font-size-h3-montserrat: 22px;
+    --font-size-h4-montserrat: 18px;
+    --font-size-h5-montserrat: 16px;
+    --font-size-h1-opensans: 18px;
+    --font-size-h2-opensans: 16px;
+    --font-size-h3-opensans: 14px;
+  }
+}
+
