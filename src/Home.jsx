@@ -15,11 +15,11 @@ const services = [
 ]
 
 const stats = [
-  { value: '⭐️⭐️⭐️⭐️⭐️', label: '(4.9 Google Reviews)' },
   { value: '4000+', label: 'Projects Successfully completed' },
   { value: '25+', label: 'Years Partnering with UAE Businesses' },
   { value: '98%', label: 'Clients Stay With Us' },
   { value: '500+', label: 'Reputed UAE Businesses Served' },
+  { value: '★★★★★', label: '(4.9 Google Reviews)', isStar: true },
 ]
 
 const serviceFeatures = [
@@ -268,16 +268,16 @@ function ServicesSection() {
           <div className="services-section__badge">
             <svg className="services-section__badge-svg" viewBox="0 0 200 200">
               <defs>
-                <path id="circle-path" d="M 100,30 A 70,70 0 1,1 100,170 A 70,70 0 1,1 100,30" />
+                <path id="circle-path" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
               </defs>
               <text className="services-section__badge-text">
-                <textPath href="#circle-path" startOffset="5%">
+                <textPath href="#circle-path" startOffset="0%">
                   GUARANTEED TRANSPARENCY
                 </textPath>
               </text>
             </svg>
             <div className="services-section__badge-arrow">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 8L7 11L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
@@ -944,7 +944,7 @@ function Home() {
           <div className="hero__stats-card">
             {stats.map((stat, index) => (
               <div className="hero__stat" key={`${stat.value}-${index}`}>
-                <p className="hero__stat-value h6-montserrat">{stat.value}</p>
+                <p className={`hero__stat-value h6-montserrat ${stat.isStar ? 'hero__stat-value--stars' : ''}`}>{stat.value}</p>
                 <div className="hero__stat-label-wrapper">
                   <p className="hero__stat-label h2-opensans-regular">{stat.label}</p>
                 </div>

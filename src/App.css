@@ -460,6 +460,11 @@ html, body {
   /* Numbers with #fbfbfb color, fixed at 18px */
 }
 
+.hero__stat-value--stars {
+  color: #fbfbfb;
+  /* White color for stars */
+}
+
 .hero__stat-label-wrapper {
   display: flex;
   flex-direction: column;
@@ -1124,24 +1129,21 @@ html, body {
 /* Badge positioned absolutely to maintain overlay effect from design */
 .services-section__badge {
   position: absolute;
-  right: clamp(0rem, 1vw, 0.5rem);
-  /* Positioned on right edge - maintains consistent gap from edge */
+  right: clamp(-3rem, -5vw, -1.5rem);
+  /* Positioned much closer to bullet points, moved left */
   /* Positioned between 2nd and 3rd bullet point */
-  top: clamp(17.5rem, 39vw, 22.5rem);
-  /* Base position - will be overridden by desktop/tablet/mobile media queries */
+  top: 50%;
+  /* Centered vertically with the bullet points */
   transform: translateY(-50%);
-  width: clamp(6.5rem, 13vw, 8.5rem);
-  height: clamp(6.5rem, 13vw, 8.5rem);
-  /* Base size - will be overridden by desktop/tablet/mobile media queries */
+  width: clamp(5.5rem, 11vw, 8rem);
+  height: clamp(5.5rem, 11vw, 8rem);
+  /* Responsive size that scales smoothly */
   border: none;
   /* No border - transparent badge */
   border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.125rem, 0.5vw, 0.25rem);
-  /* Reduced gap between text and arrow */
   background: transparent;
   /* Transparent background */
   overflow: visible;
@@ -1153,16 +1155,14 @@ html, body {
 /* Desktop-specific positioning and size */
 @media (min-width: 1025px) {
   .services-section__badge {
-    right: clamp(0rem, 1vw, 0.5rem);
-    /* Positioned on right edge - maintains consistent gap from edge */
-    /* Positioned between 2nd and 3rd bullet point on desktop */
-    /* Desktop: precisely centered between items 2 and 3 */
-    top: clamp(21.5rem, 43vw, 25.5rem);
-    /* Position between items 2 and 3 - recalculated to center badge exactly between 2nd and 3rd bullet */
+    right: clamp(-3.5rem, -6vw, -2rem);
+    /* Positioned much closer to bullet points on desktop, moved left */
+    top: 50%;
+    /* Centered vertically with bullet points */
     transform: translateY(-50%);
-    width: clamp(7.5rem, 14vw, 9.5rem);
-    height: clamp(7.5rem, 14vw, 9.5rem);
-    /* Desktop badge size */
+    width: clamp(7rem, 12vw, 9rem);
+    height: clamp(7rem, 12vw, 9rem);
+    /* Desktop badge size - responsive */
     background: transparent;
     /* Transparent background on desktop */
     border: none;
@@ -1184,8 +1184,9 @@ html, body {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   animation: rotate-circle 20s linear infinite;
   z-index: 1;
   /* SVG text rotates around full circle continuously */
@@ -1193,21 +1194,21 @@ html, body {
 
 @keyframes rotate-circle {
   from {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
 .services-section__badge-text {
   font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-  font-size: clamp(8px, 0.9vw, 11px);
-  /* Slightly reduced font size for better spacing */
+  font-size: clamp(7px, 0.75vw, 10px);
+  /* Responsive font size to fit all text around circle */
   font-weight: 600;
   fill: white;
-  letter-spacing: 0.2em;
-  /* Adjusted letter-spacing for better distribution around circle */
+  letter-spacing: 0.1em;
+  /* Small letter spacing for better readability */
   z-index: 2;
   /* Ensures text is visible above SVG path */
 }
@@ -1215,23 +1216,26 @@ html, body {
 /* Desktop-specific font size */
 @media (min-width: 1025px) {
   .services-section__badge-text {
-    font-size: clamp(11px, 1.2vw, 14px);
-    /* Slightly reduced font size on desktop for better spacing */
-    letter-spacing: 0.4em;
-    /* Adjusted letter-spacing on desktop for better distribution around full circle */
+    font-size: clamp(8px, 0.9vw, 11px);
+    /* Responsive font size on desktop to fit all text */
+    letter-spacing: 0.15em;
+    /* Letter spacing for better distribution */
   }
 }
 
 .services-section__badge-arrow {
   color: white;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(1rem, 2.25vw, 1.25rem);
-  height: clamp(1rem, 2.25vw, 1.25rem);
-  /* Icon container for expand/unfold icon */
+  width: clamp(0.875rem, 2vw, 1.125rem);
+  height: clamp(0.875rem, 2vw, 1.125rem);
+  /* Icon container centered in badge - responsive */
 }
 
 .services-section__badge-arrow svg {
@@ -1320,17 +1324,15 @@ html, body {
 
   .services-section__badge {
     position: absolute;
-    right: clamp(0rem, 1vw, 0.5rem);
-    /* Positioned on right edge - same gap from edge as desktop */
-    /* Positioned between 2nd and 3rd bullet point on tablet */
-    /* Tablet: maintains same proportional gap as desktop, scaled down proportionally */
-    top: clamp(16.5rem, 33vw, 20.5rem);
-    /* Position scaled proportionally from desktop (21.5-25.5rem) to maintain same gap relationship */
+    right: clamp(-2.5rem, -4.5vw, -1.25rem);
+    /* Positioned much closer to bullet points on tablet, moved left */
+    top: 50%;
+    /* Centered vertically with bullet points */
     transform: translateY(-50%);
     margin: 0;
-    width: clamp(6rem, 11vw, 7.5rem);
-    /* Badge size scaled down proportionally from desktop (7.5-9.5rem) to maintain same gap */
-    height: clamp(6rem, 11vw, 7.5rem);
+    width: clamp(6rem, 10vw, 7.5rem);
+    /* Badge size responsive for tablet */
+    height: clamp(6rem, 10vw, 7.5rem);
     background: transparent;
     /* Transparent background on tablet - same as desktop */
     border: none;
@@ -1339,20 +1341,20 @@ html, body {
   }
   
   .services-section__badge-text {
-    font-size: clamp(9px, 1vw, 11px);
-    /* Font size scaled proportionally from desktop (11-14px) to maintain same text-to-circle ratio */
+    font-size: clamp(8px, 0.9vw, 10px);
+    /* Responsive font size for tablet */
     font-weight: 600;
     /* Same font-weight as desktop for consistent text appearance */
-    letter-spacing: 0.4em;
-    /* Same letter-spacing as desktop for consistent text distribution */
+    letter-spacing: 0;
+    /* No letter-spacing as textLength handles spacing */
     fill: white;
     /* White text on tablet - same as desktop */
   }
   
   .services-section__badge-arrow {
-    width: clamp(0.875rem, 1.75vw, 1rem);
-    /* Arrow size scaled proportionally from desktop to maintain same ratio */
-    height: clamp(0.875rem, 1.75vw, 1rem);
+    width: clamp(0.75rem, 1.5vw, 0.9375rem);
+    /* Responsive arrow size for tablet */
+    height: clamp(0.75rem, 1.5vw, 0.9375rem);
     color: white;
     /* White checkmark on tablet - same as desktop */
   }
@@ -1455,17 +1457,15 @@ html, body {
 
   .services-section__badge {
     position: absolute;
-    right: clamp(0rem, 1vw, 0.5rem);
-    /* Positioned on right edge - same gap from edge as desktop */
-    /* Positioned between 2nd and 3rd bullet point on mobile */
-    /* Mobile: maintains same proportional gap as desktop, scaled down proportionally */
-    top: clamp(14rem, 29vw, 18rem);
-    /* Position scaled proportionally from desktop (21.5-25.5rem) to maintain same gap relationship */
+    right: clamp(-2rem, -3.5vw, -1rem);
+    /* Positioned much closer to bullet points on mobile, moved left */
+    top: 50%;
+    /* Centered vertically with bullet points */
     transform: translateY(-50%);
     margin: 0;
-    width: clamp(5rem, 9vw, 6.5rem);
-    /* Badge size scaled down proportionally from desktop (7.5-9.5rem) to maintain same gap */
-    height: clamp(5rem, 9vw, 6.5rem);
+    width: clamp(5rem, 8vw, 6.5rem);
+    /* Badge size responsive for mobile */
+    height: clamp(5rem, 8vw, 6.5rem);
     background: transparent;
     /* Transparent background on mobile - same as desktop */
     border: none;
@@ -1474,20 +1474,20 @@ html, body {
   }
   
   .services-section__badge-text {
-    font-size: clamp(8px, 0.9vw, 10px);
-    /* Font size scaled proportionally from desktop (11-14px) to maintain same text-to-circle ratio */
+    font-size: clamp(7px, 0.75vw, 9px);
+    /* Responsive font size for mobile */
     font-weight: 600;
     /* Same font-weight as desktop for consistent text appearance */
-    letter-spacing: 0.4em;
-    /* Same letter-spacing as desktop for consistent text distribution */
+    letter-spacing: 0;
+    /* No letter-spacing as textLength handles spacing */
     fill: white;
     /* White text on mobile - same as desktop */
   }
   
   .services-section__badge-arrow {
-    width: clamp(0.75rem, 1.5vw, 0.875rem);
-    /* Arrow size scaled proportionally from desktop to maintain same ratio */
-    height: clamp(0.75rem, 1.5vw, 0.875rem);
+    width: clamp(0.625rem, 1.25vw, 0.8125rem);
+    /* Responsive arrow size for mobile */
+    height: clamp(0.625rem, 1.25vw, 0.8125rem);
     color: white;
     /* White checkmark on mobile - same as desktop */
   }
