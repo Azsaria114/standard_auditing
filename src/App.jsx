@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import './App.css'
 import standardAuditingLogo from './assets/standard_auditing_logo.png'
 import Home from './Home'
@@ -13,6 +13,7 @@ import VAT from './servicePages/VAT'
 import TaxAdvisory from './servicePages/TaxAdvisory'
 import CompanyFormation from './servicePages/CompanyFormation'
 import AccountingBookkeeping from './servicePages/AccountingBookkeeping'
+import VATEmployeeBenefits from './pages/VATEmployeeBenefits'
 
 // Data constants
 const services = [
@@ -386,9 +387,12 @@ function Footer() {
 
 // Main App Component
 function App() {
+  const location = useLocation()
+  const isBlogArticle = location.pathname.startsWith('/blog/')
+  
   return (
     <>
-      <Header />
+      {!isBlogArticle && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -402,8 +406,9 @@ function App() {
         <Route path="/services/tax-advisory" element={<TaxAdvisory />} />
         <Route path="/services/company-formation" element={<CompanyFormation />} />
         <Route path="/services/accounting-bookkeeping" element={<AccountingBookkeeping />} />
+        <Route path="/blog/vat-employee-benefits" element={<VATEmployeeBenefits />} />
       </Routes>
-      <Footer />
+      {!isBlogArticle && <Footer />}
     </>
   )
 }

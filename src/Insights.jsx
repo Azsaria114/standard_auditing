@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './App.css'
 
 // Newsletter Section (from Home.jsx)
@@ -36,7 +37,8 @@ function Insights() {
       title: 'How To Get Back VAT Paid',
       title2: 'On Employee Benefits',
       description: 'Learn how to reclaim VAT paid on employee benefits and avoid common pitfalls in the process.',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop'
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop',
+      link: '/blog/vat-employee-benefits'
     },
     {
       featured: 'Featured',
@@ -67,7 +69,7 @@ function Insights() {
     {
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
       title: 'How To Get Back VAT Paid on Employee Benefits Without Problems',
-      link: '#'
+      link: '/blog/vat-employee-benefits'
     },
     {
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop',
@@ -110,13 +112,27 @@ function Insights() {
               <div className="insights-hero__overlay"></div>
               <div className="insights-hero__content">
                 <span className="insights-hero__featured">{slide.featured}</span>
-                <h1 className="insights-hero__title h1-montserrat">
-                  {slide.title}
-                  {slide.title2 && <><br />{slide.title2}</>}
-                </h1>
-                <p className="insights-hero__description body-opensans">
-                  {slide.description}
-                </p>
+                {slide.link ? (
+                  <Link to={slide.link} className="insights-hero__link">
+                    <h1 className="insights-hero__title h1-montserrat">
+                      {slide.title}
+                      {slide.title2 && <><br />{slide.title2}</>}
+                    </h1>
+                    <p className="insights-hero__description body-opensans">
+                      {slide.description}
+                    </p>
+                  </Link>
+                ) : (
+                  <>
+                    <h1 className="insights-hero__title h1-montserrat">
+                      {slide.title}
+                      {slide.title2 && <><br />{slide.title2}</>}
+                    </h1>
+                    <p className="insights-hero__description body-opensans">
+                      {slide.description}
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           ))}
@@ -151,9 +167,9 @@ function Insights() {
                 <div className="insights-blog__content">
                   <span className="insights-blog__tag small-body-opensans">Article</span>
                   <h3 className="insights-blog__card-title h4-montserrat">{article.title}</h3>
-                  <a href={article.link} className="insights-blog__link body-opensans">
+                  <Link to={article.link} className="insights-blog__link body-opensans">
                     Read more
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
