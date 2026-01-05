@@ -42,11 +42,11 @@
 
 /* Montserrat Typography Classes (Headings) */
 
-/* H1 - Bold - 48px */
+/* H1 - Semibold - 48px */
 .h1-montserrat {
   font-family: var(--font-heading);
   font-size: var(--font-size-h1-montserrat);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
 }
@@ -78,11 +78,11 @@
   letter-spacing: var(--letter-spacing-normal);
 }
 
-/* H5 - Bold - 20px */
+/* H5 - Semibold - 20px */
 .h5-montserrat {
   font-family: var(--font-heading);
   font-size: var(--font-size-h5-montserrat);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-normal);
   letter-spacing: var(--letter-spacing-normal);
 }
@@ -134,11 +134,11 @@
 
 /* Open Sans Typography Classes (Body + Small Text) */
 
-/* H1 - Bold - 24px */
+/* H1 - Semibold - 24px */
 .h1-opensans {
   font-family: var(--font-body);
   font-size: var(--font-size-h1-opensans);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-normal);
   letter-spacing: var(--letter-spacing-normal);
 }
@@ -161,11 +161,11 @@
   letter-spacing: var(--letter-spacing-normal);
 }
 
-/* H2 - Bold - 18px */
+/* H2 - Semibold - 18px */
 .h2-opensans {
   font-family: var(--font-body);
   font-size: var(--font-size-h2-opensans);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-normal);
   letter-spacing: var(--letter-spacing-normal);
 }
@@ -188,11 +188,11 @@
   letter-spacing: var(--letter-spacing-normal);
 }
 
-/* H3 - Bold - 16px */
+/* H3 - Semibold - 16px */
 .h3-opensans {
   font-family: var(--font-body);
   font-size: var(--font-size-h3-opensans);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-normal);
   letter-spacing: var(--letter-spacing-normal);
 }

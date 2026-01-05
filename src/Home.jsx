@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import PartnersSection from './PartnersSection'
 import section2Image from './assets/section2.jpg'
@@ -15,44 +15,46 @@ const services = [
 ]
 
 const stats = [
-  { value: '4000 +', label: 'Projects Successfully Completed' },
+  { value: '⭐️⭐️⭐️⭐️⭐️', label: '(4.9 Google Reviews)' },
+  { value: '4000+', label: 'Projects Successfully completed' },
   { value: '25+', label: 'Years Partnering with UAE Businesses' },
   { value: '98%', label: 'Clients Stay With Us' },
   { value: '500+', label: 'Reputed UAE Businesses Served' },
 ]
 
 const serviceFeatures = [
-  'Monthly bookkeeping and financial reporting with professional accounting services Dubai businesses rely on.',
-  'Tax reduction strategy and planning with certified tax consultants UAE.',
-  'VAT and corporate tax compliance managed by leading Dubai corporate tax consultants',
-  'Year-end tax planning sessions aligned with the latest FTA regulations.',
+  'Licensed audits conducted in line with UAE statutory requirements',
+  'Ongoing bookkeeping and monthly financial reporting for clear management oversight',
+  'Practical tax planning focused on reducing exposure and improving efficiency',
+  'VAT and corporate tax compliance handled by experienced specialists',
+  'Year-end tax reviews aligned with current FTA regulations and guidance',
 ]
 
 const serviceCards = [
   {
     title: 'AUDITING',
     icon: 'document-magnifying-glass',
-    description: 'Satisfy regulatory requirements and give stakeholders confidence in your financial reports with help from a trusted audit firm near me offering professional auditing services near me across Dubai and the UAE.',
+    description: 'Give stakeholders confidence in your financial reports. Satisfy regulatory requirements. With help from a trusted audit firm near you across Dubai and the UAE, you can get audit-ready in 15 days* or less.',
   },
   {
     title: 'VAT',
     icon: 'percentage',
-    description: 'Submit accurate returns on time and reclaim every dirham you\'re entitled to with our specialized VAT return filing services UAE.',
+    description: 'Reclaim every dirham you\'re entitled to with our specialized VAT return filing services UAE by submitting accurate returns on time.',
   },
   {
     title: 'TAX ADVISORY',
     icon: 'line-chart',
-    description: 'Pay only what you legally owe—find deductions, optimize structure, and reduce liabilities with the guidance of experienced tax consultants in Dubai',
+    description: 'Pay only what you legally owe. Find deductions, optimize structure, and reduce liabilities with the guidance of experienced tax consultants in Dubai.',
   },
   {
     title: 'COMPANY FORMATION',
     icon: 'building',
-    description: 'Choose the right jurisdiction, complete all paperwork, and launch operations faster—our tax consultancy services in Dubai ensure smooth registration and compliance.',
+    description: 'Choose the right jurisdiction, complete all paperwork, and launch operations faster. Our tax consultancy services in Dubai ensure smooth registration and compliance.',
   },
   {
     title: 'ACCOUNTING & BOOKKEEPING',
     icon: 'calculator',
-    description: 'Know exactly where your money goes with organized books and clear monthly reports handled by professional accounting services Dubai providers.',
+    description: 'Know exactly where your money goes with organized books and clear monthly reports handled by professionals.',
   },
   {
     title: 'CORPORATE TAX',
@@ -69,12 +71,12 @@ const trustBenefits = [
   },
   { 
     title: 'Industry-Trusted Professionals', 
-    hoverText: 'Work with CPAs and chartered accountants who have handled hundreds of cases across auditing, VAT, and corporate tax in Dubai.',
+    hoverText: 'Work with CPAs and chartered accountants who\'ve handled hundreds of cases across auditing, VAT, and corporate tax in Dubai.',
     icon: 'star' 
   },
   { 
-    title: 'Government - Approved Firm', 
-    hoverText: 'Fully licensed and compliant—our audit firm in Dubai stands up to any regulatory scrutiny.',
+    title: 'Government-Approved Firm', 
+    hoverText: 'Fully licensed and compliant, our audit firm in Dubai stands up to any regulatory scrutiny.',
     icon: 'star' 
   },
   { 
@@ -84,12 +86,12 @@ const trustBenefits = [
   },
   { 
     title: 'Comprehensive Service Suite', 
-    hoverText: 'One firm handles audits, tax, bookkeeping, and advisory—no coordination headaches across multiple providers.',
+    hoverText: 'One firm handles audits, tax, bookkeeping, and advisory. You will have no coordination headaches across multiple providers.',
     icon: 'star' 
   },
   { 
     title: 'Proven Track Record', 
-    hoverText: '98% of clients renew year after year—they stay because we consistently protect their profits and deliver trusted accounting and auditing services in Dubai.',
+    hoverText: '98% of clients renew year after year. They stay because we consistently protect their profits and deliver trusted accounting and auditing services in Dubai. See more here.',
     icon: 'star' 
   },
 ]
@@ -98,8 +100,8 @@ const pricingPlans = [
   {
     title: 'Corporate Tax (Filing Only)',
     price: 'AED 750',
-    priceNote: '+VAT/month',
-    description: 'Ideal for businesses under AED 3 million annual revenue, qualifying for Small Business Relief.',
+    priceNote: '+ VAT',
+    description: 'Ideal for businesses under AED 3 million annual revenue, qualifying for Small Business Relief',
     features: [
       'Corporate Tax Return Filing',
       'Eligibility Assessment for Small Business Relief',
@@ -110,10 +112,10 @@ const pricingPlans = [
   {
     title: 'Corporate Tax (Filing + Tax Payable)',
     price: 'AED 1500',
-    priceNote: '+VAT/month',
+    priceNote: '+ VAT',
     description: 'Suitable for companies obligated to compute and pay Corporate Tax under current FTA rules, typically those with revenues above AED 3 million.',
     features: [
-      'Full Corporate Tax Return Filing handled by professional Corporate tax filing services Dubai',
+      'Full Corporate Tax Return Filing',
       'Tax Computation & Payment Summary',
       'Review of Financials & Adjustments',
       'Compliance Review & Documentation',
@@ -124,57 +126,95 @@ const pricingPlans = [
   },
 ]
 
-const videoTestimonials = [
-  { 
-    title: 'How We Helped an F&B Startup Save 30% in Annual Taxes',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop'
-  },
-  { 
-    title: 'Client Success Story: Manufacturing Company',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop'
-  },
-  { 
-    title: 'Tax Strategy That Saved Our Business',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop'
-  },
-  { 
-    title: 'Why We Chose Standard Auditors',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop'
-  },
-]
 
 const faqQuestions = [
   {
-    question: 'What services do you offer?',
-    answer: 'Our comprehensive services include tax advisory, corporate tax filing, VAT services, auditing, accounting & bookkeeping, and company formation. We provide end-to-end financial solutions tailored to your business needs.'
+    question: 'Why is auditing important for my business in Dubai?',
+    answer: 'Auditing provides independent verification of your financial records, ensuring accuracy and compliance with UAE laws. It helps detect errors or fraud before they become issues and gives your stakeholders confidence in your financial health. Partnering with a reputed audit firm near me or auditing service in Dubai ensures professional oversight and compliance with the latest regulations.'
   },
   {
-    question: 'Can you help me with VAT registration?',
-    answer: 'Yes, we assist businesses with VAT registration, filing, and compliance. Our team ensures you meet all UAE VAT requirements and deadlines.'
+    question: 'Do all companies in Dubai need to get an audit?',
+    answer: 'Not all businesses are legally required to get audited. However, companies in free zones, public shareholding companies, and those subject to specific regulations typically must submit audited financial statements annually. Consulting a licensed audit firm in Dubai helps determine your audit obligations accurately.'
   },
   {
-    question: 'Will you improve my bookkeeping?',
-    answer: 'Absolutely. We provide professional bookkeeping services that maintain accurate, organized records and help streamline your accounting processes.'
+    question: 'What is involved in an internal audit?',
+    answer: 'Internal audits review your financial and operational processes regularly to identify risks, ensure controls are effective, and suggest improvements to increase efficiency and compliance. Professional auditing services near me can tailor these reviews to your specific business needs.'
   },
   {
-    question: 'How soon can I see business results?',
-    answer: 'Results vary by service, but most clients see improvements within the first month. Our team works efficiently to deliver measurable outcomes quickly.'
+    question: 'What types of tax advisory services can help my Dubai business?',
+    answer: 'Tax consultancy services in Dubai include corporate tax planning, VAT compliance, risk management, and optimizing tax liabilities under UAE law. Working with experienced tax consultants in Dubai ensures you stay compliant and tax-efficient.'
   },
   {
-    question: 'Are your services suitable for startups and SMEs?',
-    answer: 'Yes, we specialize in supporting startups and SMEs with scalable financial solutions designed to grow with your business.'
+    question: 'How can tax advisory add value beyond compliance?',
+    answer: 'Beyond compliance, tax consultancy services in Dubai help plan transactions, forecast tax impacts, optimize cash flow, and avoid penalties by adapting early to law changes. A qualified tax consultant UAE can identify strategic opportunities to strengthen your business finances.'
   },
   {
-    question: 'Do you handle company formation in the UAE?',
-    answer: 'Yes, we offer complete company formation services in the UAE, including free zone and mainland setup, licensing, and all required documentation.'
+    question: 'What is corporate tax and who must pay it in Dubai?',
+    answer: 'Corporate tax is a 9% tax on company profits introduced in the UAE. Businesses with profits exceeding AED 375,000 must register and pay corporate tax, while smaller businesses pay 0%. For compliance, engage trusted Dubai corporate tax consultants who can manage registration and filing efficiently.'
   },
   {
-    question: 'How do you ensure confidentiality and trust?',
-    answer: 'We maintain strict confidentiality protocols, are government-registered, and follow international best practices to protect your sensitive financial information.'
+    question: 'What are the key steps in company formation in Dubai?',
+    answer: 'Company formation involves choosing the right legal structure, reserving a trade name, obtaining licenses, opening a bank account, and registering for VAT and corporate tax if applicable. Professional accounting services in Dubai can guide you through these steps with legal and financial accuracy.'
   },
   {
-    question: 'How can I get started?',
-    answer: 'Getting started is easy. Simply contact us through our form or speak to one of our experts, and we\'ll guide you through the initial consultation process.'
+    question: 'Can your firm help with all company formation procedures?',
+    answer: 'Yes, we provide end-to-end company formation and compliance services, including legal advice, documentation, licensing, and ongoing financial reporting. Our accounting and tax consultancy services in Dubai ensure your business stays compliant from day one.'
+  },
+  {
+    question: 'What types of companies can I form in Dubai?',
+    answer: 'Common types include Limited Liability Companies (LLCs), Free Zone Companies, Branch Offices, and Sole Establishments—each with specific ownership rules and benefits. Our experts in company setup and accounting services in Dubai can help you choose the right structure.'
+  },
+  {
+    question: 'Why is professional bookkeeping important for my business?',
+    answer: 'Proper bookkeeping ensures accurate records, helps manage cash flow, supports tax filing, and provides insights into your financial performance. Reliable accounting services in Dubai help maintain compliance and business transparency.'
+  },
+  {
+    question: 'Can I handle bookkeeping myself or do I need an accountant?',
+    answer: 'Small businesses might handle basic bookkeeping themselves, but hiring professional accounting services in Dubai ensures accuracy, compliance, and efficient management of financial data—especially for VAT and corporate tax filing.'
+  },
+  {
+    question: 'What financial reports should my business regularly review?',
+    answer: 'Key reports include Profit & Loss statements, balance sheets, and cash flow statements. Regular reviews with your tax consultant in Dubai help monitor your company\'s financial health and identify cost-saving opportunities.'
+  },
+  {
+    question: 'Do all businesses need to register for VAT in Dubai?',
+    answer: 'Businesses with taxable supplies and imports exceeding AED 375,000 per year must register for VAT. Our VAT return filing services UAE ensure accurate registration and timely filing to avoid penalties.'
+  },
+  {
+    question: 'What are my VAT filing obligations?',
+    answer: 'Registered businesses must file VAT returns regularly (usually quarterly), showing tax collected on sales and paid on purchases. Our VAT return filing services UAE simplify this process with expert bookkeeping and submission support.'
+  },
+  {
+    question: 'How can we help with VAT compliance?',
+    answer: 'We offer VAT registration, bookkeeping setup, return filing, tax gap analysis, and audit representation. Our tax consultant UAE team ensures full VAT compliance and risk-free operations.'
+  },
+  {
+    question: 'When do I need to register for UAE corporate tax?',
+    answer: 'If your taxable profits exceed AED 375,000 annually, registration is mandatory through the FTA\'s EmaraTax portal. Our UAE corporate tax filing services handle registration, documentation, and submission professionally.'
+  },
+  {
+    question: 'How do I file corporate tax returns?',
+    answer: 'Corporate tax returns are filed online via the EmaraTax portal. Partnering with trusted Corporate tax filing services Dubai ensures accuracy and compliance with UAE tax regulations.'
+  },
+  {
+    question: 'What are penalties for late tax filings or non-compliance?',
+    answer: 'Penalties may include fines, interest on unpaid tax, and potential legal action. Engaging reliable tax consultancy services in Dubai helps you stay compliant and avoid unnecessary risks.'
+  },
+  {
+    question: 'What is the difference between an accountant and an audit firm?',
+    answer: 'Accountants handle daily financial tasks like bookkeeping and payroll, while an audit firm near me provides independent examination of records, strategic tax advice, and compliance assurance—enhancing credibility and transparency.'
+  },
+  {
+    question: 'How often should I review my company\'s financial performance?',
+    answer: 'Monthly reviews help identify issues early, while quarterly or annual external audits ensure compliance. Collaborating with a trusted audit firm in Dubai ensures accurate reporting and business insight.'
+  },
+  {
+    question: 'Can your firm offer CFO-level advisory services?',
+    answer: 'Yes, we offer strategic CFO-level support, including budgeting, cash flow management, and tax planning. Our tax consultant Dubai experts help you align financial goals with growth strategies.'
+  },
+  {
+    question: 'What are the benefits of using professional services for company setup and compliance?',
+    answer: 'Professional firms provide faster registration, proper licensing, tax registration, and ongoing compliance. Partnering with tax consultants in Dubai or accounting services Dubai providers ensures your business operates efficiently and meets all UAE legal requirements.'
   },
 ]
 
@@ -201,11 +241,11 @@ function ServicesSection() {
         </div>
         <div className="services-section__right">
           <h3 className="services-section__right-title h4-montserrat">
-            <span className="services-section__right-line-1">Full-Service Accounting & Tax Advisory</span>
-            <span className="services-section__right-line-2">For Your Business</span>
+            <span className="services-section__right-line-1">Accounting & Tax Advisory Tailored</span>
+            <span className="services-section__right-line-2">to Your Business</span>
           </h3>
           <p className="services-section__description body-opensans">
-            At Standard Auditing, we handle everything from daily bookkeeping to year-end tax planning—so you can focus on running your business. Our expert tax consultants in Dubai and UAE corporate tax filing services team ensure your books are accurate, your tax burden is minimized, and your compliance is bulletproof. We specialize in:
+            At Standard Auditing, we handle everything from daily bookkeeping to year-end tax planning, so you can focus on running your business. Our expert tax consultants in Dubai and UAE corporate tax filing services team ensure your books are accurate, your tax burden is minimized.
           </p>
           <ul className="services-section__features">
             {serviceFeatures.map((feature, index) => (
@@ -219,7 +259,7 @@ function ServicesSection() {
             ))}
           </ul>
           <p className="services-section__additional body-opensans">
-            One point of contact, We handle everything, Upload docs once, we do the rest.
+            How it Works (place these in boxes with ideal images): One point of contact, We handle everything, Upload docs once, we do the rest.
           </p>
           <button type="button" className="services-section__cta h3-opensans-semibold">
             <span className="services-section__cta-text">Learn More</span>
@@ -344,8 +384,8 @@ function WhyTrustSection() {
     <section className="why-trust-section">
       <div className="why-trust-section__container">
         <h2 className="why-trust-section__title h1-montserrat">
-          Why Businesses Trust<br>
-          </br> Standard Auditors
+          Why 500+ Businesses Trust Us<br>
+          </br> with Their Finances
         </h2>
         <div className="why-trust-section__grid">
           <div className="why-trust-section__card why-trust-section__card--first">
@@ -490,6 +530,12 @@ function WhyTrustSection() {
             </div>
           </div>
         </div>
+        <div className="why-trust-section__insurance">
+          <p className="why-trust-section__insurance-text body-opensans">
+            🛡️ <strong>Professional Indemnity Insurance</strong><br />
+            Your business is always protected. We carry full Professional Indemnity Insurance, so every service, from auditing to corporate tax filing, is backed by an additional layer of accountability and financial security.
+          </p>
+        </div>
       </div>
     </section>
   )
@@ -502,8 +548,8 @@ function PricingSection() {
       <div className="pricing-section__container">
         <span className="pricing-section__badge small-body-opensans">Service Packages</span>
         <h2 className="pricing-section__title h1-montserrat">
-          <span className="pricing-section__title-line-1">Choose the Support Level that</span>
-          <span className="pricing-section__title-line-2"> Fits Your Business</span>
+          <span className="pricing-section__title-line-1">Choose the Support Level</span>
+          <span className="pricing-section__title-line-2">That Fits Your Business</span>
         </h2>
         <div className="pricing-section__grid">
           {pricingPlans.map((plan, index) => (
@@ -536,9 +582,33 @@ function PricingSection() {
   )
 }
 
-// Video Testimonials Section
+// Insights Section (using blog content from Insights page)
 function VideoTestimonialsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(0)
+
+  // Blog articles data (from Insights.jsx) - limited to 4
+  const blogArticles = [
+    {
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
+      title: 'How To Get Back VAT Paid on Employee Benefits Without Problems',
+      link: '#'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop',
+      title: 'How Free Zone Businesses Can Protect Their 0% Tax Status',
+      link: '#'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop',
+      title: 'Why Mixing Mainland and Free Zone Income Can Cost You 9% Tax',
+      link: '#'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop',
+      title: 'Related-Party Deals That Can Hurt Your Profits',
+      link: '#'
+    }
+  ]
 
   return (
     <section className="video-testimonials-section" id="insights">
@@ -551,9 +621,9 @@ function VideoTestimonialsSection() {
           </h2>
         </div>
         <div className="video-testimonials-section__grid">
-          {videoTestimonials.map((video, index) => {
+          {blogArticles.map((article, index) => {
             const isHovered = hoveredIndex === index
-            const isShrunk = hoveredIndex !== index
+            const isShrunk = hoveredIndex !== null && hoveredIndex !== index
             
             return (
               <div 
@@ -563,17 +633,11 @@ function VideoTestimonialsSection() {
               >
                 <div className="video-testimonials-section__thumbnail">
                   <img 
-                    src={video.image} 
-                    alt={video.title}
+                    src={article.image} 
+                    alt={article.title}
                     className="video-testimonials-section__thumbnail-image"
                   />
-                <div className="video-testimonials-section__play-icon">
-                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="32" cy="32" r="32" fill="rgba(0, 0, 0, 0.6)"/>
-                    <path d="M26 22L26 42L42 32L26 22Z" fill="white"/>
-                  </svg>
-                </div>
-                  <p className="video-testimonials-section__card-title body-opensans">{video.title}</p>
+                  <p className="video-testimonials-section__card-title body-opensans">{article.title}</p>
                 </div>
               </div>
             )
@@ -690,13 +754,62 @@ function ClientTestimonialsSection() {
 // FAQ Section
 function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null)
+  const faqSectionRef = useRef(null)
+  const faqRightRef = useRef(null)
+  const scrollLockedRef = useRef(false)
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index)
   }
 
+  useEffect(() => {
+    const handleWheel = (e) => {
+      const faqSection = faqSectionRef.current
+      const faqRight = faqRightRef.current
+      if (!faqSection || !faqRight) return
+
+      const rect = faqSection.getBoundingClientRect()
+      const isInView = rect.top <= 120 && rect.bottom >= 200
+      
+      if (!isInView) return
+
+      const scrollTop = faqRight.scrollTop
+      const scrollHeight = faqRight.scrollHeight
+      const clientHeight = faqRight.clientHeight
+      const isAtTop = scrollTop <= 0
+      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5
+
+      // If scrolling down and not at bottom of FAQ list
+      if (e.deltaY > 0 && !isAtBottom) {
+        e.preventDefault()
+        faqRight.scrollTop += e.deltaY
+        scrollLockedRef.current = true
+        return
+      }
+
+      // If scrolling up and not at top of FAQ list
+      if (e.deltaY < 0 && !isAtTop) {
+        e.preventDefault()
+        faqRight.scrollTop += e.deltaY
+        scrollLockedRef.current = true
+        return
+      }
+
+      // If at top and scrolling up, or at bottom and scrolling down, allow page scroll
+      if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
+        scrollLockedRef.current = false
+      }
+    }
+
+    const faqSection = faqSectionRef.current
+    if (faqSection) {
+      faqSection.addEventListener('wheel', handleWheel, { passive: false })
+      return () => faqSection.removeEventListener('wheel', handleWheel)
+    }
+  }, [])
+
   return (
-    <section className="faq-section">
+    <section className="faq-section" ref={faqSectionRef}>
       <div className="faq-section__container">
         <div className="faq-section__left">
           <span className="faq-section__badge small-body-opensans">FAQ</span>
@@ -705,19 +818,19 @@ function FAQSection() {
             <span className="faq-section__title-line-2">Usually Ask Us</span>
           </h2>
           <p className="faq-section__intro body-opensans">
-            If you've made it this far, you're ready to take control of your finances. Here's what most businesses ask before getting started with our tax consultancy services in Dubai and audit firm near me support.
+            If you've made it this far, you're ready to take control of your finances. Here's what most businesses ask before getting started with our tax consultancy services in Dubai.
           </p>
           <div className="faq-section__cta-section faq-section__cta-section--top">
-            <h3 className="faq-section__cta-heading h4-montserrat">Still looking for answer?</h3>
+            <h3 className="faq-section__cta-heading h4-montserrat">Still looking for answers?</h3>
             <button type="button" className="faq-section__cta h3-opensans-semibold">
-              <span className="faq-section__cta-text">Speak to our expert</span>
+              <span className="faq-section__cta-text">Speak to our expert →</span>
               <svg className="faq-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
           </div>
         </div>
-        <div className="faq-section__right">
+        <div className="faq-section__right" ref={faqRightRef}>
           <div className="faq-section__list">
             {faqQuestions.map((faq, index) => (
               <div key={index} className="faq-section__item">
@@ -756,10 +869,10 @@ function NewsletterSection() {
       <div className="newsletter-section__container">
         <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
         <p className="newsletter-section__description body-opensans">
-        Get weekly insights, checklists, and SME-friendly tips to manage cash flow, avoid fines, and keep more of your profits.Stay updated with guidance from certified tax consultants UAE and experienced Dubai corporate tax consultants.
+        Get weekly insights, checklists, and SME-friendly tips to manage cash flow, avoid fines, and keep more of your profits. Stay updated with guidance from certified tax consultants UAE and experienced Dubai corporate tax consultants.
         </p>
         <button type="button" className="newsletter-section__cta">
-          <span className="newsletter-section__cta-text">Sign up for free updates</span>
+          <span className="newsletter-section__cta-text">Sign up for free updates →</span>
           <svg className="newsletter-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
@@ -776,7 +889,7 @@ function Home() {
         <section className="hero__title-section">
           <div className="hero__eyebrow-wrapper">
             <span className="hero__eyebrow-line" aria-hidden="true" />
-            <p className="hero__eyebrow-text h6-montserrat">Keep more of your profits</p>
+            <p className="hero__eyebrow-text h6-montserrat">Trusted Financial Partner for Dubai Businesses</p>
           </div>
           <h1 className="hero__main-title h1-montserrat">
             <span className="hero__title-line-1">Trusted Financial Partner</span>
@@ -809,10 +922,7 @@ function Home() {
           <div className="hero__copy">
             <p className="hero__copy-text h2-opensans-regular">
               <strong>Protect your profits with proactive financial partnership.</strong>{' '}
-              As one of the most trusted tax consultancy services in Dubai, we find
-              tax efficiencies others miss, handle every compliance deadline, and
-              deliver clear monthly reports—so you can make confident financial
-              decisions without second-guessing your numbers.
+              We've seen it all across 25+ years of UAE business cases. That experience lets us move faster and work with precision others take years to build. Our teams spot risks early and opportunities quickly. To date, we've helped clients save AED 50 million+ in taxes and penalties avoided. You make decisions with numbers you trust.
             </p>
           </div>
         </header>
