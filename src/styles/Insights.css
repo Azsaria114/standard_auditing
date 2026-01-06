@@ -1,0 +1,247 @@
+.insights-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.insights-hero {
+  position: relative;
+  width: 100%;
+  height: clamp(35rem, 70vw, 50rem);
+  overflow: hidden;
+  padding-top: calc(clamp(2.5rem, 5vw, 3.5rem) + clamp(0.75rem, 2vw, 1rem) * 2);
+}
+.insights-hero__slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.insights-hero__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(3rem, 6vw, 5rem) 5rem;
+  padding-left: 5rem;
+}
+.insights-hero__slide--active {
+  opacity: 1;
+  z-index: 1;
+}
+.insights-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 1;
+}
+.insights-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  color: white;
+  padding-left: 0;
+}
+.insights-hero__featured {
+  display: block;
+  margin-bottom: clamp(1rem, 2vw, 1.25rem);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: white;
+}
+.insights-hero__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 1.2;
+  margin: 0 0 clamp(1rem, 2vw, 1.25rem) 0;
+  color: white;
+}
+.insights-hero__description {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  max-width: 600px;
+}
+.insights-hero__dots {
+  position: absolute;
+  bottom: clamp(2rem, 4vw, 3rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 3;
+}
+.insights-hero__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+.insights-hero__dot--active {
+  background: white;
+}
+.insights-hero__dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.insights-blog {
+  padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 5rem);
+  background: #f4f8fc;
+}
+  .insights-blog {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+.insights-blog__container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+.insights-blog__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #0A3D62;
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem) 0;
+}
+.insights-blog__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  max-width: 100%;
+}
+.insights-blog__card {
+  background: white;
+  border-radius: 0.5rem;
+  overflow: visible;
+  border: 1px solid rgba(10, 61, 98, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.insights-blog__card:hover {
+  border-color: rgba(10, 61, 98, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.insights-blog__image-wrapper {
+  width: calc(100% - clamp(1.5rem, 3vw, 2rem));
+  height: clamp(9rem, 20vw, 14rem);
+  margin: clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem) 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+}
+.insights-blog__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.insights-blog__card:hover .insights-blog__image-wrapper img {
+  transform: scale(1.05);
+}
+.insights-blog__content {
+  padding: clamp(0.875rem, 1.75vw, 1.125rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.375rem, 0.75vw, 0.5rem);
+  flex: 1;
+  min-height: 0;
+}
+.insights-blog__tag {
+  display: inline-block;
+  background: #ADCEE6;
+  color: #0A3D62;
+  border: 1px solid #0A3D62;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+  padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.625rem, 1.5vw, 0.875rem);
+  border-radius: 20px;
+  width: fit-content;
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+.insights-blog__card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 1.75vw, 1.25rem);
+  color: #0A3D62;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.insights-blog__link {
+  color: #0A3D62;
+  text-decoration: none;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: clamp(13px, 1.4vw, 15px);
+  transition: color 0.3s ease;
+  margin-top: auto;
+  padding-top: clamp(0.375rem, 0.75vw, 0.5rem);
+}
+.insights-blog__link:hover {
+  color: #0A3D62;
+}
+  .insights-blog__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .insights-hero {
+    height: clamp(30rem, 60vw, 40rem);
+    padding-top: calc(clamp(2rem, 4vw, 2.5rem) + clamp(0.75rem, 2vw, 1rem) * 2);
+  }
+  .insights-hero__slide {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2rem);
+    padding-left: clamp(1.5rem, 3vw, 2rem);
+  }
+  .insights-hero__title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+  .insights-hero__description {
+    font-size: clamp(16px, 2.5vw, 18px);
+  }
+  .insights-blog {
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem);
+  }
+  .insights-blog__title {
+    margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+  .insights-blog__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 2vw, 1.25rem);
+  }
+  .insights-blog__image-wrapper {
+    height: clamp(9rem, 35vw, 12rem);
+    width: calc(100% - clamp(1rem, 2vw, 1.5rem));
+    margin: clamp(0.5rem, 1vw, 0.75rem) clamp(0.5rem, 1vw, 0.75rem) 0;
+  }
+  .insights-blog__content {
+    padding: clamp(0.875rem, 1.75vw, 1rem);
+  }

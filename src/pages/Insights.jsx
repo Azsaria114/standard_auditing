@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import '../styles/Insights.css'
 
 // Newsletter Section (from Home.jsx)
 function NewsletterSection() {
