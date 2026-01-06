@@ -1,6 +1,5 @@
 import React from 'react'
 import '../styles/About.css'
-import frame905 from '../assets/Frame 905.png'
 import frame647 from '../assets/Frame 647.png'
 import jyothi from '../assets/Jyothi.jpg'
 import kiran from '../assets/Kiran.jpg'
@@ -14,6 +13,13 @@ import dafzaLogo from '../assets/dubai_free_zone.jpeg'
 import difcLogo from '../assets/dubai_international.jpeg'
 import shamsLogo from '../assets/media city.jpeg'
 import whatWeStandForImage from '../assets/what we stand for.jpeg'
+// Core Values Icons
+import accountabilityIcon from '../assets/puzzle.svg'
+import integrityIcon from '../assets/shield.svg'
+import progressIcon from '../assets/rocket.svg'
+import precisionIcon from '../assets/precsion.svg'
+import speedIcon from '../assets/speed.svg'
+import transparencyIcon from '../assets/maginify.svg'
 
 function About() {
   const teamMembers = [
@@ -32,7 +38,7 @@ function About() {
         <section className="about-hero">
           <div className="about-hero__content">
             <h1 className="about-hero__title h1-montserrat">
-              We are dedicated to redefining the way businesses achieve financial clarity and compliance.
+              Your Trusted Partner in Achieving Financial Clarity & Protecting Your Profits.
             </h1>
             <div className="about-hero__image-wrapper">
               <img 
@@ -154,9 +160,7 @@ function About() {
     {/* Accountability - Spans 2 columns on top left */}
     <div className="core-card core-card--accountability">
       <div className="core-card__icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M9 3H5C3.89543 3 3 3.89543 3 5V9M9 3H15M9 3V9M15 3H19C20.1046 3 21 3.89543 21 5V9M15 3V9M3 9V15M3 9H9M21 9V15M21 9H15M9 15V21M9 15H15M15 15V21M15 15H9M9 21H5C3.89543 21 3 20.1046 3 19V15M15 21H19C20.1046 21 21 20.1046 21 19V15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <img src={accountabilityIcon} alt="Accountability" />
       </div>
       <div className="core-card__content">
         <h3>Accountability</h3>
@@ -169,10 +173,7 @@ function About() {
     {/* Integrity - Spans 1 column to the right of Accountability */}
     <div className="core-card core-card--integrity">
       <div className="core-card__icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2L4 5V11C4 15.5 7.5 19.2 12 20.5C16.5 19.2 20 15.5 20 11V5L12 2Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <img src={integrityIcon} alt="Integrity" />
       </div>
       <div className="core-card__content">
         <h3>Integrity</h3>
@@ -185,12 +186,7 @@ function About() {
     {/* Progress - Spans 1 column on far right, but taller (spanning 2 rows) */}
     <div className="core-card core-card--progress">
       <div className="core-card__icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M4 20H20" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-          <path d="M4 20V4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-          <path d="M4 18L6.5 15.5L9 17L11.5 13L14 15L16.5 11L19 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M19 13L21.5 10.5L19 8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <img src={progressIcon} alt="Progress" />
       </div>
       <div className="core-card__content">
         <h3>Progress</h3>
@@ -203,11 +199,7 @@ function About() {
     {/* Precision - Bottom left, 1 column */}
     <div className="core-card core-card--precision">
       <div className="core-card__icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.6" />
-          <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1.6" />
-          <circle cx="12" cy="12" r="2" fill="currentColor" />
-        </svg>
+        <img src={precisionIcon} alt="Precision" />
       </div>
       <div className="core-card__content">
         <h3>Precision</h3>
@@ -220,9 +212,7 @@ function About() {
     {/* Speed - To the right of Precision, 1 column */}
     <div className="core-card core-card--speed">
       <div className="core-card__icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <img src={speedIcon} alt="Speed" />
       </div>
       <div className="core-card__content">
         <h3>Speed</h3>
@@ -235,10 +225,7 @@ function About() {
     {/* Transparency - Spans 2 columns on bottom right */}
     <div className="core-card core-card--transparency">
       <div className="core-card__icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.6" />
-          <path d="M21 21L16.65 16.65" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <img src={transparencyIcon} alt="Transparency" />
       </div>
       <div className="core-card__content">
         <h3>Transparency</h3>
@@ -284,27 +271,19 @@ function About() {
           </div>
         </section>
 
-        {/* Stay Ahead Newsletter Section */}
-        <section className="about-newsletter" style={{ backgroundImage: `url(${frame905})` }}>
-          <div className="about-newsletter__container">
-            <h2 className="about-newsletter__title h1-montserrat">Stay Ahead of Every Financial Rule Before It Affects Your Business</h2>
-            <p className="about-newsletter__description body-opensans">
-              <span className="about-newsletter__diamond-start">✦</span>Weekly insights to help Dubai business leaders cut costs, avoid tax trouble, & keep more of their profits.<span className="about-newsletter__diamond-end">✦</span>
+        {/* Newsletter Section - Same as Home Page */}
+        <section className="newsletter-section">
+          <div className="newsletter-section__container">
+            <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
+            <p className="newsletter-section__description body-opensans">
+              Get weekly insights, checklists, and SME-friendly tips to manage cash flow, avoid fines, and keep more of your profits. Stay updated with guidance from certified tax consultants UAE and experienced Dubai corporate tax consultants.
             </p>
-            <form className="about-newsletter__form" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Enter Your Email"
-                className="about-newsletter__input body-opensans"
-                required
-              />
-              <button type="submit" className="about-newsletter__button body-opensans">
-                <span className="about-newsletter__button-text">Subscribe</span>
-              </button>
-            </form>
-            <p className="about-newsletter__disclaimer small-body-opensans">
-              By subscribing, you agree to receive insider-information from our team.
-            </p>
+            <button type="button" className="newsletter-section__cta">
+              <span className="newsletter-section__cta-text">Sign up for free updates →</span>
+              <svg className="newsletter-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </section>
     </main>
