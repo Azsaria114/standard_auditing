@@ -3,6 +3,12 @@ import './App.css'
 import PartnersSection from './PartnersSection'
 import section2Image from './assets/section2.jpg'
 import heroImage from './assets/heroimage.jpg'
+import FileMagnifyingGlassIcon from './assets/FileMagnifyingGlass.svg'
+import PercentageIcon from './assets/percentage.svg'
+import ChartLineUpIcon from './assets/ChartLineUp.svg'
+import Vector3Icon from './assets/Vector (3).svg'
+import CalculatorIcon from './assets/calculator.svg'
+import FileMagnifyingGlass1Icon from './assets/FileMagnifyingGlass (1).svg'
 
 // Data constants
 const services = [
@@ -94,6 +100,11 @@ const trustBenefits = [
     hoverText: '98% of clients renew year after year. They stay because we consistently protect their profits and deliver trusted accounting and auditing services in Dubai. See more here.',
     icon: 'star' 
   },
+  { 
+    title: 'Professional Indemnity Insurance', 
+    hoverText: 'Your business is always protected. We carry full Professional Indemnity Insurance, so every service, from auditing to corporate tax filing, is backed by an additional layer of accountability and financial security.',
+    icon: 'star' 
+  },
 ]
 
 const pricingPlans = [
@@ -128,11 +139,11 @@ const pricingPlans = [
 
 
 const faqQuestions = [
-  {
+  { 
     question: 'Why is auditing important for my business in Dubai?',
     answer: 'Auditing provides independent verification of your financial records, ensuring accuracy and compliance with UAE laws. It helps detect errors or fraud before they become issues and gives your stakeholders confidence in your financial health. Partnering with a reputed audit firm near me or auditing service in Dubai ensures professional oversight and compliance with the latest regulations.'
   },
-  {
+  { 
     question: 'Do all companies in Dubai need to get an audit?',
     answer: 'Not all businesses are legally required to get audited. However, companies in free zones, public shareholding companies, and those subject to specific regulations typically must submit audited financial statements annually. Consulting a licensed audit firm in Dubai helps determine your audit obligations accurately.'
   },
@@ -304,65 +315,22 @@ function ServicesGridSection() {
             <div key={index} className="services-grid-section__card">
                 <div className="services-grid-section__icon-container">
                 {service.icon === 'document-magnifying-glass' && (
-                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 2H5C4.46957 2 3.96086 2.21071 3.58579 2.58579C3.21071 2.96086 3 3.46957 3 4V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H15C15.5304 22 16.0391 21.7893 16.4142 21.4142C16.7893 21.0391 17 20.5304 17 20V8L13 2H9Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M13 2V8H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 12H11M9 15H15M9 18H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                    <circle cx="18" cy="18" r="3" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M20.5 20.5L22 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
+                  <img src={FileMagnifyingGlassIcon} alt="Auditing" className="services-grid-section__icon" />
                 )}
                 {service.icon === 'percentage' && (
-                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M8 7L16 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
-                    <circle cx="16" cy="16" r="1.5" fill="currentColor"/>
-                    <path d="M9 12H15M9 15H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
+                  <img src={PercentageIcon} alt="VAT" className="services-grid-section__icon" />
                 )}
                 {service.icon === 'line-chart' && (
-                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M7 16L10 12L13 15L17 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="7" cy="16" r="1.5" fill="currentColor"/>
-                    <circle cx="10" cy="12" r="1.5" fill="currentColor"/>
-                    <circle cx="13" cy="15" r="1.5" fill="currentColor"/>
-                    <circle cx="17" cy="9" r="1.5" fill="currentColor"/>
-                  </svg>
+                  <img src={ChartLineUpIcon} alt="Tax Advisory" className="services-grid-section__icon" />
                 )}
                 {service.icon === 'building' && (
-                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 21V7L12 3L20 7V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M4 21H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 21V13H15V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <rect x="6" y="9" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="16" y="9" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="6" y="15" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="16" y="15" width="2" height="2" rx="0.5" fill="currentColor"/>
-                    <path d="M12 7V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
+                  <img src={Vector3Icon} alt="Company Formation" className="services-grid-section__icon" />
                 )}
                 {service.icon === 'calculator' && (
-                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
-                    <rect x="7" y="6" width="10" height="4" rx="1" fill="currentColor"/>
-                    <rect x="7.5" y="12" width="3" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="13.5" y="12" width="3" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="7.5" y="15.5" width="3" height="2" rx="0.5" fill="currentColor"/>
-                    <rect x="13.5" y="15.5" width="3" height="2" rx="0.5" fill="currentColor"/>
-                    <path d="M10.5 12H13.5M10.5 15.5H13.5" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
-                  </svg>
+                  <img src={CalculatorIcon} alt="Accounting & Bookkeeping" className="services-grid-section__icon" />
                 )}
                 {service.icon === 'dollar' && (
-                  <svg className="services-grid-section__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 2H15C16.1046 2 17 2.89543 17 4V20C17 21.1046 16.1046 22 15 22H9C7.89543 22 7 21.1046 7 20V4C7 2.89543 7.89543 2 9 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 6V18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M9 10H12C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14H10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M15 14H12C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="12" cy="4" r="1" fill="currentColor"/>
-                    <circle cx="12" cy="20" r="1" fill="currentColor"/>
-                  </svg>
+                  <img src={FileMagnifyingGlass1Icon} alt="Corporate Tax" className="services-grid-section__icon" />
                 )}
               </div>
               <h3 className="services-grid-section__card-title h5-montserrat">{service.title}</h3>
@@ -451,19 +419,24 @@ function WhyTrustSection() {
             </div>
           </div>
           
-          <div className="why-trust-section__image-card">
-            <div className="why-trust-section__image-wrapper">
-              <img
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80"
-                alt="Professional accountant person working with financial documents"
-                loading="lazy"
-              />
+          <div className="why-trust-section__card">
+            <div className="why-trust-section__icon-circle">
+              <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
-            <div className="why-trust-section__label why-trust-section__label--top-left">
-              Ready to Assist
+            <p className="why-trust-section__card-title body-opensans">{trustBenefits[6].title}</p>
+            <div className="why-trust-section__card-hover-text">
+              <div className="why-trust-section__hover-icon-wrapper">
+                <div className="why-trust-section__hover-icon-circle">
+                  <svg className="why-trust-section__hover-diamond-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
             </div>
-            <div className="why-trust-section__label why-trust-section__label--bottom-right">
-              Trusted Advisor
+              </div>
+              <p className="why-trust-section__hover-text-content">
+                {trustBenefits[6].hoverText}
+              </p>
             </div>
           </div>
           
@@ -529,12 +502,6 @@ function WhyTrustSection() {
               </p>
             </div>
           </div>
-        </div>
-        <div className="why-trust-section__insurance">
-          <p className="why-trust-section__insurance-text body-opensans">
-            🛡️ <strong>Professional Indemnity Insurance</strong><br />
-            Your business is always protected. We carry full Professional Indemnity Insurance, so every service, from auditing to corporate tax filing, is backed by an additional layer of accountability and financial security.
-          </p>
         </div>
       </div>
     </section>
@@ -757,9 +724,34 @@ function FAQSection() {
   const faqSectionRef = useRef(null)
   const faqRightRef = useRef(null)
   const scrollLockedRef = useRef(false)
+  const faqItemRefs = useRef([])
 
   const toggleFAQ = (index) => {
+    const isOpening = openIndex !== index
     setOpenIndex(openIndex === index ? null : index)
+    
+    // Scroll to the opened FAQ item after a short delay to allow animation to start
+    if (isOpening && faqItemRefs.current[index] && faqRightRef.current) {
+      setTimeout(() => {
+        const itemElement = faqItemRefs.current[index]
+        const container = faqRightRef.current
+        if (itemElement && container) {
+          // Calculate the position to scroll to (center the answer in view)
+          const itemTop = itemElement.offsetTop
+          const containerHeight = container.clientHeight
+          
+          // Scroll to show the item with some padding at the bottom
+          const targetScroll = itemTop - (containerHeight / 3) // Show item in upper third of container
+          const maxScroll = container.scrollHeight - containerHeight
+          const finalScroll = Math.min(Math.max(0, targetScroll), maxScroll)
+          
+          container.scrollTo({
+            top: finalScroll,
+            behavior: 'smooth'
+          })
+        }
+      }, 100) // Small delay to allow the answer to start expanding
+    }
   }
 
   useEffect(() => {
@@ -833,7 +825,11 @@ function FAQSection() {
         <div className="faq-section__right" ref={faqRightRef}>
           <div className="faq-section__list">
             {faqQuestions.map((faq, index) => (
-              <div key={index} className="faq-section__item">
+              <div 
+                key={index} 
+                className="faq-section__item"
+                ref={(el) => (faqItemRefs.current[index] = el)}
+              >
                 <div className="faq-section__divider"></div>
                 <button
                   type="button"
