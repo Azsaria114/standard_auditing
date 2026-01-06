@@ -279,10 +279,10 @@ function ServicesSection() {
           <div className="services-section__badge">
             <svg className="services-section__badge-svg" viewBox="0 0 200 200">
               <defs>
-                <path id="circle-path" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
+                <path id="circle-path" d="M 100, 100 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" />
               </defs>
               <text className="services-section__badge-text">
-                <textPath href="#circle-path" startOffset="0%">
+                <textPath href="#circle-path" startOffset="0%" textLength="500" lengthAdjust="spacing">
                   GUARANTEED TRANSPARENCY
                 </textPath>
               </text>
@@ -878,6 +878,56 @@ function NewsletterSection() {
   )
 }
 
+// How It Works Section
+function HowItWorksSection() {
+  const steps = [
+    {
+      title: 'One Point of Contact',
+    },
+    {
+      title: 'We Handle Everything',
+    },
+    {
+      title: 'Upload Docs Once',
+      titleLine2: 'We Do the Rest',
+    },
+  ]
+
+  return (
+    <section className="how-it-works-section">
+      <div className="how-it-works-section__container">
+        <div className="how-it-works-section__header">
+          <h2 className="how-it-works-section__title h2-montserrat">How It Works</h2>
+        </div>
+        <div className="how-it-works-section__cards">
+          {steps.map((step, index) => (
+            <div key={index} className="how-it-works-section__card">
+              <div className="how-it-works-section__card-box">
+                {/* Placeholder for image/icon */}
+              </div>
+              <div className="how-it-works-section__card-content">
+                <h3 className="how-it-works-section__card-title h4-montserrat">
+                  {step.title}
+                  {step.titleLine2 && (
+                    <>
+                      <br />
+                      {step.titleLine2}
+                    </>
+                  )}
+                </h3>
+              </div>
+              <div className="how-it-works-section__step-number">
+                <span className="how-it-works-section__number-circle">{index + 1}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="how-it-works-section__connector-line" aria-hidden="true"></div>
+      </div>
+    </section>
+  )
+}
+
 function Home() {
   return (
     <>
@@ -950,6 +1000,7 @@ function Home() {
         </div>
       </main>
       <ServicesSection />
+      <HowItWorksSection />
       <PartnersSection />
       <ServicesGridSection />
       <WhyTrustSection />
