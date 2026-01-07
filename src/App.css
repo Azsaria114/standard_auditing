@@ -818,7 +818,7 @@ html, body {
     flex: 0 0 auto;
     /* Same grid structure as desktop */
   }
-  
+
   .hero__service-pill {
     padding: 0.5rem 0.875rem;
     font-size: 0.8125rem;
@@ -12841,7 +12841,7 @@ html, body {
 .service-page .service-hero--auditing .service-hero__cta-column {
   display: flex;
   flex-direction: row;
-  gap: clamp(0.75rem, 1.5vw, 1rem);
+    gap: clamp(0.75rem, 1.5vw, 1rem);
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
