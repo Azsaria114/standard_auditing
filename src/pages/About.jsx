@@ -66,7 +66,7 @@ function About() {
               <div className="about-partners__track">
                 {/* First set - Order: Jafza, DAFZA, DIFC, Shams, DMCC */}
                 <div className="about-partners__logo">
-                  <img src={jafzaLogo} alt="Jafza - Jebel Ali Free Zone" />
+                  <img src={jafzaLogo} alt="Jafza - Jebel Ali Free Zone" loading="lazy" />
                 </div>
                 <div className="about-partners__logo">
                   <img src={dafzaLogo} alt="Dubai Airport Freezone" />
@@ -82,19 +82,19 @@ function About() {
                 </div>
                 {/* Duplicate set for seamless loop */}
                 <div className="about-partners__logo">
-                  <img src={jafzaLogo} alt="Jafza - Jebel Ali Free Zone" />
+                  <img src={jafzaLogo} alt="Jafza - Jebel Ali Free Zone" loading="lazy" />
                 </div>
                 <div className="about-partners__logo">
-                  <img src={dafzaLogo} alt="Dubai Airport Freezone" />
+                  <img src={dafzaLogo} alt="Dubai Airport Freezone" loading="lazy" />
                 </div>
                 <div className="about-partners__logo">
-                  <img src={difcLogo} alt="Dubai International Financial Centre" />
+                  <img src={difcLogo} alt="Dubai International Financial Centre" loading="lazy" />
                 </div>
                 <div className="about-partners__logo">
-                  <img src={shamsLogo} alt="Sharjah Media City" />
+                  <img src={shamsLogo} alt="Sharjah Media City" loading="lazy" />
                 </div>
                 <div className="about-partners__logo">
-                  <img src={dmccLogo} alt="DMCC - Dubai Multi Commodities Centre" />
+                  <img src={dmccLogo} alt="DMCC - Dubai Multi Commodities Centre" loading="lazy" />
                 </div>
               </div>
             </div>
