@@ -7,10 +7,11 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Career from './pages/Career'
 import Insights from './pages/Insights'
-import Services from './pages/Services'
+import BlogArticlePage from './pages/BlogArticlePage'
 import Auditing from './servicePages/Auditing'
 import VAT from './servicePages/VAT'
 import TaxAdvisory from './servicePages/TaxAdvisory'
+import CorporateTax from './servicePages/CorporateTax'
 import CompanyFormation from './servicePages/CompanyFormation'
 import AccountingBookkeeping from './servicePages/AccountingBookkeeping'
 
@@ -190,9 +191,20 @@ const faqQuestions = [
   },
 ]
 
+// Services data for dropdown
+const servicesMenu = [
+  { name: 'Auditing', path: '/services/auditing' },
+  { name: 'VAT', path: '/services/vat' },
+  { name: 'Tax Advisory', path: '/services/tax-advisory' },
+  { name: 'Corporate Tax', path: '/services/corporate-tax' },
+  { name: 'Company Formation', path: '/services/company-formation' },
+  { name: 'Accounting & Bookkeeping', path: '/services/accounting-bookkeeping' },
+]
+
 // Shared Header Component
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -203,15 +215,26 @@ function Header() {
     }
   }
 
+  const toggleServicesDropdown = () => {
+    setIsServicesDropdownOpen(!isServicesDropdownOpen)
+  }
+
+  const closeServicesDropdown = () => {
+    setIsServicesDropdownOpen(false)
+  }
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isMenuOpen && !event.target.closest('.site-header')) {
         setIsMenuOpen(false)
         document.body.style.overflow = ''
       }
+      if (isServicesDropdownOpen && !event.target.closest('.site-header__services-dropdown')) {
+        setIsServicesDropdownOpen(false)
+      }
     }
 
-    if (isMenuOpen) {
+    if (isMenuOpen || isServicesDropdownOpen) {
       document.addEventListener('click', handleClickOutside)
     }
 
@@ -219,7 +242,7 @@ function Header() {
       document.removeEventListener('click', handleClickOutside)
       document.body.style.overflow = ''
     }
-  }, [isMenuOpen])
+  }, [isMenuOpen, isServicesDropdownOpen])
 
   return (
     <>
@@ -249,20 +272,56 @@ function Header() {
             <Link to="/" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link to="/about" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/about" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
               About
-              <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
-              </svg>
             </Link>
-            <Link to="/services" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
-              Services
-            </Link>
-            <Link to="/insights" className="site-header__nav-link site-header__nav-link--dropdown" onClick={() => setIsMenuOpen(false)}>
+            <div className="site-header__services-dropdown">
+              <button 
+                type="button"
+                className="site-header__nav-link site-header__nav-link--dropdown" 
+                onClick={(e) => {
+                  e.preventDefault()
+                  toggleServicesDropdown()
+                }}
+                onMouseEnter={() => {
+                  if (window.innerWidth > 1024) {
+                    setIsServicesDropdownOpen(true)
+                  }
+                }}
+              >
+                Services
+                <svg className={`site-header__dropdown-icon ${isServicesDropdownOpen ? 'site-header__dropdown-icon--open' : ''}`} width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
+                </svg>
+              </button>
+              {isServicesDropdownOpen && (
+                <div 
+                  className="site-header__dropdown-menu"
+                  onMouseLeave={() => {
+                    if (window.innerWidth > 1024) {
+                      setIsServicesDropdownOpen(false)
+                    }
+                  }}
+                >
+                  {servicesMenu.map((service) => (
+                    <Link
+                      key={service.path}
+                      to={service.path}
+                      className="site-header__dropdown-item"
+                      onClick={() => {
+                        setIsServicesDropdownOpen(false)
+                        setIsMenuOpen(false)
+                        document.body.style.overflow = ''
+                      }}
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            <Link to="/insights" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
               Insights
-              <svg className="site-header__dropdown-icon" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6 L1 2 L7 2 Z" fill="currentColor"/>
-              </svg>
             </Link>
             <Link to="/careers" className="site-header__nav-link" onClick={() => setIsMenuOpen(false)}>
               Careers
@@ -352,20 +411,20 @@ function Footer() {
         <div className="site-footer__column">
           <h3 className="site-footer__column-title h5-montserrat">Support</h3>
           <ul className="site-footer__links">
-            <li><a href="#" className="body-opensans">Help center</a></li>
-            <li><a href="#" className="body-opensans">Ticket Support</a></li>
-            <li><a href="#" className="body-opensans">FAQ</a></li>
-            <li><a href="#" className="body-opensans">Contact</a></li>
+            <li><Link to="/contact" className="body-opensans">Help center</Link></li>
+            <li><Link to="/contact" className="body-opensans">Ticket Support</Link></li>
+            <li><Link to="/#faq" className="body-opensans">FAQ</Link></li>
+            <li><Link to="/contact" className="body-opensans">Contact</Link></li>
           </ul>
         </div>
         <div className="site-footer__column">
           <h3 className="site-footer__column-title h5-montserrat">Company</h3>
           <ul className="site-footer__links">
             <li><Link to="/about" className="body-opensans">About us</Link></li>
-            <li><a href="#" className="body-opensans">Leadership</a></li>
+            <li><Link to="/about" className="body-opensans">Leadership</Link></li>
             <li><Link to="/careers" className="body-opensans">Careers</Link></li>
-            <li><a href="#" className="body-opensans">News & articles</a></li>
-            <li><a href="#" className="body-opensans">Legal Notices</a></li>
+            <li><Link to="/insights" className="body-opensans">News & articles</Link></li>
+            <li><Link to="/contact" className="body-opensans">Legal Notices</Link></li>
           </ul>
         </div>
       </div>
@@ -375,9 +434,9 @@ function Footer() {
           Copyright © 2025 Standard Auditors, All rights reserved.
         </p>
         <div className="site-footer__legal">
-          <a href="#" className="small-body-opensans">Terms of use</a>
-          <a href="#" className="small-body-opensans">Cookies policy</a>
-          <a href="#" className="small-body-opensans">Privacy policy</a>
+          <Link to="/contact" className="small-body-opensans">Terms of use</Link>
+          <Link to="/contact" className="small-body-opensans">Cookies policy</Link>
+          <Link to="/contact" className="small-body-opensans">Privacy policy</Link>
         </div>
       </div>
     </footer>
@@ -395,10 +454,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Career />} />
         <Route path="/insights" element={<Insights />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/insights/article/:slug" element={<BlogArticlePage />} />
         <Route path="/services/auditing" element={<Auditing />} />
         <Route path="/services/vat" element={<VAT />} />
-        <Route path="/services/corporate-tax" element={<VAT />} />
+        <Route path="/services/corporate-tax" element={<CorporateTax />} />
         <Route path="/services/tax-advisory" element={<TaxAdvisory />} />
         <Route path="/services/company-formation" element={<CompanyFormation />} />
         <Route path="/services/accounting-bookkeeping" element={<AccountingBookkeeping />} />

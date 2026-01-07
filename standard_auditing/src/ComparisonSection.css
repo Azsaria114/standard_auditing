@@ -156,11 +156,11 @@
 
 .comparison-list li {
   position: relative;
-  padding-left: 0;
+  padding-left: 2.2rem;
   margin-bottom: 1rem;
   display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .comparison-list li:last-child {
@@ -198,19 +198,13 @@
 }
 
 .comparison-list.muted li::before {
-  display: none;
-}
-
-.comparison-item-icon {
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  margin-top: 0.125rem;
-}
-
-.comparison-list.muted .comparison-item-icon {
+  content: "Γ£ô";
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
   color: #0A3D62;
-  stroke: #0A3D62;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 /* Emphasized (right) */
@@ -230,12 +224,20 @@
 }
 
 .comparison-list.emphasized li::before {
-  display: none;
-}
-
-.comparison-list.emphasized .comparison-item-icon {
-  color: #0b3558;
-  stroke: #0b3558;
+  content: "Γ£ô";
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #0b3558;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 /* Responsive */

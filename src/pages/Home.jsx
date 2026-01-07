@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import '../App.css'
 import PartnersSection from '../PartnersSection'
 import section2Image from '../assets/section2.jpg'
@@ -870,12 +871,12 @@ function NewsletterSection() {
         <p className="newsletter-section__description body-opensans">
         Get weekly insights, checklists, and SME-friendly tips to manage cash flow, avoid fines, and keep more of your profits. Stay updated with guidance from certified tax consultants UAE and experienced Dubai corporate tax consultants.
         </p>
-        <button type="button" className="newsletter-section__cta">
+        <Link to="/contact" className="newsletter-section__cta">
           <span className="newsletter-section__cta-text">Sign up for free updates</span>
           <svg className="newsletter-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-        </button>
+        </Link>
       </div>
     </section>
   )
@@ -1025,7 +1026,7 @@ function HowItWorksSection() {
         <div className="how-it-works-section__connector-line" aria-hidden="true">
           <div 
             className={`how-it-works-section__connector-line-fill ${isResetting ? 'how-it-works-section__connector-line-fill--resetting' : ''}`}
-            style={{ width: `${(completedSteps / steps.length) * 100}%` }}
+            style={{ width: completedSteps >= steps.length ? '100%' : completedSteps > 0 ? `${((completedSteps - 1) / (steps.length - 1)) * 100}%` : '0%' }}
           ></div>
         </div>
       </div>
