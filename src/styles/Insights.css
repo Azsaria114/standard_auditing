@@ -105,10 +105,12 @@
   padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 5rem);
   background: #f4f8fc;
 }
+@media (min-width: 1025px) {
   .insights-blog {
     padding-left: 5rem;
     padding-right: 5rem;
   }
+}
 .insights-blog__container {
   max-width: 100%;
   margin: 0 auto;
@@ -209,6 +211,9 @@
 .insights-blog__link:hover {
   color: #0A3D62;
 }
+
+/* Tablet and Mobile Styles */
+@media (max-width: 1024px) {
   .insights-blog__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -245,3 +250,4 @@
   .insights-blog__content {
     padding: clamp(0.875rem, 1.75vw, 1rem);
   }
+}

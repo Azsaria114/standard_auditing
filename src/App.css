@@ -27,12 +27,34 @@ html, body {
   /* 80px (5rem) padding on all sides */
   padding-top: calc(5rem + clamp(2.5rem, 5vw, 3.5rem));
   /* Add extra top padding to account for fixed header height */
-  background: white;
+  background: #f4f8fc;
   color: #0A3D62;
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
   /* Full width with consistent 80px padding */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem);
+  background-size: clamp(3rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem);
+  background-position: 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Desktop: Content on top, Media (image+stats) below in 70-30 split */
@@ -538,9 +560,8 @@ html, body {
    HOW IT WORKS SECTION
    ============================================ */
 .how-it-works-section {
-  background: white;
   color: #0A3D62;
-  padding: 5rem 5rem;
+  margin: 80px 0;
   position: relative;
 }
 
@@ -570,7 +591,7 @@ html, body {
   gap: clamp(2rem, 4vw, 3rem);
   position: relative;
   margin-bottom: clamp(3rem, 6vw, 4rem);
-  padding-bottom: clamp(2rem, 4vw, 2.5rem);
+  padding-bottom: clamp(4.5rem, 7vw, 5.5rem);
 }
 
 .how-it-works-section__card {
@@ -582,8 +603,8 @@ html, body {
 }
 
 .how-it-works-section__card-box {
-  width: 100%;
-  aspect-ratio: 1;
+  width: clamp(250px, 28vw, 350px);
+  height: clamp(250px, 28vw, 350px);
   background: #f4f8fc;
   border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
@@ -591,6 +612,32 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 clamp(0.25rem, 0.75vw, 0.5rem) clamp(0.5rem, 1.5vw, 1rem) rgba(0, 0, 0, 0.15);
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.how-it-works-section__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  position: relative;
+  box-shadow: inset 0 -clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem) -clamp(1rem, 2vw, 1.5rem) rgba(0, 0, 0, 0.3);
+}
+
+.how-it-works-section__card-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 .how-it-works-section__card-content {
@@ -644,6 +691,46 @@ html, body {
   border: 3px solid white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.how-it-works-section__number-circle--completed {
+  background: #0A3D62;
+  transform: scale(1.1);
+  animation: tickAppear 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.how-it-works-section__tick-icon {
+  width: clamp(1.25rem, 2.5vw, 1.5rem);
+  height: clamp(1.25rem, 2.5vw, 1.5rem);
+  animation: tickDraw 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes tickAppear {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes tickDraw {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .how-it-works-section__card:nth-child(1) .how-it-works-section__step-number {
@@ -656,13 +743,27 @@ html, body {
 
 .how-it-works-section__connector-line {
   position: absolute;
-  bottom: 0;
+  bottom: clamp(5rem, 7.5vw, 8.5rem);
   left: calc((100% / 6) - (clamp(3rem, 6vw, 4rem) / 2));
   width: calc((100% / 3 * 2) + clamp(3rem, 6vw, 4rem));
   height: 2px;
   background: rgba(10, 61, 98, 0.3);
   z-index: 1;
-  transform: translateY(clamp(1.5rem, 3vw, 2rem));
+  overflow: hidden;
+}
+
+.how-it-works-section__connector-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #0A3D62;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.how-it-works-section__connector-line-fill--resetting {
+  transition: none;
 }
 
 /* Tablet View */
@@ -674,6 +775,11 @@ html, body {
   .how-it-works-section__cards {
     grid-template-columns: 1fr;
     gap: clamp(3rem, 6vw, 4rem);
+  }
+
+  .how-it-works-section__card-box {
+    width: clamp(280px, 40vw, 350px);
+    height: clamp(280px, 40vw, 350px);
   }
 
   .how-it-works-section__connector-line {
@@ -690,6 +796,11 @@ html, body {
   .how-it-works-section__cards {
     grid-template-columns: 1fr;
     gap: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .how-it-works-section__card-box {
+    width: clamp(250px, 80vw, 320px);
+    height: clamp(250px, 80vw, 320px);
   }
 
   .how-it-works-section__connector-line {
@@ -760,7 +871,7 @@ html, body {
     flex: 0 0 auto;
     /* Same grid structure as desktop */
   }
-  
+
   .hero__service-pill {
     padding: 0.5rem 0.875rem;
     font-size: 0.8125rem;
@@ -4037,7 +4148,7 @@ html, body {
    VIDEO TESTIMONIALS SECTION
    ============================================ */
 .video-testimonials-section {
-  background: white;
+  background: #f4f8fc;
   padding: 5rem 5rem;
   /* Top/bottom: 80px (5rem), horizontal: 80px (5rem) */
   position: relative;
@@ -4605,7 +4716,7 @@ html, body {
   position: sticky;
   top: clamp(2rem, 4vw, 5rem);
   align-self: flex-start;
-  gap: clamp(1rem, 2.5vw, 1.5rem);
+  gap: clamp(0.5rem, 1.5vw, 1rem);
   /* Add gap for spacing between elements */
 }
 
@@ -4616,7 +4727,7 @@ html, body {
   border: 0.0625rem solid #0A3D62;
   border-radius: clamp(1.5rem, 4vw, 3.125rem);
   padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.625rem, 1.5vw, 0.875rem);
-  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  margin-bottom: clamp(0.125rem, 0.5vw, 0.25rem);
   font-weight: 600;
   font-size: clamp(0.625rem, 1.25vw, 0.75rem);
   width: fit-content;
@@ -4625,7 +4736,7 @@ html, body {
 
 .faq-section__title {
   color: #0A3D62;
-  margin: 0 0 clamp(1rem, 2.5vw, 1.5rem);
+  margin: 0 0 clamp(0.5rem, 1.5vw, 1rem);
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   line-height: 1.2;
   font-weight: 600;
@@ -4659,7 +4770,7 @@ html, body {
 
 .faq-section__cta-section--top {
   order: 0;
-  margin-top: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(0.75rem, 1.5vw, 1rem);
   margin-bottom: 0;
   /* Below intro content */
 }
@@ -10059,6 +10170,30 @@ html, body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  background: #f4f8fc;
+  position: relative;
+  min-height: 100vh;
+}
+
+.insights-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem);
+  background-size: clamp(3rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem);
+  background-position: 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.insights-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Insights Hero Slideshow */
@@ -10177,6 +10312,30 @@ html, body {
 .insights-blog {
   padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 5rem);
   background: #f4f8fc;
+  position: relative;
+}
+
+.insights-blog::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem);
+  background-size: clamp(3rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem);
+  background-position: 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.insights-blog__container {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 1024px) {
@@ -10184,11 +10343,6 @@ html, body {
     padding-left: 5rem;
     padding-right: 5rem;
   }
-}
-
-.insights-blog__container {
-  max-width: 100%;
-  margin: 0 auto;
 }
 
 .insights-blog__title {
@@ -10207,7 +10361,7 @@ html, body {
 }
 
 .insights-blog__card {
-  background: white;
+  background: transparent;
   border-radius: 0.5rem;
   overflow: visible;
   border: 1px solid rgba(10, 61, 98, 0.3);

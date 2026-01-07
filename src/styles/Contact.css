@@ -36,7 +36,27 @@
 }
 .contact-main {
   padding: clamp(4rem, 8vw, 6rem) clamp(40px, 4vw, 5rem);
-  background: white;
+  background: #f4f8fc;
+  position: relative;
+}
+.contact-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, rgba(173, 206, 230, 0.15) 0.0625rem, transparent 0.0625rem);
+  background-size: clamp(3rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem);
+  background-position: 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.contact-main__container {
+  position: relative;
+  z-index: 1;
 }
 .contact-map {
   width: 100%;
@@ -439,6 +459,9 @@
   font-style: italic;
   margin: 0;
 }
+
+/* Tablet and Mobile Styles */
+@media (max-width: 1024px) {
   .contact-main__container {
     grid-template-columns: 1fr;
     gap: clamp(2.5rem, 5vw, 3.5rem);
@@ -492,3 +515,4 @@
   .contact-form {
     gap: clamp(1rem, 2vw, 1.25rem);
   }
+}

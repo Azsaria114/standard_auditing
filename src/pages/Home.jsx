@@ -9,6 +9,9 @@ import ChartLineUpIcon from '../assets/ChartLineUp.svg'
 import Vector3Icon from '../assets/Vector (3).svg'
 import CalculatorIcon from '../assets/calculator.svg'
 import FileMagnifyingGlass1Icon from '../assets/FileMagnifyingGlass (1).svg'
+import onePointOfContactImage from '../assets/one point of contact.jpg'
+import step2Image from '../assets/step 2.png'
+import step3Image from '../assets/step3.jpg'
 
 // Data constants
 const services = [
@@ -815,7 +818,7 @@ function FAQSection() {
           <div className="faq-section__cta-section faq-section__cta-section--top">
             <h3 className="faq-section__cta-heading h4-montserrat">Still looking for answers?</h3>
             <button type="button" className="faq-section__cta h3-opensans-semibold">
-              <span className="faq-section__cta-text">Speak to our expert →</span>
+              <span className="faq-section__cta-text">Speak to our expert</span>
               <svg className="faq-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -868,7 +871,7 @@ function NewsletterSection() {
         Get weekly insights, checklists, and SME-friendly tips to manage cash flow, avoid fines, and keep more of your profits. Stay updated with guidance from certified tax consultants UAE and experienced Dubai corporate tax consultants.
         </p>
         <button type="button" className="newsletter-section__cta">
-          <span className="newsletter-section__cta-text">Sign up for free updates →</span>
+          <span className="newsletter-section__cta-text">Sign up for free updates</span>
           <svg className="newsletter-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
@@ -880,49 +883,151 @@ function NewsletterSection() {
 
 // How It Works Section
 function HowItWorksSection() {
+  const [completedSteps, setCompletedSteps] = useState(0)
+  const [isResetting, setIsResetting] = useState(false)
+  const sectionRef = useRef(null)
+  const intervalIdRef = useRef(null)
+
   const steps = [
     {
       title: 'One Point of Contact',
+      image: onePointOfContactImage,
     },
     {
       title: 'We Handle Everything',
+      image: step2Image,
     },
     {
       title: 'Upload Docs Once',
       titleLine2: 'We Do the Rest',
+      image: step3Image,
     },
   ]
 
+  useEffect(() => {
+    const animateSteps = () => {
+      let currentStep = 0
+      
+      const stepInterval = setInterval(() => {
+        currentStep++
+        setCompletedSteps(currentStep)
+        
+        if (currentStep >= steps.length) {
+          clearInterval(stepInterval)
+          // Wait a bit before resetting and restarting
+          setTimeout(() => {
+            // Disable transition for instant reset
+            setIsResetting(true)
+            setCompletedSteps(0)
+            // Re-enable transition and restart after reset is applied
+            setTimeout(() => {
+              setIsResetting(false)
+              animateSteps()
+            }, 50)
+          }, 1000)
+        }
+      }, 1500) // 1500ms delay between each step (slower)
+      
+      intervalIdRef.current = stepInterval
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (!intervalIdRef.current) {
+              animateSteps()
+            }
+          } else {
+            // Reset when out of view
+            if (intervalIdRef.current) {
+              clearInterval(intervalIdRef.current)
+              intervalIdRef.current = null
+              setCompletedSteps(0)
+              setIsResetting(false)
+            }
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (intervalIdRef.current) {
+        clearInterval(intervalIdRef.current)
+      }
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [steps.length])
+
   return (
-    <section className="how-it-works-section">
+    <section className="how-it-works-section" ref={sectionRef}>
       <div className="how-it-works-section__container">
         <div className="how-it-works-section__header">
           <h2 className="how-it-works-section__title h2-montserrat">How It Works</h2>
         </div>
         <div className="how-it-works-section__cards">
-          {steps.map((step, index) => (
-            <div key={index} className="how-it-works-section__card">
-              <div className="how-it-works-section__card-box">
-                {/* Placeholder for image/icon */}
+          {steps.map((step, index) => {
+            const isCompleted = completedSteps > index
+            return (
+              <div key={index} className="how-it-works-section__card">
+                <div className="how-it-works-section__card-box">
+                  <img 
+                    src={step.image} 
+                    alt={step.title}
+                    className="how-it-works-section__card-image"
+                  />
+                </div>
+                <div className="how-it-works-section__card-content">
+                  <h3 className="how-it-works-section__card-title h4-montserrat">
+                    {step.title}
+                    {step.titleLine2 && (
+                      <>
+                        <br />
+                        {step.titleLine2}
+                      </>
+                    )}
+                  </h3>
+                </div>
+                <div className="how-it-works-section__step-number">
+                  <span className={`how-it-works-section__number-circle ${isCompleted ? 'how-it-works-section__number-circle--completed' : ''}`}>
+                    {isCompleted ? (
+                      <svg 
+                        className="how-it-works-section__tick-icon" 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none"
+                      >
+                        <path 
+                          d="M20 6L9 17L4 12" 
+                          stroke="white" 
+                          strokeWidth="2.5" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : (
+                      index + 1
+                    )}
+                  </span>
+                </div>
               </div>
-              <div className="how-it-works-section__card-content">
-                <h3 className="how-it-works-section__card-title h4-montserrat">
-                  {step.title}
-                  {step.titleLine2 && (
-                    <>
-                      <br />
-                      {step.titleLine2}
-                    </>
-                  )}
-                </h3>
-              </div>
-              <div className="how-it-works-section__step-number">
-                <span className="how-it-works-section__number-circle">{index + 1}</span>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
-        <div className="how-it-works-section__connector-line" aria-hidden="true"></div>
+        <div className="how-it-works-section__connector-line" aria-hidden="true">
+          <div 
+            className={`how-it-works-section__connector-line-fill ${isResetting ? 'how-it-works-section__connector-line-fill--resetting' : ''}`}
+            style={{ width: `${(completedSteps / steps.length) * 100}%` }}
+          ></div>
+        </div>
       </div>
     </section>
   )

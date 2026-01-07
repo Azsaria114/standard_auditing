@@ -2029,7 +2029,7 @@
   box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.25rem, 1vw, 0.5rem) rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   aspect-ratio: auto;
-  min-height: clamp(14rem, 22vw, 18rem);
+  min-height: clamp(12rem, 18vw, 15rem);
   justify-content: space-between;
   overflow: hidden;
   /* White card with dark blue border - reduced height slightly */
@@ -2037,33 +2037,26 @@
 .services-grid-section__card::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 0;
-  bottom: 0;
-  right: 0;
+  inset: 0;
   background: #0A3D62;
   opacity: 0;
-  border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: inherit;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
   pointer-events: none;
-  /* Hidden initially, expands smoothly on hover - lowest z-index */
+  /* Hidden initially, expands smoothly on hover - covers entire card */
 }
 .services-grid-section__card:hover {
   transform: translateY(-0.125rem);
   box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 1rem) rgba(0, 0, 0, 0.1);
   border-color: #0A3D62;
-  /* Hover effect */
+  background: #0A3D62;
+  /* Hover effect - background changes to match ::after */
 }
 .services-grid-section__card:hover::after {
   background: #0A3D62;
-  width: 100%;
-  height: 100%;
-  bottom: 0;
-  right: 0;
   opacity: 1;
-  border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  /* Full blue background expansion on hover - no triangle indicator */
+  /* Full blue background expansion on hover - covers entire card completely */
 }
 .services-grid-section__icon-container {
   position: absolute;
@@ -2980,7 +2973,7 @@
     /* Full width button on mobile */
   }
 .video-testimonials-section {
-  background: white;
+  background: #f4f8fc;
   padding: 5rem 5rem;
   /* Top/bottom: 80px (5rem), horizontal: 80px (5rem) */
   position: relative;
