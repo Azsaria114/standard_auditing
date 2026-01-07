@@ -8,7 +8,7 @@ import manoj from '../assets/Manoj.jpg'
 import nathan from '../assets/Nathan.png'
 import ramachandran from '../assets/Ramachandran.jpg'
 import vikram from '../assets/Vikram.jpg'
-// Partner logos for About page - using public folder for better Vercel compatibility
+// Partner logos for About page - using public folder for better Vercel compatibility (renamed to remove spaces)
 const jafzaLogo = '/jafza.jpeg'
 const dmccLogo = '/dmcc.jpeg'
 const dafzaLogo = '/dubai_free_zone.jpeg'
