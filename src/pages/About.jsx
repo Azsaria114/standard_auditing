@@ -8,6 +8,7 @@ import manoj from '../assets/Manoj.jpg'
 import nathan from '../assets/Nathan.png'
 import ramachandran from '../assets/Ramachandran.jpg'
 import vikram from '../assets/Vikram.jpg'
+// Partner logos for About page
 import jafzaLogo from '../assets/jafza.jpeg'
 import dmccLogo from '../assets/dmcc.jpeg'
 import dafzaLogo from '../assets/dubai_free_zone.jpeg'
