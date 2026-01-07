@@ -1226,12 +1226,8 @@ function findArticleSlugByTitle(title) {
 function BlogArticle({
   category = 'VAT',
   title = 'Article Title',
-  intro = 'Article introduction text',
   author = 'Standard Auditing Team',
-  authorRole = 'Content Writer',
-  authorImage = null,
   date = 'January 15, 2025',
-  readTime = '5 min read',
   featuredImage = null,
   content = [],
   conclusion = '',
@@ -1240,8 +1236,6 @@ function BlogArticle({
 }) {
   const [readingProgress, setReadingProgress] = useState(0)
   const [activeHeading, setActiveHeading] = useState(null)
-  const [isRelatedPostsVisible, setIsRelatedPostsVisible] = useState(false)
-  const [timelineProgress, setTimelineProgress] = useState(0)
   const [timelineNavHeight, setTimelineNavHeight] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -1290,63 +1284,33 @@ function BlogArticle({
       }
     }
 
-    const checkRelatedPostsVisibility = () => {
-      const contentContainer = document.querySelector('.blog-article__content-container')
-      const relatedPostsSection = document.querySelector('.blog-article__related-posts')
-
-      if (contentContainer && relatedPostsSection) {
-        const windowHeight = window.innerHeight
-        const contentRect = contentContainer.getBoundingClientRect()
-        const isContentFullyScrolled = contentRect.bottom <= windowHeight + 100
-        setIsRelatedPostsVisible(isContentFullyScrolled)
-      }
-    }
-
-    const updateTimelineProgress = () => {
+    const updateTimelineNavHeight = () => {
       if (headings.length === 0) return
 
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      const windowHeight = window.innerHeight
-
-      const firstHeading = document.getElementById(headings[0].id)
-      const lastHeading = document.getElementById(headings[headings.length - 1].id)
       const timelineNav = document.querySelector('.blog-article__timeline-nav')
 
-      if (firstHeading && lastHeading && timelineNav) {
-        const firstTop = firstHeading.offsetTop
-        const lastTop = lastHeading.offsetTop
-        const contentHeight = Math.max(1, lastTop - firstTop)
-
+      if (timelineNav) {
         const navHeight = timelineNav.offsetHeight
         if (navHeight !== timelineNavHeight) {
           setTimelineNavHeight(navHeight)
         }
-
-        const scrollPosition = scrollTop + windowHeight * 0.2
-        const progress = Math.max(0, Math.min(100, ((scrollPosition - firstTop) / contentHeight) * 100))
-        setTimelineProgress(progress)
       }
     }
 
     window.addEventListener('scroll', updateReadingProgress)
     window.addEventListener('scroll', updateActiveHeading)
-    window.addEventListener('scroll', checkRelatedPostsVisibility)
-    window.addEventListener('scroll', updateTimelineProgress)
-    window.addEventListener('resize', checkRelatedPostsVisibility)
-    window.addEventListener('resize', updateTimelineProgress)
+    window.addEventListener('scroll', updateTimelineNavHeight)
+    window.addEventListener('resize', updateTimelineNavHeight)
 
     updateReadingProgress()
     updateActiveHeading()
-    updateTimelineProgress()
-    setTimeout(checkRelatedPostsVisibility, 100)
+    updateTimelineNavHeight()
 
     return () => {
       window.removeEventListener('scroll', updateReadingProgress)
       window.removeEventListener('scroll', updateActiveHeading)
-      window.removeEventListener('scroll', checkRelatedPostsVisibility)
-      window.removeEventListener('scroll', updateTimelineProgress)
-      window.removeEventListener('resize', checkRelatedPostsVisibility)
-      window.removeEventListener('resize', updateTimelineProgress)
+      window.removeEventListener('scroll', updateTimelineNavHeight)
+      window.removeEventListener('resize', updateTimelineNavHeight)
     }
   }, [headings, timelineNavHeight])
 

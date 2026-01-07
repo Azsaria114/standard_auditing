@@ -9282,6 +9282,12 @@ html, body {
   position: relative;
   overflow: hidden;
   box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.25rem, 1vw, 0.5rem) rgba(0, 0, 0, 0.05);
+  isolation: isolate;
+}
+
+.service-hero__cta-button > * {
+  position: relative;
+  z-index: 10;
 }
 
 .service-hero__cta-button--primary {
@@ -9303,29 +9309,37 @@ html, body {
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   border-bottom-right-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 }
 
 .service-hero__cta-button--primary:hover {
-  background: white;
-  color: white;
+  background: white !important;
+  color: #0A3D62 !important;
   transform: translateY(-0.25rem);
   box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(10, 61, 98, 0.25);
 }
 
 .service-hero__cta-button--primary:hover::after {
-  background: #0A3D62;
+  background: white !important;
   width: 100%;
   height: 100%;
   bottom: 0;
   right: 0;
   clip-path: none;
   border-radius: clamp(0.375rem, 1vw, 0.5rem);
+  z-index: -1;
+}
+
+.service-hero__cta-button--primary:hover,
+.service-hero__cta-button--primary:hover * {
+  color: #0A3D62 !important;
+  position: relative;
+  z-index: 10;
 }
 
 .service-hero__cta-button--primary:hover .service-hero__cta-arrow {
-  color: white;
+  color: #0A3D62 !important;
 }
 
 .service-hero__cta-arrow {
@@ -9348,15 +9362,22 @@ html, body {
 }
 
 .service-hero__cta-button--secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: white !important;
+  color: #0A3D62 !important;
   border-color: rgba(255, 255, 255, 0.6);
   transform: translateY(-0.25rem);
   box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(255, 255, 255, 0.1);
 }
 
+.service-hero__cta-button--secondary:hover,
+.service-hero__cta-button--secondary:hover * {
+  color: #0A3D62 !important;
+  position: relative;
+  z-index: 10;
+}
+
 .service-hero__cta-button--secondary:hover svg {
-  color: white;
+  color: #0A3D62 !important;
 }
 
 .service-hero__cta-button svg {
@@ -11579,19 +11600,21 @@ html, body {
   min-height: 0;
 }
 
-/* Floating TOC Icon - Shows when collapsed */
+/* Floating TOC Icon - Hamburger Icon when collapsed */
 .blog-article__timeline::before {
-  content: 'Γÿ░';
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.75rem;
-  color: white;
-  font-weight: 300;
+  width: 24px;
+  height: 2px;
+  background: white;
+  box-shadow: 
+    0 -6px 0 0 white,
+    0 6px 0 0 white;
   transition: opacity 0s;
   z-index: 2;
-  line-height: 1;
 }
 
 .blog-article__timeline:hover::before {
@@ -12870,20 +12893,27 @@ html, body {
 }
 
 .service-page .service-hero--auditing .service-hero__cta-button--primary:hover {
-  background: rgba(173, 206, 230, 0.6);
-  color: white;
+  background: white !important;
+  color: #0A3D62 !important;
   transform: translateY(-0.25rem);
   box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.service-page .service-hero--auditing .service-hero__cta-button--primary:hover,
+.service-page .service-hero--auditing .service-hero__cta-button--primary:hover * {
+  color: #0A3D62 !important;
 }
 
 .service-page .service-hero--auditing .service-hero__cta-button--primary:hover::after {
-  background: white;
+  background: white !important;
   width: 100%;
   height: 100%;
   bottom: 0;
   right: 0;
   clip-path: none;
   border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
+  z-index: -1;
 }
 
 .service-page .service-hero--auditing .service-hero__cta-button--secondary {
@@ -12911,21 +12941,27 @@ html, body {
 }
 
 .service-page .service-hero--auditing .service-hero__cta-button--secondary:hover {
-  background: #1A3650;
-  color: white;
+  background: white !important;
+  color: #0A3D62 !important;
   border-color: white;
   transform: translateY(-0.25rem);
   box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(0, 0, 0, 0.3);
 }
 
+.service-page .service-hero--auditing .service-hero__cta-button--secondary:hover,
+.service-page .service-hero--auditing .service-hero__cta-button--secondary:hover * {
+  color: #0A3D62 !important;
+}
+
 .service-page .service-hero--auditing .service-hero__cta-button--secondary:hover::after {
-  background: white;
+  background: white !important;
   width: 100%;
   height: 100%;
   bottom: 0;
   right: 0;
   clip-path: none;
   border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
+  z-index: -1;
 }
 
 /* Responsive styles for Auditing Hero */

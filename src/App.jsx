@@ -15,8 +15,8 @@ import CorporateTax from './servicePages/CorporateTax'
 import CompanyFormation from './servicePages/CompanyFormation'
 import AccountingBookkeeping from './servicePages/AccountingBookkeeping'
 
-// Data constants
-const services = [
+// Data constants (kept for potential future use)
+const _services = [
   'Auditing',
   'Tax Advisory',
   'Company Formation',
@@ -25,14 +25,14 @@ const services = [
   'Corporate Tax',
 ]
 
-const stats = [
+const _stats = [
   { value: '4000 +', label: 'Projects Successfully Completed' },
   { value: '25+', label: 'Years Partnering with UAE Businesses' },
   { value: '98%', label: 'Clients Stay With Us' },
   { value: '500+', label: 'Reputed UAE Businesses Served' },
 ]
 
-const serviceFeatures = [
+const _serviceFeatures = [
   'Monthly bookkeeping and financial reporting with professional accounting services Dubai businesses rely on.',
   'Tax reduction strategy and planning with certified tax consultants UAE.',
   'VAT and corporate tax compliance managed by leading Dubai corporate tax consultants',
@@ -41,7 +41,7 @@ const serviceFeatures = [
 
 // Data constants removed (partners and valuesSliderContent moved to PartnersSection.jsx)
 
-const serviceCards = [
+const _serviceCards = [
   {
     title: 'AUDITING',
     icon: 'document-magnifying-glass',
@@ -74,7 +74,7 @@ const serviceCards = [
   },
 ]
 
-const trustBenefits = [
+const _trustBenefits = [
   { 
     title: 'Seamless Client Experience', 
     hoverText: 'Work with one dedicated team that understands your business and provides end-to-end tax consultancy services in Dubai.',
@@ -107,7 +107,7 @@ const trustBenefits = [
   },
 ]
 
-const pricingPlans = [
+const _pricingPlans = [
   {
     title: 'Corporate Tax (Filing Only)',
     price: 'AED 750',
@@ -137,7 +137,7 @@ const pricingPlans = [
   },
 ]
 
-const videoTestimonials = [
+const _videoTestimonials = [
   { 
     title: 'How We Helped an F&B Startup Save 30% in Annual Taxes',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop'
@@ -156,7 +156,7 @@ const videoTestimonials = [
   },
 ]
 
-const faqQuestions = [
+const _faqQuestions = [
   {
     question: 'What services do you offer?',
     answer: 'Our comprehensive services include tax advisory, corporate tax filing, VAT services, auditing, accounting & bookkeeping, and company formation. We provide end-to-end financial solutions tailored to your business needs.'
@@ -219,9 +219,6 @@ function Header() {
     setIsServicesDropdownOpen(!isServicesDropdownOpen)
   }
 
-  const closeServicesDropdown = () => {
-    setIsServicesDropdownOpen(false)
-  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {

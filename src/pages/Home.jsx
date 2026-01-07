@@ -884,11 +884,6 @@ function NewsletterSection() {
 
 // How It Works Section
 function HowItWorksSection() {
-  const [completedSteps, setCompletedSteps] = useState(0)
-  const [isResetting, setIsResetting] = useState(false)
-  const sectionRef = useRef(null)
-  const intervalIdRef = useRef(null)
-
   const steps = [
     {
       title: 'One Point of Contact',
@@ -905,129 +900,40 @@ function HowItWorksSection() {
     },
   ]
 
-  useEffect(() => {
-    const animateSteps = () => {
-      let currentStep = 0
-      
-      const stepInterval = setInterval(() => {
-        currentStep++
-        setCompletedSteps(currentStep)
-        
-        if (currentStep >= steps.length) {
-          clearInterval(stepInterval)
-          // Wait a bit before resetting and restarting
-          setTimeout(() => {
-            // Disable transition for instant reset
-            setIsResetting(true)
-            setCompletedSteps(0)
-            // Re-enable transition and restart after reset is applied
-            setTimeout(() => {
-              setIsResetting(false)
-              animateSteps()
-            }, 50)
-          }, 1000)
-        }
-      }, 1500) // 1500ms delay between each step (slower)
-      
-      intervalIdRef.current = stepInterval
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (!intervalIdRef.current) {
-              animateSteps()
-            }
-          } else {
-            // Reset when out of view
-            if (intervalIdRef.current) {
-              clearInterval(intervalIdRef.current)
-              intervalIdRef.current = null
-              setCompletedSteps(0)
-              setIsResetting(false)
-            }
-          }
-        })
-      },
-      { threshold: 0.3 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (intervalIdRef.current) {
-        clearInterval(intervalIdRef.current)
-      }
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [steps.length])
-
   return (
-    <section className="how-it-works-section" ref={sectionRef}>
+    <section className="how-it-works-section">
       <div className="how-it-works-section__container">
         <div className="how-it-works-section__header">
           <h2 className="how-it-works-section__title h2-montserrat">How It Works</h2>
         </div>
         <div className="how-it-works-section__cards">
-          {steps.map((step, index) => {
-            const isCompleted = completedSteps > index
-            return (
-              <div key={index} className="how-it-works-section__card">
-                <div className="how-it-works-section__card-box">
-                  <img 
-                    src={step.image} 
-                    alt={step.title}
-                    className="how-it-works-section__card-image"
-                  />
-                </div>
-                <div className="how-it-works-section__card-content">
-                  <h3 className="how-it-works-section__card-title h4-montserrat">
-                    {step.title}
-                    {step.titleLine2 && (
-                      <>
-                        <br />
-                        {step.titleLine2}
-                      </>
-                    )}
-                  </h3>
-                </div>
-                <div className="how-it-works-section__step-number">
-                  <span className={`how-it-works-section__number-circle ${isCompleted ? 'how-it-works-section__number-circle--completed' : ''}`}>
-                    {isCompleted ? (
-                      <svg 
-                        className="how-it-works-section__tick-icon" 
-                        width="24" 
-                        height="24" 
-                        viewBox="0 0 24 24" 
-                        fill="none"
-                      >
-                        <path 
-                          d="M20 6L9 17L4 12" 
-                          stroke="white" 
-                          strokeWidth="2.5" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    ) : (
-                      index + 1
-                    )}
-                  </span>
-                </div>
+          {steps.map((step, index) => (
+            <div key={index} className="how-it-works-section__card">
+              <div className="how-it-works-section__card-box">
+                <img 
+                  src={step.image} 
+                  alt={step.title}
+                  className="how-it-works-section__card-image"
+                />
               </div>
-            )
-          })}
-        </div>
-        <div className="how-it-works-section__connector-line" aria-hidden="true">
-          <div 
-            className={`how-it-works-section__connector-line-fill ${isResetting ? 'how-it-works-section__connector-line-fill--resetting' : ''}`}
-            style={{ width: completedSteps >= steps.length ? '100%' : completedSteps > 0 ? `${((completedSteps - 1) / (steps.length - 1)) * 100}%` : '0%' }}
-          ></div>
+              <div className="how-it-works-section__card-content">
+                <h3 className="how-it-works-section__card-title h4-montserrat">
+                  {step.title}
+                  {step.titleLine2 && (
+                    <>
+                      <br />
+                      {step.titleLine2}
+                    </>
+                  )}
+                </h3>
+              </div>
+              <div className="how-it-works-section__step-number">
+                <span className="how-it-works-section__number-circle">
+                  {index + 1}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
