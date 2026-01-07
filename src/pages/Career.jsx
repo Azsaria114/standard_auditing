@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Career.css'
-import TargetIcon from '../assets/Target.svg'
-import HandshakeIcon from '../assets/Handshake.svg'
-import PuzzlePieceIcon from '../assets/PuzzlePiece.svg'
-import ChartLineUpIcon from '../assets/ChartLineUp.svg'
-import ChatsCircleIcon from '../assets/ChatsCircle.svg'
-import TimerIcon from '../assets/Timer.svg'
-import SuitcaseSimpleIcon from '../assets/SuitcaseSimple.svg'
-import ScalesIcon from '../assets/Scales.svg'
-import UsersFourIcon from '../assets/UsersFour.svg'
-import BookOpenIcon from '../assets/BookOpen.svg'
-import BankIcon from '../assets/Bank.svg'
+import TargetIcon from '../assets/Target.svg?url'
+import HandshakeIcon from '../assets/Handshake.svg?url'
+import PuzzlePieceIcon from '../assets/PuzzlePiece.svg?url'
+import ChartLineUpIcon from '../assets/ChartLineUp.svg?url'
+import ChatsCircleIcon from '../assets/ChatsCircle.svg?url'
+import TimerIcon from '../assets/Timer.svg?url'
+import SuitcaseSimpleIcon from '../assets/SuitcaseSimple.svg?url'
+import ScalesIcon from '../assets/Scales.svg?url'
+import UsersFourIcon from '../assets/UsersFour.svg?url'
+import BookOpenIcon from '../assets/BookOpen.svg?url'
+import BankIcon from '../assets/Bank.svg?url'
+import Vector2Icon from '../assets/Vector (2).svg?url'
 import HeroImage from '../assets/Frame 1014.png'
 import WorkHereImage from '../assets/Frame 1097.png'
 
@@ -84,7 +85,7 @@ function Career() {
   const careerBenefits = [
     { icon: SuitcaseSimpleIcon, text: 'Exposure to real UAE business cases' },
     { icon: ScalesIcon, text: 'Strong foundations in auditing, tax, & compliance' },
-    { icon: ChartLineUpIcon, text: 'Clear career progression based on performance' },
+    { icon: Vector2Icon, text: 'Clear career progression based on performance' },
     { icon: UsersFourIcon, text: 'Support from experienced professionals' },
     { icon: BankIcon, text: 'A professional environment built on trust and accountability' },
     { icon: BookOpenIcon, text: 'Transparency on role expectations, responsibilities & performance standards' },
