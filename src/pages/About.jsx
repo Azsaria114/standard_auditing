@@ -15,12 +15,12 @@ import difcLogo from '../assets/dubai_international.jpeg'
 import shamsLogo from '../assets/media city.jpeg'
 import whatWeStandForImage from '../assets/what we stand for.jpeg'
 // Core Values Icons
-import accountabilityIcon from '../assets/puzzle.svg'
-import integrityIcon from '../assets/shield.svg'
-import progressIcon from '../assets/rocket.svg'
-import precisionIcon from '../assets/precsion.svg'
-import speedIcon from '../assets/speed.svg'
-import transparencyIcon from '../assets/maginify.svg'
+import accountabilityIcon from '../assets/puzzle.svg?url'
+import integrityIcon from '../assets/shield.svg?url'
+import progressIcon from '../assets/rocket.svg?url'
+import precisionIcon from '../assets/precsion.svg?url'
+import speedIcon from '../assets/speed.svg?url'
+import transparencyIcon from '../assets/maginify.svg?url'
 
 function About() {
   const teamMembers = [
