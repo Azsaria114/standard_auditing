@@ -32,6 +32,9 @@ html, body {
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  /* Ensure hero is positioned correctly relative to fixed header */
   /* Full width with consistent 80px padding */
 }
 
@@ -739,6 +742,14 @@ html, body {
 
 /* Mobile View */
 @media (max-width: 768px) {
+  /* Reduce vertical gap before/after How It Works on mobile */
+  .how-it-works-section {
+    margin-top: clamp(3rem, 6vw, 4rem) !important;
+    /* Keep generous top spacing */
+    margin-bottom: clamp(-7rem, -8vw, -10vw) !important;
+    /* Reduce bottom spacing only */
+  }
+
   .how-it-works-section__container {
     padding: 0 clamp(1.5rem, 4vw, 2.5rem);
   }
@@ -752,8 +763,20 @@ html, body {
     gap: clamp(2.5rem, 5vw, 3.5rem);
   }
 
+  /* Reduce gap for steps 1 and 2 to match step 3 */
+  .how-it-works-section__card:nth-child(1) .how-it-works-section__card-content,
+  .how-it-works-section__card:nth-child(2) .how-it-works-section__card-content {
+    margin-bottom: clamp(2rem, 4vw, 2.5rem) !important;
+    /* Same gap as step 3 */
+  }
+
   .how-it-works-section__connector-line {
     display: none;
+  }
+
+  /* Tighten space before Why Trust section */
+  .why-trust-section {
+    margin-top: clamp(2rem, 5vw, 3rem) !important;
   }
 }
 
@@ -901,12 +924,30 @@ html, body {
    ============================================ */
 @media (max-width: 768px) {
   .hero {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: 2rem 1.25rem;
+    /* 20px horizontal padding, 32px vertical */
+    padding-top: calc(clamp(3.5rem, 7vw, 4.5rem) + 2rem);
+    /* Account for fixed header height + content padding */
+    gap: clamp(1.25rem, 3vw, 1.75rem);
+    position: relative;
+    z-index: 1;
+    /* Ensure hero is above background but below header */
   }
 
   .hero__title-section {
     margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+  }
+
+  .hero__main-title .hero__title-line-1,
+  .hero__main-title .hero__title-line-2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    /* Reduced from 2-3.5rem to 1.5-2rem */
+    line-height: 1.2;
+  }
+
+  .hero__eyebrow-text {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    /* Reduced eyebrow text */
   }
 
   .hero__header {
@@ -1024,33 +1065,58 @@ html, body {
    ============================================ */
 @media (max-width: 480px) {
   .hero {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on small screens */
-    gap: clamp(1rem, 3vw, 1.5rem);
+    padding: 1.5rem 1.25rem;
+    /* 20px horizontal padding (1.25rem), 24px vertical */
+    padding-top: calc(clamp(3.5rem, 7vw, 4.5rem) + 1.5rem);
+    /* Account for fixed header height + content padding */
+    gap: clamp(1rem, 2.5vw, 1.25rem);
+    position: relative;
+    z-index: 1;
+    /* Ensure hero is above background but below header */
+  }
+
+  .hero__main-title .hero__title-line-1,
+  .hero__main-title .hero__title-line-2 {
+    font-size: clamp(1.25rem, 6vw, 1.5rem);
+    /* Much smaller: 20-24px instead of 32-56px */
+    line-height: 1.15;
+  }
+
+  .hero__eyebrow-text {
+    font-size: 0.75rem;
+    /* 12px */
   }
 
   .hero__services {
-    grid-template-columns: repeat(3, max-content);
-    /* Maintains 3-3 layout on very small screens with proper column alignment */
-    gap: clamp(0.5rem, 1.5vw, 0.75rem);
-    row-gap: clamp(0.5rem, 1.5vw, 0.75rem);
-    column-gap: clamp(0.5rem, 1.5vw, 0.75rem);
-    width: fit-content;
-    justify-items: start;
-    align-items: start;
-    justify-content: start;
-    /* Even spacing on very small screens */
+    display: flex;
+    flex-wrap: wrap;
+    /* Simple flex wrap instead of complex grid */
+    gap: 0.5rem;
+    row-gap: 0.5rem;
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .hero__service-pill {
-    width: fit-content;
-    justify-self: start;
-    align-self: start;
-    text-align: left;
-    /* Natural width with left alignment */
-    font-size: clamp(0.625rem, 1.1vw, 0.75rem);
-    padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.375rem, 1vw, 0.625rem);
-    /* Smaller padding and font for very small screens */
+    width: auto;
+    font-size: 0.75rem;
+    /* 12px font */
+    padding: 0.375rem 0.625rem;
+    /* 6px vertical, 10px horizontal */
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  /* Remove all negative margins on mobile */
+  .hero__service-pill:nth-child(1),
+  .hero__service-pill:nth-child(2),
+  .hero__service-pill:nth-child(3),
+  .hero__service-pill:nth-child(4),
+  .hero__service-pill:nth-child(5),
+  .hero__service-pill:nth-child(6) {
+    margin: 0;
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .hero__header {
@@ -1058,35 +1124,103 @@ html, body {
   }
 
   .hero__copy-text {
-    font-size: clamp(0.8125rem, 1.75vw, 0.9375rem);
+    font-size: 0.875rem;
+    /* 14px */
+    line-height: 1.5;
+  }
+
+  .hero__image-wrapper {
+    position: relative;
+    /* Ensure image wrapper can contain absolutely positioned button */
+    overflow: visible;
   }
 
   .hero__cta {
-    bottom: clamp(-0.75rem, -1.5vw, -0.875rem);
-    left: clamp(0.5rem, 1.5vw, 0.75rem);
+    position: absolute;
+    /* Absolute positioning to place button on image - matching tablet style */
+    bottom: clamp(-0.875rem, -2vw, -1rem);
+    /* Position slightly below image bottom - matching tablet */
+    left: clamp(0.75rem, 2vw, 1rem);
+    /* Left-aligned like tablet view */
     transform: translateY(0);
-    min-width: clamp(16rem, 30vw, 22rem);
-    max-width: clamp(20rem, 38vw, 26rem);
-    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.5rem);
+    /* No centering transform - left-aligned */
+    margin-top: 0;
+    min-width: clamp(14rem, 70vw, 18rem);
+    /* Smaller min-width for mobile but proportional to tablet */
+    max-width: clamp(16rem, 80vw, 22rem);
+    /* Smaller max-width for mobile but proportional to tablet */
+    width: auto;
+    /* Auto width based on content */
+    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.25rem);
+    /* Similar padding structure to tablet but slightly smaller */
     gap: clamp(0.125rem, 0.25vw, 0.1875rem);
-  }
-
-  .hero__cta-primary {
-    font-size: clamp(0.6875rem, 1.25vw, 0.875rem);
-    white-space: normal;
-  }
-
-  .hero__cta-secondary {
-    font-size: clamp(0.5625rem, 1vw, 0.6875rem);
-    white-space: normal;
+    /* Reduced gap to fit content */
+    overflow: visible;
+    /* Ensure triangle is visible */
   }
 
   .hero__cta:hover {
     transform: translateY(-0.25rem);
+    /* Simple lift on hover - matching tablet */
+    box-shadow: 0 clamp(0.25rem, 1vw, 0.375rem) clamp(0.75rem, 2vw, 1rem) rgba(31, 41, 51, 0.15);
+    /* Reduced shadow on mobile */
   }
 
   .hero__cta:active {
     transform: translateY(-0.125rem);
+    /* Active state - matching tablet */
+  }
+
+  .hero__cta::after {
+    position: absolute;
+    bottom: 0;
+    /* Align triangle exactly at button bottom */
+    right: 0;
+    /* Align triangle exactly at button right */
+    width: clamp(1rem, 2.5vw, 1.25rem);
+    height: clamp(1rem, 2.5vw, 1.25rem);
+    /* Smaller triangle on mobile */
+    background: #0A3D62;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    border-bottom-right-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
+    z-index: 0;
+    pointer-events: none;
+    /* Triangle aligned perfectly with button corner */
+  }
+
+  .hero__cta-primary {
+    font-size: clamp(0.6875rem, 1.4vw, 0.8125rem);
+    /* Reduced text size: 11-13px to fit without increasing height */
+    white-space: normal;
+    line-height: 1.25;
+    /* Tighter line-height to fit content */
+  }
+
+  .hero__cta-secondary {
+    font-size: clamp(0.5625rem, 1.2vw, 0.6875rem);
+    /* Reduced text size: 9-11px to fit without increasing height */
+    white-space: normal;
+    line-height: 1.25;
+    /* Tighter line-height to fit content */
+  }
+
+  .hero__stats-card {
+    gap: 0.625rem;
+  }
+
+  .hero__stat {
+    padding: 0.75rem;
+  }
+
+  .hero__stat-value {
+    font-size: 1rem;
+    /* 16px */
+  }
+
+  .hero__stat-label {
+    font-size: 0.75rem;
+    /* 12px */
+    line-height: 1.3;
   }
 }
 
@@ -1260,11 +1394,12 @@ html, body {
 
 .services-section__cta {
   width: fit-content;
-  min-height: clamp(2.5rem, 6vw, 2.75rem);
+  min-height: clamp(2rem, 5vw, 2.25rem);
+  /* Further reduced height */
   background: rgba(173, 206, 230, 0.5);
   border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  padding: clamp(0.5rem, 1.25vw, 0.625rem) clamp(0.875rem, 2vw, 1.25rem);
-  /* Reduced padding for more compact button */
+  padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.625rem, 1.5vw, 1rem);
+  /* Further reduced padding */
   text-align: left;
   display: flex;
   flex-direction: row;
@@ -1330,7 +1465,8 @@ html, body {
   z-index: 10;
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: inherit;
-  font-size: clamp(0.875rem, 1.75vw, 1rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  /* Further reduced text size: 12-14px */
 }
 
 .services-section__cta:hover .services-section__cta-text {
@@ -1339,7 +1475,8 @@ html, body {
 
 .services-section__arrow {
   color: rgba(251, 251, 251, 0.9);
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  /* Further reduced arrow size: 14-16px */
   position: relative;
   z-index: 1;
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1676,10 +1813,20 @@ html, body {
   }
 
   .services-section__cta {
-    min-height: clamp(2.5rem, 6vw, 3rem);
-    padding: clamp(0.625rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem);
-    font-size: clamp(1rem, 2.5vw, 1.125rem);
-    /* Significantly increased CTA button size and font on mobile for better visibility */
+    min-height: clamp(2rem, 5vw, 2.5rem);
+    /* Further reduced height on mobile */
+    padding: clamp(0.5rem, 1.25vw, 0.625rem) clamp(0.75rem, 2vw, 1.25rem);
+    /* Further reduced padding on mobile */
+  }
+
+  .services-section__cta-text {
+    font-size: clamp(0.8125rem, 2vw, 0.9375rem);
+    /* Further reduced text size on mobile: 13-15px */
+  }
+
+  .services-section__arrow {
+    font-size: clamp(0.9375rem, 2vw, 1.125rem);
+    /* Further reduced arrow size on mobile */
   }
 
   .services-section__badge {
@@ -1991,13 +2138,13 @@ html, body {
 
   /* Logo Card: Move DOWN slightly independent of right card */
   .partners-section__middle {
-    transform: translateY(-0.5rem);
+    transform: translateY(3.5rem);
     align-self: center;
   }
 
   /* Result Card */
   .partners-section__right {
-    transform: translateY(-1.5rem);
+    transform: translateY(2rem);
     align-self: center;
   }
 }
@@ -2018,12 +2165,19 @@ html, body {
 }
 
 .partners-section__logo-img {
-  max-width: 60%;
-  max-height: clamp(1rem, 2.5vw, 1.5rem);
+  max-width: 100%;
+  max-height: clamp(4rem, 8vw, 6rem);
   width: auto;
   height: auto;
   object-fit: contain;
-  /* Reduced logo size for smaller appearance */
+  /* Uniform logo size for all logos */
+}
+
+/* Meydan logo - remove white background */
+.partners-section__logo-img--meydan {
+  mix-blend-mode: multiply;
+  filter: contrast(1.1);
+  /* Removed white background using mix-blend-mode */
 }
 
 .partners-section__name {
@@ -2043,8 +2197,8 @@ html, body {
   flex: 0 0 auto;
   position: relative;
   align-self: flex-start;
-  margin-top: clamp(4rem, 8vw, 6.5rem);
-  /* Responsive center logo positioning */
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  /* Responsive center logo positioning - centered with line */
 }
 
 /* Desktop: Separate lines for left and right sides - extended width, scales down on smaller screens */
@@ -2137,8 +2291,8 @@ html, body {
   align-self: flex-start;
   width: auto;
   flex-shrink: 0;
-  margin-top: clamp(-0.5rem, 1vw, 1rem);
-  /* Right text box aligned with center logo - moved up slightly more */
+  margin-top: clamp(-1rem, 0vw, 0rem);
+  /* Right text box aligned with center logo - centered with line */
 }
 
 .partners-section__result-card {
@@ -2483,9 +2637,15 @@ html, body {
   }
   
   .partners-section__logo-img {
-    max-width: 60%;
-    max-height: clamp(0.875rem, 2vw, 1.125rem);
-    /* Slightly smaller logos on mobile for better fit */
+    max-width: 100%;
+    max-height: clamp(3rem, 6vw, 4.5rem);
+    /* Uniform logo size for tablet/mobile */
+  }
+  
+  .partners-section__logo-img--meydan {
+    mix-blend-mode: multiply;
+    filter: contrast(1.1);
+    /* Keep background removal for Meydan on tablet/mobile */
   }
   
   .partners-section__name {
@@ -2603,8 +2763,15 @@ html, body {
   }
 
   .partners-section__logo-img {
-    max-height: clamp(0.75rem, 1.75vw, 1rem);
-    /* Smaller logos on very small screens */
+    max-width: 100%;
+    max-height: clamp(2.5rem, 5vw, 3.5rem);
+    /* Uniform logo size for very small screens */
+  }
+
+  .partners-section__logo-img--meydan {
+    mix-blend-mode: multiply;
+    filter: contrast(1.1);
+    /* Keep background removal for Meydan on very small screens */
   }
 
   .partners-section__name {
@@ -5666,12 +5833,23 @@ html, body {
   max-width: 87.5rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr;
   gap: clamp(2.5rem, 4.5vw, 3.5rem);
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
   position: relative;
   z-index: 1;
   align-items: start;
+  justify-items: start;
+}
+
+/* Right-align Services and Company columns on desktop */
+@media (min-width: 769px) {
+  .site-footer__column:nth-child(2),
+  .site-footer__column:nth-child(3) {
+    justify-self: end;
+    text-align: right;
+    align-items: flex-end;
+  }
 }
 
 .site-footer__column:not(:first-child) {
@@ -5909,6 +6087,14 @@ html, body {
   gap: clamp(0.5rem, 1vw, 0.625rem);
   align-items: flex-start;
   width: 100%;
+}
+
+/* Right-align links in Services and Company columns on desktop */
+@media (min-width: 769px) {
+  .site-footer__column:nth-child(2) .site-footer__links,
+  .site-footer__column:nth-child(3) .site-footer__links {
+    align-items: flex-end;
+  }
 }
 
 .site-footer__links li {
@@ -6423,43 +6609,174 @@ html, body {
   }
 
 
+  /* ===== CLIENT TESTIMONIALS SECTION - MOBILE ===== */
+  
+  /* Section - equal padding, prevent horizontal overflow */
   .client-testimonials-section {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
-    /* Responsive padding for mobile */
+    padding: clamp(1.25rem, 4vw, 1.5rem) clamp(1.25rem, 4vw, 1.5rem) !important;
+    overflow-x: hidden !important;
   }
 
+  /* Container - fill width, hug height, no extra padding */
   .client-testimonials-section__container {
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 2.5rem);
-    /* Single column on mobile with adjusted gap */
+    grid-template-columns: 1fr !important;
+    gap: clamp(1.5rem, 3vw, 2rem) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
   }
 
+  /* Left section - fill width, no extra padding */
   .client-testimonials-section__left {
-    gap: clamp(1rem, 2vw, 1.25rem);
-    /* Tighter spacing on mobile */
+    gap: clamp(0.75rem, 1.75vw, 1rem) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
+  /* Title - fill width, wrap text */
+  .client-testimonials-section__title {
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem) !important;
+    line-height: 1.2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+
+  /* Description - fill width, wrap text */
+  .client-testimonials-section__description {
+    font-size: clamp(0.75rem, 2.8vw, 0.875rem) !important;
+    line-height: 1.45 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+
+  /* Right section - fill width, hug height, no extra padding */
   .client-testimonials-section__right {
-    gap: clamp(1.5rem, 3vw, 2rem);
+    gap: clamp(0.875rem, 2vw, 1.25rem) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    height: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
+  /* Slider - fill width, hide overflow for carousel */
+  .client-testimonials-section__slider {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* Track - display flex for carousel */
+  .client-testimonials-section__track {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+  }
+
+  /* Quote container - fill width, hug height, no side padding */
+  .client-testimonials-section__quote {
+    padding-top: clamp(0.75rem, 3vw, 1rem) !important;
+    padding-bottom: clamp(0.75rem, 3vw, 1rem) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    gap: clamp(0.375rem, 1.5vw, 0.625rem) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Quote text - fill width, wrap text */
   .client-testimonials-section__quote-text {
-    text-align: left;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    line-height: 1.6;
+    text-align: left !important;
+    font-size: clamp(0.8125rem, 3vw, 0.9375rem) !important;
+    line-height: 1.5 !important;
+    margin-bottom: clamp(0.625rem, 1.5vw, 0.875rem) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    hyphens: auto !important;
   }
 
+  /* Divider */
+  .client-testimonials-section__divider {
+    margin-bottom: clamp(0.5rem, 1.25vw, 0.75rem) !important;
+    width: 100% !important;
+  }
+
+  /* Author info - fill width */
   .client-testimonials-section__author {
-    align-items: flex-start;
-    text-align: left;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: clamp(0.125rem, 0.4vw, 0.25rem) !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .client-testimonials-section__author-name {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    font-size: clamp(0.8125rem, 2.8vw, 0.9375rem) !important;
+    line-height: 1.3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
   }
 
   .client-testimonials-section__author-title {
-    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    font-size: clamp(0.6875rem, 2.4vw, 0.8125rem) !important;
+    line-height: 1.35 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+
+  /* Navigation */
+  .client-testimonials-section__nav {
+    margin-top: clamp(1rem, 2.5vw, 1.5rem) !important;
+  }
+
+  /* Alignment tweaks: keep everything flush-left */
+  .client-testimonials-section__container {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .client-testimonials-section__left,
+  .client-testimonials-section__right {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .client-testimonials-section__title,
+  .client-testimonials-section__description,
+  .client-testimonials-section__quote-text,
+  .client-testimonials-section__author,
+  .client-testimonials-section__author-name,
+  .client-testimonials-section__author-title {
+    text-align: left !important;
+  }
+
+  /* Optional nudge: keep inner padding consistent */
+  .client-testimonials-section__quote {
+    padding-left: clamp(0.75rem, 3vw, 1rem) !important;
+    padding-right: clamp(0.75rem, 3vw, 1rem) !important;
   }
 
   .client-testimonials-section__nav {
@@ -6468,6 +6785,39 @@ html, body {
     margin-top: clamp(1.5rem, 3vw, 2rem);
     padding-top: 0;
     /* Keep navigation buttons on the right for mobile */
+  }
+
+  /* ===== NEWSLETTER SECTION - MOBILE ===== */
+  .newsletter-section {
+    padding: clamp(1.25rem, 4vw, 1.5rem) clamp(1.25rem, 4vw, 1.5rem) !important;
+    /* Equal padding: 20px on all sides - matches other sections */
+    text-align: center !important;
+  }
+
+  .newsletter-section__container {
+    padding: 0 !important;
+    /* Remove inner padding that was offsetting alignment */
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .newsletter-section__title {
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem) !important;
+    /* Reduced heading size: 20-24px to match other sections */
+    line-height: 1.2 !important;
+    margin-bottom: clamp(0.75rem, 3vw, 1rem) !important;
+    text-align: center !important;
+  }
+
+  .newsletter-section__description {
+    font-size: clamp(0.75rem, 2.8vw, 0.875rem) !important;
+    /* Reduced description size: 12-14px */
+    line-height: 1.5 !important;
+    margin-bottom: clamp(1rem, 3vw, 1.5rem) !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    /* Align with outer margin */
+    text-align: center !important;
   }
 
   .faq-section__container {
@@ -6561,9 +6911,54 @@ html, body {
 }
 
 @media (max-width: 768px) {
+  /* Services Grid Section Tablet */
+  .services-grid-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .services-grid-section__title {
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+  }
+
+  /* Why Trust Section Tablet */
+  .why-trust-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .why-trust-section__title {
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+  }
+
+  /* Pricing Section Tablet */
+  .pricing-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .pricing-section__title {
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+  }
+
+  /* Client Testimonials Tablet */
+  .client-testimonials-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .client-testimonials-section__title {
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+  }
+
+  /* Video Testimonials / Insights Tablet */
   .video-testimonials-section {
-    padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
-    /* Responsive padding for mobile */
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .video-testimonials-section__title {
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
   }
 
   .video-testimonials-section__grid {
@@ -6615,17 +7010,303 @@ html, body {
 }
 
 @media (max-width: 480px) {
-  .why-trust-section__grid {
-    grid-template-columns: 1fr;
+  /* Services Grid Section Mobile */
+  .services-grid-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
   }
 
+  .services-grid-section__title {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+    /* 20-24px */
+    line-height: 1.2;
+  }
+
+  .services-grid-section__card {
+    padding: 0.875rem;
+    /* 14px */
+  }
+
+  .services-grid-section__card-title {
+    font-size: 1rem;
+    /* 16px */
+  }
+
+  .services-grid-section__card-description {
+    font-size: 0.8125rem;
+    /* 13px */
+    line-height: 1.45;
+  }
+
+  /* Why Trust Section Mobile */
+  .why-trust-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .why-trust-section__title {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+    /* 20-24px */
+    line-height: 1.2;
+  }
+
+  .why-trust-section__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* 2 equal columns - minmax(0, 1fr) ensures equal widths */
+    grid-auto-rows: 1fr;
+    /* Equal heights per row */
+    gap: clamp(0.75rem, 2vw, 1rem);
+    row-gap: clamp(0.75rem, 2vw, 1rem);
+    /* Equal gap between rows and columns */
+  }
+
+  /* Ensure all cards have equal width and height */
+  .why-trust-section__card {
+    width: 100% !important;
+    /* Full width of grid cell - override tablet styles */
+    min-width: 0 !important;
+    /* Prevent overflow */
+    max-width: 100% !important;
+    /* Remove any max-width constraints */
+    box-sizing: border-box;
+    /* Include padding in width calculation */
+    align-self: stretch;
+    /* Stretch to fill grid cell height */
+  }
+
+  /* Row 1: center card 3 across both columns */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(3) {
+    grid-column: 1 / 3 !important;
+    grid-row: 1 !important;
+    justify-self: center !important;
+    max-width: calc(50% - clamp(0.375rem, 1vw, 0.5rem)) !important;
+    width: 100% !important;
+  }
+
+  /* Row 2: cards 1 (left) and 2 (right) */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    justify-self: stretch !important;
+    max-width: 100% !important;
+  }
+
+  .why-trust-section__grid > .why-trust-section__card:nth-child(2) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    justify-self: stretch !important;
+    max-width: 100% !important;
+  }
+
+  /* Row 3: center card 4 across both columns */
   .why-trust-section__grid > .why-trust-section__card:nth-child(4) {
-    grid-column: 1;
-    grid-row: 4;
+    grid-column: 1 / 3 !important;
+    grid-row: 3 !important;
+    justify-self: center !important;
+    max-width: calc(50% - clamp(0.375rem, 1vw, 0.5rem)) !important;
+    width: 100% !important;
+  }
+
+  /* Row 4: cards 5 and 6 (retain existing order) */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(5) {
+    grid-column: 1 !important;
+    grid-row: 4 !important;
+    justify-self: stretch !important;
+    max-width: 100% !important;
+  }
+
+  .why-trust-section__grid > .why-trust-section__card:nth-child(6) {
+    grid-column: 2 !important;
+    grid-row: 4 !important;
+    justify-self: stretch !important;
+    max-width: 100% !important;
+  }
+
+  /* Row 5: center card 7 across both columns */
+  .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
+    grid-column: 1 / 3 !important;
+    grid-row: 5 !important;
+    justify-self: center !important;
+    max-width: calc(50% - clamp(0.375rem, 1vw, 0.5rem)) !important;
+    width: 100% !important;
+  }
+
+  .why-trust-section__card {
+    padding: clamp(0.75rem, 1.5vw, 0.875rem) clamp(0.75rem, 1.5vw, 0.875rem) !important;
+    /* Reduced padding: 12-14px - override tablet styles */
+    min-height: clamp(11rem, 22vw, 13rem) !important;
+    /* Reduced min-height: 176-208px - ensure equal heights */
+    height: auto;
+    /* Allow natural height */
+    gap: clamp(0.5rem, 1.25vw, 0.75rem);
+    /* Reduced gap between elements */
+    width: 100% !important;
+    /* Full width of grid cell */
+    min-width: 0 !important;
+    /* Prevent overflow */
+    box-sizing: border-box !important;
+    /* Include padding in width calculation */
+    align-self: stretch !important;
+    /* Stretch to fill grid cell */
+  }
+
+  .why-trust-section__icon-circle {
+    width: clamp(1.75rem, 4vw, 2rem);
+    height: clamp(1.75rem, 4vw, 2rem);
+    /* Smaller icon circle: 28-32px instead of 32-40px */
+    top: clamp(0.625rem, 1.25vw, 0.75rem);
+    left: clamp(0.625rem, 1.25vw, 0.75rem);
+    /* Adjusted position for smaller icon */
+  }
+
+  .why-trust-section__diamond-icon {
+    width: 55%;
+    height: 55%;
+    /* Slightly smaller diamond */
+  }
+
+  .why-trust-section__card-title {
+    font-size: clamp(0.8125rem, 1.5vw, 0.875rem);
+    /* Reduced text size: 13-14px instead of 15px */
+    line-height: 1.35;
+    /* Tighter line-height */
+    padding-top: clamp(0.375rem, 0.875vw, 0.625rem);
+    /* Reduced top padding */
+  }
+
+  .why-trust-section__card-hover-text {
+    padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.25rem, 0.75vw, 0.375rem);
+    /* Further reduced padding to prevent overlap */
+    padding-top: clamp(1.75rem, 4vw, 2.25rem);
+    /* Reduced top padding for icon space */
+    font-size: clamp(0.6rem, 1.1vw, 0.6875rem);
+    /* Smaller hover text size: 9.6-11px to prevent overlap */
+    line-height: 1.35;
+    /* Tighter line-height */
+    gap: clamp(0.5rem, 1.25vw, 0.7rem);
+    /* Reduced gap */
+    overflow: hidden;
+    /* No scroll - hide overflow instead */
+    max-height: 100%;
+    /* Keep within card bounds */
+  }
+
+  .why-trust-section__hover-text-content {
+    font-size: clamp(0.55rem, 1vw, 0.625rem);
+    /* Smaller hover content text: 8.8-10px to prevent overlap */
+    line-height: 1.35;
+    /* Tighter line-height */
+    padding: clamp(0.125rem, 0.5vw, 0.25rem);
+    /* Reduced padding */
+  }
+
+  .why-trust-section__grid {
+    gap: clamp(0.75rem, 2vw, 1rem);
+    row-gap: clamp(0.75rem, 2vw, 1rem);
+    /* Reduced grid gap to maintain spacing */
+  }
+
+  .why-trust-section__title {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+    /* Reduced title size: 20-24px */
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    /* Reduced bottom margin */
+    max-width: clamp(18rem, 85vw, 22rem);
+    /* Limit width to force two-line wrap */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
+  }
+
+  /* Pricing Section Mobile */
+  .pricing-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .pricing-section__title {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+    /* 20-24px */
+    line-height: 1.2;
   }
 
   .pricing-section__grid {
     grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+
+  .pricing-section__card {
+    padding: 0.875rem;
+    /* 14px */
+  }
+
+  .pricing-section__price-amount {
+    font-size: 1.375rem;
+    /* 22px */
+  }
+
+  .pricing-section__card-description {
+    font-size: 0.8125rem;
+    /* 13px */
+    line-height: 1.45;
+  }
+
+  .pricing-section__feature {
+    font-size: 0.8125rem;
+    /* 13px */
+    line-height: 1.45;
+  }
+
+  /* Client Testimonials Mobile */
+  .client-testimonials-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .client-testimonials-section__title {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+    /* 20-24px */
+    line-height: 1.2;
+  }
+
+  .client-testimonials-section__quote {
+    padding: 0.875rem;
+    /* 14px */
+  }
+
+  .client-testimonials-section__quote-text {
+    font-size: 0.9375rem;
+    /* 15px */
+    line-height: 1.5;
+  }
+
+  .client-testimonials-section__author-name {
+    font-size: 0.875rem;
+    /* 14px */
+  }
+
+  .client-testimonials-section__author-title {
+    font-size: 0.8125rem;
+    /* 13px */
+  }
+
+  /* Video Testimonials / Insights Mobile */
+  .video-testimonials-section {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
+    /* 20px horizontal padding */
+  }
+
+  .video-testimonials-section__title {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+    /* 20-24px */
+    line-height: 1.2;
+  }
+
+  .video-testimonials-section__card-title {
+    font-size: 0.875rem;
+    /* 14px */
+    line-height: 1.35;
   }
 }
 /* ============================================ ABOUT PAGE STYLES ============================================ */ 

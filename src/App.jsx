@@ -460,15 +460,6 @@ function Footer() {
           </ul>
         </div>
         <div className="site-footer__column">
-          <h3 className="site-footer__column-title h5-montserrat">Support</h3>
-          <ul className="site-footer__links">
-            <li><Link to="/contact" onClick={handleLinkClick('/contact')} className="body-opensans">Help center</Link></li>
-            <li><Link to="/contact" onClick={handleLinkClick('/contact')} className="body-opensans">Ticket Support</Link></li>
-            <li><a href="/#faq" onClick={handleFAQClick} className="body-opensans">FAQ</a></li>
-            <li><Link to="/contact" onClick={handleLinkClick('/contact')} className="body-opensans">Contact</Link></li>
-          </ul>
-        </div>
-        <div className="site-footer__column">
           <h3 className="site-footer__column-title h5-montserrat">Company</h3>
           <ul className="site-footer__links">
             <li><Link to="/about" onClick={handleLinkClick('/about')} className="body-opensans">About us</Link></li>
