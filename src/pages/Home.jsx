@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
 import PartnersSection from '../PartnersSection'
 import section2Image from '../assets/section2.jpg'
@@ -938,6 +938,25 @@ function HowItWorksSection() {
 }
 
 function Home() {
+  const navigate = useNavigate()
+  
+  // Map services to their routes
+  const serviceRoutes = {
+    'Auditing': '/services/auditing',
+    'Tax Advisory': '/services/tax-advisory',
+    'Company Formation': '/services/company-formation',
+    'Accounting & Bookkeeping': '/services/accounting-bookkeeping',
+    'VAT': '/services/vat',
+    'Corporate Tax': '/services/corporate-tax',
+  }
+  
+  const handleServiceClick = (serviceName) => {
+    const route = serviceRoutes[serviceName]
+    if (route) {
+      navigate(route)
+    }
+  }
+  
   return (
     <>
       <main className="hero">
@@ -954,22 +973,22 @@ function Home() {
         
         <header className="hero__header">
           <div className="hero__services">
-            <button type="button" className="hero__service-pill body-opensans">
+            <button type="button" className="hero__service-pill body-opensans" onClick={() => handleServiceClick(services[0])}>
               {services[0]}
             </button>
-            <button type="button" className="hero__service-pill body-opensans">
+            <button type="button" className="hero__service-pill body-opensans" onClick={() => handleServiceClick(services[1])}>
               {services[1]}
             </button>
-            <button type="button" className="hero__service-pill body-opensans">
+            <button type="button" className="hero__service-pill body-opensans" onClick={() => handleServiceClick(services[3])}>
               {services[3]}
             </button>
-            <button type="button" className="hero__service-pill body-opensans">
+            <button type="button" className="hero__service-pill body-opensans" onClick={() => handleServiceClick(services[2])}>
               {services[2]}
             </button>
-            <button type="button" className="hero__service-pill body-opensans">
+            <button type="button" className="hero__service-pill body-opensans" onClick={() => handleServiceClick(services[4])}>
               {services[4]}
             </button>
-            <button type="button" className="hero__service-pill body-opensans">
+            <button type="button" className="hero__service-pill body-opensans" onClick={() => handleServiceClick(services[5])}>
               {services[5]}
             </button>
           </div>
@@ -1023,23 +1042,3 @@ function Home() {
 }
 
 export default Home
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

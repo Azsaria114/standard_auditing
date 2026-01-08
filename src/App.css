@@ -32,9 +32,6 @@ html, body {
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-  /* Ensure hero is positioned correctly relative to fixed header */
   /* Full width with consistent 80px padding */
 }
 
@@ -480,12 +477,12 @@ html, body {
 
 .hero__stat-label {
   margin: 0;
-  color: #c0c0c0;
+  color: white;
   font-size: clamp(0.9375rem, 2vw, 1.125rem);
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
-  /* Labels with #c0c0c0 color */
+  /* Labels with white color for better visibility on dark blue background */
 }
 
 /* ============================================
@@ -742,14 +739,6 @@ html, body {
 
 /* Mobile View */
 @media (max-width: 768px) {
-  /* Reduce vertical gap before/after How It Works on mobile */
-  .how-it-works-section {
-    margin-top: clamp(3rem, 6vw, 4rem) !important;
-    /* Keep generous top spacing */
-    margin-bottom: clamp(-7rem, -8vw, -10vw) !important;
-    /* Reduce bottom spacing only */
-  }
-
   .how-it-works-section__container {
     padding: 0 clamp(1.5rem, 4vw, 2.5rem);
   }
@@ -763,20 +752,8 @@ html, body {
     gap: clamp(2.5rem, 5vw, 3.5rem);
   }
 
-  /* Reduce gap for steps 1 and 2 to match step 3 */
-  .how-it-works-section__card:nth-child(1) .how-it-works-section__card-content,
-  .how-it-works-section__card:nth-child(2) .how-it-works-section__card-content {
-    margin-bottom: clamp(2rem, 4vw, 2.5rem) !important;
-    /* Same gap as step 3 */
-  }
-
   .how-it-works-section__connector-line {
     display: none;
-  }
-
-  /* Tighten space before Why Trust section */
-  .why-trust-section {
-    margin-top: clamp(2rem, 5vw, 3rem) !important;
   }
 }
 
@@ -924,30 +901,12 @@ html, body {
    ============================================ */
 @media (max-width: 768px) {
   .hero {
-    padding: 2rem 1.25rem;
-    /* 20px horizontal padding, 32px vertical */
-    padding-top: calc(clamp(3.5rem, 7vw, 4.5rem) + 2rem);
-    /* Account for fixed header height + content padding */
-    gap: clamp(1.25rem, 3vw, 1.75rem);
-    position: relative;
-    z-index: 1;
-    /* Ensure hero is above background but below header */
+    padding: 5rem 5rem;
+    /* Maintain 80px (5rem) padding on mobile */
   }
 
   .hero__title-section {
     margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
-  }
-
-  .hero__main-title .hero__title-line-1,
-  .hero__main-title .hero__title-line-2 {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    /* Reduced from 2-3.5rem to 1.5-2rem */
-    line-height: 1.2;
-  }
-
-  .hero__eyebrow-text {
-    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-    /* Reduced eyebrow text */
   }
 
   .hero__header {
@@ -1065,58 +1024,33 @@ html, body {
    ============================================ */
 @media (max-width: 480px) {
   .hero {
-    padding: 1.5rem 1.25rem;
-    /* 20px horizontal padding (1.25rem), 24px vertical */
-    padding-top: calc(clamp(3.5rem, 7vw, 4.5rem) + 1.5rem);
-    /* Account for fixed header height + content padding */
-    gap: clamp(1rem, 2.5vw, 1.25rem);
-    position: relative;
-    z-index: 1;
-    /* Ensure hero is above background but below header */
-  }
-
-  .hero__main-title .hero__title-line-1,
-  .hero__main-title .hero__title-line-2 {
-    font-size: clamp(1.25rem, 6vw, 1.5rem);
-    /* Much smaller: 20-24px instead of 32-56px */
-    line-height: 1.15;
-  }
-
-  .hero__eyebrow-text {
-    font-size: 0.75rem;
-    /* 12px */
+    padding: 5rem 5rem;
+    /* Maintain 80px (5rem) padding on small screens */
+    gap: clamp(1rem, 3vw, 1.5rem);
   }
 
   .hero__services {
-    display: flex;
-    flex-wrap: wrap;
-    /* Simple flex wrap instead of complex grid */
-    gap: 0.5rem;
-    row-gap: 0.5rem;
-    width: 100%;
-    justify-content: flex-start;
+    grid-template-columns: repeat(3, max-content);
+    /* Maintains 3-3 layout on very small screens with proper column alignment */
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    row-gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    column-gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    width: fit-content;
+    justify-items: start;
+    align-items: start;
+    justify-content: start;
+    /* Even spacing on very small screens */
   }
 
   .hero__service-pill {
-    width: auto;
-    font-size: 0.75rem;
-    /* 12px font */
-    padding: 0.375rem 0.625rem;
-    /* 6px vertical, 10px horizontal */
-    white-space: nowrap;
-    margin: 0;
-  }
-
-  /* Remove all negative margins on mobile */
-  .hero__service-pill:nth-child(1),
-  .hero__service-pill:nth-child(2),
-  .hero__service-pill:nth-child(3),
-  .hero__service-pill:nth-child(4),
-  .hero__service-pill:nth-child(5),
-  .hero__service-pill:nth-child(6) {
-    margin: 0;
-    grid-column: auto;
-    grid-row: auto;
+    width: fit-content;
+    justify-self: start;
+    align-self: start;
+    text-align: left;
+    /* Natural width with left alignment */
+    font-size: clamp(0.625rem, 1.1vw, 0.75rem);
+    padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.375rem, 1vw, 0.625rem);
+    /* Smaller padding and font for very small screens */
   }
 
   .hero__header {
@@ -1124,103 +1058,35 @@ html, body {
   }
 
   .hero__copy-text {
-    font-size: 0.875rem;
-    /* 14px */
-    line-height: 1.5;
-  }
-
-  .hero__image-wrapper {
-    position: relative;
-    /* Ensure image wrapper can contain absolutely positioned button */
-    overflow: visible;
+    font-size: clamp(0.8125rem, 1.75vw, 0.9375rem);
   }
 
   .hero__cta {
-    position: absolute;
-    /* Absolute positioning to place button on image - matching tablet style */
-    bottom: clamp(-0.875rem, -2vw, -1rem);
-    /* Position slightly below image bottom - matching tablet */
-    left: clamp(0.75rem, 2vw, 1rem);
-    /* Left-aligned like tablet view */
+    bottom: clamp(-0.75rem, -1.5vw, -0.875rem);
+    left: clamp(0.5rem, 1.5vw, 0.75rem);
     transform: translateY(0);
-    /* No centering transform - left-aligned */
-    margin-top: 0;
-    min-width: clamp(14rem, 70vw, 18rem);
-    /* Smaller min-width for mobile but proportional to tablet */
-    max-width: clamp(16rem, 80vw, 22rem);
-    /* Smaller max-width for mobile but proportional to tablet */
-    width: auto;
-    /* Auto width based on content */
-    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.25rem);
-    /* Similar padding structure to tablet but slightly smaller */
+    min-width: clamp(16rem, 30vw, 22rem);
+    max-width: clamp(20rem, 38vw, 26rem);
+    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.5rem);
     gap: clamp(0.125rem, 0.25vw, 0.1875rem);
-    /* Reduced gap to fit content */
-    overflow: visible;
-    /* Ensure triangle is visible */
+  }
+
+  .hero__cta-primary {
+    font-size: clamp(0.6875rem, 1.25vw, 0.875rem);
+    white-space: normal;
+  }
+
+  .hero__cta-secondary {
+    font-size: clamp(0.5625rem, 1vw, 0.6875rem);
+    white-space: normal;
   }
 
   .hero__cta:hover {
     transform: translateY(-0.25rem);
-    /* Simple lift on hover - matching tablet */
-    box-shadow: 0 clamp(0.25rem, 1vw, 0.375rem) clamp(0.75rem, 2vw, 1rem) rgba(31, 41, 51, 0.15);
-    /* Reduced shadow on mobile */
   }
 
   .hero__cta:active {
     transform: translateY(-0.125rem);
-    /* Active state - matching tablet */
-  }
-
-  .hero__cta::after {
-    position: absolute;
-    bottom: 0;
-    /* Align triangle exactly at button bottom */
-    right: 0;
-    /* Align triangle exactly at button right */
-    width: clamp(1rem, 2.5vw, 1.25rem);
-    height: clamp(1rem, 2.5vw, 1.25rem);
-    /* Smaller triangle on mobile */
-    background: #0A3D62;
-    clip-path: polygon(100% 0, 100% 100%, 0 100%);
-    border-bottom-right-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-    z-index: 0;
-    pointer-events: none;
-    /* Triangle aligned perfectly with button corner */
-  }
-
-  .hero__cta-primary {
-    font-size: clamp(0.6875rem, 1.4vw, 0.8125rem);
-    /* Reduced text size: 11-13px to fit without increasing height */
-    white-space: normal;
-    line-height: 1.25;
-    /* Tighter line-height to fit content */
-  }
-
-  .hero__cta-secondary {
-    font-size: clamp(0.5625rem, 1.2vw, 0.6875rem);
-    /* Reduced text size: 9-11px to fit without increasing height */
-    white-space: normal;
-    line-height: 1.25;
-    /* Tighter line-height to fit content */
-  }
-
-  .hero__stats-card {
-    gap: 0.625rem;
-  }
-
-  .hero__stat {
-    padding: 0.75rem;
-  }
-
-  .hero__stat-value {
-    font-size: 1rem;
-    /* 16px */
-  }
-
-  .hero__stat-label {
-    font-size: 0.75rem;
-    /* 12px */
-    line-height: 1.3;
   }
 }
 
@@ -1394,12 +1260,11 @@ html, body {
 
 .services-section__cta {
   width: fit-content;
-  min-height: clamp(2rem, 5vw, 2.25rem);
-  /* Further reduced height */
+  min-height: clamp(2.5rem, 6vw, 2.75rem);
   background: rgba(173, 206, 230, 0.5);
   border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.625rem, 1.5vw, 1rem);
-  /* Further reduced padding */
+  padding: clamp(0.5rem, 1.25vw, 0.625rem) clamp(0.875rem, 2vw, 1.25rem);
+  /* Reduced padding for more compact button */
   text-align: left;
   display: flex;
   flex-direction: row;
@@ -1465,8 +1330,7 @@ html, body {
   z-index: 10;
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: inherit;
-  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-  /* Further reduced text size: 12-14px */
+  font-size: clamp(0.875rem, 1.75vw, 1rem);
 }
 
 .services-section__cta:hover .services-section__cta-text {
@@ -1475,8 +1339,7 @@ html, body {
 
 .services-section__arrow {
   color: rgba(251, 251, 251, 0.9);
-  font-size: clamp(0.875rem, 2vw, 1rem);
-  /* Further reduced arrow size: 14-16px */
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   position: relative;
   z-index: 1;
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1813,20 +1676,10 @@ html, body {
   }
 
   .services-section__cta {
-    min-height: clamp(2rem, 5vw, 2.5rem);
-    /* Further reduced height on mobile */
-    padding: clamp(0.5rem, 1.25vw, 0.625rem) clamp(0.75rem, 2vw, 1.25rem);
-    /* Further reduced padding on mobile */
-  }
-
-  .services-section__cta-text {
-    font-size: clamp(0.8125rem, 2vw, 0.9375rem);
-    /* Further reduced text size on mobile: 13-15px */
-  }
-
-  .services-section__arrow {
-    font-size: clamp(0.9375rem, 2vw, 1.125rem);
-    /* Further reduced arrow size on mobile */
+    min-height: clamp(2.5rem, 6vw, 3rem);
+    padding: clamp(0.625rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    /* Significantly increased CTA button size and font on mobile for better visibility */
   }
 
   .services-section__badge {
@@ -1874,8 +1727,8 @@ html, body {
    ============================================ */
 .partners-section {
   background: #f4f8fc;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding that adapts to all screen sizes */
   position: relative;
 }
 
@@ -1917,6 +1770,12 @@ html, body {
   /* Each line on separate line */
 }
 
+.partners-section__title-line-1,
+.partners-section__title-line-2 {
+  display: block;
+  /* Each line on separate line */
+}
+
 .partners-section__container {
   width: 100%;
   margin-bottom: 0;
@@ -1925,14 +1784,14 @@ html, body {
   padding-right: clamp(1.5rem, 3.5vw, 3rem);
   /* Responsive right padding */
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: clamp(2rem, 5vw, 4.5rem);
   /* Improved responsive gap that scales smoothly */
   position: relative;
   z-index: 1;
   flex-wrap: nowrap;
-  /* Three parts aligned horizontally - left grid, center logo, right text box */
+  /* Three parts aligned horizontally - left grid, center logo, right text box - vertically centered */
 }
 
 .partners-section__divider {
@@ -2118,12 +1977,46 @@ html, body {
   }
   
   .partners-section__container {
-    gap: 2.5rem; /* Restore gap for stacked layout */
+    flex-direction: column !important;
+    gap: clamp(2.5rem, 5vw, 3.5rem) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 clamp(1rem, 3vw, 2rem) !important;
+    /* Responsive gap and padding for better layout on tablet - consistent alignment */
+  }
+  
+  /* Logo Card: Reset transforms to prevent overlapping */
+  .partners-section__middle {
+    transform: none !important;
+    align-self: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    order: 2;
+  }
+
+  /* Result Card: Reset transforms to prevent overlapping */
+  .partners-section__right {
+    transform: none !important;
+    align-self: center !important;
+    margin-top: 0 !important;
+    order: 3;
+    width: 100%;
+  }
+  
+  /* Grid: Reset any transforms */
+  .partners-section__grid {
+    transform: none !important;
+    margin: 0 auto !important;
+    order: 1;
   }
 }
 
 /* Desktop-specific adjustments for visual alignment */
 @media (min-width: 1025px) {
+  .partners-section {
+    padding-left: 80px;
+  }
+  
   /* Reset Grid to natural position */
   .partners-section__grid {
     transform: none;
@@ -2136,15 +2029,15 @@ html, body {
     align-self: center;
   }
 
-  /* Logo Card: Move DOWN slightly independent of right card */
+  /* Logo Card: Move UP for vertical centering - responsive across desktop sizes */
   .partners-section__middle {
-    transform: translateY(3.5rem);
+    transform: translateY(clamp(-4.5rem, -8vw, -7rem)) !important;
     align-self: center;
   }
 
-  /* Result Card */
+  /* Result Card: Move UP for vertical centering - responsive across desktop sizes */
   .partners-section__right {
-    transform: translateY(2rem);
+    transform: translateY(clamp(-4.5rem, -8vw, -7rem)) !important;
     align-self: center;
   }
 }
@@ -2165,19 +2058,34 @@ html, body {
 }
 
 .partners-section__logo-img {
-  max-width: 100%;
-  max-height: clamp(4rem, 8vw, 6rem);
+  max-width: 95%;
+  max-height: clamp(3.5rem, 7vw, 5.5rem);
   width: auto;
   height: auto;
   object-fit: contain;
-  /* Uniform logo size for all logos */
+  /* All logos same size as Meydan */
 }
 
-/* Meydan logo - remove white background */
+/* Meydan logo specific styles - remove background */
 .partners-section__logo-img--meydan {
   mix-blend-mode: multiply;
   filter: contrast(1.1);
   /* Removed white background using mix-blend-mode */
+}
+
+/* IFZA logo - increased size for text visibility */
+.partners-section__logo-img--ifza {
+  max-width: 100%;
+  max-height: clamp(5.5rem, 11vw, 8.5rem);
+  /* Significantly increased size so text in logo is clearly visible */
+}
+
+/* SHMAS and DSO logos - same size as Meydan */
+.partners-section__logo-img--shmas,
+.partners-section__logo-img--dso {
+  max-width: 95%;
+  max-height: clamp(3.5rem, 7vw, 5.5rem);
+  /* Same size as Meydan */
 }
 
 .partners-section__name {
@@ -2196,9 +2104,10 @@ html, body {
   gap: clamp(0.75rem, 2vw, 1rem);
   flex: 0 0 auto;
   position: relative;
-  align-self: flex-start;
-  margin-top: clamp(3rem, 6vw, 4.5rem);
-  /* Responsive center logo positioning - centered with line */
+  align-self: center;
+  margin-top: 0;
+  transform: translateY(-4.5rem);
+  /* Base transform - will be overridden by desktop media query */
 }
 
 /* Desktop: Separate lines for left and right sides - extended width, scales down on smaller screens */
@@ -2288,11 +2197,13 @@ html, body {
   align-items: center;
   justify-content: center;
   min-width: 0;
-  align-self: flex-start;
+  align-self: center;
   width: auto;
   flex-shrink: 0;
-  margin-top: clamp(-1rem, 0vw, 0rem);
-  /* Right text box aligned with center logo - centered with line */
+  margin-top: 0;
+  transform: translateY(-4.5rem);
+  /* Base transform - will be overridden by desktop media query */
+  /* Right text box aligned with center logo - moved up slightly more */
 }
 
 .partners-section__result-card {
@@ -2360,7 +2271,7 @@ html, body {
   transform: translate(-50%, -50%) translateX(40px);
   width: 100%;
   max-width: 100%;
-  padding: 0 1rem;
+  padding: 0 clamp(0.5rem, 1.5vw, 1rem);
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -2397,14 +2308,14 @@ html, body {
 .partners-section__result-text {
   color: #0A3D62;
   margin: 0;
-  line-height: 1.5;
-  font-size: clamp(0.8125rem, 2vw, 1.25rem);
+  line-height: 1.4;
+  font-size: clamp(0.6875rem, 1.5vw, 1.25rem);
   font-weight: 700;
   text-align: center;
   width: 100%;
   max-width: 100%;
   word-wrap: break-word;
-  /* Reduced font size for better responsiveness */
+  /* More responsive font size that scales better on smaller screens */
   overflow-wrap: break-word;
   white-space: normal;
   padding: 0;
@@ -2439,7 +2350,10 @@ html, body {
   .partners-section__container {
     flex-direction: column;
     gap: clamp(2.5rem, 5vw, 3.5rem);
-    /* Increased gap for more spacing between logo cards and result card */
+    align-items: center;
+    justify-content: center;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+    /* Increased gap for more spacing between logo cards and result card, centered with padding */
   }
 
   .partners-section__grid {
@@ -2447,7 +2361,8 @@ html, body {
     max-width: 100%;
     width: 100%;
     gap: clamp(1rem, 2.5vw, 2rem);
-    /* Unified line scale for tablet - all lines scale together */
+    margin: 0 auto;
+    /* Unified line scale for tablet - all lines scale together, centered */
     --line-scale: clamp(1.25rem, 2.5vw, 2.5rem);
     /* Reduced width for more compact half rectangle on tablet */
     /* 3-column grid maintained for tablet */
@@ -2516,9 +2431,11 @@ html, body {
 
   .partners-section__middle {
     order: 2;
-    margin-top: 0;
-    align-self: center;
-    /* Center card appears between grid and result card */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    align-self: center !important;
+    transform: none !important;
+    /* Center card appears between grid and result card, properly aligned */
   }
 
   .partners-section__right {
@@ -2526,9 +2443,15 @@ html, body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: clamp(1rem, 2.5vw, 1.5rem);
-    align-self: center;
-    /* Result card moved down slightly with more spacing */
+    margin-top: 0 !important;
+    align-self: center !important;
+    transform: none !important;
+    /* Result card properly aligned with grid and center card */
+  }
+  
+  .partners-section__grid {
+    transform: none !important;
+    order: 1;
   }
   
   .partners-section__result-card {
@@ -2537,8 +2460,8 @@ html, body {
     min-width: 16rem;
     min-height: 16rem;
     aspect-ratio: 1;
-    padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 2.5vw, 1.75rem);
-    /* Responsive card sizing on tablet - square shape */
+    padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1rem, 2vw, 1.5rem);
+    /* Responsive card sizing on tablet - square shape with reduced padding for more text space */
   }
   
   .partners-section__result-slider {
@@ -2548,6 +2471,12 @@ html, body {
   .partners-section__result-track {
     min-height: 9rem;
   }
+  
+  .partners-section__result-text {
+    font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+    line-height: 1.4;
+    /* Reduced font size for tablet responsiveness */
+  }
 }
 
 /* ============================================
@@ -2555,22 +2484,30 @@ html, body {
    ============================================ */
 @media (max-width: 768px) {
   .partners-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Responsive padding on mobile */
   }
   
   .partners-section__container {
-    flex-direction: column;
-    gap: clamp(2.5rem, 5vw, 3.5rem);
-    /* Increased gap for more spacing between logo cards and result card */
+    flex-direction: column !important;
+    gap: clamp(2.5rem, 5vw, 3.5rem) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 clamp(1rem, 3vw, 2rem) !important;
+    /* Increased gap for more spacing between logo cards and result card, centered with padding */
   }
 
   .partners-section__grid {
     grid-template-columns: repeat(3, 1fr);
+    transform: none !important;
+    margin: 0 auto !important;
+    order: 1;
     /* 3-column grid on mobile - same as tablet */
     max-width: 100%;
     width: 100%;
-    gap: clamp(0.5rem, 1.25vw, 1rem);
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    margin: 0 auto;
+    /* Increased gap for better spacing on mobile, centered */
     /* Unified line scale for mobile - all lines scale together */
     --line-scale: clamp(1rem, 2vw, 2rem);
     /* Reduced width for more compact half rectangle on mobile */
@@ -2593,8 +2530,8 @@ html, body {
   .partners-section__grid > .partners-section__card:nth-child(2) {
     grid-column: 2;
     grid-row: 1;
-    transform: translateY(clamp(-2rem, -4vw, -2.5rem));
-    /* Reduced transform for better visibility on mobile */
+    transform: none;
+    /* Removed transform to prevent overlapping */
   }
   
   .partners-section__grid > .partners-section__card:nth-child(3) {
@@ -2612,8 +2549,8 @@ html, body {
   .partners-section__grid > .partners-section__card:nth-child(5) {
     grid-column: 2;
     grid-row: 2;
-    transform: translateY(clamp(-2rem, -4vw, -2.5rem));
-    /* Reduced transform for better visibility on mobile */
+    transform: none;
+    /* Removed transform to prevent overlapping */
   }
   
   .partners-section__grid > .partners-section__card:nth-child(6) {
@@ -2625,27 +2562,41 @@ html, body {
   .partners-section__grid > .partners-section__card:nth-child(7) {
     grid-column: 2;
     grid-row: 3;
-    transform: translateY(clamp(-2rem, -4vw, -2.5rem));
-    /* Reduced transform for better visibility on mobile */
+    transform: none;
+    /* Removed transform to prevent overlapping */
   }
   
   .partners-section__card {
     min-width: 0;
-    min-height: clamp(5rem, 10vw, 7rem);
-    padding: clamp(0.875rem, 2vw, 1.25rem) clamp(0.625rem, 1.5vw, 1rem);
-    /* Adjusted padding for better visibility on mobile */
+    min-height: clamp(6rem, 12vw, 8rem);
+    padding: clamp(1rem, 2.5vw, 1.5rem) clamp(0.75rem, 2vw, 1.25rem);
+    aspect-ratio: 1;
+    /* Increased padding and height for better logo visibility on mobile, maintain square aspect */
   }
   
   .partners-section__logo-img {
-    max-width: 100%;
-    max-height: clamp(3rem, 6vw, 4.5rem);
-    /* Uniform logo size for tablet/mobile */
+    max-width: 90%;
+    max-height: clamp(2.5rem, 5vw, 4rem);
+    /* All logos same size on tablet/mobile */
   }
   
   .partners-section__logo-img--meydan {
     mix-blend-mode: multiply;
     filter: contrast(1.1);
     /* Keep background removal for Meydan on tablet/mobile */
+  }
+  
+  .partners-section__logo-img--ifza {
+    max-width: 100%;
+    max-height: clamp(4rem, 8vw, 6.5rem);
+    /* Significantly increased size for IFZA on tablet/mobile for text visibility */
+  }
+
+  .partners-section__logo-img--shmas,
+  .partners-section__logo-img--dso {
+    max-width: 95%;
+    max-height: clamp(3rem, 6vw, 5rem);
+    /* Same size as Meydan on tablet/mobile */
   }
   
   .partners-section__name {
@@ -2655,9 +2606,11 @@ html, body {
 
   .partners-section__middle {
     order: 2;
-    margin-top: 0;
-    align-self: center;
-    /* Center card appears between grid and result card - same as tablet */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    align-self: center !important;
+    transform: none !important;
+    /* Center card appears between grid and result card - no transform to prevent overlapping */
   }
 
   .partners-section__center-card {
@@ -2704,9 +2657,10 @@ html, body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: clamp(1rem, 2.5vw, 1.5rem);
-    align-self: center;
-    /* Result card moved down slightly with more spacing */
+    margin-top: 0 !important;
+    align-self: center !important;
+    transform: none !important;
+    /* Result card properly aligned with grid and center card on mobile - no transform to prevent overlapping */
   }
   
   .partners-section__result-card {
@@ -2715,24 +2669,24 @@ html, body {
     min-width: 16rem;
     min-height: 16rem;
     aspect-ratio: 1;
-    padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 2.5vw, 1.75rem);
-    /* Responsive card sizing on mobile - same as tablet */
+    padding: clamp(1rem, 2.5vw, 1.75rem) clamp(0.875rem, 2vw, 1.25rem);
+    /* Responsive card sizing on mobile with reduced padding for more text space */
   }
   
   .partners-section__result-slider {
-    min-height: 9rem;
-    /* Same as tablet for consistency */
+    min-height: 8rem;
+    /* Reduced height for mobile to fit text better */
   }
   
   .partners-section__result-track {
-    min-height: 9rem;
-    /* Same as tablet for consistency */
+    min-height: 8rem;
+    /* Reduced height for mobile to fit text better */
   }
   
   .partners-section__result-text {
-    font-size: clamp(0.75rem, 1.75vw, 1rem);
-    line-height: 1.5;
-    /* Reduced font size for mobile responsiveness */
+    font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+    line-height: 1.3;
+    /* Further reduced font size for mobile responsiveness */
   }
 }
 
@@ -2757,21 +2711,46 @@ html, body {
   
   .partners-section__card {
     min-width: 0;
-    min-height: clamp(4.5rem, 10vw, 6rem);
-    padding: clamp(0.75rem, 1.75vw, 1rem) clamp(0.5rem, 1.25vw, 0.625rem);
-    /* Smaller padding for very small screens */
+    min-height: clamp(5.5rem, 11vw, 7rem);
+    padding: clamp(0.875rem, 2vw, 1.25rem) clamp(0.625rem, 1.5vw, 1rem);
+    aspect-ratio: 1;
+    /* Increased padding and height for very small screens, maintain square aspect */
+  }
+  
+  .partners-section__result-card {
+    padding: clamp(0.875rem, 2vw, 1.5rem) clamp(0.75rem, 1.75vw, 1.125rem);
+    /* Further reduced padding for extra small screens */
+  }
+  
+  .partners-section__result-text {
+    font-size: clamp(0.5rem, 1.1vw, 0.75rem);
+    line-height: 1.25;
+    /* Even smaller font size for extra small mobile screens */
   }
 
   .partners-section__logo-img {
-    max-width: 100%;
-    max-height: clamp(2.5rem, 5vw, 3.5rem);
-    /* Uniform logo size for very small screens */
+    max-width: 90%;
+    max-height: clamp(2rem, 4vw, 3rem);
+    /* All logos same size on very small screens */
   }
-
+  
   .partners-section__logo-img--meydan {
     mix-blend-mode: multiply;
     filter: contrast(1.1);
     /* Keep background removal for Meydan on very small screens */
+  }
+  
+  .partners-section__logo-img--ifza {
+    max-width: 100%;
+    max-height: clamp(3.5rem, 7vw, 5.5rem);
+    /* Significantly increased size for IFZA on very small screens for text visibility */
+  }
+
+  .partners-section__logo-img--shmas,
+  .partners-section__logo-img--dso {
+    max-width: 95%;
+    max-height: clamp(2.5rem, 5vw, 4rem);
+    /* Same size as Meydan on very small screens */
   }
 
   .partners-section__name {
@@ -3779,8 +3758,8 @@ html, body {
   margin: 0;
   color: white;
   text-align: left;
-  font-size: clamp(0.7rem, 1.4vw, 0.875rem);
-  /* Reduced base font size for better fit across all screen sizes */
+  font-size: clamp(0.875rem, 1.75vw, 1rem);
+  /* Increased base font size for better readability */
   line-height: 1.45;
   /* Slightly tighter line height for better space utilization */
   transition: font-size 0.3s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3834,7 +3813,7 @@ html, body {
   margin: 0;
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   line-height: 1.4;
-  font-weight: 400;
+  font-weight: 600;
   padding-top: clamp(0.5rem, 1vw, 0.75rem);
   /* Add padding to account for absolute positioned icon */
 }
@@ -3922,8 +3901,8 @@ html, body {
   }
 
   .why-trust-section__hover-text-content {
-    font-size: clamp(0.65rem, 1.3vw, 0.75rem);
-    /* Smaller font size on tablet for better fit */
+    font-size: clamp(0.8125rem, 1.6vw, 0.9375rem);
+    /* Increased font size on tablet for better readability */
     line-height: 1.4;
     padding: clamp(0.25rem, 0.75vw, 0.5rem);
     /* Minimal padding on tablet */
@@ -3932,8 +3911,8 @@ html, body {
   }
 
   .why-trust-section__card:hover .why-trust-section__hover-text-content {
-    font-size: clamp(0.6rem, 1.2vw, 0.7rem);
-    /* Responsive font size on hover for tablet */
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    /* Increased responsive font size on hover for tablet */
   }
 }
 
@@ -4016,19 +3995,19 @@ html, body {
   }
 
   .why-trust-section__hover-text-content {
-    font-size: clamp(0.6rem, 1.2vw, 0.7rem);
-    /* Smaller font size on mobile for better fit and to prevent text hiding */
-    line-height: 1.35;
-    /* Tighter line height on mobile */
-    padding: clamp(0.25rem, 0.75vw, 0.375rem);
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    /* Increased font size on mobile for better readability */
+    line-height: 1.4;
+    /* Improved line height on mobile */
+    padding: clamp(0.25rem, 0.75vw, 0.5rem);
     /* Minimal padding on mobile */
     margin-top: clamp(1.25rem, 3.5vw, 2rem);
     /* Added spacing between icon and content below for mobile */
   }
 
   .why-trust-section__card:hover .why-trust-section__hover-text-content {
-    font-size: clamp(0.55rem, 1.1vw, 0.65rem);
-    /* Even smaller on hover for mobile to ensure all text is visible */
+    font-size: clamp(0.6875rem, 1.4vw, 0.8125rem);
+    /* Increased font size on hover for mobile for better readability */
   }
 }
 
@@ -5833,23 +5812,12 @@ html, body {
   max-width: 87.5rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
   gap: clamp(2.5rem, 4.5vw, 3.5rem);
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
   position: relative;
   z-index: 1;
   align-items: start;
-  justify-items: start;
-}
-
-/* Right-align Services and Company columns on desktop */
-@media (min-width: 769px) {
-  .site-footer__column:nth-child(2),
-  .site-footer__column:nth-child(3) {
-    justify-self: end;
-    text-align: right;
-    align-items: flex-end;
-  }
 }
 
 .site-footer__column:not(:first-child) {
@@ -6087,14 +6055,6 @@ html, body {
   gap: clamp(0.5rem, 1vw, 0.625rem);
   align-items: flex-start;
   width: 100%;
-}
-
-/* Right-align links in Services and Company columns on desktop */
-@media (min-width: 769px) {
-  .site-footer__column:nth-child(2) .site-footer__links,
-  .site-footer__column:nth-child(3) .site-footer__links {
-    align-items: flex-end;
-  }
 }
 
 .site-footer__links li {
@@ -6609,174 +6569,43 @@ html, body {
   }
 
 
-  /* ===== CLIENT TESTIMONIALS SECTION - MOBILE ===== */
-  
-  /* Section - equal padding, prevent horizontal overflow */
   .client-testimonials-section {
-    padding: clamp(1.25rem, 4vw, 1.5rem) clamp(1.25rem, 4vw, 1.5rem) !important;
-    overflow-x: hidden !important;
+    padding: clamp(3rem, 6vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
+    /* Responsive padding for mobile */
   }
 
-  /* Container - fill width, hug height, no extra padding */
   .client-testimonials-section__container {
-    grid-template-columns: 1fr !important;
-    gap: clamp(1.5rem, 3vw, 2rem) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 2.5rem);
+    /* Single column on mobile with adjusted gap */
   }
 
-  /* Left section - fill width, no extra padding */
   .client-testimonials-section__left {
-    gap: clamp(0.75rem, 1.75vw, 1rem) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    gap: clamp(1rem, 2vw, 1.25rem);
+    /* Tighter spacing on mobile */
   }
 
-  /* Title - fill width, wrap text */
-  .client-testimonials-section__title {
-    font-size: clamp(1.25rem, 4.5vw, 1.5rem) !important;
-    line-height: 1.2 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    white-space: normal !important;
-  }
-
-  /* Description - fill width, wrap text */
-  .client-testimonials-section__description {
-    font-size: clamp(0.75rem, 2.8vw, 0.875rem) !important;
-    line-height: 1.45 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    white-space: normal !important;
-  }
-
-  /* Right section - fill width, hug height, no extra padding */
   .client-testimonials-section__right {
-    gap: clamp(0.875rem, 2vw, 1.25rem) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-    height: auto !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    gap: clamp(1.5rem, 3vw, 2rem);
   }
 
-  /* Slider - fill width, hide overflow for carousel */
-  .client-testimonials-section__slider {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-  }
-
-  /* Track - display flex for carousel */
-  .client-testimonials-section__track {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex !important;
-  }
-
-  /* Quote container - fill width, hug height, no side padding */
-  .client-testimonials-section__quote {
-    padding-top: clamp(0.75rem, 3vw, 1rem) !important;
-    padding-bottom: clamp(0.75rem, 3vw, 1rem) !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    gap: clamp(0.375rem, 1.5vw, 0.625rem) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 100% !important;
-    height: auto !important;
-    box-sizing: border-box !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Quote text - fill width, wrap text */
   .client-testimonials-section__quote-text {
-    text-align: left !important;
-    font-size: clamp(0.8125rem, 3vw, 0.9375rem) !important;
-    line-height: 1.5 !important;
-    margin-bottom: clamp(0.625rem, 1.5vw, 0.875rem) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    white-space: normal !important;
-    hyphens: auto !important;
+    text-align: left;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
   }
 
-  /* Divider */
-  .client-testimonials-section__divider {
-    margin-bottom: clamp(0.5rem, 1.25vw, 0.75rem) !important;
-    width: 100% !important;
-  }
-
-  /* Author info - fill width */
   .client-testimonials-section__author {
-    align-items: flex-start !important;
-    text-align: left !important;
-    gap: clamp(0.125rem, 0.4vw, 0.25rem) !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    align-items: flex-start;
+    text-align: left;
   }
 
   .client-testimonials-section__author-name {
-    font-size: clamp(0.8125rem, 2.8vw, 0.9375rem) !important;
-    line-height: 1.3 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    white-space: normal !important;
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
   }
 
   .client-testimonials-section__author-title {
-    font-size: clamp(0.6875rem, 2.4vw, 0.8125rem) !important;
-    line-height: 1.35 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    white-space: normal !important;
-  }
-
-  /* Navigation */
-  .client-testimonials-section__nav {
-    margin-top: clamp(1rem, 2.5vw, 1.5rem) !important;
-  }
-
-  /* Alignment tweaks: keep everything flush-left */
-  .client-testimonials-section__container {
-    align-items: flex-start !important;
-    text-align: left !important;
-  }
-
-  .client-testimonials-section__left,
-  .client-testimonials-section__right {
-    align-items: flex-start !important;
-    text-align: left !important;
-  }
-
-  .client-testimonials-section__title,
-  .client-testimonials-section__description,
-  .client-testimonials-section__quote-text,
-  .client-testimonials-section__author,
-  .client-testimonials-section__author-name,
-  .client-testimonials-section__author-title {
-    text-align: left !important;
-  }
-
-  /* Optional nudge: keep inner padding consistent */
-  .client-testimonials-section__quote {
-    padding-left: clamp(0.75rem, 3vw, 1rem) !important;
-    padding-right: clamp(0.75rem, 3vw, 1rem) !important;
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
   }
 
   .client-testimonials-section__nav {
@@ -6785,39 +6614,6 @@ html, body {
     margin-top: clamp(1.5rem, 3vw, 2rem);
     padding-top: 0;
     /* Keep navigation buttons on the right for mobile */
-  }
-
-  /* ===== NEWSLETTER SECTION - MOBILE ===== */
-  .newsletter-section {
-    padding: clamp(1.25rem, 4vw, 1.5rem) clamp(1.25rem, 4vw, 1.5rem) !important;
-    /* Equal padding: 20px on all sides - matches other sections */
-    text-align: center !important;
-  }
-
-  .newsletter-section__container {
-    padding: 0 !important;
-    /* Remove inner padding that was offsetting alignment */
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .newsletter-section__title {
-    font-size: clamp(1.25rem, 4.5vw, 1.5rem) !important;
-    /* Reduced heading size: 20-24px to match other sections */
-    line-height: 1.2 !important;
-    margin-bottom: clamp(0.75rem, 3vw, 1rem) !important;
-    text-align: center !important;
-  }
-
-  .newsletter-section__description {
-    font-size: clamp(0.75rem, 2.8vw, 0.875rem) !important;
-    /* Reduced description size: 12-14px */
-    line-height: 1.5 !important;
-    margin-bottom: clamp(1rem, 3vw, 1.5rem) !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    /* Align with outer margin */
-    text-align: center !important;
   }
 
   .faq-section__container {
@@ -6911,54 +6707,9 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  /* Services Grid Section Tablet */
-  .services-grid-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .services-grid-section__title {
-    font-size: clamp(1.5rem, 5vw, 1.75rem);
-  }
-
-  /* Why Trust Section Tablet */
-  .why-trust-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .why-trust-section__title {
-    font-size: clamp(1.5rem, 5vw, 1.75rem);
-  }
-
-  /* Pricing Section Tablet */
-  .pricing-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .pricing-section__title {
-    font-size: clamp(1.5rem, 5vw, 1.75rem);
-  }
-
-  /* Client Testimonials Tablet */
-  .client-testimonials-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .client-testimonials-section__title {
-    font-size: clamp(1.5rem, 5vw, 1.75rem);
-  }
-
-  /* Video Testimonials / Insights Tablet */
   .video-testimonials-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .video-testimonials-section__title {
-    font-size: clamp(1.5rem, 5vw, 1.75rem);
+    padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+    /* Responsive padding for mobile */
   }
 
   .video-testimonials-section__grid {
@@ -7010,303 +6761,17 @@ html, body {
 }
 
 @media (max-width: 480px) {
-  /* Services Grid Section Mobile */
-  .services-grid-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .services-grid-section__title {
-    font-size: clamp(1.25rem, 5vw, 1.5rem);
-    /* 20-24px */
-    line-height: 1.2;
-  }
-
-  .services-grid-section__card {
-    padding: 0.875rem;
-    /* 14px */
-  }
-
-  .services-grid-section__card-title {
-    font-size: 1rem;
-    /* 16px */
-  }
-
-  .services-grid-section__card-description {
-    font-size: 0.8125rem;
-    /* 13px */
-    line-height: 1.45;
-  }
-
-  /* Why Trust Section Mobile */
-  .why-trust-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .why-trust-section__title {
-    font-size: clamp(1.25rem, 5vw, 1.5rem);
-    /* 20-24px */
-    line-height: 1.2;
-  }
-
   .why-trust-section__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    /* 2 equal columns - minmax(0, 1fr) ensures equal widths */
-    grid-auto-rows: 1fr;
-    /* Equal heights per row */
-    gap: clamp(0.75rem, 2vw, 1rem);
-    row-gap: clamp(0.75rem, 2vw, 1rem);
-    /* Equal gap between rows and columns */
+    grid-template-columns: 1fr;
   }
 
-  /* Ensure all cards have equal width and height */
-  .why-trust-section__card {
-    width: 100% !important;
-    /* Full width of grid cell - override tablet styles */
-    min-width: 0 !important;
-    /* Prevent overflow */
-    max-width: 100% !important;
-    /* Remove any max-width constraints */
-    box-sizing: border-box;
-    /* Include padding in width calculation */
-    align-self: stretch;
-    /* Stretch to fill grid cell height */
-  }
-
-  /* Row 1: center card 3 across both columns */
-  .why-trust-section__grid > .why-trust-section__card:nth-child(3) {
-    grid-column: 1 / 3 !important;
-    grid-row: 1 !important;
-    justify-self: center !important;
-    max-width: calc(50% - clamp(0.375rem, 1vw, 0.5rem)) !important;
-    width: 100% !important;
-  }
-
-  /* Row 2: cards 1 (left) and 2 (right) */
-  .why-trust-section__grid > .why-trust-section__card:nth-child(1) {
-    grid-column: 1 !important;
-    grid-row: 2 !important;
-    justify-self: stretch !important;
-    max-width: 100% !important;
-  }
-
-  .why-trust-section__grid > .why-trust-section__card:nth-child(2) {
-    grid-column: 2 !important;
-    grid-row: 2 !important;
-    justify-self: stretch !important;
-    max-width: 100% !important;
-  }
-
-  /* Row 3: center card 4 across both columns */
   .why-trust-section__grid > .why-trust-section__card:nth-child(4) {
-    grid-column: 1 / 3 !important;
-    grid-row: 3 !important;
-    justify-self: center !important;
-    max-width: calc(50% - clamp(0.375rem, 1vw, 0.5rem)) !important;
-    width: 100% !important;
-  }
-
-  /* Row 4: cards 5 and 6 (retain existing order) */
-  .why-trust-section__grid > .why-trust-section__card:nth-child(5) {
-    grid-column: 1 !important;
-    grid-row: 4 !important;
-    justify-self: stretch !important;
-    max-width: 100% !important;
-  }
-
-  .why-trust-section__grid > .why-trust-section__card:nth-child(6) {
-    grid-column: 2 !important;
-    grid-row: 4 !important;
-    justify-self: stretch !important;
-    max-width: 100% !important;
-  }
-
-  /* Row 5: center card 7 across both columns */
-  .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
-    grid-column: 1 / 3 !important;
-    grid-row: 5 !important;
-    justify-self: center !important;
-    max-width: calc(50% - clamp(0.375rem, 1vw, 0.5rem)) !important;
-    width: 100% !important;
-  }
-
-  .why-trust-section__card {
-    padding: clamp(0.75rem, 1.5vw, 0.875rem) clamp(0.75rem, 1.5vw, 0.875rem) !important;
-    /* Reduced padding: 12-14px - override tablet styles */
-    min-height: clamp(11rem, 22vw, 13rem) !important;
-    /* Reduced min-height: 176-208px - ensure equal heights */
-    height: auto;
-    /* Allow natural height */
-    gap: clamp(0.5rem, 1.25vw, 0.75rem);
-    /* Reduced gap between elements */
-    width: 100% !important;
-    /* Full width of grid cell */
-    min-width: 0 !important;
-    /* Prevent overflow */
-    box-sizing: border-box !important;
-    /* Include padding in width calculation */
-    align-self: stretch !important;
-    /* Stretch to fill grid cell */
-  }
-
-  .why-trust-section__icon-circle {
-    width: clamp(1.75rem, 4vw, 2rem);
-    height: clamp(1.75rem, 4vw, 2rem);
-    /* Smaller icon circle: 28-32px instead of 32-40px */
-    top: clamp(0.625rem, 1.25vw, 0.75rem);
-    left: clamp(0.625rem, 1.25vw, 0.75rem);
-    /* Adjusted position for smaller icon */
-  }
-
-  .why-trust-section__diamond-icon {
-    width: 55%;
-    height: 55%;
-    /* Slightly smaller diamond */
-  }
-
-  .why-trust-section__card-title {
-    font-size: clamp(0.8125rem, 1.5vw, 0.875rem);
-    /* Reduced text size: 13-14px instead of 15px */
-    line-height: 1.35;
-    /* Tighter line-height */
-    padding-top: clamp(0.375rem, 0.875vw, 0.625rem);
-    /* Reduced top padding */
-  }
-
-  .why-trust-section__card-hover-text {
-    padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.25rem, 0.75vw, 0.375rem);
-    /* Further reduced padding to prevent overlap */
-    padding-top: clamp(1.75rem, 4vw, 2.25rem);
-    /* Reduced top padding for icon space */
-    font-size: clamp(0.6rem, 1.1vw, 0.6875rem);
-    /* Smaller hover text size: 9.6-11px to prevent overlap */
-    line-height: 1.35;
-    /* Tighter line-height */
-    gap: clamp(0.5rem, 1.25vw, 0.7rem);
-    /* Reduced gap */
-    overflow: hidden;
-    /* No scroll - hide overflow instead */
-    max-height: 100%;
-    /* Keep within card bounds */
-  }
-
-  .why-trust-section__hover-text-content {
-    font-size: clamp(0.55rem, 1vw, 0.625rem);
-    /* Smaller hover content text: 8.8-10px to prevent overlap */
-    line-height: 1.35;
-    /* Tighter line-height */
-    padding: clamp(0.125rem, 0.5vw, 0.25rem);
-    /* Reduced padding */
-  }
-
-  .why-trust-section__grid {
-    gap: clamp(0.75rem, 2vw, 1rem);
-    row-gap: clamp(0.75rem, 2vw, 1rem);
-    /* Reduced grid gap to maintain spacing */
-  }
-
-  .why-trust-section__title {
-    font-size: clamp(1.25rem, 5vw, 1.5rem);
-    /* Reduced title size: 20-24px */
-    margin-bottom: clamp(1.5rem, 3vw, 2rem);
-    /* Reduced bottom margin */
-    max-width: clamp(18rem, 85vw, 22rem);
-    /* Limit width to force two-line wrap */
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.2;
-  }
-
-  /* Pricing Section Mobile */
-  .pricing-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .pricing-section__title {
-    font-size: clamp(1.25rem, 5vw, 1.5rem);
-    /* 20-24px */
-    line-height: 1.2;
+    grid-column: 1;
+    grid-row: 4;
   }
 
   .pricing-section__grid {
     grid-template-columns: 1fr;
-    gap: 0.875rem;
-  }
-
-  .pricing-section__card {
-    padding: 0.875rem;
-    /* 14px */
-  }
-
-  .pricing-section__price-amount {
-    font-size: 1.375rem;
-    /* 22px */
-  }
-
-  .pricing-section__card-description {
-    font-size: 0.8125rem;
-    /* 13px */
-    line-height: 1.45;
-  }
-
-  .pricing-section__feature {
-    font-size: 0.8125rem;
-    /* 13px */
-    line-height: 1.45;
-  }
-
-  /* Client Testimonials Mobile */
-  .client-testimonials-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .client-testimonials-section__title {
-    font-size: clamp(1.25rem, 5vw, 1.5rem);
-    /* 20-24px */
-    line-height: 1.2;
-  }
-
-  .client-testimonials-section__quote {
-    padding: 0.875rem;
-    /* 14px */
-  }
-
-  .client-testimonials-section__quote-text {
-    font-size: 0.9375rem;
-    /* 15px */
-    line-height: 1.5;
-  }
-
-  .client-testimonials-section__author-name {
-    font-size: 0.875rem;
-    /* 14px */
-  }
-
-  .client-testimonials-section__author-title {
-    font-size: 0.8125rem;
-    /* 13px */
-  }
-
-  /* Video Testimonials / Insights Mobile */
-  .video-testimonials-section {
-    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
-    /* 20px horizontal padding */
-  }
-
-  .video-testimonials-section__title {
-    font-size: clamp(1.25rem, 5vw, 1.5rem);
-    /* 20-24px */
-    line-height: 1.2;
-  }
-
-  .video-testimonials-section__card-title {
-    font-size: 0.875rem;
-    /* 14px */
-    line-height: 1.35;
   }
 }
 /* ============================================ ABOUT PAGE STYLES ============================================ */ 
@@ -7951,7 +7416,7 @@ html, body {
 } @media (max-width: 768px) { .about-intro { padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem); overflow: visible; } .about-intro__chip { display: inline-flex; margin-bottom: clamp(1rem, 2vw, 1.5rem); width: fit-content; } .about-intro__grid { grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2rem); } .about-intro__title { font-size: clamp(1.5rem, 5vw, 1.75rem); } .about-intro__description { font-size: clamp(14px, 2vw, 16px); } .about-intro__media { order: 2; margin-bottom: 2rem; position: relative; overflow: visible; } .about-intro__media img { max-width: 100%; margin-left: 0; } .about-intro__stats { position: static; max-width: 100%; margin-top: 1.5rem; left: auto; bottom: auto; display: flex; flex-direction: column; gap: 0.75rem; } .about-intro__stat-card { min-width: 100%; width: 100%; } .about-intro__stat-card:last-child { margin-left: 0; } .about-intro__callout { position: static; transform: none; width: 100%; margin-top: 1.5rem; right: auto; top: auto; } .about-intro__callout-title { font-size: clamp(1.125rem, 3vw, 1.25rem); } .about-intro__callout-text { font-size: clamp(14px, 2vw, 16px); } .about-intro__callout-list { font-size: clamp(14px, 2vw, 16px); } } 
 /* Core Values Section */
 .core-values {
-  padding: clamp(1.5rem, 2.5vw, 2rem) clamp(40px, 4vw, 5rem) clamp(0.5rem, 1vw, 0.75rem) clamp(40px, 4vw, 5rem);
+  padding: clamp(1.5rem, 2.5vw, 2rem) clamp(40px, 4vw, 5rem) clamp(0rem, 0vw, 0.25rem) clamp(40px, 4vw, 5rem);
   background: #ffffff;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
@@ -8249,7 +7714,7 @@ html, body {
 
 @media (max-width: 768px) {
   .core-values {
-    padding: clamp(1.5rem, 2.5vw, 2rem) clamp(20px, 3vw, 40px) clamp(0.5rem, 1vw, 0.75rem) clamp(20px, 3vw, 40px);
+    padding: clamp(1.5rem, 2.5vw, 2rem) clamp(20px, 3vw, 40px) clamp(0rem, 0vw, 0.25rem) clamp(20px, 3vw, 40px);
   }
   
   .core-values__title {
@@ -8333,10 +7798,14 @@ html, body {
 }
 
 .about-team__content { 
-  display: flex;
-  flex-direction: column;
-  gap: 0; 
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
   align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-items: center;
 } 
 
 .about-team__grid {
@@ -8432,17 +7901,19 @@ html, body {
     margin-bottom: clamp(1rem, 2vw, 1.5rem);
     padding: 0 clamp(1rem, 2vw, 1.5rem);
   } 
-  .about-team__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1.5rem, 3vw, 2rem);
-    max-width: 100%;
+  .about-team__content {
+    grid-template-columns: 1fr !important;
+    gap: clamp(2rem, 4vw, 3rem) !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+    justify-items: center !important;
   }
   .about-team__image-wrapper {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
     aspect-ratio: 3 / 4;
     border-radius: 0.75rem;
-    overflow: hidden;
+  overflow: hidden;
   }
   .about-team__avatar {
     width: 100% !important;
@@ -8490,10 +7961,12 @@ html, body {
     margin-bottom: clamp(1rem, 2vw, 1.5rem);
     padding: 0 clamp(1rem, 2vw, 1.5rem);
   }
-  .about-team__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1.5rem, 3vw, 2rem);
-    max-width: 100%;
+  .about-team__content {
+    grid-template-columns: 1fr !important;
+    gap: clamp(2rem, 4vw, 3rem) !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+    justify-items: center !important;
   }
   .about-team__person {
     max-width: 100%;
@@ -8512,7 +7985,7 @@ html, body {
     height: 100% !important;
     object-fit: cover !important;
     object-position: 50% 0% !important;
-    display: block;
+  display: block;
     position: absolute;
     top: -5% !important;
     left: 0;
@@ -8549,10 +8022,12 @@ html, body {
   .about-team__subtitle {
     font-size: clamp(13px, 2vw, 15px);
   }
-  .about-team__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1.5rem, 3vw, 2rem);
-    max-width: 100%;
+  .about-team__content {
+    grid-template-columns: 1fr !important;
+    gap: clamp(2rem, 4vw, 3rem) !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+    justify-items: center !important;
   }
   .about-team__image-wrapper {
     max-width: 100%;
@@ -11224,7 +10699,7 @@ html, body {
   }
 
   .service-consultation__contact {
-  flex-direction: column;
+    flex-direction: column;
     gap: 0.75rem;
   }
 
@@ -13880,4 +13355,84 @@ html, body {
     justify-content: center;
   }
 }
+
+/* Responsive styles for Auditing Hero */
+@media (max-width: 1024px) {
+  .service-page .service-hero--auditing .service-hero__grid--auditing {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+  }
+
+  .service-page .service-hero--auditing .service-hero__content-column {
+    height: auto;
+    padding: clamp(2rem, 4vw, 3rem);
+  }
+
+  .service-page .service-hero--auditing .service-hero__image-column {
+    min-height: clamp(18rem, 45vw, 22rem);
+  }
+
+  .service-page .service-hero--auditing .service-hero__cta-column {
+    flex-direction: row;
+    justify-content: center;
+    gap: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  .service-page .service-hero--auditing .service-hero__cta-button {
+    min-width: 180px;
+    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1.25rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.8125rem, 1.5vw, 0.875rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .service-page .service-hero--auditing .service-hero__grid--auditing {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+  }
+
+  .service-page .service-hero--auditing .service-hero__image-column {
+    min-height: clamp(16rem, 40vw, 20rem);
+  }
+
+  .service-page .service-hero--auditing .service-hero__content-column {
+    height: auto;
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .service-page .service-hero--auditing .service-hero__cta-column {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(0.5rem, 2vw, 0.75rem);
+    width: 100%;
+  }
+
+  .service-page .service-hero--auditing .service-hero__cta-button {
+    flex: 1 1 auto;
+    min-width: 140px;
+    max-width: 200px;
+    padding: clamp(0.5rem, 1.5vw, 0.625rem) clamp(1rem, 3vw, 1.25rem);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-page .service-hero--auditing .service-hero__cta-column {
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(0.5rem, 2vw, 0.75rem);
+  }
+
+  .service-page .service-hero--auditing .service-hero__cta-button {
+    width: 100%;
+    max-width: 100%;
+    min-width: unset;
+    justify-content: center;
+  }
+}
+
 

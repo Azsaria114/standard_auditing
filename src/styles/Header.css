@@ -601,3 +601,30 @@
     display: none;
     /* Hide separator on mobile */
   }
+
+  }
+  .site-header__nav--open .site-header__cta--sidebar .site-header__cta-arrow {
+    color: #0A3D62;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .site-header__nav--open .site-header__cta--sidebar:hover .site-header__cta-arrow {
+    color: white;
+  }
+  .site-header__cta {
+    display: none;
+    /* Hide CTA button on mobile */
+  }
+  .site-header__logo-section {
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    /* Tighter gap in logo section on mobile */
+  }
+  .site-header__logo-image {
+    height: clamp(1.75rem, 4.5vw, 2.5rem);
+    /* Smaller logo on mobile */
+  }
+  .site-header__separator {
+    display: none;
+    /* Hide separator on mobile */
+  }
