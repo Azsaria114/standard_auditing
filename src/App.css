@@ -3011,14 +3011,43 @@ html, body {
 .site-header__services-dropdown .site-header__nav-link {
   background: transparent !important;
   border: none !important;
-  padding: 0;
   box-shadow: none !important;
+  outline: none !important;
 }
 
 .site-header__services-dropdown button.site-header__nav-link {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Ensure Services dropdown button matches other nav links in mobile menu */
+@media (max-width: 1024px) {
+  .site-header__nav--open .site-header__services-dropdown .site-header__nav-link {
+    padding: clamp(1rem, 2vw, 1.25rem) clamp(0.75rem, 1.5vw, 1rem) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    border-bottom: 0.0625rem solid rgba(10, 61, 98, 0.08) !important;
+    border-radius: clamp(0.375rem, 0.75vw, 0.5rem) !important;
+    font-size: clamp(1rem, 2vw, 1.125rem) !important;
+    font-weight: 500 !important;
+    color: #0A3D62 !important;
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-align: left !important;
+    background: transparent !important;
+  }
+
+  .site-header__nav--open .site-header__services-dropdown .site-header__nav-link:hover {
+    background: rgba(10, 61, 98, 0.06) !important;
+    color: #0A3D62 !important;
+    transform: translateX(0.375rem) !important;
+    border-left: 0.25rem solid #0A3D62 !important;
+    box-shadow: -0.25rem 0 0.5rem rgba(10, 61, 98, 0.05) !important;
+  }
 }
 
 .site-header__dropdown-menu {
@@ -3027,26 +3056,40 @@ html, body {
   left: 0;
   margin-top: clamp(0.5rem, 1vw, 0.75rem);
   background: white;
-  border: none;
-  border-radius: clamp(0.375rem, 0.75vw, 0.5rem);
-  box-shadow: 0 clamp(0.5rem, 1.5vw, 1rem) clamp(1.5rem, 4vw, 3rem) rgba(10, 61, 98, 0.15);
-  min-width: clamp(12rem, 25vw, 18rem);
+  border: 0.0625rem solid rgba(10, 61, 98, 0.1);
+  border-radius: clamp(0.5rem, 1vw, 0.75rem);
+  box-shadow: 0 clamp(0.5rem, 1.5vw, 1.25rem) clamp(1.5rem, 4vw, 3.5rem) rgba(10, 61, 98, 0.12),
+              0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.5rem, 1vw, 1rem) rgba(10, 61, 98, 0.08);
+  min-width: clamp(14rem, 28vw, 20rem);
   z-index: 1001;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .site-header__dropdown-item {
   display: block;
-  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(0.875rem, 1.5vw, 1.125rem) clamp(1.25rem, 2.5vw, 1.75rem);
   color: #2c2c2c;
   text-decoration: none;
   font-size: clamp(0.875rem, 1.75vw, 1rem);
   font-weight: 500;
-  transition: all 0.2s ease;
-  border-bottom: 0.0625rem solid rgba(10, 61, 98, 0.08);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 0.0625rem solid rgba(10, 61, 98, 0.06);
   white-space: nowrap;
+  position: relative;
 }
 
 .site-header__dropdown-item:last-child {
@@ -3054,36 +3097,50 @@ html, body {
 }
 
 .site-header__dropdown-item:hover {
-  background: rgba(10, 61, 98, 0.05);
+  background: rgba(10, 61, 98, 0.06);
   color: #0A3D62;
-  padding-left: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding-left: clamp(1.5rem, 3vw, 2rem);
 }
 
 /* Mobile dropdown styles */
 @media (max-width: 1024px) {
   .site-header__services-dropdown {
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .site-header__dropdown-menu {
     position: static;
-    margin-top: 0;
+    margin-top: clamp(0.5rem, 1vw, 0.75rem);
     margin-left: clamp(1rem, 2vw, 1.5rem);
     box-shadow: none;
     border: none;
-    border-left: 0.1875rem solid rgba(10, 61, 98, 0.2);
-    border-radius: 0;
-    background: rgba(10, 61, 98, 0.02);
+    border-left: 0.25rem solid rgba(10, 61, 98, 0.25);
+    border-radius: clamp(0.375rem, 0.75vw, 0.5rem);
+    background: rgba(10, 61, 98, 0.03);
+    width: calc(100% - clamp(1rem, 2vw, 1.5rem));
+    animation: none;
   }
 
   .site-header__dropdown-item {
-    padding: clamp(0.875rem, 1.75vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+    padding: clamp(0.875rem, 1.75vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem);
     font-size: clamp(0.9375rem, 1.875vw, 1.0625rem);
+    width: 100%;
+    display: block;
+    border-bottom: 0.0625rem solid rgba(10, 61, 98, 0.08);
+  }
+
+  .site-header__dropdown-item:last-child {
+    border-bottom: none;
   }
 
   .site-header__dropdown-item:hover {
-    padding-left: clamp(1.25rem, 2.5vw, 1.5rem);
+    padding-left: clamp(1.5rem, 3vw, 2rem);
+    background: rgba(10, 61, 98, 0.06);
+    transform: translateX(0.25rem);
   }
+
 }
 
 .site-header__cta {

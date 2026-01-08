@@ -8,13 +8,14 @@ import manoj from '../assets/Manoj.jpg'
 import nathan from '../assets/Nathan.png'
 import ramachandran from '../assets/Ramachandran.jpg'
 import vikram from '../assets/Vikram.jpg'
-// Partner logos for About page - using public folder for better Vercel compatibility (renamed to remove spaces)
-const jafzaLogo = '/jafza.jpeg'
-const dmccLogo = '/dmcc.jpeg'
-const dafzaLogo = '/dubai_free_zone.jpeg'
-const difcLogo = '/dubai_international.jpeg'
-const shamsLogo = '/media-city.jpeg'
-const whatWeStandForImage = '/what-we-stand-for.jpeg'
+// Partner logos for About page - using JPG/PNG images from assets folder
+import jafzaLogo from '../assets/Jebel Ali Free Zone.jpg'
+import dmccLogo from '../assets/dmcc.jpg'
+import dafzaLogo from '../assets/dubai_airport.jpg'
+import difcLogo from '../assets/dubaifinancial_center.png'
+import shamsLogo from '../assets/sharjah.jpg'
+import meydanLogo from '../assets/meydan.jpeg'
+import whatMakesUsImage from '../assets/whatmakesus.png'
 // Core Values Icons
 import accountabilityIcon from '../assets/puzzle.svg?url'
 import integrityIcon from '../assets/shield.svg?url'
@@ -64,7 +65,7 @@ function About() {
           <div className="about-partners__container">
             <div className="about-partners__loop">
               <div className="about-partners__track">
-                {/* First set - Order: Jafza, DAFZA, DIFC, Shams, DMCC */}
+                {/* First set - Order: Jafza, DAFZA, DIFC, Shams, DMCC, Meydan */}
                 <div className="about-partners__logo">
                   <img src={jafzaLogo} alt="Jafza - Jebel Ali Free Zone" loading="lazy" />
                 </div>
@@ -79,6 +80,9 @@ function About() {
                 </div>
                 <div className="about-partners__logo">
                   <img src={dmccLogo} alt="DMCC - Dubai Multi Commodities Centre" />
+                </div>
+                <div className="about-partners__logo">
+                  <img src={meydanLogo} alt="Meydan" />
                 </div>
                 {/* Duplicate set for seamless loop */}
                 <div className="about-partners__logo">
@@ -96,6 +100,9 @@ function About() {
                 <div className="about-partners__logo">
                   <img src={dmccLogo} alt="DMCC - Dubai Multi Commodities Centre" loading="lazy" />
                 </div>
+                <div className="about-partners__logo">
+                  <img src={meydanLogo} alt="Meydan" loading="lazy" />
+                </div>
               </div>
             </div>
           </div>
@@ -111,8 +118,8 @@ function About() {
               </h2>
               <div className="about-intro__media">
                 <img
-                  src={whatWeStandForImage}
-                  alt="Professional business meeting discussion"
+                  src={whatMakesUsImage}
+                  alt="What Makes Us Different"
                   loading="lazy"
                 />
               </div>
@@ -260,6 +267,7 @@ function About() {
                         src={member.image} 
                         alt={member.name}
                         className="about-team__avatar"
+                        loading="lazy"
                       />
                       <div className="about-team__info-card">
                         <div className="about-team__name h6-montserrat">{member.name}</div>

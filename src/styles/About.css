@@ -79,8 +79,8 @@
   order: 2 !important;
 }
 .about-hero__support-content {
-  max-width: 100%;
-  margin: 0;
+  max-width: clamp(45rem, 85vw, 70rem);
+  margin: 0 auto;
 }
 .about-hero__support-text {
   margin: 0;
@@ -88,6 +88,7 @@
   line-height: 1.6;
   font-family: 'Open Sans', sans-serif;
   color: white;
+  max-width: 100%;
   text-align: center;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -176,7 +177,7 @@
     min-width: 130px;
   }
 .about-intro {
-  padding: clamp(4rem, 4vw, 4.5rem) clamp(40px, 4vw, 5rem) clamp(1.5rem, 2.5vw, 2rem) clamp(40px, 4vw, 5rem); 
+  padding: clamp(4rem, 4vw, 4.5rem) clamp(40px, 4vw, 5rem) clamp(4rem, 4vw, 4.5rem) clamp(40px, 4vw, 5rem); 
   background: #0A3D62; 
   position: relative;
   z-index: 2;
@@ -261,7 +262,7 @@
   line-height: 1.2;
 } .about-intro__description { margin: 0 0 1.5rem 0; color: #2E2E2E; line-height: 1.6; max-width: 100%; font-size: 20px; font-family: 'Open Sans', sans-serif; } .about-intro__text { max-width: 32rem; width: 100%; } .about-intro__stats { position: absolute; left: clamp(-19rem, -23vw, -20rem); bottom: clamp(0.5rem, 1vw, 1rem); display: flex; flex-direction: column; gap: 0.75rem; z-index: 2; max-width: calc(48% - 0.5rem); overflow: visible; } @media (max-width: 1200px) { .about-intro { overflow: visible; } .about-intro__stats { left: clamp(-15rem, -18vw, -16rem); max-width: calc(45% - 0.5rem); bottom: clamp(1rem, 1.5vw, 1.5rem); } .about-intro__callout { width: min(350px, 75%); right: clamp(-3rem, -4vw, -2rem); top: clamp(1.5rem, 2.5vw, 2rem); } .about-intro__text { padding-right: clamp(1rem, 2vw, 1.5rem); } } @media (max-width: 900px) { 
   .about-intro { 
-    padding: clamp(2.5rem, 5vw, 3rem) clamp(20px, 3vw, 40px); 
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(20px, 3vw, 40px) clamp(2.5rem, 5vw, 3rem) clamp(20px, 3vw, 40px); 
     overflow: visible; 
   } 
   .about-intro__chip { 
@@ -341,7 +342,7 @@
 /* Tablet Styles for About Intro */
 @media (max-width: 1024px) {
   .about-intro { 
-    padding: clamp(3rem, 6vw, 4rem) clamp(40px, 4vw, 5rem); 
+    padding: clamp(3rem, 6vw, 4rem) clamp(40px, 4vw, 5rem) clamp(3rem, 6vw, 4rem) clamp(40px, 4vw, 5rem); 
     overflow: visible; 
   } 
   .about-intro__chip { 
@@ -395,7 +396,7 @@
   } 
 } @media (max-width: 768px) { .about-intro { padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem); overflow: visible; } .about-intro__chip { display: inline-flex; margin-bottom: clamp(1rem, 2vw, 1.5rem); width: fit-content; } .about-intro__grid { grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2rem); } .about-intro__title { font-size: clamp(1.5rem, 5vw, 1.75rem); } .about-intro__description { font-size: clamp(14px, 2vw, 16px); } .about-intro__media { order: 2; margin-bottom: 2rem; position: relative; overflow: visible; } .about-intro__media img { max-width: 100%; margin-left: 0; } .about-intro__stats { position: static; max-width: 100%; margin-top: 1.5rem; left: auto; bottom: auto; display: flex; flex-direction: column; gap: 0.75rem; } .about-intro__stat-card { min-width: 100%; width: 100%; } .about-intro__stat-card:last-child { margin-left: 0; } .about-intro__callout { position: static; transform: none; width: 100%; margin-top: 1.5rem; right: auto; top: auto; } .about-intro__callout-title { font-size: clamp(1.125rem, 3vw, 1.25rem); } .about-intro__callout-text { font-size: clamp(14px, 2vw, 16px); } .about-intro__callout-list { font-size: clamp(14px, 2vw, 16px); } } 
 .about-team {
-  padding: clamp(4rem, 8vw, 6rem) clamp(40px, 4vw, 5rem);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(40px, 4vw, 5rem) clamp(4rem, 8vw, 6rem) clamp(40px, 4vw, 5rem);
   background: white;
 }
 
@@ -510,7 +511,7 @@
 /* Tablet Styles */
 @media (max-width: 1024px) {
   .about-team { 
-    padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 3rem) !important; 
+    padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem) clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 3rem) !important; 
   } 
   .about-team__container {
     gap: clamp(0.75rem, 1.5vw, 1rem);
@@ -541,7 +542,7 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
   .about-team { 
-    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem) !important; 
+    padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 2rem) clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem) !important; 
   } 
   .about-team__container {
     gap: clamp(0.75rem, 1.5vw, 1rem);
@@ -584,7 +585,7 @@
 /* Small Mobile Styles */
 @media (max-width: 480px) {
   .about-team {
-    padding: clamp(2rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem) !important;
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(2rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem) !important;
   }
   .about-team__title {
     font-size: clamp(1.125rem, 5vw, 1.5rem) !important;
@@ -704,7 +705,7 @@
     font-size: clamp(17px, 2vw, 18px) !important;
   }
   .about-intro {
-    padding: clamp(4rem, 4vw, 4.5rem) clamp(40px, 4vw, 5rem) clamp(1.5rem, 2.5vw, 2rem) clamp(40px, 4vw, 5rem) !important;
+    padding: clamp(4rem, 4vw, 4.5rem) clamp(40px, 4vw, 5rem) clamp(4rem, 4vw, 4.5rem) clamp(40px, 4vw, 5rem) !important;
   }
   .about-intro__grid {
     grid-template-columns: 1fr 1fr !important;
@@ -744,7 +745,7 @@
     max-width: 87.5rem !important;
   }
   .about-team {
-    padding: clamp(4rem, 8vw, 6rem) clamp(40px, 4vw, 5rem) !important;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(40px, 4vw, 5rem) clamp(4rem, 8vw, 6rem) clamp(40px, 4vw, 5rem) !important;
   }
   .about-team__title {
     font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
@@ -777,7 +778,7 @@
   }
   /* Core Values Section - override App.css */
   .core-values {
-    padding: clamp(1.5rem, 2.5vw, 2rem) clamp(40px, 4vw, 5rem) clamp(0.5rem, 1vw, 0.75rem) clamp(40px, 4vw, 5rem) !important;
+    padding: clamp(1.5rem, 2.5vw, 2rem) clamp(40px, 4vw, 5rem) clamp(0.25rem, 0.5vw, 0.5rem) clamp(40px, 4vw, 5rem) !important;
   }
   .core-values__grid {
     grid-template-columns: repeat(4, 1fr) !important;
