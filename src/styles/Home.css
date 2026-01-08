@@ -402,12 +402,12 @@
 }
 .hero__stat-label {
   margin: 0;
-  color: #c0c0c0;
+  color: white;
   font-size: clamp(0.9375rem, 2vw, 1.125rem);
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
-  /* Labels with #c0c0c0 color */
+  /* Labels with white color for better visibility on dark blue background */
 }
   .hero__media {
     grid-template-columns: 1fr;

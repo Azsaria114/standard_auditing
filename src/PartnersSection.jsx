@@ -1,23 +1,22 @@
 import { useState, useEffect, useRef } from 'react'
-import section2Image from './assets/section2.jpg'
-import rakLogo from './assets/rak.jpg'
 import jafzaLogo from './assets/Jebel Ali Free Zone.jpg'
-import legrandLogo from './assets/legrand.jpg'
-import ajmanLogo from './assets/ajman.jpg'
+import dafzaLogo from './assets/dubai_airport.jpg'
 import dmccLogo from './assets/dmcc.jpg'
-import carlStahlLogo from './assets/carlstahl.jpg'
-import creativeCityLogo from './assets/creativecity.jpg'
+import meydanLogo from './assets/meydan.jpeg'
+import shamsLogo from './assets/sharjah.png'
+import dsoLogo from './assets/dso.jpg'
+import ifzaLogo from './assets/ifza.png'
 import saLogo from './assets/sa_logo.jpg'
-import standardAuditingLogo from './assets/standard_auditing_logo.png'
 
-const partners = [
-  { name: 'RAK Free Trade Zone', logo: rakLogo },
-  { name: 'Jebel Ali Free Zone', logo: jafzaLogo },
-  { name: 'Legrand', logo: legrandLogo },
-  { name: 'Ajman free zone', logo: ajmanLogo },
-  { name: 'Dubai Multi commodities centre', logo: dmccLogo },
-  { name: 'Carl Stahl', logo: carlStahlLogo },
-  { name: 'Creative City', logo: creativeCityLogo },
+// Free zones where we are registered auditors
+const freeZones = [
+  { name: 'DMCC', logo: dmccLogo },
+  { name: 'DAFZA', logo: dafzaLogo },
+  { name: 'JAFZA', logo: jafzaLogo },
+  { name: 'DSO', logo: dsoLogo },
+  { name: 'IFZA', logo: ifzaLogo },
+  { name: 'MEYDAN', logo: meydanLogo },
+  { name: 'SHMAS', logo: shamsLogo },
 ]
 
 const valuesSliderContent = [
@@ -31,14 +30,11 @@ const valuesSliderContent = [
 
 function PartnersSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isCardVisible, setIsCardVisible] = useState(false)
+  const [isCardVisible, setIsCardVisible] = useState(true)
   const cardRef = useRef(null)
 
   // Viewport animation - triggers once when card enters viewport
   useEffect(() => {
-    // Set card as visible immediately, then animate if needed
-    setIsCardVisible(true)
-    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -82,12 +78,20 @@ function PartnersSection() {
       </h2>
       <div className="partners-section__container">
         <div className="partners-section__grid">
-          {partners.map((partner, index) => (
-            <div key={index} className={`partners-section__card ${index === 2 ? 'partners-section__card--legrand' : ''} ${index === 5 ? 'partners-section__card--carlstahl' : ''}`}>
+          {freeZones.map((zone, index) => (
+            <div key={index} className={`partners-section__card ${zone.name === 'MEYDAN' ? 'partners-section__card--meydan' : ''}`}>
               <div className="partners-section__logo">
-                <img src={partner.logo} alt={partner.name} className="partners-section__logo-img" />
+                <img 
+                  src={zone.logo} 
+                  alt={zone.name} 
+                  className={`partners-section__logo-img ${
+                    zone.name === 'MEYDAN' ? 'partners-section__logo-img--meydan' : 
+                    zone.name === 'IFZA' ? 'partners-section__logo-img--ifza' :
+                    zone.name === 'DSO' ? 'partners-section__logo-img--dso' :
+                    zone.name === 'SHMAS' ? 'partners-section__logo-img--shmas' : ''
+                  }`} 
+                />
               </div>
-              <p className="partners-section__name body-opensans">{partner.name}</p>
             </div>
           ))}
         </div>
