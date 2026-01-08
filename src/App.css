@@ -7806,8 +7806,9 @@ html, body {
 .about-team__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(1.5rem, 2.5vw, 2rem);
   width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -7820,6 +7821,7 @@ html, body {
   border-radius: 0.75rem;
   padding: 0;
   overflow: hidden;
+  width: 100%;
 }
 
 .about-team__image-wrapper {
@@ -7828,19 +7830,22 @@ html, body {
   border-radius: 0.75rem;
   overflow: hidden;
   aspect-ratio: 3 / 4;
-  background: transparent;
+  background: #f0f0f0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .about-team__avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 0%;
+  object-position: center center;
   display: block;
   position: absolute;
-  top: -5%;
+  top: 0;
   left: 0;
-  transform: scale(1.15);
+  z-index: 1;
 }
 
 .about-team__info-card {
@@ -7849,11 +7854,12 @@ html, body {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: clamp(0.875rem, 1.5vw, 1rem) clamp(0.75rem, 1.25vw, 0.875rem);
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  z-index: 2;
 }
 
 .about-team__name {
@@ -7876,7 +7882,8 @@ html, body {
   font-weight: 300;
 }
 
-@media (max-width: 1024px) {
+/* Tablet Styles - 2 columns */
+@media (min-width: 769px) and (max-width: 1024px) {
   .about-team { 
     padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
     /* Responsive padding matching About section */
@@ -7901,25 +7908,35 @@ html, body {
   }
   .about-team__grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: clamp(1rem, 2vw, 1.5rem) !important;
+    gap: clamp(1.5rem, 3vw, 2rem) !important;
+    max-width: 100% !important;
+  }
+  .about-team__person {
+    width: 100%;
+    max-width: 100%;
   }
   .about-team__image-wrapper {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
     aspect-ratio: 3 / 4;
     border-radius: 0.75rem;
-  overflow: hidden;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
   .about-team__avatar {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: 50% 0% !important;
+    object-position: center center !important;
     display: block;
     position: absolute;
-    top: 0;
+    top: 0 !important;
     left: 0;
-    transform: translateY(-1%) scale(1.0) !important;
+    z-index: 1 !important;
+    transform: none !important;
   }
   .about-team__info-card {
     position: absolute !important;
@@ -7985,6 +8002,19 @@ html, body {
     overflow: hidden;
     margin: 0 auto;
   }
+  .about-team__image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 3 / 4;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 0 auto;
+  }
   .about-team__avatar {
     width: 100% !important;
     height: 100% !important;
@@ -7992,9 +8022,10 @@ html, body {
     object-position: center center !important;
     display: block;
     position: absolute;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    top: 0 !important;
+    left: 0;
+    z-index: 1 !important;
+    transform: none !important;
   }
   .about-team__info-card {
     position: absolute !important;
@@ -8056,6 +8087,19 @@ html, body {
     overflow: hidden;
     margin: 0 auto;
   }
+  .about-team__image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 3 / 4;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 0 auto;
+  }
   .about-team__avatar {
     width: 100% !important;
     height: 100% !important;
@@ -8063,8 +8107,9 @@ html, body {
     object-position: center center !important;
     display: block;
     position: absolute;
-    top: 0;
+    top: 0 !important;
     left: 0;
+    z-index: 1 !important;
     transform: none !important;
   }
 }
@@ -11137,27 +11182,95 @@ html, body {
   border: 2px solid #0A3D62;
   border-radius: 0.5rem;
   background: white;
-  color: rgba(10, 61, 98, 0.6);
+  color: #2C2C2C;
   transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .career-application__textarea {
-  color: #2C2C2C;
   resize: vertical;
   min-height: 100px;
-  border: 2px solid #0A3D62 !important;
+  line-height: 1.5;
+}
+.career-application__input::-webkit-input-placeholder,
+.career-application__textarea::-webkit-input-placeholder {
+  color: rgba(10, 61, 98, 0.35) !important;
+  opacity: 1 !important;
+}
+.career-application__input::-moz-placeholder,
+.career-application__textarea::-moz-placeholder {
+  color: rgba(10, 61, 98, 0.35) !important;
+  opacity: 1 !important;
+}
+.career-application__input:-ms-input-placeholder,
+.career-application__textarea:-ms-input-placeholder {
+  color: rgba(10, 61, 98, 0.35) !important;
+  opacity: 1 !important;
+}
+.career-application__input:focus::-webkit-input-placeholder,
+.career-application__textarea:focus::-webkit-input-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:focus::-moz-placeholder,
+.career-application__textarea:focus::-moz-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:focus:-ms-input-placeholder,
+.career-application__textarea:focus:-ms-input-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
 }
 
 .career-application__input::placeholder,
 .career-application__textarea::placeholder {
-  color: rgba(10, 61, 98, 0.6);
+  color: rgba(10, 61, 98, 0.35) !important;
+  opacity: 1 !important;
 }
 
+.career-application__input:focus::placeholder,
+.career-application__textarea:focus::placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+
+.career-application__input:not(:placeholder-shown)::placeholder,
+.career-application__textarea:not(:placeholder-shown)::placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+  display: none !important;
+}
+.career-application__input:not(:placeholder-shown)::-webkit-input-placeholder,
+.career-application__textarea:not(:placeholder-shown)::-webkit-input-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:not(:placeholder-shown)::-moz-placeholder,
+.career-application__textarea:not(:placeholder-shown)::-moz-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:not(:placeholder-shown):-ms-input-placeholder,
+.career-application__textarea:not(:placeholder-shown):-ms-input-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
 .career-application__input:focus,
 .career-application__textarea:focus {
   outline: none;
   border-color: #0A3D62;
   box-shadow: 0 0 0 3px rgba(10, 61, 98, 0.1);
+  color: #2C2C2C !important;
+}
+.career-application__input:not(:placeholder-shown),
+.career-application__textarea:not(:placeholder-shown) {
+  color: #2C2C2C !important;
+}
+.career-application__input,
+.career-application__textarea {
+  color: #2C2C2C !important;
 }
 
 
