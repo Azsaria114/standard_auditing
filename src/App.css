@@ -331,6 +331,8 @@ html, body {
   padding: clamp(0.625rem, 1.25vw, 0.75rem) clamp(1.5rem, 3vw, 2.25rem);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none !important;
+  display: inline-block;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2691,46 +2693,37 @@ html, body {
   flex-direction: column;
   position: relative;
   box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.25rem, 1vw, 0.5rem) rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   aspect-ratio: auto;
   min-height: clamp(14rem, 22vw, 18rem);
   justify-content: space-between;
   overflow: hidden;
-  /* White card with dark blue border - reduced height slightly */
+  /* White card with dark blue border - static with color hover only */
 }
 
 .services-grid-section__card::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 0;
-  bottom: 0;
-  right: 0;
+  inset: 0;
   background: #0A3D62;
   opacity: 0;
-  border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: inherit;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
   pointer-events: none;
-  /* Hidden initially, expands smoothly on hover - lowest z-index */
+  /* Hidden initially, only opacity changes on hover - no size animation */
 }
 
 .services-grid-section__card:hover {
-  transform: translateY(-0.125rem);
-  box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 1rem) rgba(0, 0, 0, 0.1);
   border-color: #0A3D62;
-  /* Hover effect */
+  background: #0A3D62;
+  /* Hover effect - only background color changes, no size/shadow animation */
 }
 
 .services-grid-section__card:hover::after {
   background: #0A3D62;
-  width: 100%;
-  height: 100%;
-  bottom: 0;
-  right: 0;
   opacity: 1;
-  border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
-  /* Full blue background expansion on hover - no triangle indicator */
+  /* Full blue background on hover - only opacity changes, no size animation */
 }
 
 .services-grid-section__icon-container {
@@ -2817,8 +2810,7 @@ html, body {
 
 .services-grid-section__card:hover .services-grid-section__card-description {
   color: rgba(255, 255, 255, 0.95);
-  font-size: calc(1em - 1px);
-  /* Description turns white on hover when card is blue, font size reduced by 1px */
+  /* Description turns white on hover when card is blue - no font size change */
 }
 
 .services-grid-section__expand-btn {
@@ -4361,6 +4353,9 @@ html, body {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: clamp(0.75rem, 2vw, 1rem) 0 clamp(1rem, 2.5vw, 1.5rem) 0;
+  text-decoration: none !important;
+  display: inline-block;
+  text-align: center;
   width: 100%;
   box-sizing: border-box;
   box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(1.25rem, 3vw, 2.5rem) rgba(31, 41, 51, 0.15);
@@ -5120,6 +5115,7 @@ html, body {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
+  text-decoration: none !important;
   align-items: center;
   gap: clamp(0.5rem, 1vw, 0.75rem);
   width: fit-content;
@@ -7609,7 +7605,8 @@ html, body {
 .about-team {
   background: white;
   color: #0A3D62;
-  padding: clamp(0.25rem, 0.75vw, 0.5rem) clamp(40px, 4vw, 150px) clamp(2rem, 3vw, 2.5rem) clamp(40px, 4vw, 150px);
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
 }
 
 .about-team__container {
@@ -7647,10 +7644,11 @@ html, body {
 .about-team__subtitle {
   margin: 0 auto clamp(1rem, 2vw, 1.25rem) auto;
   color: #2E2E2E;
-  font-size: 18px;
+  font-size: clamp(16px, 2vw, 18px);
   line-height: 1.6;
   text-align: center;
   max-width: 800px;
+  padding: 0 clamp(1rem, 2vw, 1.5rem);
 }
 
 .about-team__content { 
@@ -7686,13 +7684,19 @@ html, body {
   border-radius: 0.75rem;
   overflow: hidden;
   aspect-ratio: 3 / 4;
+  background: transparent;
 }
 
 .about-team__avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 0%;
   display: block;
+  position: absolute;
+  top: -5%;
+  left: 0;
+  transform: scale(1.15);
 }
 
 .about-team__info-card {
@@ -7730,51 +7734,147 @@ html, body {
 
 @media (max-width: 1024px) {
   .about-team { 
-    padding: clamp(1.5rem, 3vw, 2rem) clamp(40px, 4vw, 150px); 
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Responsive padding matching About section */
   } 
   .about-team__container {
-    gap: clamp(0.5rem, 1vw, 0.75rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
   }
   .about-team__title { 
     text-align: center; 
     font-size: clamp(1.5rem, 3vw, 2rem); 
-    margin-bottom: clamp(0.25rem, 0.5vw, 0.5rem);
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+    padding: 0 clamp(1rem, 2vw, 1.5rem);
   } 
   .about-team__subtitle { 
-    font-size: clamp(16px, 2vw, 18px); 
-    margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+    font-size: clamp(14px, 2vw, 16px); 
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    padding: 0 clamp(1rem, 2vw, 1.5rem);
   } 
   .about-team__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(0.75rem, 1.5vw, 1rem);
+    gap: clamp(1.5rem, 3vw, 2rem);
+    max-width: 100%;
+  }
+  .about-team__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  .about-team__avatar {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 50% 0% !important;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-1%) scale(1.0) !important;
+  }
+  .about-team__info-card {
+    position: absolute !important;
+    bottom: clamp(0.75rem, 1.5vw, 1rem) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(0.5rem) !important;
+    border-radius: clamp(0.5rem, 1vw, 0.625rem) !important;
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(0.625rem, 2vw, 0.875rem) !important;
+    box-shadow: 0 clamp(0.125rem, 0.25vw, 0.25rem) clamp(0.5rem, 1vw, 0.75rem) rgba(0, 0, 0, 0.1) !important;
+    z-index: 2;
   }
 }
 
 @media (max-width: 768px) {
   .about-team { 
-    padding: clamp(1.5rem, 3vw, 2rem) clamp(40px, 4vw, 150px); 
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Responsive padding matching About section */
   } 
   .about-team__container {
-    gap: clamp(0.5rem, 1vw, 0.75rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .about-team__title {
+    text-align: center !important;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+    padding: 0 clamp(1rem, 2vw, 1.5rem);
+  }
+  .about-team__subtitle {
+    text-align: center !important;
+    font-size: clamp(14px, 2vw, 16px);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    padding: 0 clamp(1rem, 2vw, 1.5rem);
   }
   .about-team__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(0.75rem, 1.5vw, 1rem);
+    gap: clamp(1.5rem, 3vw, 2rem);
     max-width: 100%;
   }
-.about-team__name {
+  .about-team__person {
+    max-width: 100%;
+    width: 100%;
+  }
+  .about-team__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-width: 100%;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  .about-team__avatar {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 50% 0% !important;
+    display: block;
+    position: absolute;
+    top: -5% !important;
+    left: 0;
+    transform: scale(1.15) !important;
+  }
+  .about-team__info-card {
+    position: absolute !important;
+    bottom: clamp(0.75rem, 1.5vw, 1rem) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(0.5rem) !important;
+    border-radius: clamp(0.5rem, 1vw, 0.625rem) !important;
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(0.625rem, 2vw, 0.875rem) !important;
+    box-shadow: 0 clamp(0.125rem, 0.25vw, 0.25rem) clamp(0.5rem, 1vw, 0.75rem) rgba(0, 0, 0, 0.1) !important;
+    z-index: 2;
+  }
+  .about-team__name {
     font-size: clamp(13px, 1.5vw, 15px); 
-}
-.about-team__role {
+  }
+  .about-team__role {
     font-size: clamp(10px, 1.25vw, 12px); 
   } 
 }
 
 @media (max-width: 480px) {
+  .about-team {
+    padding: clamp(2rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem);
+  }
+  .about-team__title {
+    font-size: clamp(1.125rem, 5vw, 1.5rem);
+  }
+  .about-team__subtitle {
+    font-size: clamp(13px, 2vw, 15px);
+  }
   .about-team__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: clamp(1.5rem, 3vw, 2rem);
-    max-width: 300px;
+    max-width: 100%;
+  }
+  .about-team__image-wrapper {
+    max-width: 100%;
   }
 }
 

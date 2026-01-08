@@ -91,7 +91,7 @@ function AccountingBookkeeping() {
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
+                </svg>
                     <span className="comparison-item-title">Are expenses tracking correctly?</span>
                   </li>
                 </ul>
@@ -130,7 +130,7 @@ function AccountingBookkeeping() {
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
+                </svg>
                     <span className="comparison-item-title">Monthly compliance reports</span>
                   </li>
 
@@ -138,7 +138,7 @@ function AccountingBookkeeping() {
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
+                </svg>
                     <span className="comparison-item-title">Audit-ready records</span>
                   </li>
                 </ul>
@@ -208,7 +208,7 @@ function AccountingBookkeeping() {
                   </li>
                 ))}
               </ul>
-            </div>
+        </div>
           </div>
         </div>
       </section>

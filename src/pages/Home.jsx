@@ -273,9 +273,6 @@ function ServicesSection() {
                   </li>
             ))}
           </ul>
-          <p className="services-section__additional body-opensans">
-            How it Works (place these in boxes with ideal images): One point of contact, We handle everything, Upload docs once, we do the rest.
-          </p>
           <button type="button" className="services-section__cta h3-opensans-semibold">
             <span className="services-section__cta-text">Learn More</span>
             <span className="services-section__arrow">→</span>
@@ -531,9 +528,9 @@ function PricingSection() {
                 <span className="pricing-section__price-note body-opensans">{plan.priceNote}</span>
               </div>
               <p className="pricing-section__card-description body-opensans">{plan.description}</p>
-              <button type="button" className="pricing-section__cta h3-opensans-semibold">
+              <Link to="/contact" className="pricing-section__cta h3-opensans-semibold">
                 Get in Touch
-              </button>
+              </Link>
               <ul className="pricing-section__features">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="pricing-section__feature">
@@ -805,7 +802,7 @@ function FAQSection() {
   }, [])
 
   return (
-    <section className="faq-section" ref={faqSectionRef}>
+    <section id="faq" className="faq-section" ref={faqSectionRef}>
       <div className="faq-section__container">
         <div className="faq-section__left">
           <span className="faq-section__badge small-body-opensans">FAQ</span>
@@ -818,12 +815,12 @@ function FAQSection() {
           </p>
           <div className="faq-section__cta-section faq-section__cta-section--top">
             <h3 className="faq-section__cta-heading h4-montserrat">Still looking for answers?</h3>
-            <button type="button" className="faq-section__cta h3-opensans-semibold">
+            <Link to="/contact" className="faq-section__cta h3-opensans-semibold">
               <span className="faq-section__cta-text">Speak to our expert</span>
               <svg className="faq-section__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 4H12V10M4 12L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
         <div className="faq-section__right" ref={faqRightRef}>
@@ -992,12 +989,12 @@ function Home() {
               alt="Consultant presenting a financial plan to a team"
               loading="lazy"
             />
-            <button type="button" className="hero__cta">
+            <Link to="/contact" className="hero__cta">
               <div className="hero__cta-content">
                 <p className="hero__cta-primary">Schedule Your Complimentary Consultation</p>
                 <p className="hero__cta-secondary">"Start Building a Stronger Financial Future"</p>
               </div>
-            </button>
+            </Link>
           </div>
           <div className="hero__stats-card">
             {stats.map((stat, index) => (

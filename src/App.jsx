@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom'
 import './App.css'
 import standardAuditingLogo from './assets/standard_auditing_logo.png'
 import Home from './pages/Home'
@@ -351,6 +351,60 @@ function Header() {
 
 // Shared Footer Component
 function Footer() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleFAQClick = (e) => {
+    e.preventDefault()
+    if (location.pathname !== '/') {
+      navigate('/')
+      setTimeout(() => {
+        const faqSection = document.getElementById('faq')
+        if (faqSection) {
+          faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    } else {
+      const faqSection = document.getElementById('faq')
+      if (faqSection) {
+        faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }
+
+  const handleLeadershipClick = (e) => {
+    e.preventDefault()
+    if (location.pathname !== '/about') {
+      navigate('/about')
+      setTimeout(() => {
+        const teamSection = document.getElementById('team')
+        if (teamSection) {
+          teamSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    } else {
+      const teamSection = document.getElementById('team')
+      if (teamSection) {
+        teamSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }
+
+  const handleLegalNoticesClick = (e) => {
+    e.preventDefault()
+    navigate('/contact?notice=true')
+  }
+
+  const handleLinkClick = (to) => {
+    return (e) => {
+      e.preventDefault()
+      navigate(to)
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }, 100)
+    }
+  }
+
   return (
     <footer className="site-footer">
       <div className="site-footer__container">
@@ -397,31 +451,31 @@ function Footer() {
         <div className="site-footer__column">
           <h3 className="site-footer__column-title h5-montserrat">Services</h3>
           <ul className="site-footer__links">
-            <li><Link to="/services/tax-advisory" className="body-opensans">Tax Advisory</Link></li>
-            <li><Link to="/services/corporate-tax" className="body-opensans">Corporate Tax</Link></li>
-            <li><Link to="/services/auditing" className="body-opensans">Auditing</Link></li>
-            <li><Link to="/services/accounting-bookkeeping" className="body-opensans">Accounting & Bookkeeping</Link></li>
-            <li><Link to="/services/vat" className="body-opensans">VAT</Link></li>
-            <li><Link to="/services/company-formation" className="body-opensans">Company Formation</Link></li>
+            <li><Link to="/services/tax-advisory" onClick={handleLinkClick('/services/tax-advisory')} className="body-opensans">Tax Advisory</Link></li>
+            <li><Link to="/services/corporate-tax" onClick={handleLinkClick('/services/corporate-tax')} className="body-opensans">Corporate Tax</Link></li>
+            <li><Link to="/services/auditing" onClick={handleLinkClick('/services/auditing')} className="body-opensans">Auditing</Link></li>
+            <li><Link to="/services/accounting-bookkeeping" onClick={handleLinkClick('/services/accounting-bookkeeping')} className="body-opensans">Accounting & Bookkeeping</Link></li>
+            <li><Link to="/services/vat" onClick={handleLinkClick('/services/vat')} className="body-opensans">VAT</Link></li>
+            <li><Link to="/services/company-formation" onClick={handleLinkClick('/services/company-formation')} className="body-opensans">Company Formation</Link></li>
           </ul>
         </div>
         <div className="site-footer__column">
           <h3 className="site-footer__column-title h5-montserrat">Support</h3>
           <ul className="site-footer__links">
-            <li><Link to="/contact" className="body-opensans">Help center</Link></li>
-            <li><Link to="/contact" className="body-opensans">Ticket Support</Link></li>
-            <li><Link to="/#faq" className="body-opensans">FAQ</Link></li>
-            <li><Link to="/contact" className="body-opensans">Contact</Link></li>
+            <li><Link to="/contact" onClick={handleLinkClick('/contact')} className="body-opensans">Help center</Link></li>
+            <li><Link to="/contact" onClick={handleLinkClick('/contact')} className="body-opensans">Ticket Support</Link></li>
+            <li><a href="/#faq" onClick={handleFAQClick} className="body-opensans">FAQ</a></li>
+            <li><Link to="/contact" onClick={handleLinkClick('/contact')} className="body-opensans">Contact</Link></li>
           </ul>
         </div>
         <div className="site-footer__column">
           <h3 className="site-footer__column-title h5-montserrat">Company</h3>
           <ul className="site-footer__links">
-            <li><Link to="/about" className="body-opensans">About us</Link></li>
-            <li><Link to="/about" className="body-opensans">Leadership</Link></li>
-            <li><Link to="/careers" className="body-opensans">Careers</Link></li>
-            <li><Link to="/insights" className="body-opensans">News & articles</Link></li>
-            <li><Link to="/contact" className="body-opensans">Legal Notices</Link></li>
+            <li><Link to="/about" onClick={handleLinkClick('/about')} className="body-opensans">About us</Link></li>
+            <li><a href="/about#team" onClick={handleLeadershipClick} className="body-opensans">Leadership</a></li>
+            <li><Link to="/careers" onClick={handleLinkClick('/careers')} className="body-opensans">Careers</Link></li>
+            <li><Link to="/insights" onClick={handleLinkClick('/insights')} className="body-opensans">News & articles</Link></li>
+            <li><a href="/contact?notice=true" onClick={handleLegalNoticesClick} className="body-opensans">Legal Notices</a></li>
           </ul>
         </div>
       </div>
@@ -431,9 +485,9 @@ function Footer() {
           Copyright © 2025 Standard Auditors, All rights reserved.
         </p>
         <div className="site-footer__legal">
-          <Link to="/contact" className="small-body-opensans">Terms of use</Link>
-          <Link to="/contact" className="small-body-opensans">Cookies policy</Link>
-          <Link to="/contact" className="small-body-opensans">Privacy policy</Link>
+          <Link to="/contact?notice=true" onClick={handleLegalNoticesClick} className="small-body-opensans">Terms of use</Link>
+          <Link to="/contact?notice=true" onClick={handleLegalNoticesClick} className="small-body-opensans">Cookies policy</Link>
+          <Link to="/contact?notice=true" onClick={handleLegalNoticesClick} className="small-body-opensans">Privacy policy</Link>
         </div>
       </div>
     </footer>

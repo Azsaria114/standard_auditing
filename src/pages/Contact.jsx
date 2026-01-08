@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import '../styles/Contact.css'
 
 function Contact() {
+  const [searchParams] = useSearchParams()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,6 +12,7 @@ function Contact() {
     message: ''
   })
   const [consent, setConsent] = useState(false)
+  const [showNotice, setShowNotice] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -24,6 +27,40 @@ function Contact() {
     // Handle form submission here
     console.log('Form submitted:', formData)
   }
+
+  const handleNoticeClick = (e) => {
+    e.preventDefault()
+    setShowNotice(true)
+  }
+
+  const handleCloseNotice = () => {
+    setShowNotice(false)
+  }
+
+  useEffect(() => {
+    // Check if notice parameter is in URL
+    if (searchParams.get('notice') === 'true') {
+      setShowNotice(true)
+    }
+  }, [searchParams])
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && showNotice) {
+        setShowNotice(false)
+      }
+    }
+    if (showNotice) {
+      document.body.style.overflow = 'hidden'
+      document.addEventListener('keydown', handleEscape)
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = ''
+    }
+  }, [showNotice])
 
   return (
     <div className="contact-page">
@@ -189,7 +226,7 @@ function Contact() {
                   required
                 />
                 <label htmlFor="consent" className="contact-form__checkbox-label small-body-opensans">
-                  By submitting my personal data, I consent to Standard Auditing L.L.C collecting, processing & storing my information in accordance with the <a href="#" className="contact-form__link">Standard Auditing L.L.C Notice</a>.
+                  By submitting my personal data, I consent to Standard Auditing L.L.C collecting, processing & storing my information in accordance with the <a href="#" onClick={handleNoticeClick} className="contact-form__link">Standard Auditing L.L.C Notice</a>.
                 </label>
               </div>
 
@@ -200,6 +237,86 @@ function Contact() {
           </div>
         </div>
       </section>
+
+      {/* Privacy & Data Protection Notice Modal */}
+      {showNotice && (
+        <div className="contact-notice-modal" onClick={handleCloseNotice}>
+          <div className="contact-notice-modal__content" onClick={(e) => e.stopPropagation()}>
+            <button className="contact-notice-modal__close" onClick={handleCloseNotice} aria-label="Close notice">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <div className="contact-notice-modal__container">
+              <h2 className="contact-notice-modal__title h2-montserrat">Privacy & Data Protection Notice</h2>
+              <div className="contact-notice-modal__body">
+                <p className="contact-notice-modal__intro body-opensans">
+                  Standard Auditing L.L.C respects your privacy and is committed to protecting your personal data.
+                </p>
+
+                <div className="contact-notice-modal__section">
+                  <h3 className="contact-notice-modal__section-title h4-montserrat">Information We Collect</h3>
+                  <p className="contact-notice-modal__section-text body-opensans">
+                    When you submit a form on our website, we may collect personal information such as your name, email address, phone number, company details, and any information you choose to share in your message.
+                  </p>
+                </div>
+
+                <div className="contact-notice-modal__section">
+                  <h3 className="contact-notice-modal__section-title h4-montserrat">How We Use Your Information</h3>
+                  <p className="contact-notice-modal__section-text body-opensans">
+                    Your information is used solely to:
+                  </p>
+                  <ul className="contact-notice-modal__list body-opensans">
+                    <li>Respond to your enquiry</li>
+                    <li>Schedule consultations or follow-up communication</li>
+                    <li>Provide information about our services</li>
+                    <li>Comply with legal and regulatory obligations</li>
+                  </ul>
+                  <p className="contact-notice-modal__section-text body-opensans">
+                    We do not sell, rent, or trade your personal data.
+                  </p>
+                </div>
+
+                <div className="contact-notice-modal__section">
+                  <h3 className="contact-notice-modal__section-title h4-montserrat">Data Storage & Security</h3>
+                  <p className="contact-notice-modal__section-text body-opensans">
+                    All personal data is stored securely and accessed only by authorised personnel. We take reasonable technical and organisational measures to prevent unauthorised access, disclosure, or misuse.
+                  </p>
+                </div>
+
+                <div className="contact-notice-modal__section">
+                  <h3 className="contact-notice-modal__section-title h4-montserrat">Data Sharing</h3>
+                  <p className="contact-notice-modal__section-text body-opensans">
+                    Your information will not be shared with third parties unless:
+                  </p>
+                  <ul className="contact-notice-modal__list body-opensans">
+                    <li>Required by law or regulatory authorities</li>
+                    <li>Necessary to deliver requested services</li>
+                    <li>Explicit consent is provided by you</li>
+                  </ul>
+                </div>
+
+                <div className="contact-notice-modal__section">
+                  <h3 className="contact-notice-modal__section-title h4-montserrat">Data Retention</h3>
+                  <p className="contact-notice-modal__section-text body-opensans">
+                    We retain personal data only for as long as necessary to fulfil the purpose for which it was collected or as required under applicable laws and regulations.
+                  </p>
+                </div>
+
+                <div className="contact-notice-modal__section">
+                  <h3 className="contact-notice-modal__section-title h4-montserrat">Your Rights</h3>
+                  <p className="contact-notice-modal__section-text body-opensans">
+                    You have the right to request access to, correction of, or deletion of your personal data. You may also withdraw consent at any time by contacting us.
+                  </p>
+                  <p className="contact-notice-modal__contact body-opensans">
+                    <strong>Email:</strong> <a href="mailto:info@standardauditors.com" className="contact-notice-modal__link">info@standardauditors.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Map Section */}
       <section className="contact-map">

@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: clamp(1.5rem, 4vw, 2.5rem);
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
-  padding-top: calc(5rem + clamp(2.5rem, 5vw, 3.5rem));
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
+  padding-top: calc(clamp(2.5rem, 5vw, 3rem) + clamp(2.5rem, 5vw, 3.5rem));
   /* Add extra top padding to account for fixed header height */
   background: white;
   color: #0A3D62;
@@ -271,6 +271,8 @@
   padding: clamp(0.625rem, 1.25vw, 0.75rem) clamp(1.5rem, 3vw, 2.25rem);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none !important;
+  display: inline-block;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -558,8 +560,8 @@
     overflow: visible;
   }
   .hero {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .hero__title-section {
     margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
@@ -660,8 +662,8 @@
     /* Increased spacing between image and stats card for mobile */
   }
   .hero {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on small screens */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
     gap: clamp(1rem, 3vw, 1.5rem);
   }
   .hero__services {
@@ -718,8 +720,8 @@
 .services-section {
   background: #0A3D62;
   color: white;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   position: relative;
 }
 .services-section::before {
@@ -1034,8 +1036,8 @@
   /* SVG icon scales with container */
 }
   .services-section {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
-    /* Reduced padding for tablet */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .services-section__container {
     grid-template-columns: 1fr;
@@ -1128,8 +1130,8 @@
     /* White checkmark on tablet - same as desktop */
   }
   .services-section {
-    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 2.5rem);
-    /* Reduced padding for mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .services-section__container {
     gap: clamp(2rem, 5vw, 2.5rem);
@@ -1239,8 +1241,8 @@
   }
 .partners-section {
   background: #f4f8fc;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   position: relative;
 }
 .partners-section::before {
@@ -1692,8 +1694,8 @@
     /* Right line - scaled down for medium screens */
   }
   .partners-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on tablet */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .partners-section__container {
     flex-direction: column;
@@ -1787,8 +1789,8 @@
     min-height: 9rem;
   }
   .partners-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .partners-section__container {
     flex-direction: column;
@@ -1959,8 +1961,8 @@
   }
 .services-grid-section {
   background: #f4f8fc;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   position: relative;
 }
 .services-grid-section::before {
@@ -2027,12 +2029,12 @@
   flex-direction: column;
   position: relative;
   box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.25rem, 1vw, 0.5rem) rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   aspect-ratio: auto;
   min-height: clamp(12rem, 18vw, 15rem);
   justify-content: space-between;
   overflow: hidden;
-  /* White card with dark blue border - reduced height slightly */
+  /* White card with dark blue border - static with color hover only */
 }
 .services-grid-section__card::after {
   content: '';
@@ -2047,11 +2049,9 @@
   /* Hidden initially, expands smoothly on hover - covers entire card */
 }
 .services-grid-section__card:hover {
-  transform: translateY(-0.125rem);
-  box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 1rem) rgba(0, 0, 0, 0.1);
   border-color: #0A3D62;
   background: #0A3D62;
-  /* Hover effect - background changes to match ::after */
+  /* Hover effect - only background color changes, no size/shadow animation */
 }
 .services-grid-section__card:hover::after {
   background: #0A3D62;
@@ -2135,8 +2135,7 @@
 }
 .services-grid-section__card:hover .services-grid-section__card-description {
   color: rgba(255, 255, 255, 0.95);
-  font-size: calc(1em - 1px);
-  /* Description turns white on hover when card is blue, font size reduced by 1px */
+  /* Description turns white on hover when card is blue - no font size change */
 }
 .services-grid-section__expand-btn {
   background: transparent;
@@ -2167,8 +2166,8 @@
   /* Expand button turns white on hover when card is blue */
 }
   .services-grid-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on tablet */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .services-grid-section__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2178,8 +2177,8 @@
     /* Account for responsive padding on tablet */
   }
   .services-grid-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .services-grid-section__grid {
     grid-template-columns: 1fr;
@@ -2194,8 +2193,8 @@
   }
 .why-trust-section {
   background: #0A3D62;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   color: white;
   position: relative;
 }
@@ -2656,10 +2655,14 @@
     font-size: clamp(0.55rem, 1.1vw, 0.65rem);
     /* Even smaller on hover for mobile to ensure all text is visible */
   }
+  .why-trust-section {
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
+  }
 .pricing-section {
   background: #f4f8fc;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   position: relative;
   /* 80px (5rem) padding on left and right as specified */
 }
@@ -2885,6 +2888,9 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: clamp(0.75rem, 2vw, 1rem) 0 clamp(1rem, 2.5vw, 1.5rem) 0;
+  text-decoration: none !important;
+  display: inline-block;
+  text-align: center;
   width: 100%;
   box-sizing: border-box;
   box-shadow: 0 clamp(0.25rem, 1vw, 0.5rem) clamp(1.25rem, 3vw, 2.5rem) rgba(31, 41, 51, 0.15);
@@ -2942,8 +2948,8 @@
   /* Dark blue background expands to fill button on hover - contrasting with white button */
 }
   .pricing-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on tablet */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .pricing-section__container {
     width: 100%;
@@ -2958,8 +2964,8 @@
     /* Full width button on tablet - same as mobile */
   }
   .pricing-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .pricing-section__container {
     width: 100%;
@@ -2974,8 +2980,8 @@
   }
 .video-testimonials-section {
   background: #f4f8fc;
-  padding: 5rem 5rem;
-  /* Top/bottom: 80px (5rem), horizontal: 80px (5rem) */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   position: relative;
   box-sizing: border-box;
 }
@@ -3250,8 +3256,8 @@
 }
 .client-testimonials-section {
   background: #0A3D62;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   color: white;
 }
 .client-testimonials-section__container {
@@ -3432,8 +3438,8 @@
 }
 .faq-section {
   background: #f4f8fc;
-  padding: 4rem 5rem 5rem 5rem;
-  /* Reduced top padding to move section up slightly, 80px (5rem) on other sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem) clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   position: relative;
 }
 .faq-section::before {
@@ -3540,6 +3546,7 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
+  text-decoration: none !important;
   align-items: center;
   gap: clamp(0.5rem, 1vw, 0.75rem);
   width: fit-content;
@@ -3737,8 +3744,8 @@
   /* Answer text below question */
 }
   .faq-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on tablet */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .faq-section__container {
     grid-template-columns: 1fr;
@@ -3764,8 +3771,8 @@
     margin-top: clamp(1.5rem, 3vw, 2rem);
   }
   .client-testimonials-section {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
-    /* Responsive padding for tablet */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .client-testimonials-section__container {
     grid-template-columns: 1fr;
@@ -3802,8 +3809,8 @@
     /* Keep navigation buttons on the right for tablet */
   }
   .client-testimonials-section {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
-    /* Responsive padding for tablet */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .client-testimonials-section__container {
     grid-template-columns: 1fr;
@@ -3842,8 +3849,8 @@
     height: clamp(2.5rem, 5vw, 3rem);
   }
   .faq-section {
-    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 2.5rem);
-    /* Responsive padding for mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .faq-section__container {
     width: 100%;
@@ -3873,8 +3880,8 @@
   background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80');
   background-size: cover;
   background-position: center;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding matching About section: 40px (2.5rem) top/bottom, 24-32px (1.5-2rem) left/right on mobile */
   color: white;
   text-align: center;
 }
@@ -3990,8 +3997,8 @@
   /* Arrow with proper z-index */
 }
   .client-testimonials-section {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
-    /* Responsive padding for mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .client-testimonials-section__container {
     grid-template-columns: 1fr;
@@ -4031,8 +4038,12 @@
     grid-template-columns: 1fr;
   }
   .video-testimonials-section {
-    padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
-    /* Responsive padding for mobile */
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
+  }
+  .newsletter-section {
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+    /* Mobile padding matching About section */
   }
   .video-testimonials-section__grid {
     display: grid;

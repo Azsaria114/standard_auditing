@@ -37,10 +37,10 @@ function Auditing() {
                 patterns faster than less experienced firms.
               </p>
 
-              <div className="service-hero__cta-column">
-                <Link to="/contact" className="service-hero__cta-button service-hero__cta-button--primary">
+            <div className="service-hero__cta-column">
+              <Link to="/contact" className="service-hero__cta-button service-hero__cta-button--primary">
                   Book a Consultation
-                </Link>
+              </Link>
 
                 <a href="#pricing" className="service-hero__cta-button service-hero__cta-button--secondary">
                   View Pricing
@@ -171,7 +171,7 @@ function Auditing() {
               <div className="pricing-section__price">
                 <span className="pricing-section__price-amount h1-montserrat">AED 4000</span>
                 <span className="pricing-section__price-note body-opensans">+ VAT</span>
-              </div>
+            </div>
 
               <p className="pricing-section__card-description body-opensans">
                 Complete financial audit with risk-focused testing, internal control review, and clear recommendations for improvement.
@@ -205,7 +205,7 @@ function Auditing() {
                         strokeLinejoin="round"
                         fill="none"
                       />
-                    </svg>
+              </svg>
                     <span className="body-opensans">{feature}</span>
                   </li>
                 ))}

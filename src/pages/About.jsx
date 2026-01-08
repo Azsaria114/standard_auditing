@@ -248,7 +248,7 @@ function About() {
 
 
         {/* Our Team Section */}
-        <section className="about-team">
+        <section id="team" className="about-team">
           <div className="about-team__container">
             <div className="about-team__badge small-body-opensans">Our Team</div>
             <h2 className="about-team__title h1-montserrat">Experts Who Bring Order & Insight to Your Business</h2>

@@ -68,7 +68,7 @@ function VAT() {
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
+            </svg>
                     <span className="comparison-item-title">Are VAT positions defensible during audits?</span>
                   </li>
 
@@ -92,7 +92,7 @@ function VAT() {
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
+                </svg>
                     <span className="comparison-item-title">Are we exposed to penalties?</span>
                   </li>
                 </ul>
@@ -123,7 +123,7 @@ function VAT() {
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
+                </svg>
                     <span className="comparison-item-title">Intercompany charges</span>
                   </li>
 
@@ -131,7 +131,7 @@ function VAT() {
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
+                </svg>
                     <span className="comparison-item-title">Documentation alignment</span>
                   </li>
 
@@ -139,7 +139,7 @@ function VAT() {
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
+                </svg>
                     <span className="comparison-item-title">Process review for ongoing compliance</span>
                   </li>
                 </ul>
@@ -160,7 +160,7 @@ function VAT() {
           <div className="pricing-section__auditing-header">
             <div className="service-comparison__pill">Pricing</div>
             <h2 className="pricing-section__auditing-title h1-montserrat">VAT Pricing for SMEs</h2>
-          </div>
+              </div>
 
           <div className="pricing-section__grid">
             <div className="pricing-section__card">
@@ -216,7 +216,7 @@ function VAT() {
               <div className="pricing-section__price">
                 <span className="pricing-section__price-amount h1-montserrat">AED 1,500</span>
                 <span className="pricing-section__price-note body-opensans">+ VAT</span>
-              </div>
+                </div>
 
               <p className="pricing-section__card-description body-opensans">
                 For businesses needing comprehensive VAT review, computation, and ongoing compliance support.
