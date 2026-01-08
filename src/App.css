@@ -5842,13 +5842,13 @@ html, body {
   justify-items: start;
 }
 
-/* Right-align Services and Company columns on desktop */
+/* Left-align Services and Company columns on desktop */
 @media (min-width: 769px) {
   .site-footer__column:nth-child(2),
   .site-footer__column:nth-child(3) {
-    justify-self: end;
-    text-align: right;
-    align-items: flex-end;
+    justify-self: start;
+    text-align: left;
+    align-items: flex-start;
   }
 }
 
@@ -6089,11 +6089,11 @@ html, body {
   width: 100%;
 }
 
-/* Right-align links in Services and Company columns on desktop */
+/* Left-align links in Services and Company columns on desktop */
 @media (min-width: 769px) {
   .site-footer__column:nth-child(2) .site-footer__links,
   .site-footer__column:nth-child(3) .site-footer__links {
-    align-items: flex-end;
+    align-items: flex-start;
   }
 }
 
