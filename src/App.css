@@ -2397,8 +2397,8 @@ html, body {
 .partners-section__result-text {
   color: #0A3D62;
   margin: 0;
-  line-height: 1.5;
-  font-size: clamp(0.8125rem, 2vw, 1.25rem);
+  line-height: 1.4;
+  font-size: clamp(0.6875rem, 1.5vw, 1.25rem);
   font-weight: 700;
   text-align: center;
   width: 100%;
@@ -2437,9 +2437,12 @@ html, body {
   
   /* Stack three parts vertically while preserving order */
   .partners-section__container {
-    flex-direction: column;
-    gap: clamp(2.5rem, 5vw, 3.5rem);
-    /* Increased gap for more spacing between logo cards and result card */
+    flex-direction: column !important;
+    gap: clamp(2.5rem, 5vw, 3.5rem) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 clamp(1rem, 3vw, 2rem) !important;
+    /* Increased gap for more spacing between logo cards and result card, centered with padding */
   }
 
   .partners-section__grid {
@@ -2447,6 +2450,9 @@ html, body {
     max-width: 100%;
     width: 100%;
     gap: clamp(1rem, 2.5vw, 2rem);
+    transform: none !important;
+    margin: 0 auto !important;
+    order: 1;
     /* Unified line scale for tablet - all lines scale together */
     --line-scale: clamp(1.25rem, 2.5vw, 2.5rem);
     /* Reduced width for more compact half rectangle on tablet */
@@ -2516,9 +2522,10 @@ html, body {
 
   .partners-section__middle {
     order: 2;
-    margin-top: 0;
-    align-self: center;
-    /* Center card appears between grid and result card */
+    transform: none !important;
+    align-self: center !important;
+    margin-top: 0 !important;
+    /* Center card appears between grid and result card, properly aligned */
   }
 
   .partners-section__right {
@@ -2548,6 +2555,12 @@ html, body {
   .partners-section__result-track {
     min-height: 9rem;
   }
+  
+  .partners-section__result-text {
+    font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+    line-height: 1.4;
+    /* Reduced font size for tablet responsiveness */
+  }
 }
 
 /* ============================================
@@ -2555,14 +2568,23 @@ html, body {
    ============================================ */
 @media (max-width: 768px) {
   .partners-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 2.5rem);
+    /* Responsive padding on mobile */
   }
   
   .partners-section__container {
-    flex-direction: column;
-    gap: clamp(2.5rem, 5vw, 3.5rem);
-    /* Increased gap for more spacing between logo cards and result card */
+    flex-direction: column !important;
+    gap: clamp(2.5rem, 5vw, 3.5rem) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 clamp(1rem, 3vw, 2rem) !important;
+    /* Increased gap for more spacing between logo cards and result card, centered with padding */
+  }
+  
+  .partners-section__grid {
+    transform: none !important;
+    margin: 0 auto !important;
+    order: 1;
   }
 
   .partners-section__grid {
@@ -2593,8 +2615,7 @@ html, body {
   .partners-section__grid > .partners-section__card:nth-child(2) {
     grid-column: 2;
     grid-row: 1;
-    transform: translateY(clamp(-2rem, -4vw, -2.5rem));
-    /* Reduced transform for better visibility on mobile */
+    /* Removed transform to prevent overlapping */
   }
   
   .partners-section__grid > .partners-section__card:nth-child(3) {
@@ -2612,8 +2633,7 @@ html, body {
   .partners-section__grid > .partners-section__card:nth-child(5) {
     grid-column: 2;
     grid-row: 2;
-    transform: translateY(clamp(-2rem, -4vw, -2.5rem));
-    /* Reduced transform for better visibility on mobile */
+    /* Removed transform to prevent overlapping */
   }
   
   .partners-section__grid > .partners-section__card:nth-child(6) {
@@ -2625,8 +2645,7 @@ html, body {
   .partners-section__grid > .partners-section__card:nth-child(7) {
     grid-column: 2;
     grid-row: 3;
-    transform: translateY(clamp(-2rem, -4vw, -2.5rem));
-    /* Reduced transform for better visibility on mobile */
+    /* Removed transform to prevent overlapping */
   }
   
   .partners-section__card {
@@ -2699,14 +2718,23 @@ html, body {
     /* Right line - fully responsive width and height for mobile */
   }
 
+  .partners-section__middle {
+    order: 2;
+    transform: none !important;
+    align-self: center !important;
+    margin-top: 0 !important;
+    /* Center card appears between grid and result card - no transform to prevent overlapping */
+  }
+
   .partners-section__right {
     order: 3;
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: clamp(1rem, 2.5vw, 1.5rem);
-    align-self: center;
-    /* Result card moved down slightly with more spacing */
+    transform: none !important;
+    align-self: center !important;
+    margin-top: 0 !important;
+    /* Result card properly aligned with grid and center card on mobile - no transform to prevent overlapping */
   }
   
   .partners-section__result-card {
@@ -2715,23 +2743,23 @@ html, body {
     min-width: 16rem;
     min-height: 16rem;
     aspect-ratio: 1;
-    padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 2.5vw, 1.75rem);
-    /* Responsive card sizing on mobile - same as tablet */
+    padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1rem, 2vw, 1.5rem);
+    /* Responsive card sizing on mobile with reduced padding for more text space */
   }
   
   .partners-section__result-slider {
-    min-height: 9rem;
-    /* Same as tablet for consistency */
+    min-height: 8rem;
+    /* Reduced height for mobile to fit text better */
   }
   
   .partners-section__result-track {
-    min-height: 9rem;
-    /* Same as tablet for consistency */
+    min-height: 8rem;
+    /* Reduced height for mobile to fit text better */
   }
   
   .partners-section__result-text {
-    font-size: clamp(0.75rem, 1.75vw, 1rem);
-    line-height: 1.5;
+    font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+    line-height: 1.4;
     /* Reduced font size for mobile responsiveness */
   }
 }
@@ -2777,6 +2805,17 @@ html, body {
   .partners-section__name {
     font-size: clamp(0.625rem, 1.25vw, 0.75rem);
     /* Smaller font size on very small screens */
+  }
+  
+  .partners-section__result-card {
+    padding: clamp(0.875rem, 2vw, 1.5rem) clamp(0.75rem, 1.75vw, 1.125rem);
+    /* Further reduced padding for extra small screens */
+  }
+  
+  .partners-section__result-text {
+    font-size: clamp(0.5rem, 1.1vw, 0.75rem);
+    line-height: 1.25;
+    /* Even smaller font size for extra small mobile screens */
   }
 }
 
