@@ -1874,8 +1874,8 @@ html, body {
    ============================================ */
 .partners-section {
   background: #f4f8fc;
-  padding: 5rem 5rem;
-  /* 80px (5rem) padding on all sides */
+  padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  /* Responsive padding that adapts to all screen sizes */
   position: relative;
 }
 
@@ -1925,14 +1925,14 @@ html, body {
   padding-right: clamp(1.5rem, 3.5vw, 3rem);
   /* Responsive right padding */
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: clamp(2rem, 5vw, 4.5rem);
   /* Improved responsive gap that scales smoothly */
   position: relative;
   z-index: 1;
   flex-wrap: nowrap;
-  /* Three parts aligned horizontally - left grid, center logo, right text box */
+  /* Three parts aligned horizontally - left grid, center logo, right text box - vertically centered */
 }
 
 .partners-section__divider {
@@ -2118,7 +2118,24 @@ html, body {
   }
   
   .partners-section__container {
-    gap: 2.5rem; /* Restore gap for stacked layout */
+    gap: clamp(2.5rem, 5vw, 3.5rem);
+    align-items: center;
+    justify-content: center;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+    /* Responsive gap and padding for better layout on tablet - consistent alignment */
+  }
+  
+  /* Logo Card: Move UP for vertical centering - tablet responsive */
+  .partners-section__middle {
+    transform: translateY(clamp(-3.5rem, -6vw, -4.5rem));
+    align-self: center;
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  /* Result Card: Move UP for vertical centering - tablet responsive */
+  .partners-section__right {
+    transform: translateY(clamp(-3.5rem, -6vw, -4.5rem));
+    align-self: center;
   }
 }
 
@@ -2136,15 +2153,15 @@ html, body {
     align-self: center;
   }
 
-  /* Logo Card: Move DOWN slightly independent of right card */
+  /* Logo Card: Move UP for vertical centering - responsive across desktop sizes */
   .partners-section__middle {
-    transform: translateY(-0.5rem);
+    transform: translateY(clamp(-5rem, -7vw, -6.5rem)) !important;
     align-self: center;
   }
 
-  /* Result Card */
+  /* Result Card: Move UP for vertical centering - responsive across desktop sizes */
   .partners-section__right {
-    transform: translateY(-1.5rem);
+    transform: translateY(clamp(-5rem, -7vw, -6.5rem)) !important;
     align-self: center;
   }
 }

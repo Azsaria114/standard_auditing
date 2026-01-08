@@ -38,10 +38,10 @@ function NewsletterSection() {
 
 function Career() {
   const [formData, setFormData] = useState({
-    name: 'Alexander Kimi',
-    email: 'AlexanderKimi07@gmail.com',
-    phone: '9342089192',
-    role: 'Jr.Auditor',
+    name: '',
+    email: '',
+    phone: '',
+    role: '',
     introduction: '',
     resume: null
   })
@@ -52,6 +52,18 @@ function Career() {
       ...prev,
       [name]: value
     }))
+  }
+
+  const handleInputFocus = (e) => {
+    // Clear any browser autocomplete/autofill values for all inputs
+    const fieldName = e.target.name
+    // Clear the field if it's empty or matches placeholder
+    if (!e.target.value || e.target.value.trim() === '' || e.target.value === e.target.placeholder) {
+      setFormData(prev => ({
+        ...prev,
+        [fieldName]: ''
+      }))
+    }
   }
 
   const handleFileChange = (e) => {
@@ -198,7 +210,7 @@ function Career() {
             </p>
           </div>
           <div className="career-application__right">
-            <form className="career-application__form" onSubmit={handleSubmit}>
+            <form className="career-application__form" onSubmit={handleSubmit} autoComplete="off">
               <div className="career-application__field">
                 <label htmlFor="name" className="career-application__label body-opensans">Name</label>
                 <input
@@ -207,7 +219,13 @@ function Career() {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   className="career-application__input body-opensans"
+                  placeholder="e.g., John Doe"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
                   required
                 />
               </div>
@@ -219,7 +237,13 @@ function Career() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   className="career-application__input body-opensans"
+                  placeholder="e.g., john.doe@example.com"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
                   required
                 />
               </div>
@@ -231,7 +255,13 @@ function Career() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   className="career-application__input body-opensans"
+                  placeholder="e.g., +971 50 123 4567"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
                   required
                 />
               </div>
@@ -243,7 +273,13 @@ function Career() {
                   name="role"
                   value={formData.role}
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   className="career-application__input body-opensans"
+                  placeholder="e.g., Junior Auditor"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
                   required
                 />
               </div>
@@ -254,9 +290,14 @@ function Career() {
                   name="introduction"
                   value={formData.introduction}
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
                   className="career-application__textarea body-opensans"
                   rows="4"
-                  placeholder="Enter your message"
+                  placeholder="Tell us about yourself and why you're interested in this role..."
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
                   required
                 />
               </div>

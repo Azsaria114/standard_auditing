@@ -116,12 +116,6 @@
   min-height: clamp(32rem, 64vw, 42rem);
   background: #0A3D62;
 }
-  .career-work-here__right {
-    padding: clamp(3rem, 6vw, 4rem);
-  }
-  .career-work-here__right {
-    padding: clamp(2rem, 4vw, 3rem);
-  }
 .career-work-here__left {
   background: transparent;
   padding: clamp(2.5rem, 5vw, 3.5rem) clamp(2rem, 4vw, 3rem) clamp(2.5rem, 5vw, 3.5rem) 5rem;
@@ -209,9 +203,6 @@
   padding: clamp(4rem, 8vw, 6rem) 5rem;
   background: white;
 }
-  .career-role-for-you {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 5rem);
-  }
 .career-role-for-you__container {
   max-width: 100%;
   margin: 0;
@@ -263,9 +254,6 @@
   padding: clamp(4rem, 8vw, 6rem) 5rem;
   background: white;
 }
-  .career-benefits {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 5rem);
-  }
 .career-benefits__container {
   max-width: 100%;
   margin: 0;
@@ -333,167 +321,9 @@
   flex: 1;
 }
 
-/* Tablet and Mobile Styles */
-@media (max-width: 1024px) {
-  .career-work-here__grid {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .career-work-here__left {
-    padding: clamp(2.5rem, 5vw, 3.5rem) 5rem;
-    height: auto;
-  }
-  .career-work-here__right {
-    padding: 0 5rem clamp(2.5rem, 5vw, 3.5rem) 5rem;
-    height: auto;
-    min-height: clamp(20rem, 40vw, 30rem);
-  }
-  .career-work-here__image-wrapper {
-    height: 100%;
-    min-height: clamp(20rem, 40vw, 30rem);
-  }
-  .career-work-here__image-wrapper img {
-    height: 100%;
-    min-height: clamp(20rem, 40vw, 30rem);
-    object-fit: cover;
-  }
-  .career-role-for-you__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .career-benefits__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .career-benefits__card {
-    border-right: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0 !important;
-  }
-  .career-benefits__card:nth-child(3n) {
-    border-right: 1px solid #e2e8f0;
-  }
-  .career-benefits__card:nth-child(2n) {
-    border-right: none;
-  }
-  .career-benefits__card:nth-child(1),
-  .career-benefits__card:nth-child(2),
-  .career-benefits__card:nth-child(3),
-  .career-benefits__card:nth-child(4) {
-    border-bottom: 1px solid #e2e8f0 !important;
-  }
-  .career-benefits__card:nth-child(5),
-  .career-benefits__card:nth-child(6) {
-    border-bottom: none !important;
-  }
-  .career-hero {
-    min-height: clamp(25rem, 50vw, 35rem);
-    padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 5rem);
-    padding-top: calc(clamp(2rem, 4vw, 3rem) + clamp(3rem, 6vw, 5rem));
-    margin-top: 5rem;
-  }
-  .career-openings,
-  .career-role-for-you,
-  .career-benefits,
-  .career-application {
-    padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 5rem);
-  }
-  .career-work-here__grid {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .career-work-here__left {
-    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(2rem, 4vw, 5rem);
-    height: auto;
-  }
-  .career-work-here__right {
-    padding: 0 clamp(2rem, 4vw, 5rem) clamp(2.5rem, 5vw, 3.5rem) clamp(2rem, 4vw, 5rem);
-    height: auto;
-    min-height: clamp(18rem, 45vw, 25rem);
-  }
-  .career-work-here__image-wrapper {
-    height: 100%;
-    min-height: clamp(18rem, 45vw, 25rem);
-  }
-  .career-work-here__image-wrapper img {
-    height: 100%;
-    min-height: clamp(18rem, 45vw, 25rem);
-    object-fit: cover;
-    border-radius: 0.5rem;
-  }
-  .career-work-here__point {
-    height: clamp(3.5rem, 7vw, 4.5rem);
-    min-height: clamp(3.5rem, 7vw, 4.5rem);
-    max-height: clamp(3.5rem, 7vw, 4.5rem);
-    align-items: center;
-  }
-  .career-work-here__point-text {
-    line-height: 1.2;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
-  .career-role-for-you__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .career-benefits__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .career-application__container {
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
-    padding-right: 0;
-  }
-  .career-application__left {
-    padding: clamp(2rem, 4vw, 3rem) 0;
-  }
-  .career-application__left {
-    padding: clamp(2rem, 4vw, 3rem) 0;
-    order: 1;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .career-application__right {
-    padding: clamp(1rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 2rem);
-    width: 85%;
-    max-width: 85%;
-    margin-left: 0;
-    margin-right: auto;
-    order: 2;
-    box-sizing: border-box;
-  }
-  .career-benefits__card {
-    border-right: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
-  }
-  .career-benefits__card:nth-child(2n) {
-    border-right: none;
-  }
-  .career-benefits__card:nth-child(5),
-  .career-benefits__card:nth-child(6) {
-    border-bottom: none;
-  }
-  .career-application__container {
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
-  }
-  .career-application__left {
-    padding: clamp(2rem, 4vw, 3rem) 0;
-    order: 1;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .career-application__right {
-    padding: clamp(1rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 2rem);
-    width: 85% !important;
-    max-width: 85% !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
-    order: 2;
-    box-sizing: border-box;
-  }
-}
-
-/* Desktop Styles */
+/* Application Section */
 .career-application {
-  padding: clamp(4rem, 8vw, 6rem) 5rem;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 5rem);
   background: #0A3D62;
 }
 .career-application__container {
@@ -505,6 +335,7 @@
   gap: clamp(1.5rem, 3vw, 2rem);
   align-items: center;
   padding-right: 0;
+  box-sizing: border-box;
 }
 @media (min-width: 1025px) {
   .career-application__container {
@@ -514,7 +345,7 @@
 }
 .career-application__left {
   background: #0A3D62;
-  padding: 2rem 5rem 2rem 0;
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 5rem) clamp(1.5rem, 3vw, 2rem) 0;
   border-radius: 0.75rem;
   color: white;
   display: flex;
@@ -525,13 +356,13 @@
 .career-application__title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 40px;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: white;
   margin: 0 0 clamp(1rem, 2vw, 1.25rem) 0;
 }
 .career-application__text {
   font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
+  font-size: clamp(14px, 2vw, 24px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.95);
   margin: 0 0 clamp(0.75rem, 1.5vw, 1rem) 0;
@@ -540,10 +371,18 @@
   background: #FBFBFB;
   padding: clamp(1rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 2rem);
   border-radius: 0.75rem;
-  width: calc(100% + 5rem);
-  max-width: calc(100% + 5rem);
+  width: 100%;
+  max-width: 100%;
   margin-left: auto;
-  margin-right: 5rem;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+@media (min-width: 1025px) {
+  .career-application__right {
+    width: calc(100% + 5rem);
+    max-width: calc(100% + 5rem);
+    margin-right: 5rem;
+  }
 }
 .career-application__form {
   display: flex;
@@ -570,24 +409,91 @@
   border: 2px solid #0A3D62;
   border-radius: 0.5rem;
   background: white;
-  color: rgba(10, 61, 98, 0.6);
+  color: #2C2C2C;
   transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 .career-application__textarea {
-  color: #2C2C2C;
   resize: vertical;
   min-height: 100px;
-  border: 2px solid #0A3D62 !important;
+  line-height: 1.5;
+}
+.career-application__input::-webkit-input-placeholder,
+.career-application__textarea::-webkit-input-placeholder {
+  color: rgba(10, 61, 98, 0.35) !important;
+  opacity: 1 !important;
+}
+.career-application__input::-moz-placeholder,
+.career-application__textarea::-moz-placeholder {
+  color: rgba(10, 61, 98, 0.35) !important;
+  opacity: 1 !important;
+}
+.career-application__input:-ms-input-placeholder,
+.career-application__textarea:-ms-input-placeholder {
+  color: rgba(10, 61, 98, 0.35) !important;
+  opacity: 1 !important;
+}
+.career-application__input:focus::-webkit-input-placeholder,
+.career-application__textarea:focus::-webkit-input-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:focus::-moz-placeholder,
+.career-application__textarea:focus::-moz-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:focus:-ms-input-placeholder,
+.career-application__textarea:focus:-ms-input-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
 }
 .career-application__input::placeholder,
 .career-application__textarea::placeholder {
-  color: rgba(10, 61, 98, 0.6);
+  color: rgba(10, 61, 98, 0.35) !important;
+  opacity: 1 !important;
+}
+.career-application__input:focus::placeholder,
+.career-application__textarea:focus::placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:not(:placeholder-shown)::placeholder,
+.career-application__textarea:not(:placeholder-shown)::placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+  display: none !important;
+}
+.career-application__input:not(:placeholder-shown)::-webkit-input-placeholder,
+.career-application__textarea:not(:placeholder-shown)::-webkit-input-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:not(:placeholder-shown)::-moz-placeholder,
+.career-application__textarea:not(:placeholder-shown)::-moz-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
+}
+.career-application__input:not(:placeholder-shown):-ms-input-placeholder,
+.career-application__textarea:not(:placeholder-shown):-ms-input-placeholder {
+  opacity: 0 !important;
+  color: transparent !important;
 }
 .career-application__input:focus,
 .career-application__textarea:focus {
   outline: none;
   border-color: #0A3D62;
   box-shadow: 0 0 0 3px rgba(10, 61, 98, 0.1);
+  color: #2C2C2C !important;
+}
+.career-application__input:not(:placeholder-shown),
+.career-application__textarea:not(:placeholder-shown) {
+  color: #2C2C2C !important;
+}
+.career-application__input,
+.career-application__textarea {
+  color: #2C2C2C !important;
 }
 .career-application__file-wrapper {
   position: relative;
@@ -695,19 +601,55 @@
 }
 
 @media (max-width: 1024px) {
+  .career-application {
+    padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  }
   .career-application__container {
     grid-template-columns: 1fr;
     gap: clamp(2rem, 4vw, 3rem);
+    padding-right: 0 !important;
   }
   .career-application__left {
-    padding: clamp(2rem, 4vw, 3rem) 5rem clamp(2rem, 4vw, 3rem) 0;
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem);
     order: 1;
+    margin-right: 0;
   }
   .career-application__right {
     padding: clamp(1rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 2rem);
-    width: 85% !important;
-    max-width: 85% !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin-left: 0 !important;
-    margin-right: auto !important;
+    margin-right: 0 !important;
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .career-application {
+    padding: clamp(2rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem);
+  }
+  .career-application__container {
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+  .career-application__left {
+    padding: clamp(1.25rem, 2.5vw, 1.5rem) clamp(1rem, 2vw, 1.25rem);
+  }
+  .career-application__right {
+    padding: clamp(0.875rem, 1.75vw, 1rem) clamp(1rem, 2vw, 1.25rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .career-application {
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(0.75rem, 2vw, 1rem);
+  }
+  .career-application__container {
+    gap: clamp(1.25rem, 2.5vw, 1.5rem);
+  }
+  .career-application__left {
+    padding: clamp(1rem, 2vw, 1.25rem) clamp(0.75rem, 1.5vw, 1rem);
+  }
+  .career-application__right {
+    padding: clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);
   }
 }
