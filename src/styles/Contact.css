@@ -659,170 +659,32 @@
   .contact-form {
     gap: clamp(1rem, 2vw, 1.25rem);
   }
-}
-@keyframes slideUp {
-  from {
-    transform: translateY(2rem);
-    opacity: 0;
+  .contact-notice-modal {
+    padding: clamp(0.5rem, 1vw, 1rem);
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+  .contact-notice-modal__content {
+    max-width: 95vw;
+    max-height: 95vh;
   }
-}
-.contact-notice-modal__close {
-  position: absolute;
-  top: clamp(1rem, 2vw, 1.5rem);
-  right: clamp(1rem, 2vw, 1.5rem);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: clamp(0.5rem, 1vw, 0.75rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #0A3D62;
-  transition: all 0.3s ease;
-  z-index: 10;
-  border-radius: 50%;
-}
-.contact-notice-modal__close:hover {
-  background: rgba(10, 61, 98, 0.1);
-  transform: rotate(90deg);
-}
-.contact-notice-modal__close svg {
-  width: clamp(1.25rem, 2.5vw, 1.5rem);
-  height: clamp(1.25rem, 2.5vw, 1.5rem);
-}
-.contact-notice-modal__container {
-  padding: clamp(2rem, 4vw, 3rem);
-}
-.contact-notice-modal__title {
-  color: #0A3D62;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  margin: 0 0 clamp(1.5rem, 3vw, 2rem) 0;
-  text-align: center;
-  padding-right: clamp(2.5rem, 5vw, 3.5rem);
-}
-.contact-notice-modal__body {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.5rem, 3vw, 2rem);
-}
-.contact-notice-modal__intro {
-  color: #2E2E2E;
-  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.7;
-  margin: 0;
-  text-align: center;
-  font-weight: 500;
-}
-.contact-notice-modal__section {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
-}
-.contact-notice-modal__section-title {
-  color: #0A3D62;
-  font-size: clamp(1.125rem, 2vw, 1.375rem);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  margin: 0;
-}
-.contact-notice-modal__section-text {
-  color: #2E2E2E;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.7;
-  margin: 0;
-}
-.contact-notice-modal__list {
-  color: #2E2E2E;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.8;
-  margin: 0;
-  padding-left: clamp(1.25rem, 2.5vw, 1.75rem);
-  list-style-type: disc;
-}
-.contact-notice-modal__list li {
-  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
-}
-.contact-notice-modal__list li:last-child {
-  margin-bottom: 0;
-}
-.contact-notice-modal__contact {
-  color: #2E2E2E;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.7;
-  margin: clamp(0.75rem, 1.5vw, 1rem) 0 0 0;
-}
-.contact-notice-modal__link {
-  color: #0A3D62;
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-.contact-notice-modal__link:hover {
-  color: #2c4d6e;
-}
-
-/* Tablet and Mobile Styles */
-@media (max-width: 1024px) {
-  .contact-main__container {
-    grid-template-columns: 1fr;
-    gap: clamp(2.5rem, 5vw, 3.5rem);
-  }
-  .contact-main__left {
-    order: -1;
-  }
-  .contact-main__right {
-    order: 1;
-  }
-  .contact-hero {
-    height: clamp(15rem, 40vw, 20rem);
-  }
-  .contact-hero__title {
-    font-size: clamp(2rem, 6vw, 3rem);
-  }
-  .contact-main {
-    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(40px, 4vw, 5rem);
-  }
-  .contact-main__container {
-    grid-template-columns: 1fr;
-  }
-  .contact-main__left {
-    order: -1;
-  }
-  .contact-main__right {
-    order: 1;
+  .contact-notice-modal__container {
     padding: clamp(1.5rem, 3vw, 2rem);
   }
-  .contact-main__heading {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+  .contact-notice-modal__title {
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    padding-right: clamp(2rem, 4vw, 2.5rem);
   }
-  .contact-main__social-icons {
-    flex-wrap: wrap;
+  .contact-notice-modal__body {
+    gap: clamp(1.25rem, 2.5vw, 1.5rem);
   }
-  .contact-map {
-    height: clamp(20rem, 60vw, 25rem);
+  .contact-notice-modal__section {
+    gap: clamp(0.5rem, 1vw, 0.75rem);
   }
-  .contact-map__review {
-    max-width: calc(100% - 2rem);
-    padding: clamp(0.875rem, 1.75vw, 1rem);
-    top: clamp(0.75rem, 1.5vw, 1rem);
-    left: clamp(0.75rem, 1.5vw, 1rem);
+  .contact-notice-modal__section-title {
+    font-size: clamp(1rem, 1.75vw, 1.125rem);
   }
-  .contact-hero {
-    height: clamp(12rem, 50vw, 15rem);
-  }
-  .contact-main {
-    padding: clamp(2rem, 4vw, 2.5rem) clamp(40px, 4vw, 5rem);
-  }
-  .contact-form {
-    gap: clamp(1rem, 2vw, 1.25rem);
+  .contact-notice-modal__section-text,
+  .contact-notice-modal__list {
+    font-size: clamp(0.8125rem, 1.25vw, 0.9375rem);
   }
 }

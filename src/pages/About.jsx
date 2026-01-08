@@ -266,7 +266,7 @@ function About() {
                       <img 
                         src={member.image} 
                         alt={member.name}
-                        className={`about-team__avatar ${member.name === 'Jyothilekshmi.I' ? 'about-team__avatar--jyothi' : ''}`}
+                        className="about-team__avatar"
                         loading="lazy"
                       />
                       <div className="about-team__info-card">
