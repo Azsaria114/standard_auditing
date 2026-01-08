@@ -254,12 +254,3 @@
     padding: clamp(0.875rem, 1.75vw, 1rem);
   }
 }
-
-    height: clamp(9rem, 35vw, 12rem);
-    width: calc(100% - clamp(1rem, 2vw, 1.5rem));
-    margin: clamp(0.5rem, 1vw, 0.75rem) clamp(0.5rem, 1vw, 0.75rem) 0;
-  }
-  .insights-blog__content {
-    padding: clamp(0.875rem, 1.75vw, 1rem);
-  }
-}
