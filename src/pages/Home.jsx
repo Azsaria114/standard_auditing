@@ -944,11 +944,11 @@ function Home() {
         <section className="hero__title-section">
           <div className="hero__eyebrow-wrapper">
             <span className="hero__eyebrow-line" aria-hidden="true" />
-            <p className="hero__eyebrow-text h6-montserrat">Trusted Financial Partner for Dubai Businesses</p>
+            <p className="hero__eyebrow-text h6-montserrat">Your Trusted Partner</p>
           </div>
           <h1 className="hero__main-title h1-montserrat">
-            <span className="hero__title-line-1">Trusted Financial Partner</span>
-            <span className="hero__title-line-2">for Dubai Businesses</span>
+            <span className="hero__title-line-1">Audit, Tax & Compliance for</span>
+            <span className="hero__title-line-2">Dubai Businesses</span>
           </h1>
         </section>
         

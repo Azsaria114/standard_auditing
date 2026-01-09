@@ -137,8 +137,8 @@ html, body {
 .hero__title-line-2 {
   display: block;
   color: #0A3D62;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  /* Responsive title sizing */
+  font-size: clamp(1.25rem, 3.5vw, 2rem);
+  /* Responsive title sizing - reduced size */
 }
 
 /* ============================================
@@ -457,12 +457,12 @@ html, body {
 
 .hero__stat-value {
   margin: 0;
-  color: #fbfbfb;
+  color: white;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.1;
   text-align: left;
-  /* Numbers with #fbfbfb color, fixed at 18px */
+  /* Numbers with white color, fixed at 18px */
 }
 
 .hero__stat-value--stars {
@@ -480,12 +480,12 @@ html, body {
 
 .hero__stat-label {
   margin: 0;
-  color: #c0c0c0;
+  color: white;
   font-size: clamp(0.9375rem, 2vw, 1.125rem);
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
-  /* Labels with #c0c0c0 color */
+  /* Labels with white color */
 }
 
 /* ============================================
@@ -3873,7 +3873,7 @@ html, body {
   margin: 0;
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   line-height: 1.4;
-  font-weight: 400;
+  font-weight: 600;
   padding-top: clamp(0.5rem, 1vw, 0.75rem);
   /* Add padding to account for absolute positioned icon */
 }
