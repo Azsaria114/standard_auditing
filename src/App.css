@@ -137,8 +137,8 @@ html, body {
 .hero__title-line-2 {
   display: block;
   color: #0A3D62;
-  font-size: clamp(1.25rem, 3.5vw, 2rem);
-  /* Responsive title sizing - reduced size */
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  /* Responsive title sizing */
 }
 
 /* ============================================
