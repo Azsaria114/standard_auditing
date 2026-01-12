@@ -1,6 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
+
+// Slugify function to match BlogArticlePage
+function slugifyTitle(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+}
 import PartnersSection from '../PartnersSection'
 import section2Image from '../assets/section2.jpg'
 import heroImage from '../assets/heroimage.jpg'
@@ -45,31 +55,37 @@ const serviceCards = [
     title: 'AUDITING',
     icon: 'document-magnifying-glass',
     description: 'Give stakeholders confidence in your financial reports. Satisfy regulatory requirements. With help from a trusted audit firm near you across Dubai and the UAE, you can get audit-ready in 15 days* or less.',
+    path: '/services/auditing',
   },
   {
     title: 'VAT',
     icon: 'percentage',
     description: 'Reclaim every dirham you\'re entitled to with our specialized VAT return filing services UAE by submitting accurate returns on time.',
+    path: '/services/vat',
   },
   {
     title: 'TAX ADVISORY',
     icon: 'line-chart',
     description: 'Pay only what you legally owe. Find deductions, optimize structure, and reduce liabilities with the guidance of experienced tax consultants in Dubai.',
+    path: '/services/tax-advisory',
   },
   {
     title: 'COMPANY FORMATION',
     icon: 'building',
     description: 'Choose the right jurisdiction, complete all paperwork, and launch operations faster. Our tax consultancy services in Dubai ensure smooth registration and compliance.',
+    path: '/services/company-formation',
   },
   {
     title: 'ACCOUNTING & BOOKKEEPING',
     icon: 'calculator',
     description: 'Know exactly where your money goes with organized books and clear monthly reports handled by professionals.',
+    path: '/services/accounting-bookkeeping',
   },
   {
     title: 'CORPORATE TAX',
     icon: 'dollar',
     description: 'Navigate UAE\'s new tax laws with expert UAE corporate tax filing services. We help you maximize deductions and stay compliant with the latest corporate tax regulations.',
+    path: '/services/corporate-tax',
   },
 ]
 
@@ -273,10 +289,33 @@ function ServicesSection() {
                   </li>
             ))}
           </ul>
-          <Link to="/services" className="services-section__cta h3-opensans-semibold" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+          <button 
+            type="button"
+            className="services-section__cta h3-opensans-semibold"
+            onClick={(e) => {
+              e.preventDefault()
+              // Check if mobile/tablet view
+              const isMobileOrTablet = window.innerWidth <= 1024
+              
+              if (isMobileOrTablet) {
+                // On mobile/tablet, scroll to top first
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                // Then open menu and dropdown after scroll starts
+                setTimeout(() => {
+                  window.dispatchEvent(new CustomEvent('openMobileServicesMenu'))
+                }, 300) // Wait for scroll to start
+              } else {
+                // On desktop, scroll first, then open dropdown
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                setTimeout(() => {
+                  window.dispatchEvent(new CustomEvent('openServicesDropdown'))
+                }, 500) // Delay to ensure smooth scroll completes before opening dropdown
+              }
+            }}
+          >
             <span className="services-section__cta-text">Learn More</span>
             <span className="services-section__arrow">→</span>
-          </Link>
+          </button>
           <div className="services-section__badge">
             <svg className="services-section__badge-svg" viewBox="0 0 200 200">
               <defs>
@@ -313,7 +352,12 @@ function ServicesGridSection() {
         </div>
         <div className="services-grid-section__grid">
           {serviceCards.map((service, index) => (
-            <div key={index} className="services-grid-section__card">
+            <Link 
+              key={index} 
+              to={service.path} 
+              className="services-grid-section__card"
+              style={{ textDecoration: 'none', display: 'block' }}
+            >
                 <div className="services-grid-section__icon-container">
                 {service.icon === 'document-magnifying-glass' && (
                   <img src={FileMagnifyingGlassIcon} alt="Auditing" className="services-grid-section__icon" />
@@ -336,10 +380,10 @@ function ServicesGridSection() {
               </div>
               <h3 className="services-grid-section__card-title h5-montserrat">{service.title}</h3>
               <p className="services-grid-section__card-description body-opensans">{service.description}</p>
-              <button type="button" className="services-grid-section__expand-btn small-body-opensans">
+              <span className="services-grid-section__expand-btn small-body-opensans">
                 Expand &gt;&gt;
-              </button>
-            </div>
+              </span>
+            </Link>
           ))}
         </div>
       </div>
@@ -457,7 +501,22 @@ function WhyTrustSection() {
                 </div>
               </div>
               <p className="why-trust-section__hover-text-content">
-                {trustBenefits[1].hoverText}
+                {trustBenefits[1].hoverText.split(' See more here.')[0]}{' '}
+                <a 
+                  href="#testimonials" 
+                  className="why-trust-section__see-more-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const testimonialsSection = document.getElementById('testimonials');
+                    if (testimonialsSection) {
+                      const headerHeight = 110; // Approximate header height
+                      const y = testimonialsSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  See more here.
+                </a>
               </p>
             </div>
           </div>
@@ -559,22 +618,22 @@ function VideoTestimonialsSection() {
     {
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
       title: 'How To Get Back VAT Paid on Employee Benefits Without Problems',
-      link: '#'
+      slug: slugifyTitle('How To Get Back VAT Paid on Employee Benefits Without Problems')
     },
     {
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop',
       title: 'How Free Zone Businesses Can Protect Their 0% Tax Status',
-      link: '#'
+      slug: slugifyTitle('How Free Zone Businesses Can Protect Their 0% Tax Status')
     },
     {
       image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop',
       title: 'Why Mixing Mainland and Free Zone Income Can Cost You 9% Tax',
-      link: '#'
+      slug: slugifyTitle('Why Mixing Mainland and Free Zone Income Can Cost You 9% Tax')
     },
     {
       image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop',
       title: 'Related-Party Deals That Can Hurt Your Profits',
-      link: '#'
+      slug: slugifyTitle('Related-Party Deals That Can Hurt Your Profits')
     }
   ]
 
@@ -594,10 +653,12 @@ function VideoTestimonialsSection() {
             const isShrunk = hoveredIndex !== null && hoveredIndex !== index
             
             return (
-              <div 
-                key={index} 
+              <Link
+                key={index}
+                to={`/insights/article/${article.slug}`}
                 className={`video-testimonials-section__card ${isHovered ? 'video-testimonials-section__card--hovered' : ''} ${isShrunk ? 'video-testimonials-section__card--shrunk' : ''}`}
                 onMouseEnter={() => setHoveredIndex(index)}
+                style={{ textDecoration: 'none', display: 'block' }}
               >
                 <div className="video-testimonials-section__thumbnail">
                   <img 
@@ -607,7 +668,7 @@ function VideoTestimonialsSection() {
                   />
                   <p className="video-testimonials-section__card-title body-opensans">{article.title}</p>
                 </div>
-              </div>
+              </Link>
             )
           })}
         </div>
@@ -652,7 +713,7 @@ function ClientTestimonialsSection() {
   }
 
   return (
-    <section className="client-testimonials-section">
+    <section className="client-testimonials-section" id="testimonials">
       <div className="client-testimonials-section__container">
         <div className="client-testimonials-section__left">
           <span className="client-testimonials-section__tag h3-opensans-semibold">Testimonials</span>
@@ -944,11 +1005,11 @@ function Home() {
         <section className="hero__title-section">
           <div className="hero__eyebrow-wrapper">
             <span className="hero__eyebrow-line" aria-hidden="true" />
-            <p className="hero__eyebrow-text h6-montserrat">Trusted Financial Partner for Dubai Businesses</p>
+            <p className="hero__eyebrow-text h6-montserrat">Your Trusted Partner</p>
           </div>
           <h1 className="hero__main-title h1-montserrat">
-            <span className="hero__title-line-1">Trusted Financial Partner</span>
-            <span className="hero__title-line-2">for Dubai Businesses</span>
+            <span className="hero__title-line-1">Audit, Tax & Compliance for</span>
+            <span className="hero__title-line-2">Dubai Businesses</span>
           </h1>
         </section>
         

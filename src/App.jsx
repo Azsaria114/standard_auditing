@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom'
 import './App.css'
 import './styles/ClientFeedback.css'
@@ -206,6 +206,7 @@ const servicesMenu = [
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
+  const programmaticOpenRef = useRef(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -227,8 +228,15 @@ function Header() {
         setIsMenuOpen(false)
         document.body.style.overflow = ''
       }
-      if (isServicesDropdownOpen && !event.target.closest('.site-header__services-dropdown')) {
+      // Don't close dropdown if it was just programmatically opened
+      if (isServicesDropdownOpen && !event.target.closest('.site-header__services-dropdown') && !programmaticOpenRef.current) {
         setIsServicesDropdownOpen(false)
+      }
+      // Reset the flag after a short delay
+      if (programmaticOpenRef.current) {
+        setTimeout(() => {
+          programmaticOpenRef.current = false
+        }, 1000)
       }
     }
 
@@ -241,6 +249,56 @@ function Header() {
       document.body.style.overflow = ''
     }
   }, [isMenuOpen, isServicesDropdownOpen])
+
+  // Listen for custom event to open services dropdown
+  useEffect(() => {
+    const handleOpenServicesDropdown = () => {
+      // Mark as programmatically opened to prevent immediate close
+      programmaticOpenRef.current = true
+      // Force open the dropdown on desktop
+      setIsServicesDropdownOpen(true)
+    }
+
+    const handleOpenMobileServicesMenu = () => {
+      // Mark as programmatically opened
+      programmaticOpenRef.current = true
+      // On mobile/tablet, first open the menu
+      setIsMenuOpen(true)
+      document.body.style.overflow = 'hidden'
+      
+      // Use requestAnimationFrame to wait for DOM update, then check menu visibility
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          // Check if menu is visible/rendered
+          const checkMenuVisible = () => {
+            const navElement = document.querySelector('.site-header__nav.site-header__nav--open')
+            if (navElement) {
+              // Menu is in DOM, wait a bit more for animation, then open dropdown
+              setTimeout(() => {
+                setIsServicesDropdownOpen(true)
+                // Reset flag after dropdown opens
+                setTimeout(() => {
+                  programmaticOpenRef.current = false
+                }, 500)
+              }, 400) // Additional delay for slide animation
+            } else {
+              // Menu not yet in DOM, check again
+              setTimeout(checkMenuVisible, 50)
+            }
+          }
+          checkMenuVisible()
+        })
+      })
+    }
+
+    window.addEventListener('openServicesDropdown', handleOpenServicesDropdown, { once: false })
+    window.addEventListener('openMobileServicesMenu', handleOpenMobileServicesMenu, { once: false })
+
+    return () => {
+      window.removeEventListener('openServicesDropdown', handleOpenServicesDropdown)
+      window.removeEventListener('openMobileServicesMenu', handleOpenMobileServicesMenu)
+    }
+  }, [])
 
   return (
     <>

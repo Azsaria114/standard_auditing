@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import '../styles/Contact.css'
 
@@ -13,6 +13,8 @@ function Contact() {
   })
   const [consent, setConsent] = useState(false)
   const [showNotice, setShowNotice] = useState(false)
+  const [isPhoneDropdownOpen, setIsPhoneDropdownOpen] = useState(false)
+  const phoneDropdownRef = useRef(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -61,6 +63,23 @@ function Contact() {
       document.body.style.overflow = ''
     }
   }, [showNotice])
+
+  // Handle click outside to close phone dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (phoneDropdownRef.current && !phoneDropdownRef.current.contains(event.target)) {
+        setIsPhoneDropdownOpen(false)
+      }
+    }
+
+    if (isPhoneDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isPhoneDropdownOpen])
 
   return (
     <div className="contact-page">
@@ -212,7 +231,7 @@ function Contact() {
                   onChange={handleChange}
                   className="contact-form__textarea body-opensans"
                   placeholder="Example: I need help with financial auditing for my company..."
-                  rows="5"
+                  rows="2"
                   required
                 ></textarea>
               </div>
@@ -317,6 +336,36 @@ function Contact() {
           </div>
         </div>
       )}
+
+      {/* Sticky Contact Button */}
+      <div className="contact-sticky-phone" ref={phoneDropdownRef}>
+        <button 
+          type="button"
+          className="contact-sticky-phone__button"
+          onClick={() => setIsPhoneDropdownOpen(!isPhoneDropdownOpen)}
+          aria-label="Call Us"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7292C21.7209 20.9841 21.5573 21.2126 21.3522 21.3992C21.1472 21.5858 20.9053 21.7261 20.6441 21.8102C20.3828 21.8944 20.1085 21.9206 19.8382 21.8872C16.7425 21.4986 13.787 20.4471 11.19 18.8102C8.77382 17.3054 6.72533 15.2569 5.2202 12.8402C3.58225 10.2412 2.53026 7.28399 2.1422 4.18622C2.10879 3.91589 2.13499 3.64159 2.2192 3.38032C2.30341 3.11905 2.44371 2.87716 2.6302 2.67222C2.8167 2.46728 3.04519 2.30372 3.3002 2.19222C3.55521 2.08072 3.83089 2.02374 4.1092 2.02422H7.1092C7.59585 2.02422 8.06808 2.21749 8.40993 2.55934C8.75178 2.90119 8.94505 3.37342 8.94505 3.86022C8.94505 4.81522 9.1602 5.75222 9.5702 6.60022C9.73706 6.97576 9.80742 7.38649 9.7752 7.79522C9.74298 8.20395 9.60919 8.59822 9.3852 8.94022L8.0952 10.2302C9.51473 12.7699 11.2301 15.0853 13.2002 17.1202L14.4902 15.8302C14.8322 15.6062 15.2265 15.4724 15.6352 15.4402C16.0439 15.408 16.4547 15.4783 16.8302 15.6452C17.6782 16.0552 18.6152 16.2702 19.5702 16.2702C20.057 16.2702 20.5292 16.4635 20.8711 16.8053C21.2129 17.1472 21.4062 17.6194 21.4062 18.1062L22 16.92Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          <span className="contact-sticky-phone__text">Call Us</span>
+        </button>
+        <div className={`contact-sticky-phone__dropdown ${isPhoneDropdownOpen ? 'contact-sticky-phone__dropdown--open' : ''}`}>
+          <a href="tel:+971542119784" className="contact-sticky-phone__number">
+            +971 54 211 9784
+          </a>
+          <a href="tel:+97143795200" className="contact-sticky-phone__number">
+            +971 4 379 5200
+          </a>
+        </div>
+      </div>
 
       {/* Map Section */}
       <section className="contact-map">

@@ -188,21 +188,110 @@
    PARTNERS SECTION - LOGO CENTERING
    ============================================ */
 .partners-section__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  min-height: clamp(4rem, 8vw, 6rem);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: clamp(4rem, 8vw, 6rem) !important;
+  min-height: clamp(4rem, 8vw, 6rem) !important;
+  /* Fixed height container for consistent logo sizing */
 }
 
 .partners-section__logo-img {
-  max-width: 80%;
-  max-height: 80%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  object-position: center;
+  max-width: 80% !important;
+  max-height: 80% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  /* All logos same size and centered */
+}
+
+/* Ensure all logo variants use same size */
+.partners-section__logo-img--dso,
+.partners-section__logo-img--shmas {
+  max-width: 80% !important;
+  max-height: 80% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  /* Same size for all logo variants */
+}
+
+/* Slightly larger logos for DMCC, IFZA, and Meydan */
+.partners-section__logo-img--dmcc,
+.partners-section__logo-img--meydan,
+.partners-section__logo-img--ifza {
+  max-width: 90% !important;
+  max-height: 90% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  /* Slightly larger size for DMCC, IFZA, and Meydan - 90% instead of 80% */
+}
+
+/* Tablet responsive styles */
+@media (max-width: 1024px) {
+  .partners-section__logo {
+    height: clamp(3rem, 6vw, 4.5rem) !important;
+    min-height: clamp(3rem, 6vw, 4.5rem) !important;
+  }
+  
+  .partners-section__logo-img {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  
+  .partners-section__logo-img--dso,
+  .partners-section__logo-img--shmas {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  
+  .partners-section__logo-img--dmcc,
+  .partners-section__logo-img--meydan,
+  .partners-section__logo-img--ifza {
+    max-width: 90% !important;
+    max-height: 90% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    /* Slightly larger on tablet */
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .partners-section__logo {
+    height: clamp(2.5rem, 5vw, 3.5rem) !important;
+    min-height: clamp(2.5rem, 5vw, 3.5rem) !important;
+  }
+  
+  .partners-section__logo-img {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  
+  .partners-section__logo-img--dso,
+  .partners-section__logo-img--shmas {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  
+  .partners-section__logo-img--dmcc,
+  .partners-section__logo-img--meydan,
+  .partners-section__logo-img--ifza {
+    max-width: 90% !important;
+    max-height: 90% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    /* Slightly larger on mobile */
+  }
 }
 
 /* ============================================
@@ -237,19 +326,86 @@
 }
 
 /* ============================================
-   MOBILE SHADING FIX - COMPARISON SECTION
+MOBILE SHADING FIX - COMPARISON SECTION
    ============================================ */
+/* Tablet view - use dark color similar to pricing section */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .comparison-left {
+    background: linear-gradient(
+      to top right,
+      #f2f8fd 10%,
+      #d9eaf6 45%,
+      rgb(10, 63, 101) 100%
+    ) !important;
+  }
+}
+
+/* Mobile view - match pricing section padding */
 @media (max-width: 768px) {
-  .comparison-left__content,
+  /* Match pricing section padding: clamp(2rem, 4vw, 3rem) 1.25rem */
+  .comparison-container {
+    padding: 0 1.25rem !important;
+    /* 20px horizontal padding like pricing section */
+  }
+  
+  .comparison-left {
+    padding: 0.5rem;
+    /* Reduced padding to match pricing section spacing */
+  }
+  
+  /* Lighten the gradient on mobile to prevent text from being blocked */
+  .comparison-left {
+    background: linear-gradient(
+      to top right,
+      #f2f8fd 10%,
+      #d9eaf6 60%,
+      #b8d9e8 100%
+    ) !important;
+  }
+  
+  /* Add subtle white background to content area for better text readability */
+  .comparison-left__content {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: clamp(0.5rem, 1vw, 0.75rem);
+    position: relative;
+    z-index: 2;
+    padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem) !important;
+    /* Match pricing section card padding style */
+  }
+  
   .comparison-right-card {
     background: transparent !important;
     box-shadow: none !important;
+    padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem) !important;
+    /* Match pricing section card padding */
   }
   
-  .comparison-list {
-    background: rgba(255, 255, 255, 0.95);
-    padding: clamp(1rem, 2vw, 1.5rem);
-    border-radius: clamp(0.5rem, 1vw, 0.75rem);
+  /* Ensure text has good contrast */
+  .comparison-left__content .comparison-title {
+    color: #0b3558 !important;
+    position: relative;
+    z-index: 3;
+    font-size: clamp(1.25rem, 5vw, 1.5rem) !important;
+    /* Match pricing section title size */
+    margin-bottom: clamp(1rem, 2vw, 1.25rem) !important;
+  }
+  
+  .comparison-left__content .comparison-item-title {
+    color: #2d3748 !important;
+    position: relative;
+    z-index: 3;
+    font-weight: 600;
+    font-size: clamp(0.8125rem, 1.625vw, 0.9375rem) !important;
+    /* Match pricing section text size */
+  }
+  
+  /* Ensure icons are visible */
+  .comparison-left__content .comparison-item-icon {
+    color: #0A3D62 !important;
+    position: relative;
+    z-index: 3;
   }
 }
 

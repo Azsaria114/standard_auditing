@@ -137,8 +137,8 @@ html, body {
 .hero__title-line-2 {
   display: block;
   color: #0A3D62;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  /* Responsive title sizing */
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  /* Reduced to max 40px (2.5rem) to match old size */
 }
 
 /* ============================================
@@ -593,7 +593,8 @@ html, body {
   height: clamp(250px, 28vw, 350px);
   background: #f4f8fc;
   border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: clamp(2rem, 4vw, 2.5rem);
+  /* Increased spacing between image and text */
   border: 1px solid rgba(10, 61, 98, 0.1);
   display: flex;
   align-items: center;
@@ -728,11 +729,34 @@ html, body {
 
   .how-it-works-section__card-box {
     height: clamp(280px, 40vw, 350px);
+    margin-bottom: clamp(2rem, 4vw, 2.5rem) !important;
+    /* Increased spacing between image and text on tablet */
   }
 
   .how-it-works-section__cards {
     grid-template-columns: 1fr;
     gap: clamp(6rem, 7.5vw, 8.5rem);
+    justify-items: center;
+    /* Center the cards */
+  }
+
+  .how-it-works-section__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center align the step content */
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .how-it-works-section__card-box {
+    margin: 0 auto;
+    /* Center the card box */
+  }
+
+  .how-it-works-section__card-content {
+    text-align: center;
+    /* Center the text content */
   }
 
   .how-it-works-section__connector-line {
@@ -756,11 +780,34 @@ html, body {
 
   .how-it-works-section__card-box {
     height: clamp(250px, 80vw, 320px);
+    margin-bottom: clamp(1.75rem, 3.5vw, 2.25rem) !important;
+    /* Increased spacing between image and text on mobile */
   }
 
   .how-it-works-section__cards {
     grid-template-columns: 1fr;
     gap: clamp(2.5rem, 5vw, 3.5rem);
+    justify-items: center;
+    /* Center the cards */
+  }
+
+  .how-it-works-section__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center align the step content */
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .how-it-works-section__card-box {
+    margin: 0 auto;
+    /* Center the card box */
+  }
+
+  .how-it-works-section__card-content {
+    text-align: center;
+    /* Center the text content */
   }
 
   /* Reduce gap for steps 1 and 2 to match step 3 */
@@ -940,8 +987,8 @@ html, body {
 
   .hero__main-title .hero__title-line-1,
   .hero__main-title .hero__title-line-2 {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    /* Reduced from 2-3.5rem to 1.5-2rem */
+    font-size: clamp(1.375rem, 3.5vw, 1.75rem);
+    /* Reduced to match old size - max 28px (1.75rem) */
     line-height: 1.2;
   }
 
@@ -1077,8 +1124,8 @@ html, body {
 
   .hero__main-title .hero__title-line-1,
   .hero__main-title .hero__title-line-2 {
-    font-size: clamp(1.25rem, 6vw, 1.5rem);
-    /* Much smaller: 20-24px instead of 32-56px */
+    font-size: clamp(1.125rem, 3.5vw, 1.375rem);
+    /* Reduced to match old size - max 22px (1.375rem) */
     line-height: 1.15;
   }
 
@@ -2160,17 +2207,20 @@ html, body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;
+  height: clamp(4rem, 8vw, 6rem);
+  min-height: clamp(4rem, 8vw, 6rem);
   margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+  /* Fixed height container for consistent logo sizing */
 }
 
 .partners-section__logo-img {
-  max-width: 100%;
-  max-height: clamp(4rem, 8vw, 6rem);
+  max-width: 80%;
+  max-height: 80%;
   width: auto;
   height: auto;
   object-fit: contain;
-  /* Uniform logo size for all logos */
+  object-position: center;
+  /* Uniform logo size for all logos - centered in square space */
 }
 
 /* Meydan logo - remove white background */
@@ -2557,9 +2607,9 @@ html, body {
   }
   
   .partners-section__result-text {
-    font-size: clamp(0.625rem, 1.5vw, 0.9375rem);
+    font-size: clamp(0.875rem, 2vw, 1.125rem) !important;
     line-height: 1.4;
-    /* Reduced font size for tablet responsiveness */
+    /* Increased font size for better readability on tablet */
   }
 }
 
@@ -2655,10 +2705,18 @@ html, body {
     /* Adjusted padding for better visibility on mobile */
   }
   
+  .partners-section__logo {
+    height: clamp(3rem, 6vw, 4.5rem);
+    min-height: clamp(3rem, 6vw, 4.5rem);
+    /* Fixed height container for consistent logo sizing on tablet */
+  }
+  
   .partners-section__logo-img {
-    max-width: 100%;
-    max-height: clamp(3rem, 6vw, 4.5rem);
-    /* Uniform logo size for tablet/mobile */
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    object-position: center;
+    /* Uniform logo size for tablet/mobile - centered */
   }
   
   .partners-section__logo-img--meydan {
@@ -2758,9 +2816,9 @@ html, body {
   }
   
   .partners-section__result-text {
-    font-size: clamp(0.5625rem, 1.25vw, 0.875rem);
+    font-size: clamp(0.8125rem, 1.75vw, 1rem) !important;
     line-height: 1.4;
-    /* Reduced font size for mobile responsiveness */
+    /* Increased font size for better readability on mobile */
   }
 }
 
@@ -2790,10 +2848,18 @@ html, body {
     /* Smaller padding for very small screens */
   }
 
+  .partners-section__logo {
+    height: clamp(2.5rem, 5vw, 3.5rem);
+    min-height: clamp(2.5rem, 5vw, 3.5rem);
+    /* Fixed height container for consistent logo sizing on mobile */
+  }
+  
   .partners-section__logo-img {
-    max-width: 100%;
-    max-height: clamp(2.5rem, 5vw, 3.5rem);
-    /* Uniform logo size for very small screens */
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    object-position: center;
+    /* Uniform logo size for very small screens - centered */
   }
 
   .partners-section__logo-img--meydan {
@@ -2813,9 +2879,9 @@ html, body {
   }
   
   .partners-section__result-text {
-    font-size: clamp(0.5rem, 1.1vw, 0.75rem);
-    line-height: 1.25;
-    /* Even smaller font size for extra small mobile screens */
+    font-size: clamp(0.75rem, 1.5vw, 0.9375rem) !important;
+    line-height: 1.4;
+    /* Increased font size for better readability on extra small screens */
   }
 }
 
@@ -3031,11 +3097,15 @@ html, body {
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: flex-end;
+  text-align: right;
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   text-decoration: none;
   margin-top: auto;
+  margin-left: auto;
   position: relative;
   z-index: 2;
+  display: block;
+  width: 100%;
   /* Expand button in bottom right - plain text link style - above blue background */
 }
 
@@ -3697,10 +3767,11 @@ html, body {
   gap: clamp(0.75rem, 2vw, 1rem);
   transition: transform 0.2s ease, background 0.2s ease;
   width: 100%;
-  min-height: clamp(14rem, 25vw, 17rem);
+  min-height: clamp(16rem, 28vw, 20rem);
+  /* Increased min-height to accommodate hover text content */
   position: relative;
   overflow: hidden;
-  /* Allow hover text to overflow and be visible */
+  /* Keep overflow hidden to contain all content within card */
   /* Less curved cards - light gray/off-white */
   border: none;
   box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.5rem, 1.5vw, 1rem) rgba(0, 0, 0, 0.15);
@@ -3727,9 +3798,9 @@ html, body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  z-index: 10;
+  z-index: 15;
   transition: border-color 0.3s ease, transform 0.3s ease;
-  /* Higher z-index to stay on top, positioned absolutely to stay static */
+  /* Higher z-index to stay on top of hover text, positioned absolutely to stay static */
 }
 
 /* Change icon circle border and diamond color on hover, counter-transform to stay static */
@@ -3761,19 +3832,21 @@ html, body {
   border: 0.125rem solid rgba(255, 255, 255, 0.2);
   /* Subtle white border */
   color: white;
-  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.5rem, 1.5vw, 1rem);
-  padding-top: clamp(3rem, 6vw, 4rem);
-  /* Top padding to account for absolutely positioned icon */
+  padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.5rem, 1.5vw, 1rem);
+  padding-top: clamp(4.5rem, 9vw, 6rem);
+  padding-bottom: clamp(0.5rem, 1vw, 0.75rem);
+  /* Increased padding now that card is taller: icon top (1rem) + icon height (2.5rem) + margin (2.5rem) = 6rem */
   border-radius: clamp(0.375rem, 1vw, 0.5rem);
   font-size: clamp(0.7rem, 1.4vw, 0.875rem);
-  /* Reduced base font size */
-  line-height: 1.5;
-  /* Tighter line height */
+  /* Increased font size back to more readable size */
+  line-height: 1.4;
+  /* Better line height for readability */
   font-weight: 400;
-  text-align: left;
+  text-align: center;
+  /* Center align text */
   opacity: 0;
   overflow: hidden;
-  /* Hide overflow instead of scrolling */
+  /* Hide overflow to keep content within card */
   box-sizing: border-box;
   visibility: hidden;
   /* No transform on container - only text animates */
@@ -3783,9 +3856,11 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  gap: clamp(1rem, 2vw, 1.25rem);
-  /* Vertically center content on hover */
+  /* Center content vertically for equal top and bottom spacing */
+  align-items: center;
+  /* Center content horizontally */
+  gap: 0;
+  /* Remove gap to maximize space */
 }
 
 /* Icon wrapper for hover text - hidden since we use original icon */
@@ -3816,31 +3891,51 @@ html, body {
 
 .why-trust-section__hover-text-content {
   margin: 0;
+  /* Remove margins for centered alignment */
   color: white;
-  text-align: left;
+  text-align: center;
+  /* Center align text content */
   font-size: clamp(0.7rem, 1.4vw, 0.875rem);
-  /* Reduced base font size for better fit across all screen sizes */
-  line-height: 1.45;
-  /* Slightly tighter line height for better space utilization */
-  transition: font-size 0.3s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: clamp(0.25rem, 0.75vw, 0.5rem);
-  /* Minimal padding to maximize text space */
+  /* Increased font size back to readable size */
+  line-height: 1.4;
+  /* Better line height for readability */
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.3s ease;
+  /* Smooth animation for slide up from bottom */
+  padding: 0;
+  /* Remove padding to maximize space */
   box-sizing: border-box;
   word-wrap: break-word;
   /* Allow text to wrap properly */
   hyphens: auto;
   /* Enable automatic hyphenation for better text fitting */
   transform: translateY(100%);
-  /* Text starts from bottom */
+  /* Start text from bottom (hidden below) */
+  width: 100%;
+  overflow: visible;
+  /* Allow text to be fully visible */
 }
 
 .why-trust-section__card:hover .why-trust-section__hover-text-content {
-  font-size: clamp(0.65rem, 1.3vw, 0.8rem);
-  /* Responsive font size on hover - scales with screen size */
+  font-size: clamp(0.7rem, 1.4vw, 0.875rem);
+  /* Readable font size now that card is taller */
   font-weight: 400;
   width: 100%;
   transform: translateY(0);
-  /* Text slides up from bottom to normal position */
+  /* Slide text up from bottom to visible position */
+  line-height: 1.4;
+  /* Better line height for readability */
+}
+
+/* See more link styling */
+.why-trust-section__see-more-link {
+  color: white;
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.why-trust-section__see-more-link:hover {
+  opacity: 0.8;
 }
 
 /* Icon circle stays visible on hover - only color changes */
@@ -3873,7 +3968,8 @@ html, body {
   margin: 0;
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   line-height: 1.4;
-  font-weight: 400;
+  font-weight: 600;
+  /* Semibold for all screens */
   padding-top: clamp(0.5rem, 1vw, 0.75rem);
   /* Add padding to account for absolute positioned icon */
 }
@@ -3954,25 +4050,43 @@ html, body {
     padding: clamp(0.5rem, 1.5vw, 0.875rem) clamp(0.5rem, 1.5vw, 0.875rem);
     padding-top: clamp(2.75rem, 6vw, 3.5rem);
     /* Top padding to account for absolutely positioned icon */
-    font-size: clamp(0.65rem, 1.3vw, 0.75rem);
-    /* Smaller base font size on tablet */
-    justify-content: center;
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    /* Increased font size on tablet for better readability */
+    justify-content: center !important;
     /* Vertically center content on hover */
+    align-items: center !important;
+    /* Center align content horizontally on tablet */
+    text-align: center !important;
+    /* Center align text on tablet */
   }
 
   .why-trust-section__hover-text-content {
-    font-size: clamp(0.65rem, 1.3vw, 0.75rem);
-    /* Smaller font size on tablet for better fit */
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    /* Increased font size on tablet for better readability */
     line-height: 1.4;
     padding: clamp(0.25rem, 0.75vw, 0.5rem);
     /* Minimal padding on tablet */
-    margin-top: clamp(1.5rem, 4vw, 2.5rem);
-    /* Added spacing between icon and content below for tablet */
+    margin: 0 !important;
+    /* Remove margin for centered alignment */
+    text-align: center !important;
+    /* Center align text on tablet */
+    transform: translateY(100%) !important;
+    /* Start text from bottom (hidden below) */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.3s ease !important;
+    /* Smooth animation for slide up from bottom */
   }
 
   .why-trust-section__card:hover .why-trust-section__hover-text-content {
-    font-size: clamp(0.6rem, 1.2vw, 0.7rem);
-    /* Responsive font size on hover for tablet */
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    /* Increased font size on hover for tablet */
+    transform: translateY(0) !important;
+    /* Slide text up from bottom to visible position */
+  }
+
+  /* Ensure card title is semibold on tablet */
+  .why-trust-section__card-title {
+    font-weight: 600 !important;
+    /* Semibold for tablet */
   }
 }
 
@@ -6986,6 +7100,12 @@ html, body {
     font-size: clamp(1.5rem, 5vw, 1.75rem);
   }
 
+  /* Why Choose Us Section - Match pricing section padding on tablet */
+  .service-comparison--pricing-bg {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem !important;
+    /* Match pricing section: 20px horizontal padding */
+  }
+
   /* Client Testimonials Tablet */
   .client-testimonials-section {
     padding: clamp(2rem, 4vw, 3rem) 1.25rem;
@@ -7180,8 +7300,8 @@ html, body {
   .why-trust-section__card {
     padding: clamp(0.75rem, 1.5vw, 0.875rem) clamp(0.75rem, 1.5vw, 0.875rem) !important;
     /* Reduced padding: 12-14px - override tablet styles */
-    min-height: clamp(11rem, 22vw, 13rem) !important;
-    /* Reduced min-height: 176-208px - ensure equal heights */
+    min-height: clamp(14rem, 28vw, 18rem) !important;
+    /* Increased min-height for mobile to accommodate hover text: 224-288px */
     height: auto;
     /* Allow natural height */
     gap: clamp(0.5rem, 1.25vw, 0.75rem);
@@ -7218,32 +7338,59 @@ html, body {
     /* Tighter line-height */
     padding-top: clamp(0.375rem, 0.875vw, 0.625rem);
     /* Reduced top padding */
+    font-weight: 600 !important;
+    /* Semibold for mobile */
   }
 
   .why-trust-section__card-hover-text {
-    padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.25rem, 0.75vw, 0.375rem);
-    /* Further reduced padding to prevent overlap */
-    padding-top: clamp(1.75rem, 4vw, 2.25rem);
-    /* Reduced top padding for icon space */
-    font-size: clamp(0.6rem, 1.1vw, 0.6875rem);
-    /* Smaller hover text size: 9.6-11px to prevent overlap */
-    line-height: 1.35;
-    /* Tighter line-height */
-    gap: clamp(0.5rem, 1.25vw, 0.7rem);
-    /* Reduced gap */
-    overflow: hidden;
+    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.5rem, 1.5vw, 1rem) !important;
+    /* Increased side padding for better spacing */
+    padding-top: clamp(4rem, 8vw, 5rem) !important;
+    /* Increased top padding for mobile: icon top (0.75rem) + icon height (2rem) + margin (2.25rem) = 5rem */
+    padding-bottom: clamp(1rem, 2vw, 1.5rem) !important;
+    /* Increased bottom padding to add space at the bottom */
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem) !important;
+    /* Increased font size for better readability on mobile */
+    line-height: 1.4 !important;
+    /* Better line-height for readability */
+    gap: 0 !important;
+    /* Remove gap to maximize space */
+    overflow: hidden !important;
     /* No scroll - hide overflow instead */
-    max-height: 100%;
+    max-height: 100% !important;
     /* Keep within card bounds */
+    justify-content: center !important;
+    /* Center content vertically for equal top and bottom spacing */
+    align-items: center !important;
+    /* Center content horizontally on mobile */
+    text-align: center !important;
+    /* Center align text on mobile */
   }
 
   .why-trust-section__hover-text-content {
-    font-size: clamp(0.55rem, 1vw, 0.625rem);
-    /* Smaller hover content text: 8.8-10px to prevent overlap */
-    line-height: 1.35;
-    /* Tighter line-height */
-    padding: clamp(0.125rem, 0.5vw, 0.25rem);
-    /* Reduced padding */
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem) !important;
+    /* Increased font size for better readability on mobile */
+    line-height: 1.4 !important;
+    /* Better line-height for readability */
+    padding: 0 !important;
+    /* Remove padding to maximize space */
+    margin: 0 !important;
+    /* Remove margins for centered alignment */
+    text-align: center !important;
+    /* Center align text on mobile */
+    transform: translateY(100%) !important;
+    /* Start text from bottom (hidden below) */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.3s ease !important;
+    /* Smooth animation for slide up from bottom */
+  }
+
+  .why-trust-section__card:hover .why-trust-section__hover-text-content {
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem) !important;
+    /* Maintain increased font size on hover for mobile */
+    line-height: 1.4 !important;
+    transform: translateY(0) !important;
+    /* Slide text up from bottom to visible position */
+    /* Slide text up from bottom to visible position */
   }
 
   .why-trust-section__grid {
@@ -7274,6 +7421,12 @@ html, body {
     font-size: clamp(1.25rem, 5vw, 1.5rem);
     /* 20-24px */
     line-height: 1.2;
+  }
+
+  /* Why Choose Us Section - Match pricing section padding on mobile */
+  .service-comparison--pricing-bg {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem !important;
+    /* Match pricing section: 20px horizontal padding */
   }
 
   .pricing-section__grid {

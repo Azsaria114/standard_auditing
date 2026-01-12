@@ -88,7 +88,8 @@ function PartnersSection() {
                     zone.name === 'MEYDAN' ? 'partners-section__logo-img--meydan' : 
                     zone.name === 'IFZA' ? 'partners-section__logo-img--ifza' :
                     zone.name === 'DSO' ? 'partners-section__logo-img--dso' :
-                    zone.name === 'SHMAS' ? 'partners-section__logo-img--shmas' : ''
+                    zone.name === 'SHMAS' ? 'partners-section__logo-img--shmas' :
+                    zone.name === 'DMCC' ? 'partners-section__logo-img--dmcc' : ''
                   }`} 
                 />
               </div>

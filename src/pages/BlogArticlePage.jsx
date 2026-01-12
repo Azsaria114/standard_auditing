@@ -1270,7 +1270,15 @@ function BlogArticle({
     }
 
     const updateActiveHeading = () => {
+      // Don't highlight any heading if we're at the very top of the page
+      if (window.pageYOffset < 100) {
+        setActiveHeading(null)
+        return
+      }
+      
       const scrollPosition = window.pageYOffset + 200
+      let foundActive = false
+      
       for (let i = headings.length - 1; i >= 0; i--) {
         const heading = headings[i]
         const element = document.getElementById(heading.id)
@@ -1278,9 +1286,14 @@ function BlogArticle({
           const elementTop = element.offsetTop
           if (scrollPosition >= elementTop) {
             setActiveHeading(heading.id)
+            foundActive = true
             break
           }
         }
+      }
+      // If no heading is in view, don't highlight any
+      if (!foundActive) {
+        setActiveHeading(null)
       }
     }
 
@@ -1424,23 +1437,23 @@ function BlogArticle({
         </a>
       </section>
 
-      {headings.length > 0 && (
-        <aside className="blog-article__timeline">
-          <h4 className="blog-article__timeline-title">Contents</h4>
-          <nav className="blog-article__timeline-nav">
-            {headings.map((heading) => (
-              <a
-                key={heading.id}
-                href={`#${heading.id}`}
-                onClick={scrollToHeading(heading.id)}
-                className={`blog-article__timeline-item ${activeHeading === heading.id ? 'blog-article__timeline-item--active' : ''}`}
-              >
-                <span className="blog-article__timeline-text">{heading.text}</span>
-              </a>
-            ))}
-          </nav>
-        </aside>
-      )}
+          {headings.length > 0 && (
+            <aside className="blog-article__timeline">
+              <h4 className="blog-article__timeline-title">Contents</h4>
+              <nav className="blog-article__timeline-nav">
+                {headings.map((heading) => (
+                  <a
+                    key={heading.id}
+                    href={`#${heading.id}`}
+                    onClick={scrollToHeading(heading.id)}
+                    className={`blog-article__timeline-item ${activeHeading === heading.id ? 'blog-article__timeline-item--active' : ''}`}
+                  >
+                    <span className="blog-article__timeline-text">{heading.text}</span>
+                  </a>
+                ))}
+              </nav>
+            </aside>
+          )}
 
       <div className="blog-article__main-wrapper">
         <div className="blog-article__main-container">
