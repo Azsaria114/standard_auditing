@@ -1064,3 +1064,355 @@
     order: 2 !important;
   }
 }
+    padding-top: clamp(6rem, 10vw, 8rem) !important;
+    margin-top: clamp(-5rem, -8vw, -6.5rem) !important;
+    order: 2 !important;
+  }
+  .about-hero__support-text {
+    font-size: clamp(14px, 2vw, 16px) !important;
+  }
+}
+
+/* Tablet - Medium sizes, same layout */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .about-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  .about-hero__content {
+    padding: 0 clamp(20px, 5vw, 60px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    order: 1 !important;
+  }
+  .about-hero__title {
+    font-size: clamp(1.5rem, 4vw, 2rem) !important;
+    max-width: clamp(400px, 50vw, 700px) !important;
+    margin-bottom: clamp(1rem, 1.5vw, 1.5rem) !important;
+    order: 1 !important;
+  }
+  .about-hero__image-wrapper {
+    order: 2 !important;
+    width: 100% !important;
+  }
+  .about-hero__support-section {
+    padding: clamp(2.5rem, 4vw, 3rem) clamp(20px, 5vw, 60px) !important;
+    padding-top: clamp(8rem, 12vw, 10rem) !important;
+    margin-top: clamp(-7rem, -11vw, -9rem) !important;
+    order: 2 !important;
+  }
+  .about-hero__support-text {
+    font-size: clamp(16px, 2vw, 18px) !important;
+  }
+}
+
+/* Desktop - Larger sizes, same layout */
+@media (min-width: 1025px) {
+  .about-hero {
+    padding-top: clamp(5.5rem, 7vw, 6.5rem) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  .about-hero__content {
+    padding: 0 clamp(40px, 4vw, 80px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    order: 1 !important;
+  }
+  .about-hero__title {
+    font-size: clamp(2rem, 4vw, 2.5rem) !important;
+    max-width: clamp(500px, 50vw, 750px) !important;
+    margin-bottom: clamp(1.5rem, 2vw, 2rem) !important;
+    order: 1 !important;
+  }
+  .about-hero__image-wrapper {
+    order: 2 !important;
+    width: 100% !important;
+  }
+  .about-hero__support-section {
+    padding: clamp(2.5rem, 4vw, 3.5rem) clamp(40px, 4vw, 80px) !important;
+    padding-top: clamp(10rem, 15vw, 12rem) !important;
+    margin-top: clamp(-8rem, -12vw, -10rem) !important;
+    order: 2 !important;
+  }
+  .about-hero__support-text {
+    font-size: clamp(17px, 2vw, 18px) !important;
+  }
+  .about-intro {
+    padding: clamp(4rem, 4vw, 4.5rem) clamp(40px, 4vw, 5rem) clamp(4rem, 4vw, 4.5rem) clamp(40px, 4vw, 5rem) !important;
+  }
+  .about-intro__grid {
+    grid-template-columns: 1fr 1fr !important;
+    display: grid !important;
+    gap: clamp(2.5rem, 5vw, 4rem) !important;
+  }
+  .about-intro__left {
+    order: 0 !important;
+  }
+  .about-intro__right {
+    order: 0 !important;
+  }
+  .about-partners {
+    padding: clamp(2rem, 4vw, 3rem) clamp(40px, 4vw, 5rem) !important;
+  }
+  .about-mission {
+    padding: 5rem 5rem !important;
+  }
+  .about-mission__container {
+    grid-template-columns: 1fr 1fr !important;
+    display: grid !important;
+    max-width: 87.5rem !important;
+  }
+  .about-values {
+    padding: 5rem 5rem !important;
+  }
+  .about-values__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    display: grid !important;
+  }
+  .about-stats {
+    padding: 5rem 5rem !important;
+  }
+  .about-stats__container {
+    grid-template-columns: repeat(4, 1fr) !important;
+    display: grid !important;
+    max-width: 87.5rem !important;
+  }
+  .about-team {
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(40px, 4vw, 5rem) clamp(4rem, 8vw, 6rem) clamp(40px, 4vw, 5rem) !important;
+  }
+  .about-team__title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+  }
+  .about-team__subtitle {
+    font-size: clamp(16px, 2vw, 18px) !important;
+  }
+  .about-team__content {
+    grid-template-columns: repeat(3, 1fr) !important;
+    display: grid !important;
+    gap: clamp(0.75rem, 1.5vw, 1rem) !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+  } 
+  .about-team__grid {
+    display: contents !important;
+  }
+  .about-team__image-wrapper {
+    aspect-ratio: 3 / 4;
+  }
+  .about-why {
+    padding: 5rem 5rem !important;
+  }
+  .about-newsletter {
+    padding: clamp(4rem, 8vw, 6rem) clamp(3rem, 6vw, 5rem) !important;
+  }
+  .about-insights__grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    display: grid !important;
+  }
+  /* Core Values Section - override App.css */
+  .core-values {
+    padding: clamp(1.5rem, 2.5vw, 2rem) clamp(40px, 4vw, 5rem) clamp(0.25rem, 0.5vw, 0.5rem) clamp(40px, 4vw, 5rem) !important;
+  }
+  .core-values__grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    display: grid !important;
+    grid-auto-rows: minmax(240px, auto) !important;
+    gap: 1.5rem !important;
+  }
+  .core-card--accountability {
+    grid-column: 1 / span 2 !important;
+    grid-row: 1 !important;
+    max-height: 280px !important;
+  }
+  .core-card--integrity {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    min-height: 400px !important;
+  }
+  .core-card--progress {
+    grid-column: 4 !important;
+    grid-row: 1 !important;
+    min-height: 400px !important;
+  }
+  .core-card--precision {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    min-height: 400px !important;
+    transform: translateY(-7.5rem) !important;
+  }
+  .core-card--speed {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    min-height: 400px !important;
+    transform: translateY(-7.5rem) !important;
+  }
+  .core-card--transparency {
+    grid-column: 3 / span 2 !important;
+    grid-row: 2 !important;
+    min-height: 280px !important;
+    max-height: 280px !important;
+    transform: translateY(-7.25rem) !important;
+  }
+}
+
+/* Responsive Styles for About Page */
+/* Tablet and below - stack vertically */
+@media (max-width: 1023px) {
+  .about-hero__content {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(2rem, 4vw, 3rem) !important;
+  }
+  .about-hero__image-wrapper {
+    order: -1 !important;
+  }
+  .about-mission__container {
+    grid-template-columns: 1fr !important;
+  }
+  .about-values__grid {
+    grid-template-columns: 1fr !important;
+  }
+  .about-stats__container {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding-top: calc(clamp(2rem, 4vw, 2.5rem) + clamp(2.5rem, 5vw, 3rem)) !important;
+  }
+  .about-hero__content {
+    padding: 0 clamp(1rem, 3vw, 1.5rem) !important;
+    gap: clamp(0.75rem, 1.5vw, 1rem) !important;
+  }
+  .about-mission, .about-values, .about-stats, .about-why {
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem) !important;
+  }
+  .about-stats__container {
+    grid-template-columns: 1fr !important;
+    gap: clamp(1.5rem, 3vw, 2rem) !important;
+  }
+  .about-mission__card {
+    padding: clamp(1.5rem, 3vw, 2rem) !important;
+  }
+  .about-values__item {
+    padding: clamp(1.25rem, 2.5vw, 1.5rem) !important;
+  }
+}
+
+/* CRITICAL: Desktop overrides at end of file to override App.css - Must be last */
+/* Using .about-page prefix for higher specificity to override App.css */
+
+/* Desktop Overrides - Must override App.css for all desktop ranges */
+/* Desktop styles for other sections - hero stays stacked */
+@media (min-width: 1025px) {
+  /* Ensure all sections maintain desktop layout */
+  .about-intro__grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .core-values__grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  } 
+  .about-team__grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .about-stats__container {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .about-mission__container {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .about-values__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* CRITICAL: Universal order override - Must be last to override App.css */
+/* Ensure consistent order: Heading → Image → Content across ALL screen sizes */
+.about-page .about-hero {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.about-page .about-hero__content {
+  order: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.about-page .about-hero__title {
+  order: 1 !important;
+}
+
+.about-page .about-hero__image-wrapper {
+  order: 2 !important;
+}
+
+.about-page .about-hero__support-section {
+  order: 2 !important;
+}
+
+/* Override for all media queries */
+@media (max-width: 767px) {
+  .about-page .about-hero {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .about-page .about-hero__content {
+    order: 1 !important;
+  }
+  .about-page .about-hero__title {
+    order: 1 !important;
+  }
+  .about-page .about-hero__image-wrapper {
+    order: 2 !important;
+  }
+  .about-page .about-hero__support-section {
+    order: 2 !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .about-page .about-hero {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .about-page .about-hero__content {
+    order: 1 !important;
+  }
+  .about-page .about-hero__title {
+    order: 1 !important;
+  }
+  .about-page .about-hero__image-wrapper {
+    order: 2 !important;
+  }
+  .about-page .about-hero__support-section {
+    order: 2 !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .about-page .about-hero {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .about-page .about-hero__content {
+    order: 1 !important;
+  }
+  .about-page .about-hero__title {
+    order: 1 !important;
+  }
+  .about-page .about-hero__image-wrapper {
+    order: 2 !important;
+  }
+  .about-page .about-hero__support-section {
+    order: 2 !important;
+  }
+}

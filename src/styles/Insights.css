@@ -215,8 +215,8 @@
   color: #0A3D62;
 }
 
-/* Tablet and Mobile Styles */
-@media (max-width: 1024px) {
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
   .insights-blog__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -241,6 +241,10 @@
     margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem);
     font-size: clamp(1.75rem, 4vw, 2.25rem);
   }
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
   .insights-blog__grid {
     grid-template-columns: 1fr;
     gap: clamp(1rem, 2vw, 1.25rem);

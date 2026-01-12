@@ -273,10 +273,10 @@ function ServicesSection() {
                   </li>
             ))}
           </ul>
-          <button type="button" className="services-section__cta h3-opensans-semibold">
+          <Link to="/services" className="services-section__cta h3-opensans-semibold" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
             <span className="services-section__cta-text">Learn More</span>
             <span className="services-section__arrow">→</span>
-          </button>
+          </Link>
           <div className="services-section__badge">
             <svg className="services-section__badge-svg" viewBox="0 0 200 200">
               <defs>
@@ -353,8 +353,8 @@ function WhyTrustSection() {
     <section className="why-trust-section">
       <div className="why-trust-section__container">
         <h2 className="why-trust-section__title h1-montserrat">
-          Why 500+ Businesses Trust Us<br>
-          </br> with Their Finances
+          Why 500+ Businesses Trust Us<br />
+          with Their Finances
         </h2>
         <div className="why-trust-section__grid">
           <div className="why-trust-section__card why-trust-section__card--first">
@@ -905,7 +905,7 @@ function HowItWorksSection() {
         </div>
         <div className="how-it-works-section__cards">
           {steps.map((step, index) => (
-            <div key={index} className="how-it-works-section__card">
+            <div key={index} className="how-it-works-section__step">
               <div className="how-it-works-section__card-box">
                 <img 
                   src={step.image} 
@@ -966,9 +966,9 @@ function Home() {
             <button type="button" className="hero__service-pill body-opensans">
               {services[2]}
             </button>
-            <button type="button" className="hero__service-pill body-opensans">
+            <Link to="/contact" className="hero__service-pill body-opensans" style={{ textDecoration: 'none', display: 'inline-block' }}>
               {services[4]}
-            </button>
+            </Link>
             <button type="button" className="hero__service-pill body-opensans">
               {services[5]}
             </button>
@@ -1023,23 +1023,3 @@ function Home() {
 }
 
 export default Home
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -659,32 +659,4 @@
   .contact-form {
     gap: clamp(1rem, 2vw, 1.25rem);
   }
-  .contact-notice-modal {
-    padding: clamp(0.5rem, 1vw, 1rem);
-  }
-  .contact-notice-modal__content {
-    max-width: 95vw;
-    max-height: 95vh;
-  }
-  .contact-notice-modal__container {
-    padding: clamp(1.5rem, 3vw, 2rem);
-  }
-  .contact-notice-modal__title {
-    font-size: clamp(1.5rem, 3vw, 1.75rem);
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    padding-right: clamp(2rem, 4vw, 2.5rem);
-  }
-  .contact-notice-modal__body {
-    gap: clamp(1.25rem, 2.5vw, 1.5rem);
-  }
-  .contact-notice-modal__section {
-    gap: clamp(0.5rem, 1vw, 0.75rem);
-  }
-  .contact-notice-modal__section-title {
-    font-size: clamp(1rem, 1.75vw, 1.125rem);
-  }
-  .contact-notice-modal__section-text,
-  .contact-notice-modal__list {
-    font-size: clamp(0.8125rem, 1.25vw, 0.9375rem);
-  }
 }

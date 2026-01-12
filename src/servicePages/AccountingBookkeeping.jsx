@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
+import accountingImage from '../assets/accounting_bookeeping.jpg'
 
 function AccountingBookkeeping() {
   return (
@@ -15,7 +16,7 @@ function AccountingBookkeeping() {
             <div className="service-hero__image-column">
               <div className="service-hero__image-wrapper">
                 <img 
-                  src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop" 
+                  src={accountingImage} 
                   alt="Accounting & Bookkeeping Service" 
                   className="service-hero__image" 
                 />
