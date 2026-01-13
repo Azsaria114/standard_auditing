@@ -98,6 +98,30 @@
   gap: clamp(3rem, 6vw, 5rem);
   align-items: end;
 }
+.service-hero__image-column {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.service-hero__image-wrapper {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.service-hero__image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+.service-hero__content-column {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  flex: 1;
+  min-width: 0;
+}
 .service-hero__text-column {
   display: flex;
   flex-direction: column;
@@ -234,8 +258,27 @@
     padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 3vw, 2rem);
   }
   .service-hero__grid--auditing {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.4fr 0.7fr;
     gap: clamp(2rem, 4vw, 3rem);
+    align-items: end;
+  }
+  .service-hero__image-column {
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .service-hero__image-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+  .service-hero__image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .service-hero__content-column {
+    flex: 1;
+    min-width: 0;
   }
   .service-hero__cta-column {
     flex-direction: row;
@@ -306,3 +349,93 @@
   .service-hero__description--auditing {
     font-size: clamp(0.9375rem, 1.5vw, 1rem);
   }
+
+/* Tablet view - Maintain same layout as desktop: image on left, content on right */
+/* Override App.css conflicting styles to ensure images show in tablet view */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .service-page .service-hero--auditing .service-hero__grid--auditing,
+  .service-hero--auditing .service-hero__grid--auditing {
+    grid-template-columns: auto 1fr !important;
+    gap: 0 !important;
+    align-items: stretch !important;
+    display: grid !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .service-page .service-hero--auditing .service-hero__image-column,
+  .service-hero--auditing .service-hero__image-column {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    max-width: 400px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 1 !important;
+  }
+  .service-page .service-hero--auditing .service-hero__image-wrapper,
+  .service-hero--auditing .service-hero__image-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    visibility: visible !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .service-page .service-hero--auditing .service-hero__image,
+  .service-hero--auditing .service-hero__image {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  .service-page .service-hero--auditing .service-hero__content-column,
+  .service-hero--auditing .service-hero__content-column {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(0.75rem, 1.5vw, 1rem) !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    order: 2 !important;
+    justify-content: flex-start !important;
+  }
+  .service-page .service-hero--auditing .service-hero__image,
+  .service-hero--auditing .service-hero__image {
+    max-width: 100% !important;
+    max-height: 400px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: cover !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  .service-page .service-hero--auditing .service-hero__content-column,
+  .service-hero--auditing .service-hero__content-column {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(0.75rem, 1.5vw, 1rem) !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    height: auto !important;
+    order: 2 !important;
+  }
+}

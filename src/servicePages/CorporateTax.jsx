@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
+import corporateTaxImage from '../assets/corporatetax.jpg'
 
 function CorporateTax() {
   return (
@@ -15,7 +16,7 @@ function CorporateTax() {
             <div className="service-hero__image-column">
               <div className="service-hero__image-wrapper">
                 <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" 
+                  src={corporateTaxImage} 
                   alt="Corporate Tax Service" 
                   className="service-hero__image" 
                 />

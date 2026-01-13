@@ -1270,7 +1270,15 @@ function BlogArticle({
     }
 
     const updateActiveHeading = () => {
+      // Don't highlight any heading if we're at the very top of the page
+      if (window.pageYOffset < 100) {
+        setActiveHeading(null)
+        return
+      }
+      
       const scrollPosition = window.pageYOffset + 200
+      let foundActive = false
+      
       for (let i = headings.length - 1; i >= 0; i--) {
         const heading = headings[i]
         const element = document.getElementById(heading.id)
@@ -1278,9 +1286,14 @@ function BlogArticle({
           const elementTop = element.offsetTop
           if (scrollPosition >= elementTop) {
             setActiveHeading(heading.id)
+            foundActive = true
             break
           }
         }
+      }
+      // If no heading is in view, don't highlight any
+      if (!foundActive) {
+        setActiveHeading(null)
       }
     }
 
@@ -1336,8 +1349,24 @@ function BlogArticle({
     e.preventDefault()
     const el = document.getElementById(id)
     if (!el) return
-    const y = el.getBoundingClientRect().top + window.pageYOffset - 110
+    const headerHeight = 110
+    const y = el.getBoundingClientRect().top + window.pageYOffset - headerHeight
     window.scrollTo({ top: y, behavior: 'smooth' })
+  }
+
+  const scrollToContent = (e) => {
+    e.preventDefault()
+    const contentEl = document.getElementById('content')
+    if (!contentEl) return
+    // Calculate header height dynamically
+    const header = document.querySelector('.site-header')
+    const headerHeight = header ? header.offsetHeight : 110
+    const extraPadding = 20
+    const y = contentEl.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraPadding
+    window.scrollTo({ 
+      top: Math.max(0, y), 
+      behavior: 'smooth' 
+    })
   }
 
   return (
@@ -1386,9 +1415,20 @@ function BlogArticle({
         <div className="blog-article__hero-content">
           <p className="blog-article__hero-category small-body-opensans">{category}</p>
           <h1 className="blog-article__hero-title h1-montserrat">{title}</h1>
+          
+          {/* CTA integrated in hero */}
+          <div className="blog-article__hero-cta">
+            <p className="blog-article__hero-cta-text">Need expert tax & compliance advice?</p>
+            <Link to="/contact" className="blog-article__hero-cta-button">
+              <span>Get Free Consultation</span>
+              <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 12.5L11 9L7 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+          </div>
         </div>
 
-        <a href="#content" className="blog-article__hero-read-more">
+        <a href="#content" className="blog-article__hero-read-more" onClick={scrollToContent}>
           <span className="blog-article__hero-read-text">Read More</span>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 13L12 18L17 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -1397,8 +1437,6 @@ function BlogArticle({
         </a>
       </section>
 
-      <div className="blog-article__main-wrapper">
-        <div className="blog-article__main-container">
           {headings.length > 0 && (
             <aside className="blog-article__timeline">
               <h4 className="blog-article__timeline-title">Contents</h4>
@@ -1417,6 +1455,8 @@ function BlogArticle({
             </aside>
           )}
 
+      <div className="blog-article__main-wrapper">
+        <div className="blog-article__main-container">
           <article id="content" className="blog-article__content">
             <div className="blog-article__content-container">
               <div className="blog-article__meta-info">
@@ -1637,5 +1677,4 @@ export default function BlogArticlePage() {
 
   return <BlogArticle {...article} />
 }
-
 

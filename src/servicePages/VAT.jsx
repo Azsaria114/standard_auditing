@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
+import vatImage from '../assets/vat.jpg'
 
 function VAT() {
   return (
@@ -15,7 +16,7 @@ function VAT() {
             <div className="service-hero__image-column">
               <div className="service-hero__image-wrapper">
                 <img 
-                  src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop" 
+                  src={vatImage} 
                   alt="VAT Service" 
                   className="service-hero__image" 
                 />

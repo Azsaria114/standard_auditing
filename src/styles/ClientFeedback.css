@@ -1,0 +1,444 @@
+/* ============================================
+   STICKY CONTACT BUTTON
+   ============================================ */
+.sticky-contact {
+  position: fixed;
+  bottom: clamp(1.5rem, 3vw, 2rem);
+  right: clamp(1.5rem, 3vw, 2rem);
+  z-index: 1000;
+}
+
+.sticky-contact__button {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  background: #0A3D62;
+  color: white;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+  border-radius: clamp(2rem, 4vw, 3rem);
+  text-decoration: none;
+  box-shadow: 0 clamp(0.25rem, 0.5vw, 0.5rem) clamp(1rem, 2vw, 1.5rem) rgba(10, 61, 98, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+.sticky-contact__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 clamp(0.375rem, 0.75vw, 0.75rem) clamp(1.25rem, 2.5vw, 2rem) rgba(10, 61, 98, 0.4);
+}
+
+.sticky-contact__button svg {
+  flex-shrink: 0;
+}
+
+.sticky-contact__text {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .sticky-contact {
+    bottom: clamp(1rem, 2vw, 1.5rem);
+    right: clamp(1rem, 2vw, 1.5rem);
+  }
+}
+
+/* ============================================
+   BLOG ARTICLE HERO CTA - Enhanced Visual Design
+   ============================================ */
+.blog-article__hero-cta {
+  margin-top: clamp(0.75rem, 1.5vw, 1rem);
+  margin-bottom: clamp(5rem, 10vw, 7rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  position: relative;
+  animation: slideUpFade 1s ease-out 0.9s both;
+}
+
+.blog-article__hero-cta-text {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.blog-article__hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  background: #E8E8E8;
+  color: #0A3D62;
+  padding: clamp(0.625rem, 1.25vw, 0.875rem) clamp(1.5rem, 3vw, 2rem);
+  border-radius: clamp(0.375rem, 0.75vw, 0.5rem);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Open Sans', sans-serif;
+  white-space: nowrap;
+  position: relative;
+  border: none;
+  overflow: hidden;
+}
+
+.blog-article__hero-cta-button::after {
+  content: '';
+  position: absolute;
+  width: clamp(1.5rem, 3vw, 2rem);
+  height: clamp(1.5rem, 3vw, 2rem);
+  bottom: -0.0625rem;
+  right: -0.0625rem;
+  background: #0A3D62;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-bottom-right-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blog-article__hero-cta-button span {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.blog-article__hero-cta-button svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+.blog-article__hero-cta-button:hover {
+  background: #E8E8E8;
+  transform: translateY(-0.25rem);
+  box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(31, 41, 51, 0.18);
+}
+
+.blog-article__hero-cta-button:hover::after {
+  background: #0A3D62;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  clip-path: none;
+  border-radius: clamp(0.375rem, 0.75vw, 0.5rem);
+}
+
+.blog-article__hero-cta-button:hover span,
+.blog-article__hero-cta-button:hover svg {
+  color: white;
+}
+
+.blog-article__hero-cta-button:hover svg {
+  transform: translateX(3px);
+}
+
+.blog-article__hero-cta-button:active {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 clamp(0.375rem, 1.25vw, 0.5625rem) clamp(1.25rem, 3.5vw, 2.8125rem) rgba(31, 41, 51, 0.15);
+}
+
+.blog-article__hero-cta-button:active {
+  transform: translateY(0);
+}
+
+.blog-article__hero-cta-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.blog-article__hero-cta-button svg {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+}
+
+.blog-article__hero-cta-button:hover svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+  .blog-article__hero-cta {
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    gap: clamp(0.625rem, 1.25vw, 0.875rem);
+  }
+  
+  .blog-article__hero-cta-text {
+    font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+  }
+  
+  .blog-article__hero-cta-button {
+    padding: clamp(0.5625rem, 1.125vw, 0.75rem) clamp(1.25rem, 2.5vw, 1.75rem);
+    font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+  }
+}
+
+/* ============================================
+   PARTNERS SECTION - LOGO CENTERING
+   ============================================ */
+.partners-section__logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: clamp(4rem, 8vw, 6rem) !important;
+  min-height: clamp(4rem, 8vw, 6rem) !important;
+  /* Fixed height container for consistent logo sizing */
+}
+
+.partners-section__logo-img {
+  max-width: 80% !important;
+  max-height: 80% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  /* All logos same size and centered */
+}
+
+/* Ensure all logo variants use same size */
+.partners-section__logo-img--dso,
+.partners-section__logo-img--shmas {
+  max-width: 80% !important;
+  max-height: 80% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  /* Same size for all logo variants */
+}
+
+/* Slightly larger logos for DMCC, IFZA, and Meydan */
+.partners-section__logo-img--dmcc,
+.partners-section__logo-img--meydan,
+.partners-section__logo-img--ifza {
+  max-width: 90% !important;
+  max-height: 90% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  /* Slightly larger size for DMCC, IFZA, and Meydan - 90% instead of 80% */
+}
+
+/* Tablet responsive styles */
+@media (max-width: 1024px) {
+  .partners-section__logo {
+    height: clamp(3rem, 6vw, 4.5rem) !important;
+    min-height: clamp(3rem, 6vw, 4.5rem) !important;
+  }
+  
+  .partners-section__logo-img {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  
+  .partners-section__logo-img--dso,
+  .partners-section__logo-img--shmas {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  
+  .partners-section__logo-img--dmcc,
+  .partners-section__logo-img--meydan,
+  .partners-section__logo-img--ifza {
+    max-width: 90% !important;
+    max-height: 90% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    /* Slightly larger on tablet */
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .partners-section__logo {
+    height: clamp(2.5rem, 5vw, 3.5rem) !important;
+    min-height: clamp(2.5rem, 5vw, 3.5rem) !important;
+  }
+  
+  .partners-section__logo-img {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  
+  .partners-section__logo-img--dso,
+  .partners-section__logo-img--shmas {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  
+  .partners-section__logo-img--dmcc,
+  .partners-section__logo-img--meydan,
+  .partners-section__logo-img--ifza {
+    max-width: 90% !important;
+    max-height: 90% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    /* Slightly larger on mobile */
+  }
+}
+
+/* ============================================
+   WHY TRUST SECTION - INCREASE FONT SIZES
+   ============================================ */
+.why-trust-section__title {
+  font-size: clamp(2rem, 5vw, 3rem) !important;
+}
+
+.why-trust-section__card-title {
+  font-size: clamp(1rem, 2vw, 1.25rem) !important;
+  line-height: 1.4 !important;
+}
+
+.why-trust-section__hover-text-content {
+  font-size: clamp(0.875rem, 1.75vw, 1.125rem) !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 768px) {
+  .why-trust-section__title {
+    font-size: clamp(1.5rem, 4vw, 2rem) !important;
+  }
+  
+  .why-trust-section__card-title {
+    font-size: clamp(0.9375rem, 1.75vw, 1.125rem) !important;
+  }
+  
+  .why-trust-section__hover-text-content {
+    font-size: clamp(0.8125rem, 1.5vw, 1rem) !important;
+  }
+}
+
+/* ============================================
+MOBILE SHADING FIX - COMPARISON SECTION
+   ============================================ */
+/* Tablet view - use mobile gradient color (lightened) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .comparison-left {
+    background: linear-gradient(
+      to top right,
+      #f2f8fd 10%,
+      #d9eaf6 60%,
+      #b8d9e8 100%
+    ) !important;
+  }
+}
+
+/* Desktop view - use mobile gradient color (lightened) */
+@media (min-width: 1025px) {
+  .comparison-left {
+    background: linear-gradient(
+      to top right,
+      #f2f8fd 10%,
+      #d9eaf6 60%,
+      #b8d9e8 100%
+    ) !important;
+  }
+}
+
+/* Mobile view - match pricing section padding */
+@media (max-width: 768px) {
+  /* Match pricing section padding: clamp(2rem, 4vw, 3rem) 1.25rem */
+  .comparison-container {
+    padding: 0 1.25rem !important;
+    /* 20px horizontal padding like pricing section */
+  }
+  
+  .comparison-left {
+    padding: 0.5rem;
+    /* Reduced padding to match pricing section spacing */
+  }
+  
+  /* Lighten the gradient on mobile to prevent text from being blocked */
+  .comparison-left {
+    background: linear-gradient(
+      to top right,
+      #f2f8fd 10%,
+      #d9eaf6 60%,
+      #b8d9e8 100%
+    ) !important;
+  }
+  
+  /* Add subtle white background to content area for better text readability */
+  .comparison-left__content {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem) !important;
+    /* Match outer box border-radius */
+  }
+  
+  .comparison-right-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem) !important;
+    /* Match pricing section card padding */
+  }
+  
+  /* Ensure text has good contrast */
+  .comparison-left__content .comparison-title {
+    color: #0b3558 !important;
+    position: relative;
+    z-index: 3;
+    font-size: clamp(1.25rem, 5vw, 1.5rem) !important;
+    /* Match pricing section title size */
+    margin-bottom: clamp(1rem, 2vw, 1.25rem) !important;
+  }
+  
+  .comparison-left__content .comparison-item-title {
+    color: #2d3748 !important;
+    position: relative;
+    z-index: 3;
+    font-weight: 600;
+    font-size: clamp(0.8125rem, 1.625vw, 0.9375rem) !important;
+    /* Match pricing section text size */
+  }
+  
+  /* Ensure icons are visible */
+  .comparison-left__content .comparison-item-icon {
+    color: #0A3D62 !important;
+    position: relative;
+    z-index: 3;
+  }
+}
+
+/* ============================================
+   CONTACT PAGE - SAME FOLD LAYOUT
+   ============================================ */
+.contact-main {
+  min-height: auto;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+}
+
+.contact-main__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .contact-main__container {
+    grid-template-columns: 1fr;
+  }
+}
+

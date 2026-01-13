@@ -1,0 +1,47 @@
+﻿
+
+/* ============================================
+   STICKY CONTACT BUTTON
+   ============================================ */
+.sticky-contact {
+  position: fixed;
+  bottom: clamp(1.5rem, 3vw, 2rem);
+  right: clamp(1.5rem, 3vw, 2rem);
+  z-index: 1000;
+}
+
+.sticky-contact__button {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  background: #0A3D62;
+  color: white;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+  border-radius: clamp(2rem, 4vw, 3rem);
+  text-decoration: none;
+  box-shadow: 0 clamp(0.25rem, 0.5vw, 0.5rem) clamp(1rem, 2vw, 1.5rem) rgba(10, 61, 98, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+.sticky-contact__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 clamp(0.375rem, 0.75vw, 0.75rem) clamp(1.25rem, 2.5vw, 2rem) rgba(10, 61, 98, 0.4);
+}
+
+.sticky-contact__button svg {
+  flex-shrink: 0;
+}
+
+.sticky-contact__text {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .sticky-contact {
+    bottom: clamp(1rem, 2vw, 1.5rem);
+    right: clamp(1rem, 2vw, 1.5rem);
+  }
+}
+

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
+import companyFormationImage from '../assets/company_formation.jpg'
 
 function CompanyFormation() {
   return (
@@ -15,7 +16,7 @@ function CompanyFormation() {
             <div className="service-hero__image-column">
               <div className="service-hero__image-wrapper">
                 <img 
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop" 
+                  src={companyFormationImage} 
                   alt="Company Formation Service" 
                   className="service-hero__image" 
                 />
@@ -166,7 +167,7 @@ function CompanyFormation() {
               <h3 className="pricing-section__card-title h3-montserrat">Basic Formation</h3>
 
               <div className="pricing-section__price">
-                <span className="pricing-section__price-amount h1-montserrat">AED 4,000</span>
+                <span className="pricing-section__price-amount h1-montserrat">AED 12,500 - 14,000</span>
                 <span className="pricing-section__price-note body-opensans">+ VAT</span>
               </div>
 
@@ -213,7 +214,7 @@ function CompanyFormation() {
               <h3 className="pricing-section__card-title h3-montserrat">Full Formation Package</h3>
 
               <div className="pricing-section__price">
-                <span className="pricing-section__price-amount h1-montserrat">AED 6,000</span>
+                <span className="pricing-section__price-amount h1-montserrat">AED 20,000 - 40,000</span>
                 <span className="pricing-section__price-note body-opensans">+ VAT</span>
               </div>
 
