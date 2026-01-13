@@ -942,6 +942,10 @@
   .about-mission, .about-values, .about-stats, .about-why {
     padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem) !important;
   }
+  .about-partners {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem !important;
+    /* Match padding with other sections on mobile (20px horizontal) */
+  }
   .about-stats__container {
     grid-template-columns: 1fr !important;
     gap: clamp(1.5rem, 3vw, 2rem) !important;
@@ -1293,6 +1297,10 @@
   }
   .about-mission, .about-values, .about-stats, .about-why {
     padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem) !important;
+  }
+  .about-partners {
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem !important;
+    /* Match padding with other sections on mobile (20px horizontal) */
   }
   .about-stats__container {
     grid-template-columns: 1fr !important;

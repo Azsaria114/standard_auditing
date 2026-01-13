@@ -2853,7 +2853,7 @@ html, body {
     min-height: clamp(2.5rem, 5vw, 3.5rem);
     /* Fixed height container for consistent logo sizing on mobile */
   }
-  
+
   .partners-section__logo-img {
     max-width: 80%;
     max-height: 80%;
@@ -3143,16 +3143,20 @@ html, body {
    ============================================ */
 @media (max-width: 768px) {
   .services-grid-section {
-    padding: 5rem 5rem;
-    /* Maintain 80px (5rem) padding on mobile */
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 4vw, 2rem);
+    /* Responsive padding on mobile to prevent content cutoff */
+    overflow-x: hidden;
+    /* Prevent horizontal overflow */
   }
 
   .services-grid-section__grid {
     grid-template-columns: 1fr;
     /* 1-column grid on mobile */
     gap: clamp(1rem, 2.5vw, 1.5rem);
-    max-width: calc(100vw - clamp(2rem, 6vw, 4rem));
-    /* Account for responsive padding on mobile */
+    max-width: 100%;
+    /* Full width within container */
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .services-grid-section__card {
@@ -3946,6 +3950,14 @@ html, body {
   /* Hide original title text when hover text is shown */
 }
 
+/* Hide title on mobile when hovered - only show content */
+@media (max-width: 768px) {
+  .why-trust-section__card:hover .why-trust-section__card-title {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
 /* Show hover text when any card is hovered */
 .why-trust-section__card:hover .why-trust-section__card-hover-text {
   opacity: 1;
@@ -4098,6 +4110,8 @@ html, body {
     /* 5 rows for mobile */
     gap: clamp(0.75rem, 2vw, 1.25rem);
     row-gap: clamp(0.75rem, 2vw, 1.25rem);
+    padding: 0 clamp(0.5rem, 1.5vw, 1rem);
+    /* Add horizontal padding to grid container to give cards more space */
   }
 
   /* Row 1: 1 card (same size as individual cards in row 2 on mobile) */
@@ -4107,8 +4121,8 @@ html, body {
     grid-row: 1;
     justify-self: center;
     /* Center the card */
-    max-width: calc(50% - clamp(0.375rem, 1vw, 0.625rem));
-    /* Same width as one column on mobile (50% minus half the gap) */
+    max-width: calc(75% - clamp(0.375rem, 1vw, 0.625rem));
+    /* Increased width to prevent text from hiding */
     width: 100%;
   }
 
@@ -4129,8 +4143,8 @@ html, body {
     grid-row: 3;
     justify-self: center;
     /* Center the card */
-    max-width: calc(50% - clamp(0.375rem, 1vw, 0.625rem));
-    /* Same width as one column on mobile (50% minus half the gap) */
+    max-width: calc(75% - clamp(0.375rem, 1vw, 0.625rem));
+    /* Further increased width to prevent text from hiding */
     width: 100%;
   }
 
@@ -4145,15 +4159,15 @@ html, body {
     grid-row: 4;
   }
 
-  /* Row 5: 1 card (same size as individual cards in row 4 on mobile) */
+  /* Row 5: 1 card (Proven Track Record) - centered on mobile */
   .why-trust-section__grid > .why-trust-section__card:nth-child(7) {
     grid-column: 1 / 3;
     /* Spans both columns for centering */
     grid-row: 5;
     justify-self: center;
     /* Center the card */
-    max-width: calc(50% - clamp(0.375rem, 1vw, 0.625rem));
-    /* Same width as one column on mobile (50% minus half the gap) */
+    max-width: calc(75% - clamp(0.375rem, 1vw, 0.625rem));
+    /* Further increased width to prevent text from hiding */
     width: 100%;
   }
 
@@ -4333,7 +4347,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(0.75rem, 2vw, 1rem);
+  gap: clamp(1.25rem, 2.5vw, 1.5rem);
   margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
 }
 
@@ -4346,7 +4360,7 @@ html, body {
   margin: 0;
   color: #0A3D62;
   max-width: 980px;
-  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   line-height: 1.12;
   letter-spacing: -0.02em;
 }
@@ -4383,7 +4397,7 @@ html, body {
   border: 0.0625rem solid #0A3D62;
   border-radius: clamp(1.5rem, 4vw, 3.125rem);
   padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.625rem, 1.5vw, 0.875rem);
-  margin: 0 auto clamp(0.75rem, 2vw, 1rem);
+  margin: 0 auto clamp(1.25rem, 2.5vw, 1.5rem);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
@@ -4435,6 +4449,10 @@ html, body {
 .pricing-section--auditing .pricing-section__auditing-header {
   text-align: center;
   margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.5rem);
+  align-items: center;
 }
 
 .pricing-section--auditing .pricing-section__auditing-label {
@@ -4448,7 +4466,7 @@ html, body {
 .pricing-section--auditing .pricing-section__auditing-title {
   margin: 0;
   color: #0A3D62;
-  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 600;
   line-height: 1.2;
 }
@@ -4465,30 +4483,31 @@ html, body {
   border-radius: 0.5rem;
 }
 
-/* Reduce typography for the smaller card */
+/* Match typography with homepage pricing section */
 .pricing-section--auditing .pricing-section__card-title {
-  font-size: clamp(1.125rem, 2.4vw, 1.35rem);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
 }
 
 .pricing-section--auditing .pricing-section__price-amount {
-  font-size: clamp(2rem, 4.5vw, 2.6rem);
+  font-size: clamp(2rem, 5vw, 2.5rem);
 }
 
 .pricing-section--auditing .pricing-section__price-note {
-  font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+  font-size: clamp(0.875rem, 1.75vw, 1rem);
 }
 
 .pricing-section--auditing .pricing-section__card-description {
-  font-size: clamp(0.875rem, 1.6vw, 0.98rem);
-  line-height: 1.65;
+  font-size: clamp(0.875rem, 1.75vw, 1rem);
+  line-height: 1.6;
 }
 
 .pricing-section--auditing .pricing-section__features {
-  gap: clamp(0.75rem, 1.25vw, 0.9rem);
+  gap: clamp(0.75rem, 2vw, 1rem);
 }
 
 .pricing-section--auditing .pricing-section__feature span {
-  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  font-size: clamp(0.875rem, 1.75vw, 1rem);
+  line-height: 1.6;
 }
 
 .pricing-section--auditing .pricing-section__cta {
@@ -7342,55 +7361,84 @@ html, body {
     /* Semibold for mobile */
   }
 
+  .why-trust-section__card {
+    min-height: clamp(22rem, 45vw, 28rem) !important;
+    /* Significantly increased min-height to accommodate all content */
+    overflow: hidden !important;
+    /* Keep overflow hidden to contain content within card */
+    height: auto !important;
+    /* Allow card to grow with content but respect min-height */
+  }
+
   .why-trust-section__card-hover-text {
-    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.5rem, 1.5vw, 1rem) !important;
-    /* Increased side padding for better spacing */
-    padding-top: clamp(4rem, 8vw, 5rem) !important;
-    /* Increased top padding for mobile: icon top (0.75rem) + icon height (2rem) + margin (2.25rem) = 5rem */
-    padding-bottom: clamp(1rem, 2vw, 1.5rem) !important;
-    /* Increased bottom padding to add space at the bottom */
+    padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2.5vw, 1.5rem) !important;
+    /* Increased side padding to prevent overlap with icon */
+    padding-top: clamp(4.5rem, 9vw, 5.5rem) !important;
+    /* Top padding to accommodate icon only */
+    padding-bottom: clamp(1.5rem, 3vw, 2rem) !important;
+    /* Increased bottom padding to ensure content is fully visible */
     font-size: clamp(0.75rem, 1.5vw, 0.9rem) !important;
     /* Increased font size for better readability on mobile */
-    line-height: 1.4 !important;
-    /* Better line-height for readability */
+    line-height: 1.5 !important;
+    /* Slightly reduced line-height to fit more content */
     gap: 0 !important;
     /* Remove gap to maximize space */
     overflow: hidden !important;
-    /* No scroll - hide overflow instead */
+    /* Keep overflow hidden to contain content within card */
     max-height: 100% !important;
-    /* Keep within card bounds */
-    justify-content: center !important;
-    /* Center content vertically for equal top and bottom spacing */
-    align-items: center !important;
-    /* Center content horizontally on mobile */
-    text-align: center !important;
-    /* Center align text on mobile */
+    /* Keep content within card bounds */
+    min-height: 100% !important;
+    /* Ensure container takes full card height */
+    justify-content: flex-start !important;
+    /* Align content from top */
+    align-items: flex-start !important;
+    /* Align content to left on mobile */
+    text-align: left !important;
+    /* Left align text on mobile */
+    box-sizing: border-box !important;
+    /* Include padding in height calculation */
   }
 
   .why-trust-section__hover-text-content {
     font-size: clamp(0.75rem, 1.5vw, 0.9rem) !important;
     /* Increased font size for better readability on mobile */
-    line-height: 1.4 !important;
-    /* Better line-height for readability */
+    line-height: 1.5 !important;
+    /* Slightly reduced line-height to fit more content */
     padding: 0 !important;
     /* Remove padding to maximize space */
     margin: 0 !important;
-    /* Remove margins for centered alignment */
-    text-align: center !important;
-    /* Center align text on mobile */
-    transform: translateY(100%) !important;
-    /* Start text from bottom (hidden below) */
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.3s ease !important;
-    /* Smooth animation for slide up from bottom */
+    /* Remove margins */
+    text-align: left !important;
+    /* Left align text on mobile */
+    transform: translateY(0) !important;
+    /* Show text immediately on mobile (no slide animation) */
+    transition: font-size 0.3s ease !important;
+    /* Smooth font size transition */
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    /* Ensure text wraps properly and doesn't overflow */
+    width: 100% !important;
+    /* Full width to ensure text wraps properly */
+    max-width: 100% !important;
+    /* Prevent content from overflowing */
+    box-sizing: border-box !important;
+    /* Include padding in width calculation */
+    display: block !important;
+    /* Ensure text displays as block for proper wrapping */
+    white-space: normal !important;
+    /* Allow text to wrap normally */
+    overflow: hidden !important;
+    /* Prevent text from overflowing */
   }
 
   .why-trust-section__card:hover .why-trust-section__hover-text-content {
     font-size: clamp(0.75rem, 1.5vw, 0.9rem) !important;
     /* Maintain increased font size on hover for mobile */
-    line-height: 1.4 !important;
+    line-height: 1.6 !important;
     transform: translateY(0) !important;
-    /* Slide text up from bottom to visible position */
-    /* Slide text up from bottom to visible position */
+    /* Text is already visible, no transform needed */
+    width: 100% !important;
+    /* Full width to ensure text wraps properly */
   }
 
   .why-trust-section__grid {
@@ -12399,7 +12447,7 @@ html, body {
 
 @keyframes zoomIn {
   from {
-    transform: scale(1.1);
+  transform: scale(1.1);
     opacity: 0;
   }
   to {

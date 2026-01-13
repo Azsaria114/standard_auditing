@@ -501,22 +501,7 @@ function WhyTrustSection() {
                 </div>
               </div>
               <p className="why-trust-section__hover-text-content">
-                {trustBenefits[1].hoverText.split(' See more here.')[0]}{' '}
-                <a 
-                  href="#testimonials" 
-                  className="why-trust-section__see-more-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const testimonialsSection = document.getElementById('testimonials');
-                    if (testimonialsSection) {
-                      const headerHeight = 110; // Approximate header height
-                      const y = testimonialsSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  See more here.
-                </a>
+                {trustBenefits[1].hoverText}
               </p>
             </div>
           </div>
@@ -558,7 +543,22 @@ function WhyTrustSection() {
                 </div>
               </div>
               <p className="why-trust-section__hover-text-content">
-                {trustBenefits[5].hoverText}
+                {trustBenefits[5].hoverText.split(' See more here.')[0]}{' '}
+                <a 
+                  href="#testimonials" 
+                  className="why-trust-section__see-more-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const testimonialsSection = document.getElementById('testimonials');
+                    if (testimonialsSection) {
+                      const headerHeight = 110; // Approximate header height
+                      const y = testimonialsSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  See more here.
+                </a>
               </p>
             </div>
           </div>
@@ -654,7 +654,7 @@ function VideoTestimonialsSection() {
             
             return (
               <Link
-                key={index}
+                key={index} 
                 to={`/insights/article/${article.slug}`}
                 className={`video-testimonials-section__card ${isHovered ? 'video-testimonials-section__card--hovered' : ''} ${isShrunk ? 'video-testimonials-section__card--shrunk' : ''}`}
                 onMouseEnter={() => setHoveredIndex(index)}

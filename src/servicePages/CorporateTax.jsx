@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
-import corporateTaxImage from '../assets/tax.jpg'
+import corporateTaxImage from '../assets/corporatetax.jpg'
 
 function CorporateTax() {
   return (

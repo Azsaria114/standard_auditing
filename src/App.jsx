@@ -481,14 +481,6 @@ function Footer() {
           <a href="mailto:info@standardauditors.com" className="site-footer__email body-opensans">
             info@standardauditors.com
           </a>
-          <div className="site-footer__phone body-opensans" style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-            <a href="tel:+971542119784" className="site-footer__phone-link body-opensans" style={{ color: 'inherit', textDecoration: 'none' }}>
-              +971 54 211 9784
-            </a>
-            <a href="tel:+97143795200" className="site-footer__phone-link body-opensans" style={{ color: 'inherit', textDecoration: 'none' }}>
-              +971 4 379 5200
-            </a>
-          </div>
           <div className="site-footer__social">
             <a href="#" className="site-footer__social-link" aria-label="Facebook">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

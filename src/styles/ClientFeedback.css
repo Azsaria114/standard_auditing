@@ -328,14 +328,26 @@
 /* ============================================
 MOBILE SHADING FIX - COMPARISON SECTION
    ============================================ */
-/* Tablet view - use dark color similar to pricing section */
+/* Tablet view - use mobile gradient color (lightened) */
 @media (max-width: 1024px) and (min-width: 769px) {
   .comparison-left {
     background: linear-gradient(
       to top right,
       #f2f8fd 10%,
-      #d9eaf6 45%,
-      rgb(10, 63, 101) 100%
+      #d9eaf6 60%,
+      #b8d9e8 100%
+    ) !important;
+  }
+}
+
+/* Desktop view - use mobile gradient color (lightened) */
+@media (min-width: 1025px) {
+  .comparison-left {
+    background: linear-gradient(
+      to top right,
+      #f2f8fd 10%,
+      #d9eaf6 60%,
+      #b8d9e8 100%
     ) !important;
   }
 }
@@ -368,11 +380,11 @@ MOBILE SHADING FIX - COMPARISON SECTION
     background: rgba(255, 255, 255, 0.7) !important;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    border-radius: clamp(0.5rem, 1vw, 0.75rem);
+    border-radius: 20px;
     position: relative;
     z-index: 2;
     padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem) !important;
-    /* Match pricing section card padding style */
+    /* Match outer box border-radius */
   }
   
   .comparison-right-card {
