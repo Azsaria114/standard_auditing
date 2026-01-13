@@ -84,7 +84,7 @@ function Contact() {
   return (
     <div className="contact-page">
       {/* Hero Header Section */}
-      <section className="contact-hero">
+      <section className="contact-hero" data-animate="fade-in" data-animate-delay="0">
         <div className="contact-hero__overlay"></div>
         <div className="contact-hero__content">
           <h1 className="contact-hero__title h1-montserrat">CONTACT US</h1>
@@ -92,7 +92,7 @@ function Contact() {
       </section>
 
       {/* Main Content Section */}
-      <section className="contact-main">
+      <section className="contact-main" data-animate="slide-up" data-animate-delay="0.1">
         <div className="contact-main__container">
           {/* Left Side - Contact Information */}
           <div className="contact-main__left">
@@ -368,7 +368,7 @@ function Contact() {
       </div>
 
       {/* Map Section */}
-      <section className="contact-map">
+      <section className="contact-map" data-animate="fade-in" data-animate-delay="0.2">
         <div className="contact-map__container">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.1785095734!2d55.2703!3d25.2048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDEyJzE3LjMiTiA1NcKwMTYnMTMuMSJF!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae&maptype=roadmap"

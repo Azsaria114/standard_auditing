@@ -13,7 +13,7 @@ function Auditing() {
     <main className="service-page service-page--auditing">
       {/* Hero Section */}
 
-      <section className="service-hero service-hero--auditing">
+      <section className="service-hero service-hero--auditing" data-animate="fade-in" data-animate-delay="0">
         <div className="service-hero__container service-hero__container--auditing">
           <div className="service-hero__grid service-hero__grid--auditing">
             {/* Left Column - Image */}
@@ -53,7 +53,7 @@ function Auditing() {
 
       {/* What Matters and Examines Section - Side by Side */}
 
-      <section className="service-comparison service-comparison--pricing-bg">
+      <section className="service-comparison service-comparison--pricing-bg" data-animate="slide-up" data-animate-delay="0.1">
         <div className="service-comparison__container">
           <div className="service-comparison__header">
             <div className="service-comparison__nav">
@@ -70,8 +70,8 @@ function Auditing() {
               <div className="comparison-left__content">
                 <h2 className="comparison-title">What matters to you:</h2>
 
-                <ul className="comparison-list muted">
-                  <li>
+                <ul className="comparison-list muted" data-animate-stagger data-animate-stagger-delay="0.1">
+                  <li data-animate-item="fade-in">
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -79,7 +79,7 @@ function Auditing() {
                     <span className="comparison-item-title">Will these numbers stand up to regulatory scrutiny</span>
                   </li>
 
-                  <li>
+                  <li data-animate-item="fade-in">
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -87,7 +87,7 @@ function Auditing() {
                     <span className="comparison-item-title">Are there material risks management has overlooked</span>
                   </li>
 
-                  <li>
+                  <li data-animate-item="fade-in">
                     <svg className="comparison-item-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" fill="none" />
                       <path d="M6 10 L9 13 L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -157,7 +157,7 @@ function Auditing() {
 
       {/* Pricing Section (same structure as Home pricing) */}
 
-      <section id="pricing" className="pricing-section pricing-section--auditing">
+      <section id="pricing" className="pricing-section pricing-section--auditing" data-animate="fade-in" data-animate-delay="0.2">
         <div className="pricing-section__container">
           <div className="pricing-section__auditing-header">
             <div className="service-comparison__pill">Pricing</div>
@@ -181,13 +181,13 @@ function Auditing() {
                 Get in Touch
               </Link>
 
-              <ul className="pricing-section__features">
+              <ul className="pricing-section__features" data-animate-stagger data-animate-stagger-delay="0.2">
                 {[
                   'Complete financial audit with transaction testing',
                   'Risk assessment and internal control review',
                   'Management letter with improvement recommendations',
                 ].map((feature, idx) => (
-                  <li key={idx} className="pricing-section__feature">
+                  <li key={idx} className="pricing-section__feature" data-animate-item="fade-in">
                     <svg
                       className="pricing-section__checkmark"
                       width="20"
@@ -217,7 +217,7 @@ function Auditing() {
 
       {/* Consultation CTA Section */}
 
-      <section className="service-consultation">
+      <section className="service-consultation" data-animate="slide-up" data-animate-delay="0.1">
         <div className="service-consultation__container">
           <p className="service-consultation__text body-opensans">
             Get clear guidance on the right choice with a <strong>free 30-minute consultation</strong>.
@@ -276,7 +276,7 @@ function Auditing() {
 
       {/* Newsletter Section */}
 
-      <section className="newsletter-section">
+      <section className="newsletter-section" data-animate="fade-in" data-animate-delay="0.2">
         <div className="newsletter-section__container">
           <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
           <p className="newsletter-section__description body-opensans">

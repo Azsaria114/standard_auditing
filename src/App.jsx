@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom'
 import './App.css'
 import './styles/ClientFeedback.css'
+import { initScrollAnimations, cleanupScrollAnimations } from './utils/scrollAnimations'
 import standardAuditingLogo from './assets/standard_auditing_logo.png'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -561,6 +562,28 @@ function ScrollToTop() {
 
 // Main App Component
 function App() {
+  const location = useLocation()
+
+  // Initialize scroll animations on route change
+  useEffect(() => {
+    // Cleanup previous animations
+    cleanupScrollAnimations()
+    
+    // Initialize animations after DOM is ready
+    // Use requestAnimationFrame for smoother initialization
+    const initTimer = requestAnimationFrame(() => {
+      // Small delay to ensure all elements are rendered
+      setTimeout(() => {
+        initScrollAnimations()
+      }, 150)
+    })
+
+    return () => {
+      cancelAnimationFrame(initTimer)
+      cleanupScrollAnimations()
+    }
+  }, [location.pathname])
+
   return (
     <>
       <ScrollToTop />

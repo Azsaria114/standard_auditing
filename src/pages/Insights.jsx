@@ -15,7 +15,7 @@ function slugifyTitle(title) {
 // Newsletter Section (from Home.jsx)
 function NewsletterSection() {
   return (
-    <section className="newsletter-section">
+    <section className="newsletter-section" data-animate="fade-in" data-animate-delay="0.2">
       <div className="newsletter-section__container">
         <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
         <p className="newsletter-section__description body-opensans">
@@ -116,7 +116,7 @@ function Insights() {
   return (
     <main className="insights-page">
       {/* Hero Slideshow Section */}
-      <section className="insights-hero">
+      <section className="insights-hero" data-animate="fade-in" data-animate-delay="0">
         <div className="insights-hero__slideshow">
           {heroSlides.map((slide, index) => (
             <div
@@ -152,7 +152,7 @@ function Insights() {
       </section>
 
       {/* Blog Section */}
-      <section className="insights-blog">
+      <section className="insights-blog" data-animate="slide-up" data-animate-delay="0.1">
         <div className="insights-blog__container">
           <h2 className="insights-blog__title h1-montserrat">Blog</h2>
           <div className="insights-blog__grid">

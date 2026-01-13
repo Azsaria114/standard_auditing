@@ -19,7 +19,7 @@ import WorkHereImage from '../assets/Frame 1097.png'
 // Newsletter Section (from Home.jsx)
 function NewsletterSection() {
   return (
-    <section className="newsletter-section">
+    <section className="newsletter-section" data-animate="fade-in" data-animate-delay="0.2">
       <div className="newsletter-section__container">
         <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
         <p className="newsletter-section__description body-opensans">
@@ -106,7 +106,7 @@ function Career() {
   return (
     <main className="career-page">
       {/* Hero Section */}
-      <section className="career-hero" style={{ backgroundImage: `url(${HeroImage})` }}>
+      <section className="career-hero" style={{ backgroundImage: `url(${HeroImage})` }} data-animate="fade-in" data-animate-delay="0">
         <div className="career-hero__overlay"></div>
           <div className="career-hero__content">
           <div className="career-hero__badge">
@@ -125,7 +125,7 @@ function Career() {
       </section>
 
       {/* Current Openings Section */}
-      <section className="career-openings">
+      <section className="career-openings" data-animate="slide-up" data-animate-delay="0.1">
         <div className="career-openings__container">
           <h2 className="career-openings__title h2-montserrat">Current openings</h2>
           <p className="career-openings__text body-opensans">
@@ -138,7 +138,7 @@ function Career() {
       </section>
 
       {/* What It's Like to Work Here Section */}
-      <section className="career-work-here">
+      <section className="career-work-here" data-animate="fade-in" data-animate-delay="0.2">
         <div className="career-work-here__grid">
           <div className="career-work-here__left">
             <h2 className="career-work-here__title h2-montserrat">What It's Like to Work Here</h2>
@@ -164,7 +164,7 @@ function Career() {
       </section>
 
       {/* This Role Is for You If You Section */}
-      <section className="career-role-for-you">
+      <section className="career-role-for-you" data-animate="slide-up" data-animate-delay="0.1">
         <div className="career-role-for-you__container">
           <h2 className="career-role-for-you__title h2-montserrat">This Role Is for You If You</h2>
           <div className="career-role-for-you__grid">
@@ -181,12 +181,12 @@ function Career() {
       </section>
 
       {/* Why Build Your Career With Us Section */}
-      <section className="career-benefits">
+      <section className="career-benefits" data-animate="fade-in" data-animate-delay="0.2">
         <div className="career-benefits__container">
           <h2 className="career-benefits__title h2-montserrat">Why Build Your Career With Us</h2>
-          <div className="career-benefits__grid">
+          <div className="career-benefits__grid" data-animate-stagger data-animate-stagger-delay="0.1">
             {careerBenefits.map((benefit, index) => (
-              <div key={index} className="career-benefits__card">
+              <div key={index} className="career-benefits__card" data-animate-item="fade-in">
                 <div className="career-benefits__icon">
                   <img src={benefit.icon} alt="" />
                 </div>
@@ -198,7 +198,7 @@ function Career() {
       </section>
 
       {/* Didn't Find the Right Role Section */}
-      <section className="career-application">
+      <section className="career-application" data-animate="slide-up" data-animate-delay="0.1">
         <div className="career-application__container">
           <div className="career-application__left">
             <h2 className="career-application__title h2-montserrat">Didn't Find the Right Role?</h2>

@@ -9,6 +9,34 @@ html, body {
   max-width: 100%;
 }
 
+/* ============================================
+   LANDING ANIMATIONS - Scroll-triggered animations for all pages
+   ============================================ */
+
+/* Simple Scroll Animation - Fade in on scroll */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+.animate-visible {
+  opacity: 1;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-scale-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 #root {
   min-height: 100vh;
   width: 100%;
@@ -3933,13 +3961,16 @@ html, body {
 /* See more link styling */
 .why-trust-section__see-more-link {
   color: white;
-  text-decoration: underline;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
   transition: opacity 0.3s ease;
   cursor: pointer;
 }
 
 .why-trust-section__see-more-link:hover {
   opacity: 0.8;
+  text-decoration: underline !important;
 }
 
 /* Icon circle stays visible on hover - only color changes */
@@ -4347,7 +4378,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(1.25rem, 2.5vw, 1.5rem);
+  gap: clamp(0.75rem, 1.5vw, 1rem);
   margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
 }
 
@@ -4367,19 +4398,20 @@ html, body {
 
 /* "Why choose us" pill badge (matches the Service Packages style) */
 .service-comparison__pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  text-align: center;
   background: rgba(173, 206, 230, 0.5);
   color: #0A3D62;
   border: 0.0625rem solid #0A3D62;
   border-radius: clamp(1.5rem, 4vw, 3.125rem);
   padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.625rem, 1.5vw, 0.875rem);
+  margin: 0 auto clamp(0.75rem, 1.5vw, 1rem);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   width: fit-content;
+  /* Matches homepage Service Packages badge style */
 }
 
 .pricing-section__container {
@@ -4397,7 +4429,7 @@ html, body {
   border: 0.0625rem solid #0A3D62;
   border-radius: clamp(1.5rem, 4vw, 3.125rem);
   padding: clamp(0.25rem, 0.75vw, 0.375rem) clamp(0.625rem, 1.5vw, 0.875rem);
-  margin: 0 auto clamp(1.25rem, 2.5vw, 1.5rem);
+  margin: 0 auto clamp(0.75rem, 1.5vw, 1rem);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
@@ -4451,7 +4483,7 @@ html, body {
   margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
   display: flex;
   flex-direction: column;
-  gap: clamp(1.25rem, 2.5vw, 1.5rem);
+  gap: clamp(0.75rem, 1.5vw, 1rem);
   align-items: center;
 }
 
@@ -4485,19 +4517,23 @@ html, body {
 
 /* Match typography with homepage pricing section */
 .pricing-section--auditing .pricing-section__card-title {
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  /* Reduced from clamp(1.25rem, 3vw, 1.5rem) to appear smaller */
 }
 
 .pricing-section--auditing .pricing-section__price-amount {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+  /* Reduced from clamp(2rem, 5vw, 2.5rem) to appear smaller */
 }
 
 .pricing-section--auditing .pricing-section__price-note {
-  font-size: clamp(0.875rem, 1.75vw, 1rem);
+  font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+  /* Reduced from clamp(0.875rem, 1.75vw, 1rem) to appear smaller */
 }
 
 .pricing-section--auditing .pricing-section__card-description {
-  font-size: clamp(0.875rem, 1.75vw, 1rem);
+  font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+  /* Reduced from clamp(0.875rem, 1.75vw, 1rem) to appear smaller */
   line-height: 1.6;
 }
 
@@ -4506,7 +4542,8 @@ html, body {
 }
 
 .pricing-section--auditing .pricing-section__feature span {
-  font-size: clamp(0.875rem, 1.75vw, 1rem);
+  font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+  /* Reduced from clamp(0.875rem, 1.75vw, 1rem) to appear smaller */
   line-height: 1.6;
 }
 
@@ -9193,11 +9230,6 @@ html, body {
   z-index: 1;
 }
 
-/* Ensure review card doesn't cover view larger map link */
-.contact-map__review {
-  max-width: calc(100% - 12rem);
-}
-
 /* Map Review Popup */
 .contact-map__review {
   position: absolute;
@@ -9614,7 +9646,7 @@ html, body {
 .career-hero__title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
   line-height: 1.2;
   margin: 0 0 clamp(0.5rem, 1vw, 0.75rem) 0;
   color: white;
@@ -9623,7 +9655,7 @@ html, body {
 .career-hero__description {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: clamp(0.875rem, 1.75vw, 1.25rem);
   line-height: 1.6;
   color: white;
   margin: 0;
@@ -9661,7 +9693,7 @@ html, body {
 .career-openings__text {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  font-size: 24px;
+  font-size: clamp(0.875rem, 1.75vw, 1rem);
   line-height: 1.6;
   color: #0A3D62;
   margin: 0;
@@ -9704,6 +9736,20 @@ html, body {
 @media (max-width: 768px) {
   .career-work-here__right {
     padding: clamp(2rem, 4vw, 3rem);
+  }
+
+  /* Reduce text sizes in career hero section on mobile */
+  .career-hero__title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  .career-hero__description {
+    font-size: clamp(0.875rem, 1.75vw, 1rem);
+  }
+
+  /* Reduce text size in current openings section on mobile */
+  .career-openings__text {
+    font-size: clamp(0.875rem, 1.75vw, 1rem);
   }
 }
 
@@ -12345,19 +12391,246 @@ html, body {
 }
 
 .blog-article__nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(0.75rem, 1.5vw, 1rem);
+  border-bottom: 0.0625rem solid rgba(10, 61, 98, 0.08);
+  border-radius: clamp(0.375rem, 0.75vw, 0.5rem);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 500;
+  color: #0A3D62;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 0 0 auto;
+  text-align: left;
+  width: 100%;
+  background: transparent;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.blog-article__nav-link:hover {
+  background: rgba(10, 61, 98, 0.06);
+  color: #0A3D62;
+  transform: translateX(0.375rem);
+  border-left: 0.25rem solid #0A3D62;
+  box-shadow: -0.25rem 0 0.5rem rgba(10, 61, 98, 0.05);
+}
+
+/* Services Dropdown in Blog Article Navigation */
+.blog-article__services-dropdown {
+  position: relative;
+}
+
+.blog-article__nav-link--dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(0.75rem, 1.5vw, 1rem);
+  border-bottom: 0.0625rem solid rgba(10, 61, 98, 0.08);
+  border-radius: clamp(0.375rem, 0.75vw, 0.5rem);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 500;
+  color: #0A3D62;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 0 0 auto;
+  text-align: left;
+  width: 100%;
+  background: transparent;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  gap: clamp(0.25rem, 0.5vw, 0.375rem);
+}
+
+.blog-article__nav-link--dropdown:hover {
+  background: rgba(10, 61, 98, 0.06);
+  color: #0A3D62;
+  transform: translateX(0.375rem);
+  border-left: 0.25rem solid #0A3D62;
+  box-shadow: -0.25rem 0 0.5rem rgba(10, 61, 98, 0.05);
+}
+
+.blog-article__dropdown-icon {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: clamp(0.5rem, 1vw, 0.625rem);
+  height: clamp(0.5rem, 1vw, 0.625rem);
+  color: inherit;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.6;
+}
+
+.blog-article__nav-link--dropdown:hover .blog-article__dropdown-icon {
+  opacity: 1;
+  transform: translateX(0.125rem);
+}
+
+.blog-article__dropdown-icon--open {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.blog-article__dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.25rem, 0.5vw, 0.375rem);
+  margin-top: clamp(0.5rem, 1vw, 0.75rem);
+  padding-left: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.blog-article__dropdown-item {
   color: #0A3D62;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
-  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-size: clamp(0.875rem, 1.75vw, 1rem);
   font-weight: 500;
-  padding: clamp(0.75rem, 1.5vw, 1rem);
+  padding: clamp(0.5rem, 1vw, 0.75rem);
   border-radius: clamp(0.25rem, 0.5vw, 0.375rem);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.blog-article__nav-link:hover {
+.blog-article__dropdown-item:hover {
   background-color: rgba(10, 61, 98, 0.1);
   color: #0A3D62;
+}
+
+/* Overlay for Blog Article Navigation */
+.blog-article__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.blog-article__overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Close Button in Blog Navigation */
+.blog-article__close {
+  position: absolute;
+  top: clamp(1rem, 2vw, 1.5rem);
+  right: clamp(1rem, 2vw, 1.5rem);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: clamp(0.5rem, 1vw, 0.75rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blog-article__close:hover {
+  transform: scale(1.1);
+}
+
+.blog-article__close svg {
+  width: clamp(1.25rem, 2.5vw, 1.5rem);
+  height: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+/* Contact Us CTA Button in Blog Navigation - Match Main Header Style */
+.blog-article__cta--sidebar {
+  display: none;
+}
+
+.blog-article__nav--open .blog-article__cta--sidebar {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  margin-left: clamp(0.75rem, 1.5vw, 1rem);
+  margin-right: clamp(0.75rem, 1.5vw, 1rem);
+  padding: clamp(0.875rem, 2vw, 1.125rem) clamp(1.5rem, 3.5vw, 2rem);
+  width: calc(100% - clamp(1.5rem, 3vw, 2rem));
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  border-top: 0.125rem solid rgba(10, 61, 98, 0.1);
+  border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
+  background: white;
+  color: #0A3D62;
+  border: 0.0625rem solid #0A3D62;
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  font-weight: 600;
+  box-shadow: 0 clamp(0.125rem, 0.5vw, 0.25rem) clamp(0.25rem, 1vw, 0.5rem) rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-decoration: none;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.blog-article__nav--open .blog-article__cta--sidebar::after {
+  content: '';
+  position: absolute;
+  width: clamp(1.5rem, 3vw, 2rem);
+  height: clamp(1.5rem, 3vw, 2rem);
+  bottom: -0.0625rem;
+  right: -0.0625rem;
+  background: #0A3D62;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-bottom-right-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blog-article__nav--open .blog-article__cta--sidebar:hover {
+  background: white;
+  border-color: #0A3D62;
+  transform: translateY(-0.25rem);
+  box-shadow: 0 clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.5rem, 4vw, 3.125rem) rgba(31, 41, 51, 0.18);
+}
+
+.blog-article__nav--open .blog-article__cta--sidebar:hover::after {
+  background: #0A3D62;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  clip-path: none;
+  border-radius: clamp(0.25rem, 0.75vw, 0.3125rem);
+}
+
+.blog-article__nav--open .blog-article__cta--sidebar .blog-article__cta-text {
+  color: #0A3D62;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.blog-article__nav--open .blog-article__cta--sidebar:hover .blog-article__cta-text {
+  color: white;
+}
+
+.blog-article__nav--open .blog-article__cta--sidebar .blog-article__cta-arrow {
+  color: #0A3D62;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: clamp(0.875rem, 1.75vw, 1rem);
+  height: clamp(0.875rem, 1.75vw, 1rem);
+  flex-shrink: 0;
+}
+
+.blog-article__nav--open .blog-article__cta--sidebar:hover .blog-article__cta-arrow {
+  color: white;
+  transform: translate(0.125rem, -0.125rem);
 }
 
 @media (max-width: 1024px) {

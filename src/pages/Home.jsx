@@ -252,7 +252,7 @@ const faqQuestions = [
 // Services Section
 function ServicesSection() {
   return (
-    <section className="services-section">
+    <section className="services-section" data-animate="slide-up" data-animate-delay="0.1">
       <div className="services-section__container">
         <div className="services-section__left">
           <button type="button" className="services-section__tag small-body-opensans">
@@ -342,7 +342,7 @@ function ServicesSection() {
 // Services Grid Section
 function ServicesGridSection() {
   return (
-    <section className="services-grid-section">
+    <section className="services-grid-section" data-animate="fade-in" data-animate-delay="0.2">
       <div className="services-grid-section__container">
         <div className="services-grid-section__header">
           <span className="services-grid-section__tag h3-opensans-semibold">Services We Offer</span>
@@ -350,12 +350,13 @@ function ServicesGridSection() {
             Everything Your Business Needs to Stay Compliant and Profitable
           </h2>
         </div>
-        <div className="services-grid-section__grid">
+        <div className="services-grid-section__grid" data-animate-stagger data-animate-stagger-delay="0.1">
           {serviceCards.map((service, index) => (
             <Link 
               key={index} 
               to={service.path} 
               className="services-grid-section__card"
+              data-animate-item="fade-in"
               style={{ textDecoration: 'none', display: 'block' }}
             >
                 <div className="services-grid-section__icon-container">
@@ -394,14 +395,14 @@ function ServicesGridSection() {
 // Why Trust Section
 function WhyTrustSection() {
   return (
-    <section className="why-trust-section">
+    <section className="why-trust-section" data-animate="slide-up" data-animate-delay="0.1">
       <div className="why-trust-section__container">
         <h2 className="why-trust-section__title h1-montserrat">
           Why 500+ Businesses Trust Us<br />
           with Their Finances
         </h2>
-        <div className="why-trust-section__grid">
-          <div className="why-trust-section__card why-trust-section__card--first">
+        <div className="why-trust-section__grid" data-animate-stagger data-animate-stagger-delay="0.1">
+          <div className="why-trust-section__card why-trust-section__card--first" data-animate-item="fade-in">
             <div className="why-trust-section__icon-circle">
               <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -422,7 +423,7 @@ function WhyTrustSection() {
             </div>
           </div>
           
-          <div className="why-trust-section__card">
+          <div className="why-trust-section__card" data-animate-item="fade-in">
             <div className="why-trust-section__icon-circle">
               <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -443,7 +444,7 @@ function WhyTrustSection() {
             </div>
           </div>
           
-          <div className="why-trust-section__card">
+          <div className="why-trust-section__card" data-animate-item="fade-in">
             <div className="why-trust-section__icon-circle">
               <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -464,7 +465,7 @@ function WhyTrustSection() {
             </div>
           </div>
           
-          <div className="why-trust-section__card">
+          <div className="why-trust-section__card" data-animate-item="fade-in">
             <div className="why-trust-section__icon-circle">
               <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -485,7 +486,7 @@ function WhyTrustSection() {
             </div>
           </div>
           
-          <div className="why-trust-section__card">
+          <div className="why-trust-section__card" data-animate-item="fade-in">
             <div className="why-trust-section__icon-circle">
               <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -506,7 +507,7 @@ function WhyTrustSection() {
             </div>
           </div>
           
-          <div className="why-trust-section__card">
+          <div className="why-trust-section__card" data-animate-item="fade-in">
             <div className="why-trust-section__icon-circle">
               <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -527,7 +528,7 @@ function WhyTrustSection() {
             </div>
           </div>
           
-          <div className="why-trust-section__card">
+          <div className="why-trust-section__card" data-animate-item="fade-in">
             <div className="why-trust-section__icon-circle">
               <svg className="why-trust-section__diamond-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3L20 12L12 21L4 12L12 3Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -571,16 +572,16 @@ function WhyTrustSection() {
 // Pricing Section
 function PricingSection() {
   return (
-    <section className="pricing-section">
+    <section className="pricing-section" data-animate="slide-up" data-animate-delay="0.1">
       <div className="pricing-section__container">
         <span className="pricing-section__badge small-body-opensans">Service Packages</span>
         <h2 className="pricing-section__title h1-montserrat">
           <span className="pricing-section__title-line-1">Choose the Support Level</span>
           <span className="pricing-section__title-line-2">That Fits Your Business</span>
         </h2>
-        <div className="pricing-section__grid">
+        <div className="pricing-section__grid" data-animate-stagger data-animate-stagger-delay="0.1">
           {pricingPlans.map((plan, index) => (
-            <div key={index} className="pricing-section__card">
+            <div key={index} className="pricing-section__card" data-animate-item="slide-up">
               <h3 className="pricing-section__card-title h3-montserrat">{plan.title}</h3>
               <div className="pricing-section__price">
                 <span className="pricing-section__price-amount h1-montserrat">{plan.price}</span>
@@ -638,7 +639,7 @@ function VideoTestimonialsSection() {
   ]
 
   return (
-    <section className="video-testimonials-section" id="insights">
+    <section className="video-testimonials-section" id="insights" data-animate="fade-in" data-animate-delay="0.2">
       <div className="video-testimonials-section__container">
         <div className="video-testimonials-section__header">
           <span className="video-testimonials-section__tag h3-opensans-semibold">Insights</span>
@@ -647,7 +648,7 @@ function VideoTestimonialsSection() {
             <span className="video-testimonials-section__title-line-2">Businesses Like Yours</span>
           </h2>
         </div>
-        <div className="video-testimonials-section__grid">
+        <div className="video-testimonials-section__grid" data-animate-stagger data-animate-stagger-delay="0.1">
           {blogArticles.map((article, index) => {
             const isHovered = hoveredIndex === index
             const isShrunk = hoveredIndex !== null && hoveredIndex !== index
@@ -659,6 +660,7 @@ function VideoTestimonialsSection() {
                 className={`video-testimonials-section__card ${isHovered ? 'video-testimonials-section__card--hovered' : ''} ${isShrunk ? 'video-testimonials-section__card--shrunk' : ''}`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 style={{ textDecoration: 'none', display: 'block' }}
+                data-animate-item="fade-in"
               >
                 <div className="video-testimonials-section__thumbnail">
                   <img 
@@ -713,7 +715,7 @@ function ClientTestimonialsSection() {
   }
 
   return (
-    <section className="client-testimonials-section" id="testimonials">
+    <section className="client-testimonials-section" id="testimonials" data-animate="fade-in" data-animate-delay="0.2">
       <div className="client-testimonials-section__container">
         <div className="client-testimonials-section__left">
           <span className="client-testimonials-section__tag h3-opensans-semibold">Testimonials</span>
@@ -863,7 +865,7 @@ function FAQSection() {
   }, [])
 
   return (
-    <section id="faq" className="faq-section" ref={faqSectionRef}>
+    <section id="faq" className="faq-section" ref={faqSectionRef} data-animate="slide-up" data-animate-delay="0.1">
       <div className="faq-section__container">
         <div className="faq-section__left">
           <span className="faq-section__badge small-body-opensans">FAQ</span>
@@ -885,12 +887,13 @@ function FAQSection() {
           </div>
         </div>
         <div className="faq-section__right" ref={faqRightRef}>
-          <div className="faq-section__list">
+          <div className="faq-section__list" data-animate-stagger data-animate-stagger-delay="0.1">
             {faqQuestions.map((faq, index) => (
               <div 
                 key={index} 
                 className="faq-section__item"
                 ref={(el) => (faqItemRefs.current[index] = el)}
+                data-animate-item="fade-in"
               >
                 <div className="faq-section__divider"></div>
                 <button
@@ -923,7 +926,7 @@ function FAQSection() {
 // Newsletter Section
 function NewsletterSection() {
   return (
-    <section className="newsletter-section">
+    <section className="newsletter-section" data-animate="slide-up" data-animate-delay="0.1">
       <div className="newsletter-section__container">
         <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
         <p className="newsletter-section__description body-opensans">
@@ -964,9 +967,9 @@ function HowItWorksSection() {
         <div className="how-it-works-section__header">
           <h2 className="how-it-works-section__title h2-montserrat">How It Works</h2>
         </div>
-        <div className="how-it-works-section__cards">
+        <div className="how-it-works-section__cards" data-animate-stagger data-animate-stagger-delay="0.1">
           {steps.map((step, index) => (
-            <div key={index} className="how-it-works-section__step">
+            <div key={index} className="how-it-works-section__step" data-animate-item="fade-in">
               <div className="how-it-works-section__card-box">
                 <img 
                   src={step.image} 

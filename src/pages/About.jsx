@@ -38,7 +38,7 @@ function About() {
   return (
     <main className="about-page">
         {/* Hero Section */}
-        <section className="about-hero">
+        <section className="about-hero" data-animate="fade-in" data-animate-delay="0">
           <div className="about-hero__content">
             <h1 className="about-hero__title h1-montserrat">
               Your Trusted Partner in Achieving Financial Clarity & Protecting Your Profits.
@@ -61,7 +61,7 @@ function About() {
         </section>
 
         {/* Partners Logos Section */}
-        <section className="about-partners">
+        <section className="about-partners" data-animate="slide-up" data-animate-delay="0.1">
           <div className="about-partners__container">
             <div className="about-partners__loop">
               <div className="about-partners__track">
@@ -109,7 +109,7 @@ function About() {
         </section>
 
         {/* What Makes Us Different Section */}
-        <section className="about-intro">
+        <section className="about-intro" data-animate="fade-in" data-animate-delay="0.2">
           <div className="about-intro__grid">
             <div className="about-intro__left">
               <div className="about-intro__chip small-body-opensans">Who We Are</div>
@@ -160,14 +160,14 @@ function About() {
         </section>
         
        {/* Our Core Values */}
-<section className="core-values">
+<section className="core-values" data-animate="slide-up" data-animate-delay="0.1">
   <div className="core-values__header">
     <h2 className="core-values__title">Our Core Values</h2>
   </div>
 
-  <div className="core-values__grid">
+  <div className="core-values__grid" data-animate-stagger data-animate-stagger-delay="0.1">
     {/* Accountability - Spans 2 columns on top left */}
-    <div className="core-card core-card--accountability">
+    <div className="core-card core-card--accountability" data-animate-item="fade-in">
       <div className="core-card__icon">
         <img src={accountabilityIcon} alt="Accountability" />
       </div>
@@ -180,7 +180,7 @@ function About() {
     </div>
 
     {/* Integrity - Spans 1 column to the right of Accountability */}
-    <div className="core-card core-card--integrity">
+    <div className="core-card core-card--integrity" data-animate-item="fade-in">
       <div className="core-card__icon">
         <img src={integrityIcon} alt="Integrity" />
       </div>
@@ -193,7 +193,7 @@ function About() {
     </div>
 
     {/* Progress - Spans 1 column on far right, but taller (spanning 2 rows) */}
-    <div className="core-card core-card--progress">
+    <div className="core-card core-card--progress" data-animate-item="fade-in">
       <div className="core-card__icon">
         <img src={progressIcon} alt="Progress" />
       </div>
@@ -206,7 +206,7 @@ function About() {
     </div>
 
     {/* Precision - Bottom left, 1 column */}
-    <div className="core-card core-card--precision">
+    <div className="core-card core-card--precision" data-animate-item="fade-in">
       <div className="core-card__icon">
         <img src={precisionIcon} alt="Precision" />
       </div>
@@ -219,7 +219,7 @@ function About() {
     </div>
 
     {/* Speed - To the right of Precision, 1 column */}
-    <div className="core-card core-card--speed">
+    <div className="core-card core-card--speed" data-animate-item="fade-in">
       <div className="core-card__icon">
         <img src={speedIcon} alt="Speed" />
       </div>
@@ -232,7 +232,7 @@ function About() {
     </div>
 
     {/* Transparency - Spans 2 columns on bottom right */}
-    <div className="core-card core-card--transparency">
+    <div className="core-card core-card--transparency" data-animate-item="fade-in">
       <div className="core-card__icon">
         <img src={transparencyIcon} alt="Transparency" />
       </div>
@@ -248,7 +248,7 @@ function About() {
 
 
         {/* Our Team Section */}
-        <section id="team" className="about-team">
+        <section id="team" className="about-team" data-animate="fade-in" data-animate-delay="0.2">
           <div className="about-team__container">
             <div className="about-team__badge small-body-opensans">Our Team</div>
             <h2 className="about-team__title h1-montserrat">Experts Who Bring Order & Insight to Your Business</h2>
@@ -256,11 +256,12 @@ function About() {
               Every team member is trained to go beyond routine accounting. We analyze, advise, and guide you with clarity backed by decades of combined experience.
             </p>
             <div className="about-team__content">
-              <div className="about-team__grid">
+              <div className="about-team__grid" data-animate-stagger data-animate-stagger-delay="0.1">
                 {teamMembers.map((member, index) => (
                   <div 
                     key={index}
                     className="about-team__person"
+                    data-animate-item="slide-up"
                   >
                     <div className="about-team__image-wrapper">
                       <img 
@@ -282,7 +283,7 @@ function About() {
         </section>
 
         {/* Newsletter Section - Same as Home Page */}
-        <section className="newsletter-section">
+        <section className="newsletter-section" data-animate="slide-up" data-animate-delay="0.1">
           <div className="newsletter-section__container">
             <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
             <p className="newsletter-section__description body-opensans">

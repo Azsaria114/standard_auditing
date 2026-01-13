@@ -9,7 +9,7 @@ function CompanyFormation() {
   return (
     <main className="service-page service-page--auditing">
       {/* Hero Section */}
-      <section className="service-hero service-hero--auditing">
+      <section className="service-hero service-hero--auditing" data-animate="fade-in" data-animate-delay="0">
         <div className="service-hero__container service-hero__container--auditing">
           <div className="service-hero__grid service-hero__grid--auditing">
             {/* Left Column - Image */}
@@ -48,7 +48,7 @@ function CompanyFormation() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="service-comparison service-comparison--pricing-bg">
+      <section className="service-comparison service-comparison--pricing-bg" data-animate="slide-up" data-animate-delay="0.1">
         <div className="service-comparison__container">
           <div className="service-comparison__header">
             <div className="service-comparison__nav">
@@ -155,7 +155,7 @@ function CompanyFormation() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="pricing-section pricing-section--auditing">
+      <section id="pricing" className="pricing-section pricing-section--auditing" data-animate="fade-in" data-animate-delay="0.2">
         <div className="pricing-section__container">
           <div className="pricing-section__auditing-header">
             <div className="service-comparison__pill">Pricing</div>
@@ -261,7 +261,7 @@ function CompanyFormation() {
       </section>
 
       {/* Consultation CTA Section */}
-      <section className="service-consultation">
+      <section className="service-consultation" data-animate="slide-up" data-animate-delay="0.1">
         <div className="service-consultation__container">
           <p className="service-consultation__text body-opensans">
             Make the right decision with expert input. <strong>Book a Free 30-minute consultation now.</strong>
@@ -316,7 +316,7 @@ function CompanyFormation() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="newsletter-section">
+      <section className="newsletter-section" data-animate="fade-in" data-animate-delay="0.2">
         <div className="newsletter-section__container">
           <h2 className="newsletter-section__title h1-montserrat">Your Business Finance Fix</h2>
           <p className="newsletter-section__description body-opensans">

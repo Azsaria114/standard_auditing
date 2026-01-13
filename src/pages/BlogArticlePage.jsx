@@ -1237,11 +1237,6 @@ function BlogArticle({
   const [readingProgress, setReadingProgress] = useState(0)
   const [activeHeading, setActiveHeading] = useState(null)
   const [timelineNavHeight, setTimelineNavHeight] = useState(0)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
 
   const headings = useMemo(() => {
     const base = content
@@ -1271,23 +1266,46 @@ function BlogArticle({
 
     const updateActiveHeading = () => {
       // Don't highlight any heading if we're at the very top of the page
-      if (window.pageYOffset < 100) {
+      // Use a larger threshold for mobile/tablet to prevent default highlighting
+      const isMobile = window.innerWidth <= 1024
+      const topThreshold = isMobile ? 400 : 150
+      
+      if (window.pageYOffset < topThreshold) {
         setActiveHeading(null)
         return
       }
       
       const scrollPosition = window.pageYOffset + 200
+      const viewportTop = window.pageYOffset
+      const viewportBottom = window.pageYOffset + window.innerHeight
       let foundActive = false
       
+      // Check headings from bottom to top
       for (let i = headings.length - 1; i >= 0; i--) {
         const heading = headings[i]
         const element = document.getElementById(heading.id)
         if (element) {
           const elementTop = element.offsetTop
-          if (scrollPosition >= elementTop) {
-            setActiveHeading(heading.id)
-            foundActive = true
-            break
+          const elementBottom = elementTop + element.offsetHeight
+          
+          // For the last heading (Final Thought), require it to be clearly visible in viewport
+          // Don't highlight it unless user has scrolled close to it
+          if (i === headings.length - 1) {
+            // Only highlight if the last heading is in the upper portion of the viewport
+            // and user has scrolled significantly (not at page load)
+            const distanceFromTop = elementTop - viewportTop
+            if (distanceFromTop >= -50 && distanceFromTop <= viewportBottom * 0.3 && window.pageYOffset > 500) {
+              setActiveHeading(heading.id)
+              foundActive = true
+              break
+            }
+          } else {
+            // For other headings, use the standard logic
+            if (scrollPosition >= elementTop && elementTop >= viewportTop - 100) {
+              setActiveHeading(heading.id)
+              foundActive = true
+              break
+            }
           }
         }
       }
@@ -1310,13 +1328,22 @@ function BlogArticle({
       }
     }
 
+    // Initialize with no active heading
+    setActiveHeading(null)
+    
     window.addEventListener('scroll', updateReadingProgress)
     window.addEventListener('scroll', updateActiveHeading)
     window.addEventListener('scroll', updateTimelineNavHeight)
     window.addEventListener('resize', updateTimelineNavHeight)
 
     updateReadingProgress()
-    updateActiveHeading()
+    // Only update active heading after a small delay to ensure DOM is ready
+    // and only if user has scrolled
+    setTimeout(() => {
+      if (window.pageYOffset > 0) {
+        updateActiveHeading()
+      }
+    }, 100)
     updateTimelineNavHeight()
 
     return () => {
@@ -1374,35 +1401,6 @@ function BlogArticle({
       <div className="blog-article__progress-bar">
         <div className="blog-article__progress-fill" style={{ width: `${readingProgress}%` }} />
       </div>
-
-      <button 
-        type="button" 
-        className="blog-article__hamburger"
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        <span className={`blog-article__hamburger-line ${isMenuOpen ? 'blog-article__hamburger-line--open' : ''}`}></span>
-        <span className={`blog-article__hamburger-line ${isMenuOpen ? 'blog-article__hamburger-line--open' : ''}`}></span>
-        <span className={`blog-article__hamburger-line ${isMenuOpen ? 'blog-article__hamburger-line--open' : ''}`}></span>
-      </button>
-
-      <nav className={`blog-article__nav ${isMenuOpen ? 'blog-article__nav--open' : ''}`}>
-        <Link to="/" className="blog-article__nav-link" onClick={() => setIsMenuOpen(false)}>
-          Home
-        </Link>
-        <Link to="/about" className="blog-article__nav-link" onClick={() => setIsMenuOpen(false)}>
-          About
-        </Link>
-        <Link to="/insights" className="blog-article__nav-link" onClick={() => setIsMenuOpen(false)}>
-          Insights
-        </Link>
-        <Link to="/career" className="blog-article__nav-link" onClick={() => setIsMenuOpen(false)}>
-          Career
-        </Link>
-        <Link to="/contact" className="blog-article__nav-link" onClick={() => setIsMenuOpen(false)}>
-          Contact
-        </Link>
-      </nav>
 
       <section className="blog-article__hero">
         {featuredImage && (

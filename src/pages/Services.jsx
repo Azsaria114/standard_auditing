@@ -51,7 +51,7 @@ function Services() {
   return (
     <main className="services-page">
       {/* Hero Section */}
-      <section className="services-hero">
+      <section className="services-hero" data-animate="fade-in" data-animate-delay="0">
         <div className="services-hero__container">
           <div className="services-hero__content">
             <span className="services-hero__badge small-body-opensans">Our Services</span>
@@ -67,7 +67,7 @@ function Services() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="services-overview">
+      <section className="services-overview" data-animate="slide-up" data-animate-delay="0.1">
         <div className="services-overview__container">
           <div className="services-overview__header">
             <span className="services-overview__tag h3-opensans-semibold">What We Offer</span>
@@ -75,12 +75,13 @@ function Services() {
               Everything Your Business Needs to Stay Compliant and Profitable
             </h2>
           </div>
-          <div className="services-overview__grid">
+          <div className="services-overview__grid" data-animate-stagger data-animate-stagger-delay="0.1">
             {services.map((service, index) => (
               <Link 
                 key={index} 
                 to={`/services/${service.id}`}
                 className="services-overview__card"
+                data-animate-item="slide-up"
               >
                 <div className="services-overview__icon-container">
                   {service.icon === 'document-magnifying-glass' && (
@@ -160,7 +161,7 @@ function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="services-cta">
+      <section className="services-cta" data-animate="fade-in" data-animate-delay="0.2">
         <div className="services-cta__container">
           <h2 className="services-cta__title h2-montserrat">
             Ready to Get Started?
