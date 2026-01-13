@@ -149,7 +149,7 @@ function TaxAdvisory() {
 
             <p className="comparison-footer-text">
               Get clarity on consequences, risks, and compliance requirements before committing. 
-              The goal is certaintyΓÇöplan with confidence, not assumptions.
+              The goal is certainty—plan with confidence, not assumptions.
             </p>
           </div>
         </div>

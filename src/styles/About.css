@@ -62,8 +62,10 @@
 .about-hero__image {
   width: 100%;
   height: auto;
+  max-height: clamp(20rem, 40vw, 28rem);
   display: block;
   object-fit: cover;
+  object-position: center 30%;
   border-radius: 0;
   position: relative;
   z-index: 2;
@@ -188,20 +190,20 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2.5rem, 5vw, 4rem); 
-  align-items: stretch; 
+  align-items: start; 
   width: 100%;
 }
 .about-intro__left,
 .about-intro__right {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 3vw, 2rem);
-  min-height: 100%;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  align-items: flex-start;
 }
 .about-intro__right {
-  padding-top: 0;
-  align-self: stretch;
-  justify-content: space-between;
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  align-self: start;
+  justify-content: flex-start;
 }
 .about-intro__points {
   display: flex;
@@ -267,7 +269,7 @@
   } 
   .about-intro__chip { 
     display: inline-flex; 
-    margin-bottom: clamp(1rem, 2vw, 1.5rem); 
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem); 
     width: fit-content; 
   } 
   .about-intro__grid {
@@ -281,10 +283,12 @@
     order: 2 !important;
   }
   .about-intro__media {
-    margin-top: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(0.5rem, 1vw, 0.75rem);
   }
   .about-intro__media img {
-    width: 100%; 
+    width: 100%;
+    max-height: clamp(16rem, 32vw, 22rem);
+    object-position: center 20%;
   }
   .about-intro__points {
     margin-top: 0;
@@ -326,15 +330,17 @@
   align-items: flex-start; 
   width: 100%;
   overflow: visible; 
-  margin-top: clamp(1rem, 2vw, 1.5rem);
+  margin-top: clamp(0.5rem, 1vw, 0.75rem);
 }
 .about-intro__media img {
   width: 100%;
   height: auto;
+  max-height: clamp(18rem, 35vw, 24rem);
   border-radius: 12px; 
   box-shadow: none;
   display: block;
   object-fit: cover;
+  object-position: center 20%;
   margin: 0;
 } .about-intro__callout { position: absolute; right: 0; top: clamp(2rem, 3vw, 2.5rem); transform: none; width: min(400px, 80%); background: rgba(255, 255, 255, 0.9); border-radius: 0.5rem; border: 0.125rem solid #0b3a63; box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.16); padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.5rem); z-index: 2; } .about-intro__callout-title { margin: 0 0 0.35rem 0; color: #0A3D62; font-size: 25px; font-family: 'Montserrat', sans-serif; font-weight: 600; } .about-intro__callout-text { margin: 0 0 0.75rem 0; color: #2E2E2E; line-height: 1.5; font-size: 20px; font-family: 'Open Sans', sans-serif; } .about-intro__callout-list { margin: 0; padding-left: 0; list-style: none; color: #0A3D62; line-height: 1.45; font-size: 18px; font-family: 'Open Sans', sans-serif; } .about-intro__callout-list li { position: relative; padding-left: 1.25rem; margin-bottom: 0.75rem; } .about-intro__callout-list li:before { content: '→'; position: absolute; left: 0; color: #0A3D62; } /* Responsive styles for About Intro Section */ 
 }
@@ -346,11 +352,12 @@
     overflow: visible; 
   } 
   .about-intro__chip { 
-    margin-bottom: clamp(1rem, 2vw, 1.5rem); 
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem); 
   } 
   .about-intro__grid {
     grid-template-columns: 1fr !important;
-    gap: clamp(2.5rem, 4vw, 3.5rem); 
+    gap: clamp(2.5rem, 4vw, 3.5rem);
+    align-items: start !important;
   } 
   .about-intro__left {
     order: 1;
@@ -372,7 +379,9 @@
     overflow: visible; 
   } 
   .about-intro__media img { 
-    max-width: 100%; 
+    max-width: 100%;
+    max-height: clamp(14rem, 30vw, 20rem);
+    object-position: center 20%;
     margin-left: 0;
   } 
   .about-intro__stats {
@@ -394,7 +403,7 @@
     top: auto;
     padding: clamp(0.875rem, 2vw, 1rem) clamp(0.875rem, 2vw, 1.25rem); 
   } 
-} @media (max-width: 768px) { .about-intro { padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem); overflow: visible; } .about-intro__chip { display: inline-flex; margin-bottom: clamp(1rem, 2vw, 1.5rem); width: fit-content; } .about-intro__grid { grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2rem); } .about-intro__title { font-size: clamp(1.5rem, 5vw, 1.75rem); } .about-intro__description { font-size: clamp(14px, 2vw, 16px); } .about-intro__media { order: 2; margin-bottom: 2rem; position: relative; overflow: visible; } .about-intro__media img { max-width: 100%; margin-left: 0; } .about-intro__stats { position: static; max-width: 100%; margin-top: 1.5rem; left: auto; bottom: auto; display: flex; flex-direction: column; gap: 0.75rem; } .about-intro__stat-card { min-width: 100%; width: 100%; } .about-intro__stat-card:last-child { margin-left: 0; } .about-intro__callout { position: static; transform: none; width: 100%; margin-top: 1.5rem; right: auto; top: auto; } .about-intro__callout-title { font-size: clamp(1.125rem, 3vw, 1.25rem); } .about-intro__callout-text { font-size: clamp(14px, 2vw, 16px); } .about-intro__callout-list { font-size: clamp(14px, 2vw, 16px); } } 
+} @media (max-width: 768px) { .about-intro { padding: clamp(2.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem); overflow: visible; } .about-intro__chip { display: inline-flex; margin-bottom: clamp(0.5rem, 1vw, 0.75rem); width: fit-content; } .about-intro__grid { grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2rem); align-items: start; } .about-intro__title { font-size: clamp(1.5rem, 5vw, 1.75rem); } .about-intro__description { font-size: clamp(14px, 2vw, 16px); } .about-intro__media { order: 2; margin-bottom: 2rem; position: relative; overflow: visible; } .about-intro__media img { max-width: 100%; max-height: clamp(12rem, 45vw, 18rem); object-position: center 20%; margin-left: 0; } .about-intro__stats { position: static; max-width: 100%; margin-top: 1.5rem; left: auto; bottom: auto; display: flex; flex-direction: column; gap: 0.75rem; } .about-intro__stat-card { min-width: 100%; width: 100%; } .about-intro__stat-card:last-child { margin-left: 0; } .about-intro__callout { position: static; transform: none; width: 100%; margin-top: 1.5rem; right: auto; top: auto; } .about-intro__callout-title { font-size: clamp(1.125rem, 3vw, 1.25rem); } .about-intro__callout-text { font-size: clamp(14px, 2vw, 16px); } .about-intro__callout-list { font-size: clamp(14px, 2vw, 16px); } } 
 .about-team {
   padding: clamp(2.5rem, 5vw, 4rem) clamp(40px, 4vw, 5rem) clamp(4rem, 8vw, 6rem) clamp(40px, 4vw, 5rem);
   background: white;
@@ -709,6 +718,10 @@
   .about-hero__image-wrapper {
     order: 2 !important;
     width: 100% !important;
+  }
+  .about-hero__image {
+    max-height: clamp(15rem, 50vw, 22rem) !important;
+    object-position: center 30% !important;
   }
   .about-hero__support-section {
     padding: clamp(2rem, 4vw, 2.5rem) clamp(20px, 5vw, 40px) !important;

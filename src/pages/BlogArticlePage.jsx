@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-// Local (page-level) newsletter section ΓÇö matches the existing Insights/Home pattern.
+// Local (page-level) newsletter section — matches the existing Insights/Home pattern.
 function NewsletterSection() {
   return (
     <section className="newsletter-section">
@@ -52,7 +52,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'Paper structures no longer work. If the FTA finds a weak substance, your company can lose the 0% rate and be taxed at 9%, not just for one yearΓÇöbut for up to five years.',
+        text: 'Paper structures no longer work. If the FTA finds a weak substance, your company can lose the 0% rate and be taxed at 9%, not just for one year—but for up to five years.',
         highlights: [
           { text: 'taxed at 9%', color: 'blue', bold: true },
           { text: 'for up to five years', color: 'blue', bold: true },
@@ -60,9 +60,9 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'This matters most for SMEs with 10ΓÇô50 employees, especially those registered from 2024 onward.',
+        text: 'This matters most for SMEs with 10–50 employees, especially those registered from 2024 onward.',
         highlights: [
-          { text: 'SMEs with 10ΓÇô50 employees', color: 'blue', bold: true },
+          { text: 'SMEs with 10–50 employees', color: 'blue', bold: true },
           { text: 'registered from 2024 onward', color: 'blue', bold: true },
         ],
       },
@@ -145,7 +145,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'For qualifying intellectual property (IP), limited outsourcing outside the UAE is allowedΓÇöbut only with strong proof of R&D linkage and cost tracking.',
+        text: 'For qualifying intellectual property (IP), limited outsourcing outside the UAE is allowed—but only with strong proof of R&D linkage and cost tracking.',
         highlights: [{ text: 'qualifying intellectual property (IP)', color: 'blue', bold: true }],
       },
       {
@@ -205,7 +205,7 @@ const ARTICLE_DEFINITIONS = [
       { type: 'heading', text: 'Final Thought', semibold: true },
       {
         type: 'paragraph',
-        text: 'Free Zone tax benefits are valuableΓÇöbut they are not automatic. The FTA expects real operations, real people, and real proof.',
+        text: 'Free Zone tax benefits are valuable—but they are not automatic. The FTA expects real operations, real people, and real proof.',
         highlights: [{ text: 'real operations, real people, and real proof', color: 'blue', bold: true }],
       },
       {
@@ -245,7 +245,7 @@ const ARTICLE_DEFINITIONS = [
     content: [
       {
         type: 'paragraph',
-        text: 'Many Dubai businesses lose profits not because of bad salesΓÇöbut because of how they deal with related parties.',
+        text: 'Many Dubai businesses lose profits not because of bad sales—but because of how they deal with related parties.',
       },
       {
         type: 'paragraph',
@@ -254,9 +254,9 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'This risk is higher for businesses with 10ΓÇô50 employees, especially companies registered from 2024 onward.',
+        text: 'This risk is higher for businesses with 10–50 employees, especially companies registered from 2024 onward.',
         highlights: [
-          { text: 'businesses with 10ΓÇô50 employees', color: 'blue', bold: true },
+          { text: 'businesses with 10–50 employees', color: 'blue', bold: true },
           { text: 'registered from 2024 onward', color: 'blue', bold: true },
         ],
       },
@@ -287,7 +287,7 @@ const ARTICLE_DEFINITIONS = [
         highlights: [{ text: 'arm\'s-length principle', color: 'blue', bold: true }],
       },
 
-      { type: 'heading', text: 'UAE Transfer Pricing Rules ΓÇô In Simple Terms', semibold: true },
+      { type: 'heading', text: 'UAE Transfer Pricing Rules – In Simple Terms', semibold: true },
       { type: 'paragraph', text: 'UAE Corporate Tax law requires:' },
       {
         type: 'list',
@@ -392,7 +392,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'The FTA is watching closelyΓÇöespecially for growing SMEs with internal transactions. Protect your profits by treating related-party deals the same way you would treat any external deal.',
+        text: 'The FTA is watching closely—especially for growing SMEs with internal transactions. Protect your profits by treating related-party deals the same way you would treat any external deal.',
       },
     ],
     conclusion: '',
@@ -437,9 +437,9 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'This is especially relevant for Dubai SMEs with 10ΓÇô50 employees, registered from 2024 onward.',
+        text: 'This is especially relevant for Dubai SMEs with 10–50 employees, registered from 2024 onward.',
         highlights: [
-          { text: 'Dubai SMEs with 10ΓÇô50 employees', color: 'blue', bold: true },
+          { text: 'Dubai SMEs with 10–50 employees', color: 'blue', bold: true },
           { text: 'from 2024 onward', color: 'blue', bold: true },
         ],
       },
@@ -495,7 +495,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'For new companies, losses are commonΓÇöbut they must make sense on paper.',
+        text: 'For new companies, losses are common—but they must make sense on paper.',
         highlights: [{ text: 'they must make sense on paper', color: 'blue', bold: true }],
       },
       { type: 'paragraph', text: 'The FTA checks:' },
@@ -651,7 +651,7 @@ const ARTICLE_DEFINITIONS = [
         text: 'If you operate from a Free Zone but also earn income from mainland UAE clients, you must handle this carefully.',
       },
 
-      { type: 'heading', text: 'UAE Corporate Tax ΓÇô What Business Owners Must Know', semibold: true },
+      { type: 'heading', text: 'UAE Corporate Tax – What Business Owners Must Know', semibold: true },
       {
         type: 'paragraph',
         text: 'UAE Corporate Tax applies at 9% on taxable profits above AED 375,000.',
@@ -746,8 +746,8 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'The FTA closely checks companies with 10ΓÇô50 employees, especially where:',
-        highlights: [{ text: '10ΓÇô50 employees', color: 'blue', bold: true }],
+        text: 'The FTA closely checks companies with 10–50 employees, especially where:',
+        highlights: [{ text: '10–50 employees', color: 'blue', bold: true }],
       },
       {
         type: 'list',
@@ -824,7 +824,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'Proper structure, clean records, and early planning protect your profitsΓÇöand your peace of mind.',
+        text: 'Proper structure, clean records, and early planning protect your profits—and your peace of mind.',
       },
     ],
     conclusion: '',
@@ -859,7 +859,7 @@ const ARTICLE_DEFINITIONS = [
     content: [
       {
         type: 'paragraph',
-        text: 'A Free Zone company can do everything rightΓÇª and still lose its 0% corporate tax rate.',
+        text: 'A Free Zone company can do everything right… and still lose its 0% corporate tax rate.',
       },
       {
         type: 'paragraph',
@@ -916,7 +916,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'No alarm goes off. The problem shows up laterΓÇöoften during filing or an audit review.',
+        text: 'No alarm goes off. The problem shows up later—often during filing or an audit review.',
       },
 
       { type: 'heading', text: 'Activities That Commonly Create Risk', semibold: true },
@@ -952,7 +952,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'This is why proper tax advisory services in Dubai are now essentialΓÇönot optional.',
+        text: 'This is why proper tax advisory services in Dubai are now essential—not optional.',
         highlights: [{ text: 'tax advisory services in Dubai', color: 'blue', bold: true }],
       },
 
@@ -1001,7 +1001,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'Knowing the rules early keeps control where it belongsΓÇöwith you.',
+        text: 'Knowing the rules early keeps control where it belongs—with you.',
         highlights: [{ text: 'with you', color: 'blue', bold: true }],
       },
     ],
@@ -1120,7 +1120,7 @@ const ARTICLE_DEFINITIONS = [
       },
       {
         type: 'paragraph',
-        text: 'These issues are what usually trigger VAT auditsΓÇönot the act of reclaiming VAT itself. This is why experienced firms offering VAT return filing services UAE-wide focus heavily on documentation and review.',
+        text: 'These issues are what usually trigger VAT audits—not the act of reclaiming VAT itself. This is why experienced firms offering VAT return filing services UAE-wide focus heavily on documentation and review.',
         highlights: [{ text: 'VAT return filing services UAE-wide', color: 'blue', bold: true }],
       },
 
@@ -1153,7 +1153,7 @@ const ARTICLE_DEFINITIONS = [
       { type: 'heading', text: 'Why This Matters for SMEs', semibold: true },
       {
         type: 'paragraph',
-        text: 'For a business with 10ΓÇô50 employees, even small VAT recoveries add up. Over a year, this can mean thousands of dirhams back into cash flow.',
+        text: 'For a business with 10–50 employees, even small VAT recoveries add up. Over a year, this can mean thousands of dirhams back into cash flow.',
         highlights: [{ text: 'thousands of dirhams back into cash flow', color: 'blue', bold: true }],
       },
       {
@@ -1165,7 +1165,7 @@ const ARTICLE_DEFINITIONS = [
       { type: 'heading', text: 'Final Thought', semibold: true },
       {
         type: 'paragraph',
-        text: 'Reclaiming VAT on employee benefits can be legal, smart, and safeΓÇöwhen done correctly.',
+        text: 'Reclaiming VAT on employee benefits can be legal, smart, and safe—when done correctly.',
         highlights: [{ text: 'when done correctly', color: 'blue', bold: true }],
       },
       { type: 'paragraph', text: 'The goal is not to claim more VAT.' },
@@ -1667,7 +1667,7 @@ export default function BlogArticlePage() {
       <main className="blog-article blog-article--not-found">
         <section className="blog-article__not-found">
           <h1 className="h1-montserrat">Article not found</h1>
-          <p className="body-opensans">This link may be outdated, or the article hasnΓÇÖt been published yet.</p>
+          <p className="body-opensans">This link may be outdated, or the article hasn't been published yet.</p>
         </section>
       </main>
     )

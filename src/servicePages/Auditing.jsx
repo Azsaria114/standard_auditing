@@ -6,7 +6,7 @@ import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
 
-import heroImage from '../assets/audithero.png'
+import heroImage from '../assets/Services-Auditpage.webp'
 
 function Auditing() {
   return (

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
-import vatImage from '../assets/vat.jpg'
+import vatImage from '../assets/Services-VATpage.webp'
 
 function VAT() {
   return (

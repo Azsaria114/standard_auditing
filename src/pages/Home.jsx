@@ -12,8 +12,8 @@ function slugifyTitle(title) {
     .replace(/-+/g, '-')
 }
 import PartnersSection from '../PartnersSection'
-import section2Image from '../assets/section2.jpg'
-import heroImage from '../assets/heroimage.jpg'
+import section2Image from '../assets/Service That\'s As Personal As It Is Professional.webp'
+import heroImage from '../assets/TaxConsultancyDubai-StandardAuditing-HomePageImage.png'
 import FileMagnifyingGlassIcon from '../assets/FileMagnifyingGlass.svg?url'
 import PercentageIcon from '../assets/percentage.svg?url'
 import ChartLineUpIcon from '../assets/ChartLineUp.svg?url'
@@ -21,7 +21,7 @@ import Vector3Icon from '../assets/Vector (3).svg?url'
 import CalculatorIcon from '../assets/calculator.svg?url'
 import FileMagnifyingGlass1Icon from '../assets/FileMagnifyingGlass (1).svg?url'
 import onePointOfContactImage from '../assets/one point of contact.jpg'
-import step2Image from '../assets/step 2.png'
+import step2Image from '../assets/We Handle Everything.webp'
 import step3Image from '../assets/step3.jpg'
 
 // Data constants

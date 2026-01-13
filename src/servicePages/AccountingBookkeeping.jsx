@@ -3,19 +3,20 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
+import accountingBookkeepingImage from '../assets/Services-Accounting&Bookkeepingpage.webp'
 
 function AccountingBookkeeping() {
   return (
     <main className="service-page service-page--auditing">
       {/* Hero Section */}
-      <section className="service-hero service-hero--auditing">
+      <section className="service-hero service-hero--auditing" data-animate="fade-in" data-animate-delay="0">
         <div className="service-hero__container service-hero__container--auditing">
           <div className="service-hero__grid service-hero__grid--auditing">
             {/* Left Column - Image */}
             <div className="service-hero__image-column">
               <div className="service-hero__image-wrapper">
                 <img 
-                  src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop" 
+                  src={accountingBookkeepingImage} 
                   alt="Accounting & Bookkeeping Service" 
                   className="service-hero__image" 
                 />

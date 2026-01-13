@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import '../ComparisonSection.css'
 import '../styles/ServicePage.css'
-import companyFormationImage from '../assets/company_formation.jpg'
+import companyFormationImage from '../assets/Services-CompanyFormationpage.webp'
 
 function CompanyFormation() {
   return (

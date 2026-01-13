@@ -13,8 +13,8 @@ import UsersFourIcon from '../assets/UsersFour.svg?url'
 import BookOpenIcon from '../assets/BookOpen.svg?url'
 import BankIcon from '../assets/Bank.svg?url'
 import Vector2Icon from '../assets/Vector (2).svg?url'
-import HeroImage from '../assets/Frame 1014.png'
-import WorkHereImage from '../assets/Frame 1097.png'
+import HeroImage from '../assets/Be Part of Work That Actually Matters.webp'
+import WorkHereImage from '../assets/What It\'s Like to Work Here.webp'
 
 // Newsletter Section (from Home.jsx)
 function NewsletterSection() {
