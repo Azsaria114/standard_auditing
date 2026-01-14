@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Insights.css'
+import { getAllBlogArticles, getFeaturedArticles } from '../services/contentfulService'
 
 // Slugify function to match BlogArticlePage
 function slugifyTitle(title) {
@@ -65,60 +66,79 @@ function Insights() {
   ]
 
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [blogArticles, setBlogArticles] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [dynamicHeroSlides, setDynamicHeroSlides] = useState(heroSlides)
+
+  // Fetch blog articles from Contentful
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        setLoading(true)
+        const articles = await getAllBlogArticles()
+        
+        // Transform for the blog grid (only need title, image, slug)
+        const formattedArticles = articles.map(article => ({
+          image: article.featuredImage || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop',
+          title: article.title,
+          slug: article.slug,
+        }))
+        setBlogArticles(formattedArticles)
+
+        // Try to fetch featured articles for hero slides
+        const featured = await getFeaturedArticles(3)
+        if (featured.length > 0) {
+          const featuredSlides = featured.map((article, index) => {
+            // Split title into two parts if it's long
+            const words = article.title.split(' ')
+            const midPoint = Math.ceil(words.length / 2)
+            const title1 = words.slice(0, midPoint).join(' ')
+            const title2 = words.slice(midPoint).join(' ')
+            
+            return {
+              featured: 'Featured',
+              title: title1,
+              title2: title2,
+              fullTitle: article.title,
+              description: article.intro || 'Read our latest insights on tax and compliance.',
+              image: article.featuredImage || 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&h=600&fit=crop',
+              slug: article.slug,
+            }
+          })
+          setDynamicHeroSlides(featuredSlides)
+        }
+      } catch (error) {
+        console.error('Error fetching blog articles:', error)
+        // Keep default data on error
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchArticles()
+  }, [])
 
   // Auto-advance slideshow
   useEffect(() => {
+    if (dynamicHeroSlides.length === 0) return
+    
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+      setCurrentSlide((prev) => (prev + 1) % dynamicHeroSlides.length)
     }, 5000) // Change slide every 5 seconds
 
     return () => clearInterval(interval)
-  }, [heroSlides.length])
+  }, [dynamicHeroSlides.length])
 
   const goToSlide = (index) => {
     setCurrentSlide(index)
   }
-
-  // Blog articles data - using exact titles from BlogArticlePage ARTICLE_DEFINITIONS
-  const blogArticles = [
-    {
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
-      title: 'How To Get Back* VAT Paid on Employee Benefits Without Problems',
-      slug: slugifyTitle('How To Get Back* VAT Paid on Employee Benefits Without Problems')
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop',
-      title: 'How Free Zone Businesses Can Protect Their 0% Tax Status',
-      slug: slugifyTitle('How Free Zone Businesses Can Protect Their 0% Tax Status')
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop',
-      title: 'Why Mixing Mainland and Free Zone Income Can Cost You 9% Tax',
-      slug: slugifyTitle('Why Mixing Mainland and Free Zone Income Can Cost You 9% Tax')
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop',
-      title: 'Related-Party Deals That Can Hurt Your Profits',
-      slug: slugifyTitle('Related-Party Deals That Can Hurt Your Profits')
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop',
-      title: 'Why Reporting Losses Can Attract Tax Attention',
-      slug: slugifyTitle('Why Reporting Losses Can Attract Tax Attention')
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
-      title: 'Why Free Zone Companies Must Show Real UAE Presence',
-      slug: slugifyTitle('Why Free Zone Companies Must Show Real UAE Presence')
-    }
-  ]
 
   return (
     <main className="insights-page">
       {/* Hero Slideshow Section */}
       <section className="insights-hero" data-animate="fade-in" data-animate-delay="0">
         <div className="insights-hero__slideshow">
-          {heroSlides.map((slide, index) => (
+          {dynamicHeroSlides.map((slide, index) => (
             <div
               key={index}
               className={`insights-hero__slide ${index === currentSlide ? 'insights-hero__slide--active' : ''}`}
@@ -139,7 +159,7 @@ function Insights() {
           ))}
         </div>
         <div className="insights-hero__dots">
-          {heroSlides.map((_, index) => (
+          {dynamicHeroSlides.map((_, index) => (
             <button
               key={index}
               type="button"
@@ -155,8 +175,14 @@ function Insights() {
       <section className="insights-blog" data-animate="slide-up" data-animate-delay="0.1">
         <div className="insights-blog__container">
           <h2 className="insights-blog__title h1-montserrat">Blog</h2>
-          <div className="insights-blog__grid">
-            {blogArticles.map((article, index) => (
+          {loading ? (
+            <div style={{ padding: '2rem', textAlign: 'center' }}>
+              <p className="body-opensans">Loading articles...</p>
+            </div>
+          ) : (
+            <div className="insights-blog__grid">
+              {blogArticles.length > 0 ? (
+                blogArticles.map((article, index) => (
               <article key={index} className="insights-blog__card">
                 <div className="insights-blog__image-wrapper">
                   <img
@@ -173,8 +199,14 @@ function Insights() {
                   </Link>
                 </div>
               </article>
-            ))}
-          </div>
+                ))
+              ) : (
+                <div style={{ padding: '2rem', textAlign: 'center', gridColumn: '1 / -1' }}>
+                  <p className="body-opensans">No articles available at the moment.</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 

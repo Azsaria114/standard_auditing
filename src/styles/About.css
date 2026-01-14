@@ -286,7 +286,7 @@
     margin-top: clamp(0.5rem, 1vw, 0.75rem);
   }
   .about-intro__media img {
-    width: 100%;
+    width: 100%; 
     max-height: clamp(16rem, 32vw, 22rem);
     object-position: center 20%;
   }
@@ -356,7 +356,7 @@
   } 
   .about-intro__grid {
     grid-template-columns: 1fr !important;
-    gap: clamp(2.5rem, 4vw, 3.5rem);
+    gap: clamp(2.5rem, 4vw, 3.5rem); 
     align-items: start !important;
   } 
   .about-intro__left {
@@ -379,7 +379,7 @@
     overflow: visible; 
   } 
   .about-intro__media img { 
-    max-width: 100%;
+    max-width: 100%; 
     max-height: clamp(14rem, 30vw, 20rem);
     object-position: center 20%;
     margin-left: 0;

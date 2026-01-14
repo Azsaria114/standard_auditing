@@ -12803,7 +12803,7 @@ html, body {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 0 clamp(2rem, 5vw, 5rem) clamp(3rem, 6vw, 4rem) clamp(2rem, 5vw, 5rem);
+  padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 5vw, 5rem) clamp(3rem, 6vw, 4rem) clamp(2rem, 5vw, 5rem);
   max-width: 1200px;
   margin: 0 auto;
   animation: slideUpFade 1s ease-out 0.3s both;

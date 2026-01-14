@@ -1,5 +1,6 @@
 ﻿import React, { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { getBlogArticleBySlug, getAllBlogArticles } from '../services/contentfulService'
 
 // Local (page-level) newsletter section — matches the existing Insights/Home pattern.
 function NewsletterSection() {
@@ -1204,19 +1205,19 @@ const ARTICLE_DEFINITIONS = [
   },
 ]
 
-function findArticleSlugByTitle(title) {
+function findArticleSlugByTitle(title, allArticles = []) {
   // Normalize titles for comparison (remove special characters and normalize spaces)
   const normalizeTitle = (t) => t.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim()
   const normalizedSearchTitle = normalizeTitle(title)
   
-  // Find the article in ARTICLE_DEFINITIONS
-  const article = ARTICLE_DEFINITIONS.find(def => {
+  // Find the article in allArticles
+  const article = allArticles.find(def => {
     const normalizedDefTitle = normalizeTitle(def.title)
     return normalizedDefTitle === normalizedSearchTitle
   })
   
   if (article) {
-    return `/insights/article/${slugifyTitle(article.title)}`
+    return `/insights/article/${article.slug}`
   }
   
   // Fallback: generate slug from the provided title
@@ -1237,6 +1238,12 @@ function BlogArticle({
   const [readingProgress, setReadingProgress] = useState(0)
   const [activeHeading, setActiveHeading] = useState(null)
   const [timelineNavHeight, setTimelineNavHeight] = useState(0)
+  const [allArticles, setAllArticles] = useState([])
+
+  // Fetch all articles for related articles links
+  useEffect(() => {
+    getAllBlogArticles().then(setAllArticles)
+  }, [])
 
   const headings = useMemo(() => {
     const base = content
@@ -1409,6 +1416,13 @@ function BlogArticle({
             <div className="blog-article__hero-overlay"></div>
           </div>
         )}
+
+        <Link to="/insights" className="blog-article__back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Back to Insights</span>
+        </Link>
 
         <div className="blog-article__hero-content">
           <p className="blog-article__hero-category small-body-opensans">{category}</p>
@@ -1622,7 +1636,7 @@ function BlogArticle({
                   articleSlug = article.link
                 } else {
                   // Find the article by title to get the correct slug
-                  articleSlug = findArticleSlugByTitle(article.title)
+                  articleSlug = findArticleSlugByTitle(article.title, allArticles)
                 }
                 return (
                   <article key={index} className="blog-article__related-post-card">
@@ -1651,18 +1665,45 @@ function BlogArticle({
 
 export default function BlogArticlePage() {
   const { slug } = useParams()
+  const [article, setArticle] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-  const articlesBySlug = useMemo(() => {
-    const map = new Map()
-    for (const article of ARTICLE_DEFINITIONS) {
-      map.set(slugifyTitle(article.title), article)
+  useEffect(() => {
+    async function fetchArticle() {
+      try {
+        setLoading(true)
+        const fetchedArticle = await getBlogArticleBySlug(slug)
+        if (fetchedArticle) {
+          setArticle(fetchedArticle)
+        } else {
+          setError('Article not found')
+        }
+      } catch (err) {
+        setError('Failed to load article')
+        console.error(err)
+      } finally {
+        setLoading(false)
+      }
     }
-    return map
-  }, [])
 
-  const article = articlesBySlug.get(slug)
+    fetchArticle()
+  }, [slug])
 
-  if (!article) {
+  if (loading) {
+    return (
+      <main className="blog-article blog-article--loading">
+        <section className="blog-article__loading">
+          <div style={{ padding: '4rem 2rem', textAlign: 'center' }}>
+            <h1 className="h1-montserrat">Loading...</h1>
+            <p className="body-opensans">Please wait while we fetch the article.</p>
+          </div>
+        </section>
+      </main>
+    )
+  }
+
+  if (error || !article) {
     return (
       <main className="blog-article blog-article--not-found">
         <section className="blog-article__not-found">
