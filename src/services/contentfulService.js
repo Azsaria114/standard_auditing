@@ -1,4 +1,4 @@
-import contentfulClient from '../config/contentful'
+import contentfulClient, { isContentfulConfigured } from '../config/contentful'
 
 // Helper function to slugify (matching your existing function)
 function slugifyTitle(title) {
@@ -80,6 +80,11 @@ function transformArticle(entry) {
 
 // Fetch all blog articles
 export async function getAllBlogArticles() {
+  if (!isContentfulConfigured || !contentfulClient) {
+    console.warn('Contentful is not configured. Returning empty articles list.')
+    return []
+  }
+
   try {
     const response = await contentfulClient.getEntries({
       content_type: 'blogArticle',
@@ -98,6 +103,11 @@ export async function getAllBlogArticles() {
 
 // Fetch a single blog article by slug
 export async function getBlogArticleBySlug(slug) {
+  if (!isContentfulConfigured || !contentfulClient) {
+    console.warn('Contentful is not configured. Cannot fetch article.')
+    return null
+  }
+
   try {
     const response = await contentfulClient.getEntries({
       content_type: 'blogArticle',
@@ -119,6 +129,11 @@ export async function getBlogArticleBySlug(slug) {
 
 // Fetch featured articles for the hero section
 export async function getFeaturedArticles(limit = 3) {
+  if (!isContentfulConfigured || !contentfulClient) {
+    console.warn('Contentful is not configured. Returning empty featured articles list.')
+    return []
+  }
+
   try {
     const response = await contentfulClient.getEntries({
       content_type: 'blogArticle',
@@ -135,4 +150,5 @@ export async function getFeaturedArticles(limit = 3) {
     return []
   }
 }
+
 
